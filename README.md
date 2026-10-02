@@ -7,3 +7,5 @@ Run `npm test` and `npm run build` (Node 22). Static output is public/. Read web
 The clinic starter is accepted for pipeline previews. Rebuilding a prospect replaces that prospect's page at the same /preview/<slug>/index.html address. Template acceptance does not enable email drafting. No hosting or live workflow is activated by repository organisation.
 
 Keep private contact research and secrets out of source and public assets. This repository was public at migration; restrict visibility before adding confidential material. Preview noindex is not access control.
+
+Operational reliability update: see docs/HANDOFF.md and the outreach docs/OPERATIONS.md. Repository changes do not deploy Apps Script or provision hosting.

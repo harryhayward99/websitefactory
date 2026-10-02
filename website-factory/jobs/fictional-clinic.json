@@ -7,8 +7,10 @@
     "id": "clinic-clean",
     "version": "1.0.0"
   },
-  "instructionsVersion": "71896a2782c0c4e6",
+  "instructionsVersion": "93aa95661ffc71cc",
+  "contentHash": "1ee2becc485551dfb1e266ee41052c45deca3c0bad4677947a48c9663677d13d",
+  "demo": true,
   "message": "",
-  "updatedAt": "2026-10-02T15:35:01.077Z",
+  "updatedAt": "2026-10-02T20:28:02.378Z",
   "state": "PREVIEW_READY"
 }

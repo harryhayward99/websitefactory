@@ -87,9 +87,9 @@ test('approved library images are copied into the client folder',async()=>{
   site.assets.librarySelections=['pixel'];
   const manifest=[{id:'pixel',category:'general',file:'images/general/pixel.png',alt:'Illustrative room',sourceUrl:'https://example.com/licence',rights:'owned',status:'approved',illustrative:true}];
   const result=await materialiseLibraryImages(site,manifest,{sourceRoot,clientDir:path.join(tmp,'client')});
-  assert.equal(result.assets.images[0].path,'/factory-assets/clients/fictional-clinic/pixel.png');
+  assert.match(result.assets.images[0].path,/^\/factory-assets\/clients\/fictional-clinic\/[a-f0-9]{16}-pixel.png$/);
   assert.equal(result.assets.images[0].illustrative,true);
-  assert.ok((await fs.readFile(path.join(tmp,'client','pixel.png'))).equals(pixel));
+  assert.ok((await fs.readFile(path.join(tmp,'client',path.basename(result.assets.images[0].path)))).equals(pixel));
   manifest[0].status='draft';
   await assert.rejects(()=>materialiseLibraryImages(site,manifest,{sourceRoot,clientDir:path.join(tmp,'client')}));
 });
@@ -127,4 +127,26 @@ test('integration contract matches the hosting config and computed instructions 
   assert.equal(vercel.buildCommand,integration.hosting.buildCommand);
   assert.equal(vercel.outputDirectory,integration.hosting.outputDirectory);
   assert.equal(integration.cursorApi.generation,'v1');
+});
+
+test('unchanged HTML still receives fresh status and content hash',async()=>{
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-status-'));
+  const options={outputFile:path.join(tmp,'preview/index.html'),directories:{previewDir:path.join(tmp,'preview'),jobsDir:path.join(tmp,'jobs')}};
+  await generatePreview(example,{...options,instructionsVersion:'old-version'});
+  const second=await generatePreview(example,{...options,instructionsVersion:'new-version'});
+  const status=JSON.parse(await fs.readFile(path.join(tmp,'preview/status.json'),'utf8'));
+  assert.equal(second.code,'PREVIEW_READY');assert.equal(status.instructionsVersion,'new-version');assert.match(status.contentHash,/^[a-f0-9]{64}$/);
+  await fs.rm(path.join(tmp,'preview/status.json'));
+  await generatePreview(example,{...options,instructionsVersion:'new-version'});
+  assert.equal(JSON.parse(await fs.readFile(path.join(tmp,'preview/status.json'),'utf8')).instructionsVersion,'new-version');
+});
+test('invalid rebuild cannot overwrite assets used by the existing preview',async()=>{
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-stage-'));
+  const sourceRoot=path.join(tmp,'images'),clientDir=path.join(tmp,'client');
+  await fs.mkdir(path.join(sourceRoot,'general'),{recursive:true});await fs.mkdir(clientDir);
+  await fs.writeFile(path.join(sourceRoot,'general','pixel.png'),pixel);await fs.writeFile(path.join(clientDir,'pixel.png'),'original asset');
+  const site=structuredClone(example);site.assets.librarySelections=['pixel'];site.contentReviewed=false;
+  const manifest=[{id:'pixel',category:'general',file:'images/general/pixel.png',alt:'Illustrative room',sourceUrl:'https://example.com/licence',rights:'owned',status:'approved'}];
+  const result=await generatePreview(site,{outputFile:path.join(tmp,'index.html'),skipStatus:true,manifestAssets:manifest,assetPaths:{sourceRoot,clientDir}});
+  assert.equal(result.code,'RESEARCH_INCOMPLETE');assert.equal(await fs.readFile(path.join(clientDir,'pixel.png'),'utf8'),'original asset');
 });

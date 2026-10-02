@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 
 export const root = path.dirname(fileURLToPath(import.meta.url));
@@ -39,7 +40,11 @@ export async function instructionsVersion() {
     fs.readFile(integrationPath, 'utf8')
   ]);
   const blanked = integrationText.replace(/"instructionsVersion"\s*:\s*"[^"]*"/, '"instructionsVersion":""');
-  return crypto.createHash('sha256').update(build).update(catalogueText).update(blanked).digest('hex').slice(0, 16);
+  const hash = crypto.createHash('sha256').update(build).update(catalogueText).update(blanked);
+  const templates = JSON.parse(catalogueText).templates;
+  const files = ['factory.mjs','build.mjs','images/manifest.json',...templates.map(t=>t.entry)].sort();
+  for (const file of files) hash.update(file).update(await fs.readFile(path.join(root,file)));
+  return hash.digest('hex').slice(0, 16);
 }
 
 function rejectPrivateKeys(value) {
@@ -152,21 +157,22 @@ export async function materialiseLibraryImages(site, manifestAssets, paths) {
     if (!/^images\/(dental|physiotherapy|chiropractic|barber|veterinary|general)\/[a-zA-Z0-9._-]+\.(png|jpe?g|webp|avif)$/.test(entry.file || '') || !relativeFile.startsWith(entry.category + '/')) fail('Library file must stay inside its category folder');
     const libraryFile = path.resolve(sourceRoot, relativeFile);
     if (!inside(sourceRoot, libraryFile)) fail('Library file must stay inside its category folder');
-    const destName = path.basename(libraryFile);
+    const bytes = await fs.readFile(libraryFile);
+    const destName = crypto.createHash('sha256').update(bytes).digest('hex').slice(0,16)+'-'+path.basename(libraryFile);
     const dest = path.join(clientDir, destName);
     await fs.mkdir(clientDir, { recursive: true });
     await fs.copyFile(libraryFile, dest);
     const publicPath = `/factory-assets/clients/${site.slug}/${destName}`;
-    if (!images.some(image => image.libraryId === id)) {
-      images.push({
+    const image = {
         path: publicPath,
         alt: entry.alt,
         sourceUrl: entry.sourceUrl,
         rights: entry.rights,
         illustrative: true,
         libraryId: id
-      });
-    }
+      };
+    const previous = images.findIndex(image => image.libraryId === id);
+    if (previous < 0) images.push(image); else images[previous] = image;
   }
   return { ...site, assets: { ...site.assets, images } };
 }
@@ -179,6 +185,8 @@ export function statusDocument(site, assessment, version) {
     previewPath: `/preview/${site.slug}/index.html`,
     template: site.template ? { id: site.template.id, version: site.template.version } : null,
     instructionsVersion: version,
+    contentHash: assessment.contentHash || null,
+    demo: site.demo,
     message: assessment.message || '',
     updatedAt: new Date().toISOString()
   };
@@ -197,19 +205,24 @@ export async function writeJobResult(site, assessment, version, directories = {}
 }
 
 export async function generatePreview(site, options = {}) {
+  if (!slugPattern.test(site.slug || '')) fail('Invalid site slug');
   const version = options.instructionsVersion ?? await instructionsVersion();
   const outputFile = options.outputFile || path.join(publicRoot, 'preview', site.slug, 'index.html');
   const previewPath = `/preview/${site.slug}/index.html`;
   let prepared = site;
+  let staged = null;
+  const assetDestination = options.assetPaths?.clientDir || path.join(publicRoot, 'factory-assets', 'clients', site.slug);
   if (site.assets?.librarySelections?.length) {
     const manifest = options.manifestAssets || JSON.parse(await fs.readFile(path.join(root, 'images', 'manifest.json'), 'utf8')).assets;
     try {
-      prepared = await materialiseLibraryImages(site, manifest, options.assetPaths);
+      staged = await fs.mkdtemp(path.join(os.tmpdir(), 'parley-assets-'));
+      prepared = await materialiseLibraryImages(site, manifest, { ...options.assetPaths, clientDir: staged });
     } catch (error) {
       const assessment = { ok: false, code: 'ERROR', sheetStatus: sheetStatus.ERROR, message: error instanceof Error ? error.message : 'Asset copy failed' };
       let existing = false;
       try { await fs.access(outputFile); existing = true; } catch { /* first attempt */ }
       if (!existing && !options.skipStatus) await writeJobResult(site, assessment, version, options.directories);
+      if (staged) await fs.rm(staged, { recursive: true, force: true });
       return { ...assessment, previewPath };
     }
   }
@@ -218,16 +231,26 @@ export async function generatePreview(site, options = {}) {
     let existing = false;
     try { await fs.access(outputFile); existing = true; } catch { /* first attempt */ }
     if (!existing && !options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
+    if (staged) await fs.rm(staged, { recursive: true, force: true });
     return { ...assessment, previewPath };
   }
-  const html = await renderSite(prepared, { allowDraft: prepared.demo, instructionsVersion: version });
+  let html;
+  try { html = await renderSite(prepared, { allowDraft: prepared.demo, instructionsVersion: version }); }
+  catch (error) { if (staged) await fs.rm(staged, { recursive: true, force: true }); throw error; }
+  assessment.contentHash = crypto.createHash('sha256').update(html).digest('hex');
   let previous = null;
   try { previous = await fs.readFile(outputFile, 'utf8'); } catch { /* first preview */ }
   if (previous !== html) {
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
     await fs.writeFile(outputFile, html);
-    if (!options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
   }
+  if (staged) {
+    await fs.mkdir(assetDestination, { recursive: true });
+    for (const file of await fs.readdir(staged)) await fs.copyFile(path.join(staged, file), path.join(assetDestination, file));
+    await fs.rm(staged, { recursive: true, force: true });
+  }
+  // Successful validation refreshes metadata even when rendered HTML is identical.
+  if (!options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
   return { ...assessment, previewPath, html, message: previous && previous !== html ? 'Preview updated in place' : assessment.message };
 }
 

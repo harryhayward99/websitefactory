@@ -1,13 +1,11 @@
 # Parley factory handover
 
-Updated 2026-10-02 so a Sheet approval can produce a preview without a visual design review.
+Updated 2026-10-02. Built on Cursor's accepted clinic pipeline starter. Appearance remains unfinished; email drafting remains separately disabled.
 
-The canonical controller is https://github.com/harryhayward99/parley-outreach. Read INTEGRATION.md for the shared interface. Older environment instructions in HANDOFF-HISTORY.md are historical.
+Successful generation refreshes status even if HTML is unchanged. Result metadata includes demo and an HTML content hash. Images are staged before validation and copied with content-based names. Hosting builds verify existing snapshots rather than rebuilding all prospects. Code/template/image-manifest changes now participate in the instructions fingerprint.
 
-## Verified
-`clinic-clean` 1.0.0 is accepted for pipeline previews. Appearance is unfinished. Rebuilding a slug overwrites `public/preview/<slug>/index.html` and keeps that address. A failed rebuild leaves the current page in place. The instructions hash is `9baed2691a748edd`. Factory tests and `npm run build` passed on Node 22.14.0. A real physiotherapy fixture with `demo:false` and this instructions version reached `PREVIEW_READY` in an offline test. Barber prospects still stop for template review. Email drafting remains off.
+The outreach controller pins the factory commit, checks approved sector support before paying for a job, and validates result identity/version/real-prospect flag/content hash. Optional PREVIEW_ORIGIN waits for reviewed publication at a stable origin. Without it the URL is a deployment snapshot.
 
-## Still awaiting activation
-Image folders remain empty. No live hosting URL or paid-build test has been verified. The installed Apps Script was not updated and still needs `FACTORY_INSTRUCTIONS_VERSION` set to `9baed2691a748edd`. Confirm the £200 combined tools limit and known month-to-date spend before enabling a build. Email-template approval is separate.
+No factory hosting project was found in the connected Vercel team. The deployment connector returned unavailable. No paid job or email was launched. Image bank remains empty; barber still needs a template. See the controller docs/OPERATIONS.md for release, budget and one-lead rollout steps.
 
-Next: install the outreach bundle from the matching branch, connect preview hosting, then approve one fresh Website row. Keep `ENABLED`, `CURSOR_ENABLED` and `DRAFTS_ENABLED` false until that install and the spend check are done.
+Reviewed factory instructions version for this release: `93aa95661ffc71cc`.

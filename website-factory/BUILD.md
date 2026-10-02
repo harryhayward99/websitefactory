@@ -41,3 +41,9 @@ The preview URL written to the Sheet is the origin of a successful deployment pl
 Repository changes do not update standalone Apps Script. Merge the reviewed factory PR, update the installed combined Core.js + Code.js, configure Cursor/GitHub credentials and spending controls, and verify one website approval end to end before enabling routine builds. The Sheet edit trigger already calls processQueue; it only starts websites for approved offers that include Website. Drafting and manual email sending remain separate.
 
 Public preview HTML is noindex, not private. Use deployment authentication for confidential review. Keep source URLs and permissions metadata out of rendered HTML. This repository may be public: do not commit confidential research, personal contact notes or restricted assets. Use only public business facts here, and move confidential material to private storage.
+
+## Release validation
+
+Hosting builds verify existing preview snapshots and never regenerate every prospect. Explicitly regenerate only the requested slug. Successful result metadata always includes demo, instructionsVersion and the SHA-256 contentHash of the exact HTML, even when the page content is unchanged. Category assets use content-based filenames and are staged until validation succeeds. The instructions fingerprint covers this guide, catalogue, integration contract, renderer code, factory/build code and image manifest. The controller pins the source commit before launching.
+
+A stable preview requires a configured hosting origin and publication of the reviewed prospect there. Keeping a file path unchanged alone does not keep the hosting origin unchanged. The controller can wait for the stable origin to serve the same validated HTML hash. No automatic merge is requested.

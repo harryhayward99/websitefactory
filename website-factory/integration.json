@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "instructionsVersion": "9baed2691a748edd",
+  "instructionsVersion": "93aa95661ffc71cc",
   "repository": "https://github.com/harryhayward99/websitefactory",
   "controllerRepository": "https://github.com/harryhayward99/parley-outreach",
   "emailDrafting": {
@@ -10,7 +10,8 @@
   "budget": {
     "currency": "GBP",
     "monthlyToolsLimit": 200,
-    "rule": "Do not launch a paid Cursor build unless a \u00a3200 per month tools spend limit is already in force and month-to-date spend is known to be within it. Token usage from the Cursor API is not a pound total. If spend is unknown, do not launch."
+    "rule": "Do not launch a paid Cursor build unless a £200 per month tools spend limit is already in force and month-to-date spend is known to be within it. Token usage from the Cursor API is not a pound total. If spend is unknown, do not launch.",
+    "enforcement": "Controller admission gate requires a spending snapshot less than 24 hours old and reserves a configured per-job GBP allowance. This is not live billing or a provider-side hard cap."
   },
   "launch": {
     "oneJobPerSlug": true,
@@ -61,7 +62,16 @@
     "previewPath": "/preview/{slug}/index.html",
     "statusPath": "/preview/{slug}/status.json",
     "indexPath": "/preview/index.json",
-    "discovery": "Use the origin of a successful hosting deployment for the job commit. Fetch statusPath. Accept the deployment only when status is PREVIEW_READY and previewPath matches. Write origin plus previewPath to the Sheet once. A later edit of that prospect overwrites the files at that same previewPath and must not replace the saved URL. A later Gmail draft, once email drafting is enabled, must use that same string. Ignore a URL that appears only in the agent reply."
+    "discovery": "Use the origin of a successful hosting deployment for the job commit. Fetch statusPath. Accept the deployment only when status is PREVIEW_READY and previewPath matches. Write origin plus previewPath to the Sheet once. A later edit of that prospect overwrites the files at that same previewPath and must not replace the saved URL. A later Gmail draft, once email drafting is enabled, must use that same string. Ignore a URL that appears only in the agent reply.",
+    "resultFields": [
+      "slug",
+      "status",
+      "previewPath",
+      "instructionsVersion",
+      "demo",
+      "contentHash"
+    ],
+    "stableOrigin": "Optional PREVIEW_ORIGIN on controller. Publish the reviewed prospect at that origin; controller waits for matching status and HTML hash. Without it the stored URL identifies a deployment snapshot."
   },
   "sheetStatuses": {
     "PREVIEW_READY": "Preview ready",
