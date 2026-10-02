@@ -1,0 +1,55 @@
+{
+  "slug": "concept-96921d2d9126",
+  "sector": "dental",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "93aa95661ffc71cc",
+  "template": {"id":"clinic-clean","version":"1.0.0"},
+  "brand": {"accent":"#2C5F8D"},
+  "sources": [
+    {"id":"homepage","url":"https://www.courtyard-dental.co.uk/","checkedAt":"2026-10-02"},
+    {"id":"contact","url":"https://www.courtyard-dental.co.uk/contact","checkedAt":"2026-10-02"}
+  ],
+  "business": {
+    "name":{"value":"The Courtyard Dental Practice","sourceId":"homepage"},
+    "location":{"value":"Dunchurch, Rugby","sourceId":"homepage"},
+    "phone":{"value":"01788 519831","sourceId":"contact"},
+    "address":{"value":"Rear of 4 Daventry Road, Dunchurch, Warwickshire, CV22 6NS","sourceId":"contact"},
+    "hours":{"value":"Monday 10am–7:30pm, Tuesday 9am–5:30pm, Wednesday 8:30am–4pm, Thursday 9am–5:15pm, Friday 9am–3:15pm","sourceId":"contact"},
+    "services":[
+      {"value":"General Dentistry","sourceId":"homepage"},
+      {"value":"Dental Implants","sourceId":"homepage"},
+      {"value":"Invisalign","sourceId":"homepage"},
+      {"value":"Teeth Whitening","sourceId":"homepage"},
+      {"value":"Facial Aesthetics","sourceId":"homepage"},
+      {"value":"Periodontal Care","sourceId":"homepage"},
+      {"value":"Crowns & Bridges","sourceId":"homepage"},
+      {"value":"Dentures","sourceId":"homepage"}
+    ]
+  },
+  "copy":{
+    "headline":"Care for your family's smiles in Dunchurch.",
+    "introduction":"A warm and friendly private dental practice where everyone is welcome. We'll get to know you and your teeth personally in a kind and caring environment."
+  },
+  "contentReviewed":true,
+  "exampleSections":[
+    {
+      "title":"Meet our experienced team",
+      "body":"Our dentists Alexia, Rob, Rebecca and Ailsa bring decades of combined experience in general and specialist dentistry, offering comprehensive care from routine check-ups to advanced treatments."
+    },
+    {
+      "title":"Family-friendly approach",
+      "body":"We make dental visits fun and enjoyable for children, with toys, hand puppets, and step-free access for pushchairs. We also welcome anxious patients with appointments taken at your own pace."
+    }
+  ],
+  "assets":{
+    "logo":{
+      "path":"/factory-assets/clients/concept-96921d2d9126/logo.png",
+      "alt":"The Courtyard Dental Practice",
+      "sourceUrl":"https://static.wixstatic.com/media/9d3a20_72aa28c910704b1ba1d506d7b8094130~mv2.png",
+      "rights":"official-logo-concept"
+    },
+    "images":[],
+    "librarySelections":[]
+  }
+}
