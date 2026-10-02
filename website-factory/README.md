@@ -7,9 +7,10 @@ Run `node website-factory/factory.mjs fictional-clinic` to generate the starter.
 - catalogue.json: selectable designs with status and immutable versions.
 - templates/<id>/<version>/render.mjs: self-contained renderer; new versions are separate files.
 - sites/<slug>.json: sourced business data, selected template, copy and assets.
-- images/<category>: your reusable image folders. Add the provenance/permission information to images/manifest.json and set status approved when ready to use.
-- public/factory-assets/clients/<slug>: selected copies of approved images and the official prospect logo.
-- public/preview/<slug>/index.html: frozen output for the prospect; updates to a template or the image bank do not change it.
+- images/<category>: your reusable image folders. Follow images/README.md to register a draft and approve it in images/manifest.json.
+- public/factory-assets/clients/<slug>: copies of the selected approved images and the official prospect logo. The generator makes these copies.
+- public/preview/<slug>/index.html: frozen output for the prospect. A later template or image-bank change does not rebuild it.
+- integration.json: controller contract, instructions version, £200 monthly tools budget, and email drafting switch. Drafting stays off.
 
 Image categories: dental, physiotherapy, chiropractic, barber, veterinary and general. Add images here in your Cursor project, or sync your external image folders into these directories. Cloud jobs cannot access folders that exist only on your computer. Keep original high-resolution masters outside Git; commit web-ready, licensed copies. No images have been supplied yet.
 

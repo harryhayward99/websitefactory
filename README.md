@@ -6,7 +6,7 @@ Reusable website templates, category image banks and generated prospect concepts
 
 Requires Node.js 22 or later. Run `npm test`, then `npm run build`. Serve the `public` directory or configure your static host to publish it. The fictional starter is at `/preview/fictional-clinic/index.html`.
 
-Read `website-factory/README.md` and `website-factory/BUILD.md`. The clinic starter is draft and requires visual approval before real prospect builds. Category image folders are ready for your web-ready assets.
+Read `website-factory/README.md`, `website-factory/BUILD.md` and `website-factory/integration.json`. The clinic starter is draft and requires visual approval before real prospect builds. Hosting uses `npm run build` and publishes the `public` directory (`vercel.json`). Category image folders are ready for your web-ready assets. See `website-factory/images/README.md` to register and approve them.
 
 ## Approval workflow
 

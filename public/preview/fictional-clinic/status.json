@@ -1,0 +1,13 @@
+{
+  "slug": "fictional-clinic",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/fictional-clinic/index.html",
+  "template": {
+    "id": "clinic-clean",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "71896a2782c0c4e6",
+  "message": "",
+  "updatedAt": "2026-10-02T15:35:01.077Z"
+}
