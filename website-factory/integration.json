@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "instructionsVersion": "383ceff3a5d55fc4",
+  "instructionsVersion": "9baed2691a748edd",
   "repository": "https://github.com/harryhayward99/websitefactory",
   "controllerRepository": "https://github.com/harryhayward99/parley-outreach",
   "emailDrafting": {
@@ -61,7 +61,7 @@
     "previewPath": "/preview/{slug}/index.html",
     "statusPath": "/preview/{slug}/status.json",
     "indexPath": "/preview/index.json",
-    "discovery": "Use the origin of a successful hosting deployment for the job commit. Fetch statusPath. Accept the deployment only when status is PREVIEW_READY and previewPath matches. Write origin plus previewPath to the Sheet. A later Gmail draft, once email drafting is enabled, must use that same string. Ignore a URL that appears only in the agent reply."
+    "discovery": "Use the origin of a successful hosting deployment for the job commit. Fetch statusPath. Accept the deployment only when status is PREVIEW_READY and previewPath matches. Write origin plus previewPath to the Sheet once. A later edit of that prospect overwrites the files at that same previewPath and must not replace the saved URL. A later Gmail draft, once email drafting is enabled, must use that same string. Ignore a URL that appears only in the agent reply."
   },
   "sheetStatuses": {
     "PREVIEW_READY": "Preview ready",

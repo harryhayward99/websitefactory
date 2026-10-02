@@ -199,12 +199,7 @@ export async function writeJobResult(site, assessment, version, directories = {}
 export async function generatePreview(site, options = {}) {
   const version = options.instructionsVersion ?? await instructionsVersion();
   const outputFile = options.outputFile || path.join(publicRoot, 'preview', site.slug, 'index.html');
-  if (!options.regenerate) {
-    try {
-      await fs.access(outputFile);
-      return { ok: true, code: 'ALREADY_BUILT', sheetStatus: sheetStatus.ALREADY_BUILT, previewPath: `/preview/${site.slug}/index.html`, message: 'Existing preview preserved' };
-    } catch { /* create the first preview */ }
-  }
+  const previewPath = `/preview/${site.slug}/index.html`;
   let prepared = site;
   if (site.assets?.librarySelections?.length) {
     const manifest = options.manifestAssets || JSON.parse(await fs.readFile(path.join(root, 'images', 'manifest.json'), 'utf8')).assets;
@@ -212,8 +207,10 @@ export async function generatePreview(site, options = {}) {
       prepared = await materialiseLibraryImages(site, manifest, options.assetPaths);
     } catch (error) {
       const assessment = { ok: false, code: 'ERROR', sheetStatus: sheetStatus.ERROR, message: error instanceof Error ? error.message : 'Asset copy failed' };
-      if (!options.skipStatus) await writeJobResult(site, assessment, version, options.directories);
-      return assessment;
+      let existing = false;
+      try { await fs.access(outputFile); existing = true; } catch { /* first attempt */ }
+      if (!existing && !options.skipStatus) await writeJobResult(site, assessment, version, options.directories);
+      return { ...assessment, previewPath };
     }
   }
   const assessment = assessSite(prepared, options.templates || await catalogue(), { allowDraft: prepared.demo, instructionsVersion: version });
@@ -221,13 +218,17 @@ export async function generatePreview(site, options = {}) {
     let existing = false;
     try { await fs.access(outputFile); existing = true; } catch { /* first attempt */ }
     if (!existing && !options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
-    return assessment;
+    return { ...assessment, previewPath };
   }
   const html = await renderSite(prepared, { allowDraft: prepared.demo, instructionsVersion: version });
-  await fs.mkdir(path.dirname(outputFile), { recursive: true });
-  await fs.writeFile(outputFile, html);
-  if (!options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
-  return { ...assessment, previewPath: `/preview/${site.slug}/index.html`, html };
+  let previous = null;
+  try { previous = await fs.readFile(outputFile, 'utf8'); } catch { /* first preview */ }
+  if (previous !== html) {
+    await fs.mkdir(path.dirname(outputFile), { recursive: true });
+    await fs.writeFile(outputFile, html);
+    if (!options.skipStatus) await writeJobResult(prepared, assessment, version, options.directories);
+  }
+  return { ...assessment, previewPath, html, message: previous && previous !== html ? 'Preview updated in place' : assessment.message };
 }
 
 export async function publishIndex() {
@@ -259,8 +260,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   } else {
     const slug = args.find(arg => !arg.startsWith('--'));
     const site = await loadSite(slug);
-    const result = await generatePreview(site, { regenerate: args.includes('--regenerate') });
-    if (result.code === 'PREVIEW_READY' || result.code === 'ALREADY_BUILT') await publishIndex();
+    const result = await generatePreview(site);
+    if (result.code === 'PREVIEW_READY') await publishIndex();
     const output = {
       code: result.code,
       sheetStatus: result.sheetStatus,
@@ -268,6 +269,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       message: result.message || ''
     };
     console.log(JSON.stringify(output));
-    if (!result.ok && result.code !== 'ALREADY_BUILT') process.exitCode = 2;
+    if (!result.ok) process.exitCode = 2;
   }
 }

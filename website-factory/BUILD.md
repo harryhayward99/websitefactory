@@ -18,13 +18,13 @@ Use sites/fictional-clinic.json as the schema example. For real prospects set de
 
 Select category images by id in assets.librarySelections. They must already be approved in images/manifest.json. The factory copies those files into public/factory-assets/clients/<job-slug>/ and labels them illustrative. Do not point the page at the shared library path.
 
-Run `node website-factory/factory.mjs <job-slug>`. The first run creates public/preview/<job-slug>/index.html and status.json. A later run keeps that HTML and reports the existing preview. Pass --regenerate only when Harry has asked for that preview to be replaced. After deployment the page is /preview/<job-slug>/index.html. Review desktop and mobile, run the project build, and open one PR containing the site JSON, generated HTML, status file and authorised site assets. Keep the business's name in HTML. Do not merge, change DNS, activate integrations, send outreach or modify existing concepts.
+Run `node website-factory/factory.mjs <job-slug>`. The page address is always /preview/<job-slug>/index.html. The first run creates that file and status.json. A later run for the same slug overwrites those files in place. A failed run leaves the current page where it is. Review desktop and mobile, run the project build, and open one PR containing the site JSON, generated HTML, status file and authorised site assets. Keep the business's name in HTML. Do not merge, change DNS, activate integrations, send outreach, or modify any other prospect's files.
 
 The command prints JSON with code and sheetStatus. Needs template review means no approved template supports the sector. Do not invent a design. Research incomplete means a required public fact or source is missing. Build failed means the record or an asset was rejected.
 
 ## Library growth
 
-clinic-clean 1.0.0 is accepted so a Sheet approval can produce a preview. Its appearance is unfinished. Once used, freeze that version's renderer; copy it to a new version directory for any design change. Existing site HTML and copied assets are immutable snapshots until a deliberate regeneration. New template versions never automatically rebuild old sites. Email-template approval is separate and remains off.
+clinic-clean 1.0.0 is accepted so a Sheet approval can produce a preview. Its appearance is unfinished. Create a new template version for a new layout. Rebuilding one slug updates only that slug's page at its existing address. Email-template approval is separate and remains off.
 
 For a new sector, add its image folder/manifest entries and a matching approved template. The current starter supports clinic sectors only; barber design still needs creating. Category images are currently empty by design.
 

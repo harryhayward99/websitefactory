@@ -93,15 +93,29 @@ test('approved library images are copied into the client folder',async()=>{
   manifest[0].status='draft';
   await assert.rejects(()=>materialiseLibraryImages(site,manifest,{sourceRoot,clientDir:path.join(tmp,'client')}));
 });
-test('a second build preserves the existing preview',async()=>{
+test('a later build updates the same preview address',async()=>{
   const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-preview-'));
   const outputFile=path.join(tmp,'index.html');
-  const first=await generatePreview(example,{outputFile,skipStatus:true,regenerate:true});
+  const first=await generatePreview(example,{outputFile,skipStatus:true});
   assert.equal(first.code,'PREVIEW_READY');
-  await fs.writeFile(outputFile,'FROZEN');
-  const second=await generatePreview(example,{outputFile,skipStatus:true});
-  assert.equal(second.code,'ALREADY_BUILT');
-  assert.equal(await fs.readFile(outputFile,'utf8'),'FROZEN');
+  assert.equal(first.previewPath,'/preview/fictional-clinic/index.html');
+  const revised=structuredClone(example);
+  revised.copy.headline='Updated headline for the same address.';
+  const second=await generatePreview(revised,{outputFile,skipStatus:true});
+  assert.equal(second.code,'PREVIEW_READY');
+  assert.equal(second.previewPath,first.previewPath);
+  const html=await fs.readFile(outputFile,'utf8');
+  assert.match(html,/Updated headline for the same address/);
+});
+test('a failed rebuild leaves the current page in place',async()=>{
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-preview-'));
+  const outputFile=path.join(tmp,'index.html');
+  await generatePreview(example,{outputFile,skipStatus:true});
+  const broken=structuredClone(example);broken.contentReviewed=false;
+  const result=await generatePreview(broken,{outputFile,skipStatus:true});
+  assert.equal(result.code,'RESEARCH_INCOMPLETE');
+  assert.equal(result.previewPath,'/preview/fictional-clinic/index.html');
+  assert.match(await fs.readFile(outputFile,'utf8'),/Meadow Example Clinic/);
 });
 test('integration contract matches the hosting config and computed instructions version',async()=>{
   const integration=JSON.parse(await fs.readFile(new URL('./integration.json',import.meta.url),'utf8'));
