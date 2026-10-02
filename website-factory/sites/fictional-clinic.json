@@ -1,0 +1,18 @@
+{
+  "slug": "fictional-clinic",
+  "sector": "physiotherapy",
+  "status": "concept",
+  "demo": true,
+  "template": {"id":"clinic-clean","version":"1.0.0"},
+  "brand": {"accent":"#31584a"},
+  "sources": [{"id":"fictional","url":"demo:fictional","checkedAt":"2026-10-02"}],
+  "business": {
+    "name":{"value":"Meadow Example Clinic","sourceId":"fictional"},
+    "location":{"value":"Example Town","sourceId":"fictional"},
+    "services":[{"value":"Physiotherapy","sourceId":"fictional"},{"value":"Movement assessment","sourceId":"fictional"},{"value":"Sports rehabilitation","sourceId":"fictional"}]
+  },
+  "copy":{"headline":"Make room for movement.","introduction":"Explore your options and take the next step towards a conversation about your care."},
+  "contentReviewed":true,
+  "exampleSections":[],
+  "assets":{"logo":null,"images":[]}
+}

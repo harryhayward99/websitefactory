@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "templates": [{
+    "id": "clinic-clean",
+    "version": "1.0.0",
+    "name": "Clean clinic starter",
+    "status": "draft",
+    "sectors": ["dental", "physiotherapy", "chiropractic", "veterinary"],
+    "description": "A responsive editorial starter with hero, services and contact sections. Requires Harry's visual approval before prospect automation.",
+    "entry": "templates/clinic-clean/1.0.0/render.mjs",
+    "demo": "fictional-clinic",
+    "screenshots": [],
+    "adaptation": "Customise branding and sourced business content. Keep the layout and spacing. Create a new version for design changes."
+  }]
+}
