@@ -1,6 +1,6 @@
 # Parley website factory handover
 
-Latest update: 2026-10-02
+Latest update: 2026-10-02. Controller repository access was checked again and is still blocked from this agent.
 
 GitHub is the shared source of truth for this work. ChatGPT cannot automatically see a Cursor conversation. Read this file, the pull request, and `website-factory/integration.json` instead.
 
@@ -21,7 +21,11 @@ This branch adds the missing factory controls and a revised starter for review. 
 
 ## Not verified
 
-`https://github.com/harryhayward99/parley-systems-ai` and [pull request 3](https://github.com/harryhayward99/parley-systems-ai/pull/3) are not visible to this cloud agent. GitHub returns “repository not found” for the credential in this environment. The environment only includes `github.com/harryhayward99/websitefactory`. The controller’s Apps Script was therefore not compared line by line with this factory.
+`https://github.com/harryhayward99/parley-systems-ai` and [pull request 3](https://github.com/harryhayward99/parley-systems-ai/pull/3) are not visible to this cloud agent. GitHub returns “repository not found”. The saved environment only includes `github.com/harryhayward99/websitefactory`.
+
+That environment is a personal saved environment, not a file in this repository. Its repository list can be changed on the environment page: https://cursor.com/dashboard/cloud-agents/environments/e/39813a1c-be75-11f1-bb68-864e54d14197. Add `harryhayward99/parley-systems-ai` there. Also give the Cursor GitHub App access to that repository. This agent cannot change either setting, and a `.cursor/environment.json` entry would not clone the controller. It would also override the personal environment, so it was not added.
+
+After both access changes, start a new cloud agent. This run will not gain the clone. The controller’s Apps Script has not been compared with this factory.
 
 Cursor’s current Cloud Agents API was checked against the public docs on 2026-10-02. New work should use v1 (`POST /v1/agents`, then poll `GET /v1/agents/{id}/runs/{runId}`). v1 webhooks are not available yet. A controller that still calls `/v0/agents` does not match `integration.json`. That mismatch cannot be confirmed or cleared until the controller repository is readable.
 
@@ -50,7 +54,7 @@ Desktop (1280px) and mobile (390px) screenshots of the fictional starter were ta
 ## Next steps
 
 1. Review the fictional starter in the factory pull request. Say if `clinic-clean` 1.0.0 can be approved. Approving it changes `catalogue.json`, which changes `instructionsVersion`, so the installed Apps Script must be updated before any real build.
-2. Add `harryhayward99/parley-systems-ai` to this Cursor cloud environment, or grant the connected GitHub app access, so pull request 3 can be checked against `website-factory/integration.json`.
+2. On the environment page linked above, add `harryhayward99/parley-systems-ai`. On GitHub, allow the Cursor GitHub App to access that repository. Start a new cloud agent and check pull request 3 against `website-factory/integration.json`.
 3. In the Cursor dashboard, set the Cloud Agents spend limit to £200 per month. Put the Cursor API key in Apps Script script properties only. Do not commit it.
 4. Connect hosting to this repository using build command `npm run build` and output directory `public`. Turn on deployment protection if these previews should not be public. This repository is public, and `noindex` is not access control.
 5. Update the installed Apps Script separately. A merge here does not change that script. Keep email drafting disabled.
