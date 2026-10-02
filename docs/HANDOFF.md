@@ -1,13 +1,13 @@
 # Parley factory handover
 
-Updated 2026-10-02 after the approved repository separation.
+Updated 2026-10-02 so a Sheet approval can produce a preview without a visual design review.
 
-Factory source from Cursor PR #1 was reviewed with the extracted controller; the canonical controller is now https://github.com/harryhayward99/parley-outreach. The marketing repository no longer owns orchestration. Read INTEGRATION.md for the shared interface. Older environment instructions in HANDOFF-HISTORY.md are historical.
+The canonical controller is https://github.com/harryhayward99/parley-outreach. Read INTEGRATION.md for the shared interface. Older environment instructions in HANDOFF-HISTORY.md are historical.
 
 ## Verified
-Factory tests and build pass locally. Cursor's starter/layout, image-copying, duplicate handling, instruction-version validation, status documents and hosting config are preserved. Integration metadata now identifies the separate controller. The instructions hash changed to 54cd88f946a6d958 because the reviewed contract changed. Existing fictional preview snapshots were preserved.
+`clinic-clean` 1.0.0 is accepted for pipeline previews. Appearance is unfinished. The instructions hash is `383ceff3a5d55fc4`. Factory tests (15) and `npm run build` passed on Node 22.14.0. The build reported `ALREADY_BUILT fictional-clinic`, so the existing fictional HTML snapshot was left in place. A real physiotherapy fixture with `demo:false` and this instructions version reached `PREVIEW_READY` in an offline test. Barber prospects still stop for template review. Email drafting remains off.
 
 ## Still awaiting activation
-The clinic template is draft; Harry has not approved the design. Image folders remain empty. No live hosting URL or paid-build test has been verified. The installed Apps Script was not updated. Email-template approval is separate from design approval.
+Image folders remain empty. No live hosting URL or paid-build test has been verified. The installed Apps Script was not updated and still needs `FACTORY_INSTRUCTIONS_VERSION` set to `383ceff3a5d55fc4`. Confirm the £200 combined tools limit and known month-to-date spend before enabling a build. Email-template approval is separate.
 
-Next: select all three repositories in Cursor if working on the whole company, or outreach + factory for this integration. Review the starter, connect hosting/provider access and verify combined budget controls. Agree the instructions version and fresh Sheet approvals, install the controller bundle, then run one controlled end-to-end job. Do not switch live processing on merely because this migration merged.
+Next: install the outreach bundle from the matching branch, connect preview hosting, then approve one fresh Website row. Keep `ENABLED`, `CURSOR_ENABLED` and `DRAFTS_ENABLED` false until that install and the spend check are done.

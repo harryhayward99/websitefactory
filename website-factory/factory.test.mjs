@@ -14,9 +14,20 @@ test('fictional draft renders escaped HTML with concept/noindex labels',async()=
   assert.ok(!html.includes('<script>'));assert.match(html,/&lt;script&gt;/);
 });
 test('real prospect cannot bypass template approval using allowDraft',()=>{
+  const draft=structuredClone(templates);draft[0].status='draft';
   const site=structuredClone(example);site.demo=false;
   site.sources=[{id:'fictional',url:'https://example.com',checkedAt:'2026-10-02'}];
-  assert.throws(()=>validateSite(site,templates,{allowDraft:true}),/approved template/);
+  assert.throws(()=>validateSite(site,draft,{allowDraft:true}),/approved template/);
+});
+test('an approved clinic starter can preview a real prospect',async()=>{
+  const site=structuredClone(example);site.demo=false;site.slug='example-practice';
+  site.sources=[{id:'fictional',url:'https://example.com',checkedAt:'2026-10-02'}];
+  site.approvedInstructionsVersion=await instructionsVersion();
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-pipeline-'));
+  const result=await generatePreview(site,{outputFile:path.join(tmp,'index.html'),skipStatus:true,regenerate:true,instructionsVersion:site.approvedInstructionsVersion});
+  assert.equal(result.code,'PREVIEW_READY');
+  const html=await fs.readFile(path.join(tmp,'index.html'),'utf8');
+  assert.match(html,/noindex/);assert.match(html,/Meadow Example Clinic/);
 });
 test('unknown template versions and path traversal are rejected',()=>{
   const site=structuredClone(example);site.template.version='9.0.0';

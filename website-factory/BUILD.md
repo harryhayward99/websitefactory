@@ -24,7 +24,7 @@ The command prints JSON with code and sheetStatus. Needs template review means n
 
 ## Library growth
 
-Templates start as draft. Harry reviews the fictional preview before changing status to approved. Once used, freeze that version's renderer; copy it to a new version directory for any design change. Existing site HTML and copied assets are immutable snapshots until a deliberate regeneration. New template versions never automatically rebuild old sites.
+clinic-clean 1.0.0 is accepted so a Sheet approval can produce a preview. Its appearance is unfinished. Once used, freeze that version's renderer; copy it to a new version directory for any design change. Existing site HTML and copied assets are immutable snapshots until a deliberate regeneration. New template versions never automatically rebuild old sites. Email-template approval is separate and remains off.
 
 For a new sector, add its image folder/manifest entries and a matching approved template. The current starter supports clinic sectors only; barber design still needs creating. Category images are currently empty by design.
 
