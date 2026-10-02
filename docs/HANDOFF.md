@@ -1,13 +1,11 @@
 # Parley factory handover
 
-Updated 2026-10-02 after the approved repository separation.
+Updated 2026-10-02. Built on Cursor's accepted clinic pipeline starter. Appearance remains unfinished; email drafting remains separately disabled.
 
-Factory source from Cursor PR #1 was reviewed with the extracted controller; the canonical controller is now https://github.com/harryhayward99/parley-outreach. The marketing repository no longer owns orchestration. Read INTEGRATION.md for the shared interface. Older environment instructions in HANDOFF-HISTORY.md are historical.
+Successful generation refreshes status even if HTML is unchanged. Result metadata includes demo and an HTML content hash. Images are staged before validation and copied with content-based names. Hosting builds verify existing snapshots rather than rebuilding all prospects. Code/template/image-manifest changes now participate in the instructions fingerprint.
 
-## Verified
-Factory tests and build pass locally. Cursor's starter/layout, image-copying, duplicate handling, instruction-version validation, status documents and hosting config are preserved. Integration metadata now identifies the separate controller. The instructions hash changed to 54cd88f946a6d958 because the reviewed contract changed. Existing fictional preview snapshots were preserved.
+The outreach controller pins the factory commit, checks approved sector support before paying for a job, and validates result identity/version/real-prospect flag/content hash. Optional PREVIEW_ORIGIN waits for reviewed publication at a stable origin. Without it the URL is a deployment snapshot.
 
-## Still awaiting activation
-The clinic template is draft; Harry has not approved the design. Image folders remain empty. No live hosting URL or paid-build test has been verified. The installed Apps Script was not updated. Email-template approval is separate from design approval.
+No factory hosting project was found in the connected Vercel team. The deployment connector returned unavailable. No paid job or email was launched. Image bank remains empty; barber still needs a template. See the controller docs/OPERATIONS.md for release, budget and one-lead rollout steps.
 
-Next: select all three repositories in Cursor if working on the whole company, or outreach + factory for this integration. Review the starter, connect hosting/provider access and verify combined budget controls. Agree the instructions version and fresh Sheet approvals, install the controller bundle, then run one controlled end-to-end job. Do not switch live processing on merely because this migration merged.
+Reviewed factory instructions version for this release: `93aa95661ffc71cc`.
