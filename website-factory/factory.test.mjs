@@ -1,8 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {catalogue,loadSite,validateSite,renderSite} from './factory.mjs';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {catalogue,loadSite,validateSite,renderSite,assessSite,shouldLaunchBuild,materialiseLibraryImages,generatePreview,instructionsVersion} from './factory.mjs';
 const templates = await catalogue();
 const example = await loadSite('fictional-clinic');
+const pixel = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==','base64');
 test('fictional draft renders escaped HTML with concept/noindex labels',async()=>{
   const site=structuredClone(example);site.business.name.value='<script>alert(1)</script>';
   const html=await renderSite(site,{allowDraft:true});
@@ -32,4 +36,70 @@ test('external or uncleared images cannot enter output',()=>{
 test('illustrative copy is labelled next to the content',async()=>{
   const site=structuredClone(example);site.exampleSections=[{title:'Example section',body:'Suggested content for discussion.'}];
   assert.match(await renderSite(site,{allowDraft:true}),/ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM/);
+});
+test('starter responds on a narrow viewport and labels bank images',async()=>{
+  const site=structuredClone(example);
+  site.assets.images=[{path:'/factory-assets/clients/fictional-clinic/room.webp',alt:'Illustrative room',sourceUrl:'https://source-record.example/licence',rights:'owned',illustrative:true}];
+  site.sources.push({id:'hidden',url:'https://source-record.example/about',checkedAt:'2026-10-02'});
+  const html=await renderSite(site,{allowDraft:true});
+  assert.match(html,/@media \(max-width:800px\)/);
+  assert.match(html,/Illustrative image/);
+  assert.equal(html.includes('https://source-record.example/about'),false);
+  assert.match(html,/Skip to content/);
+});
+test('barber prospect on the clinic starter needs template review',()=>{
+  const site=structuredClone(example);site.sector='barber';
+  assert.equal(assessSite(site,templates,{allowDraft:true}).code,'NEEDS_TEMPLATE_REVIEW');
+});
+test('stale build instructions need fresh approval',()=>{
+  const approved=structuredClone(templates);approved[0].status='approved';
+  const site=structuredClone(example);site.demo=false;
+  site.sources=[{id:'fictional',url:'https://example.com',checkedAt:'2026-10-02'}];
+  site.approvedInstructionsVersion='stale-version';
+  assert.equal(assessSite(site,approved,{instructionsVersion:'current-version'}).code,'NEEDS_FRESH_APPROVAL');
+});
+test('private prospect fields are rejected',()=>{
+  const site=structuredClone(example);site.business.email='person@example.com';
+  assert.throws(()=>validateSite(site,templates,{allowDraft:true}),/Private fields/);
+});
+test('an existing job is not launched again',()=>{
+  assert.equal(shouldLaunchBuild(null).launch,true);
+  assert.equal(shouldLaunchBuild({state:'PREVIEW_READY'}).launch,false);
+  assert.equal(shouldLaunchBuild({state:'ERROR'}).launch,false);
+});
+test('approved library images are copied into the client folder',async()=>{
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-images-'));
+  const sourceRoot=path.join(tmp,'images');
+  await fs.mkdir(path.join(sourceRoot,'general'),{recursive:true});
+  await fs.writeFile(path.join(sourceRoot,'general','pixel.png'),pixel);
+  const site=structuredClone(example);
+  site.assets.librarySelections=['pixel'];
+  const manifest=[{id:'pixel',category:'general',file:'images/general/pixel.png',alt:'Illustrative room',sourceUrl:'https://example.com/licence',rights:'owned',status:'approved',illustrative:true}];
+  const result=await materialiseLibraryImages(site,manifest,{sourceRoot,clientDir:path.join(tmp,'client')});
+  assert.equal(result.assets.images[0].path,'/factory-assets/clients/fictional-clinic/pixel.png');
+  assert.equal(result.assets.images[0].illustrative,true);
+  assert.ok((await fs.readFile(path.join(tmp,'client','pixel.png'))).equals(pixel));
+  manifest[0].status='draft';
+  await assert.rejects(()=>materialiseLibraryImages(site,manifest,{sourceRoot,clientDir:path.join(tmp,'client')}));
+});
+test('a second build preserves the existing preview',async()=>{
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'parley-preview-'));
+  const outputFile=path.join(tmp,'index.html');
+  const first=await generatePreview(example,{outputFile,skipStatus:true,regenerate:true});
+  assert.equal(first.code,'PREVIEW_READY');
+  await fs.writeFile(outputFile,'FROZEN');
+  const second=await generatePreview(example,{outputFile,skipStatus:true});
+  assert.equal(second.code,'ALREADY_BUILT');
+  assert.equal(await fs.readFile(outputFile,'utf8'),'FROZEN');
+});
+test('integration contract matches the hosting config and computed instructions version',async()=>{
+  const integration=JSON.parse(await fs.readFile(new URL('./integration.json',import.meta.url),'utf8'));
+  const vercel=JSON.parse(await fs.readFile(new URL('../vercel.json',import.meta.url),'utf8'));
+  assert.equal(integration.instructionsVersion,await instructionsVersion());
+  assert.equal(integration.emailDrafting.enabled,false);
+  assert.equal(integration.budget.monthlyToolsLimit,200);
+  assert.equal(integration.budget.currency,'GBP');
+  assert.equal(vercel.buildCommand,integration.hosting.buildCommand);
+  assert.equal(vercel.outputDirectory,integration.hosting.outputDirectory);
+  assert.equal(integration.cursorApi.generation,'v1');
 });

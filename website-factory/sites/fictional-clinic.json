@@ -9,10 +9,13 @@
   "business": {
     "name":{"value":"Meadow Example Clinic","sourceId":"fictional"},
     "location":{"value":"Example Town","sourceId":"fictional"},
+    "phone":{"value":"01234 567890","sourceId":"fictional"},
+    "address":{"value":"1 Example Lane, Example Town","sourceId":"fictional"},
+    "hours":{"value":"Monday to Friday, 9:00–17:00","sourceId":"fictional"},
     "services":[{"value":"Physiotherapy","sourceId":"fictional"},{"value":"Movement assessment","sourceId":"fictional"},{"value":"Sports rehabilitation","sourceId":"fictional"}]
   },
-  "copy":{"headline":"Make room for movement.","introduction":"Explore your options and take the next step towards a conversation about your care."},
+  "copy":{"headline":"Make room for movement.","introduction":"This is a fictional clinic layout for reviewing the starter. Nothing on this page describes a real practice."},
   "contentReviewed":true,
-  "exampleSections":[],
-  "assets":{"logo":null,"images":[]}
+  "exampleSections":[{"title":"A possible welcome note","body":"This paragraph shows where illustrative copy would sit. It is not a claim about a real clinic."}],
+  "assets":{"logo":null,"images":[],"librarySelections":[]}
 }

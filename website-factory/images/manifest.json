@@ -4,7 +4,7 @@
   "exampleOnly": {
     "id": "physio-hero-01",
     "category": "physiotherapy",
-    "file": "website-factory/images/physiotherapy/hero-01.webp",
+    "file": "images/physiotherapy/hero-01.webp",
     "tags": ["hero", "landscape"],
     "alt": "Illustrative treatment space",
     "sourceUrl": "Record original source or owned:Harry",
