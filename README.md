@@ -1,17 +1,9 @@
 # Parley Website Factory
 
-Reusable website templates, category image banks and generated prospect concepts.
+Owns reusable website designs, category image banks, sourced business content/logo collection and generated prospect concepts. The controller lives in [parley-outreach](https://github.com/harryhayward99/parley-outreach); marketing pages live in [parley-systems-ai](https://github.com/harryhayward99/parley-systems-ai).
 
-## Start
+Run `npm test` and `npm run build` (Node 22). Static output is public/. Read website-factory/README.md for image registration and template development, BUILD.md for prospect jobs, docs/INTEGRATION.md for the controller interface and docs/HANDOFF.md for verified progress.
 
-Requires Node.js 22 or later. Run `npm test`, then `npm run build`. Serve the `public` directory or configure your static host to publish it. The fictional starter is at `/preview/fictional-clinic/index.html`.
+The clinic design is draft. Existing previews are frozen snapshots; later template edits do not rebuild them. Template approval does not enable email drafting. No hosting or live workflow is activated by repository organisation.
 
-Read `website-factory/README.md`, `website-factory/BUILD.md` and `website-factory/integration.json`. The clinic starter is draft and requires visual approval before real prospect builds. Hosting uses `npm run build` and publishes the `public` directory (`vercel.json`). Category image folders are ready for your web-ready assets. See `website-factory/images/README.md` to register and approve them.
-
-## Approval workflow
-
-The separate outreach controller receives approval in Google Sheets, requests a build in this repository, and waits for a successful preview deployment. The same validated preview URL is placed in the Sheet status and, once email drafting is approved, the Gmail draft. Emails are sent manually. This repository alone does not enable that live integration.
-
-## Visibility
-
-This repository was public when initialised. Keep credentials, mailbox settings, private prospect notes and contact research out of it. Make the repository private before storing confidential client research or assets; public preview pages also need hosting access controls if confidentiality is required. `noindex` is not access control.
+Keep private contact research and secrets out of source and public assets. This repository was public at migration; restrict visibility before adding confidential material. Preview noindex is not access control.

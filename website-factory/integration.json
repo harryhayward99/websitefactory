@@ -1,17 +1,16 @@
 {
   "schemaVersion": 1,
-  "instructionsVersion": "71896a2782c0c4e6",
+  "instructionsVersion": "54cd88f946a6d958",
   "repository": "https://github.com/harryhayward99/websitefactory",
-  "controllerRepository": "https://github.com/harryhayward99/parley-systems-ai",
-  "controllerPullRequest": "https://github.com/harryhayward99/parley-systems-ai/pull/3",
+  "controllerRepository": "https://github.com/harryhayward99/parley-outreach",
   "emailDrafting": {
     "enabled": false,
-    "reason": "Paused until Harry has reviewed the fictional starter and approved at least one template."
+    "reason": "Paused until Harry separately approves the email templates; website-template approval does not enable email drafting."
   },
   "budget": {
     "currency": "GBP",
     "monthlyToolsLimit": 200,
-    "rule": "Do not launch a paid Cursor build unless a £200 per month tools spend limit is already in force and month-to-date spend is known to be within it. Token usage from the Cursor API is not a pound total. If spend is unknown, do not launch."
+    "rule": "Do not launch a paid Cursor build unless a \u00a3200 per month tools spend limit is already in force and month-to-date spend is known to be within it. Token usage from the Cursor API is not a pound total. If spend is unknown, do not launch."
   },
   "launch": {
     "oneJobPerSlug": true,
@@ -28,7 +27,12 @@
     "startingRef": "main",
     "autoCreatePR": true,
     "pollRun": "GET /v1/agents/{id}/runs/{runId}",
-    "terminalRunStatuses": ["FINISHED", "ERROR", "CANCELLED", "EXPIRED"],
+    "terminalRunStatuses": [
+      "FINISHED",
+      "ERROR",
+      "CANCELLED",
+      "EXPIRED"
+    ],
     "pullRequestField": "git.branches[].prUrl",
     "promptMustInclude": [
       "prospect slug, business name, location, sector and official website URL",

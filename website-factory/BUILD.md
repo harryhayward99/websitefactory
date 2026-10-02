@@ -30,7 +30,7 @@ For a new sector, add its image folder/manifest entries and a matching approved 
 
 ## One job, one preview
 
-Read integration.json before launching anything. Email drafting is disabled there until a template is approved. The tools budget is £200 per month. Do not start a paid build when spend is unknown or the Cursor spend limit is not in force. Token totals are not a pound figure.
+Read integration.json before launching anything. Email drafting remains disabled until Harry separately approves the email templates. Website-template approval does not enable email drafting. The tools budget is £200 per month. Do not start a paid build when spend is unknown or the Cursor spend limit is not in force. Token totals are not a pound figure.
 
 A slug that already has a job record, a Sheet agent id, or a preview must not launch a second Cloud Agent. The current API is v1: create with POST /v1/agents, then read the run. Resending the same client agent id returns a conflict. Poll that run. v1 webhooks are not available yet. A controller that still calls /v0/agents does not match this factory.
 
