@@ -82,9 +82,8 @@ export function render(s, e) {
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 "Avenir Next","Segoe UI",sans-serif;overflow-x:clip}
-h1,h2,h3,p{overflow-wrap:anywhere}
-h1,h2,h3,p{margin:0}
-h1,h2,h3{font-weight:620;letter-spacing:-.035em;line-height:1.08}
+h1,h2,h3,p{margin:0;overflow-wrap:break-word}
+h1,h2,h3{font-weight:650;letter-spacing:-.03em;line-height:1.16}
 h1{font-size:clamp(36px,5vw,64px);max-width:14ch}
 h2{font-size:clamp(28px,3vw,40px)}
 h3{font-size:20px}
@@ -199,7 +198,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,input:focus-vis
 @media (max-width:560px){
   .person{grid-template-columns:96px minmax(0,1fr);gap:14px}
   .thumb{width:96px;height:120px;border-radius:14px;font-size:28px}
-  h1{font-size:clamp(32px,9vw,42px)}
+  h1{font-size:clamp(32px,9vw,42px);line-height:1.2}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
