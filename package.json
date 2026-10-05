@@ -8,6 +8,10 @@
   },
   "scripts": {
     "build": "node website-factory/build.mjs",
-    "test": "node --test website-factory/factory.test.mjs"
+    "test": "node --test website-factory/factory.test.mjs",
+    "capture": "node website-factory/capture.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
   }
 }
