@@ -29,7 +29,7 @@ export function render(s, e) {
   const pictures = Array.isArray(s.assets?.images) ? s.assets.images : [];
   const frame = (image, caption, className) => image
     ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
-    : `<figure class="${className} frame" role="img" aria-label="${caption}"><figcaption>${caption}</figcaption></figure>`;
+    : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
   const heroMedia = frame(pictures[0], 'Photograph awaiting an approved category image.', 'hero-media');
   const wideMedia = frame(pictures[1] || pictures[0], 'Photograph awaiting an approved category image.', 'wide-media');
   const sideMedia = frame(pictures[2] || pictures[0], 'Photograph awaiting an approved category image.', 'side-media');
@@ -139,7 +139,6 @@ body:not(:has(#services:target)):not(:has(#team:target)):not(:has(#contact:targe
 .side-media{min-height:460px}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.frame figcaption{position:absolute;left:24px;top:24px;right:24px;color:#333;font-size:14px}
 .hero-cards{position:absolute;left:35px;right:35px;bottom:35px;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
 .hero-card{display:flex;gap:20px;align-items:flex-start;padding:30px;border-radius:10px;background:#fff;color:#000;text-decoration:none}
 .hero-card strong{display:block;margin-bottom:8px;font-size:20px;font-weight:500;line-height:1}
@@ -203,7 +202,6 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,input:focus-vis
   .hero-head h1,.hero-aside,.service-side,.shots{width:auto;max-width:none}
   .hero-media{min-height:260px}
   .hero-cards{position:static;margin-top:16px;gap:12px}
-  .frame figcaption{top:16px}
   .hero-card{padding:18px}
   .wide-media{min-height:220px}
   .side-media{min-height:220px}
