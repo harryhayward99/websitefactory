@@ -22,7 +22,7 @@ jobs:
       - run: |
           for status in public/preview/*/status.json; do
             slug=$(basename "$(dirname "$status")")
-            if node -e "process.exit(require('./$status').status==='PREVIEW_READY'?0:1)"; then
+            if node -e "process.exit(require('./$status').status==='PREVIEW_READY' && require('./$status').demo===false?0:1)"; then
               npm run capture -- "$slug"
             fi
           done
