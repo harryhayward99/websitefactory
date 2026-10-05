@@ -80,7 +80,7 @@ export function render(s, e) {
 <style>
 :root{color-scheme:light;--accent:${accent};--on:${onAccent};--ink:${ink};--muted:${muted};--line:${line};--paper:${paper};--wash:${wash};--deep:${deep}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 "Avenir Next","Segoe UI",sans-serif;overflow-x:clip}
 h1,h2,h3,p{margin:0;overflow-wrap:break-word}
 h1,h2,h3{font-weight:650;letter-spacing:-.03em;line-height:1.16}
@@ -172,6 +172,7 @@ body:not(:has(#services:target)):not(:has(#team:target)):not(:has(#contact:targe
 .legal{display:block;margin-top:22px;color:rgb(255 255 255 / 62%);font-size:13px}
 a:focus-visible,.button:focus-visible,.menu-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 @media (max-width:800px){
+  html{scroll-padding-top:76px}
   .site-header,.wrap{width:min(100% - 32px,1120px)}
   .site-header{min-height:68px}
   .site-header nav{position:absolute;left:16px;right:16px;top:68px}
