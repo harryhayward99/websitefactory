@@ -17,7 +17,7 @@
     "name": "Modern care",
     "status": "draft",
     "sectors": ["dental", "physiotherapy", "chiropractic", "veterinary"],
-    "description": "Spacious clinic layout. The brand accent colours the page. There is no shop or cart. Draft until the fictional preview is accepted.",
+    "description": "Home, service, team and contact pages. Team details sit beside each thumbnail. Contact opens with a map of the published address. The brand accent colours the page. There is no shop or cart. Draft until the fictional preview is accepted.",
     "entry": "templates/care-modern/1.0.0/render.mjs",
     "demo": "fictional-well",
     "screenshots": [],

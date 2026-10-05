@@ -7,116 +7,258 @@
 <meta name="generator" content="parley-website-factory care-modern 1.0.0">
 <title>Northshore Example Care — concept by Parley</title>
 <style>
-:root{color-scheme:light;--accent:#2f6fed;--on:#ffffff;--ink:#142544;--muted:#274e99;--line:#c9dafa;--paper:#f3f6fe;--card:#eaf1fd;--wash:#d5e2fb;--deep:#18346c}
+:root{color-scheme:light;--accent:#2f6fed;--on:#ffffff;--ink:#162845;--muted:#3c60a1;--line:#d1dffb;--paper:#e7eefb;--wash:#e2ebfc;--deep:#102244}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Avenir Next",Avenir,"Segoe UI",sans-serif;overflow-x:clip}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 "Avenir Next","Segoe UI",sans-serif;overflow-x:clip}
+h1,h2,h3,p{overflow-wrap:anywhere}
 h1,h2,h3,p{margin:0}
-h1,h2{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:520;letter-spacing:-.045em;line-height:.98}
-h1{font-size:clamp(52px,7vw,96px);max-width:11ch}
-h2{font-size:clamp(36px,4.4vw,64px);max-width:14ch}
-h3{font-size:22px;line-height:1.25;letter-spacing:-.03em}
+h1,h2,h3{font-weight:620;letter-spacing:-.035em;line-height:1.08}
+h1{font-size:clamp(36px,5vw,64px);max-width:14ch}
+h2{font-size:clamp(28px,3vw,40px)}
+h3{font-size:20px}
 a{color:inherit}
-.skip{position:absolute;left:16px;top:-48px;background:white;padding:8px 12px;z-index:3}
-.skip:focus{top:16px}
-.banner{margin:0;padding:11px 20px;background:var(--deep);color:white;text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:20px 28px;width:min(1180px,calc(100% - 48px));margin:auto;padding:22px 0}
+img{max-width:100%;display:block}
+.skip{position:absolute;left:12px;top:-48px;background:#fff;padding:8px 12px;z-index:9}
+.skip:focus{top:12px}
+.banner{margin:0;padding:10px 16px;background:var(--deep);color:#fff;text-align:center;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.nav-toggle{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.site-header{position:sticky;top:0;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:16px;width:min(1120px,calc(100% - 40px));margin:auto;min-height:76px;background:#fff}
 .brand{display:flex;align-items:center;min-height:44px;text-decoration:none}
-.logo{display:block;max-width:min(220px,64vw);max-height:56px;object-fit:contain}
-.wordmark{display:flex;align-items:center;gap:12px}
+.logo{max-width:min(200px,52vw);max-height:48px;object-fit:contain}
+.wordmark{display:flex;align-items:center;gap:10px}
 .wordmark strong,.wordmark small{display:block}
-.wordmark small{color:var(--muted);font-size:13px}
-.mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--accent);color:var(--on);font-family:Georgia,serif;font-size:22px}
-nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0}
-nav a,.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;text-decoration:none}
-nav a{color:var(--muted)}
-.button{background:var(--accent);color:var(--on);font-weight:650}
-.hero,.detail,.visit{width:min(1180px,calc(100% - 48px));margin:auto}
-.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:48px;align-items:center;padding:28px 0 18px}
-.eyebrow{margin:0 0 16px;color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.intro{max-width:38rem;margin:22px 0 28px;color:var(--muted);font-size:19px}
-.hero-visual{position:relative;margin:0}
-.hero-visual img,.panel{width:100%;height:min(560px,68vh);object-fit:cover;border-radius:36px;background:linear-gradient(160deg,var(--wash),var(--accent))}
-.panel{display:grid;place-items:center;color:var(--on);font:180px Georgia,serif}
-.chip{position:absolute;left:24px;bottom:58px;max-width:220px;padding:16px 18px;border-radius:20px;background:white;box-shadow:0 16px 40px rgb(16 24 40 / 12%)}
-.chip small,.chip strong{display:block}
-.chip small{color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-.hero-visual figcaption,.pending{margin-top:10px;color:var(--muted);font-size:14px}
-.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:min(1180px,calc(100% - 48px));margin:28px auto 10px}
-.card{min-height:180px;padding:24px;border:1px solid var(--line);border-radius:28px;background:white}
-.card small{display:block;margin-bottom:36px;color:var(--accent);font-weight:750}
-.detail{padding:72px 0}
-.service-line{margin:18px 0 28px;color:var(--deep);font-family:Georgia,serif;font-size:clamp(28px,3vw,42px);letter-spacing:-.04em;line-height:1.15}
-.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
-.example{padding:22px;border:1px dashed var(--muted);border-radius:24px;background:white}
-.example small{display:block;margin-bottom:10px;font-size:12px;font-weight:750;letter-spacing:.04em}
-.visit{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:28px;margin-bottom:28px;padding:36px;border-radius:36px;background:var(--deep);color:white}
-.visit .eyebrow,.visit .intro,.visit dt{color:rgb(255 255 255 / 72%)}
-.visit .button{background:white;color:var(--deep)}
-.visit dl{display:grid;gap:16px;margin:8px 0 0}
-.visit div{padding-top:12px;border-top:1px solid rgb(255 255 255 / 20%)}
-dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-dd{margin:4px 0 0}
-footer{width:min(1180px,calc(100% - 48px));margin:auto;padding:8px 0 48px;color:var(--muted);font-size:14px}
-footer small{display:block;margin-top:8px}
-a:focus-visible,.button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-@media (max-width:1040px){.features,.services{grid-template-columns:1fr 1fr}}
+.wordmark small{color:var(--muted);font-size:13px;letter-spacing:0;font-weight:500}
+.mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--accent);color:var(--on);font-weight:700}
+.site-header nav ul{display:flex;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
+.site-header nav a,.menu-button,.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none}
+.site-header nav a{color:var(--muted)}
+.site-header nav a[href="#home"],
+body:has(#services:target) .site-header nav a[href="#services"],
+body:has(#team:target) .site-header nav a[href="#team"],
+body:has(#contact:target) .site-header nav a[href="#contact"]{color:var(--ink);font-weight:700}
+body:has(#services:target) .site-header nav a[href="#home"],
+body:has(#team:target) .site-header nav a[href="#home"],
+body:has(#contact:target) .site-header nav a[href="#home"]{color:var(--muted);font-weight:500}
+.button{background:var(--accent);color:var(--on);font-weight:680;border:0}
+.site-header nav .button{display:none}
+.menu-button{display:none;border:1px solid var(--line);background:#fff;cursor:pointer}
+.menu-button .close{display:none}
+.nav-toggle:checked ~ .site-header .menu-button .open{display:none}
+.nav-toggle:checked ~ .site-header .menu-button .close{display:inline}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.page{display:none;padding:12px 0 72px}
+#home:target,#services:target,#team:target,#contact:target{display:block}
+body:not(:has(#services:target)):not(:has(#team:target)):not(:has(#contact:target)) #home{display:block}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:36px;align-items:center;padding:28px 0 8px}
+.eyebrow{margin:0 0 12px;color:var(--accent);font-size:13px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+.lede{max-width:38rem;margin:16px 0 24px;color:var(--muted);font-size:18px}
+.hero-media,.wide-media,.side-media,.tile-media,.frame{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(160deg,var(--wash),var(--accent))}
+.hero-media{min-height:460px}
+.wide-media{min-height:360px;margin:22px 0}
+.side-media{min-height:280px}
+.tile-media{min-height:168px;border-radius:18px 18px 0 0}
+.hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-media figcaption,.wide-media figcaption,.side-media figcaption,.tile-media figcaption{position:absolute;left:16px;right:16px;bottom:16px;color:#fff;font-size:13px;text-shadow:0 1px 2px rgb(0 0 0 / 35%)}
+.trio,.tiles,.info-grid{display:grid;gap:16px}
+.trio{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:-36px;position:relative;z-index:1}
+.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tile,.info-card,.sheet{padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 12px 30px rgb(16 24 40 / 6%)}
+.service-tile{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 12px 30px rgb(16 24 40 / 6%)}
+.service-tile div{padding:18px 22px 22px}
+.service-tile p{margin-top:8px;color:var(--muted)}
+.tile span,.role{display:block;margin-bottom:10px;color:var(--accent);font-size:13px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.tile a,.text-link{color:var(--accent);font-weight:680}
+.band{margin-top:28px;padding:64px 0;background:var(--paper)}
+.statement{padding:72px 0}
+.statement h2{max-width:18em;font-size:clamp(32px,4vw,52px)}
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);gap:28px;align-items:center}
+.example{padding:22px;border:1px dashed var(--muted);border-radius:18px;background:#fff}
+.example small,.flag{display:block;margin-bottom:8px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.04em}
+.visit-row{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.page-intro{padding-bottom:8px}
+.service-block,.service-close{margin-top:36px}
+.people{display:grid;gap:0}
+.person{display:grid;grid-template-columns:168px minmax(0,1fr);gap:28px;align-items:start;padding:22px 0;border-bottom:1px solid var(--line)}
+.thumb{display:grid;place-items:center;width:168px;height:168px;border-radius:18px;background:linear-gradient(160deg,var(--wash),var(--accent));color:var(--on);font-size:42px;font-weight:680}
+.map-frame{height:420px;margin:22px 0 10px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--wash)}
+.map{width:100%;height:100%;border:0}
+.map-note{margin-bottom:22px;color:var(--muted);font-size:14px}
+.info-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin:8px 0 28px}
+.sheet{display:grid;gap:12px}
+.sheet label{display:grid;gap:6px;color:var(--muted);font-size:14px}
+.sheet input,.sheet textarea{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink)}
+.sheet textarea{min-height:120px;resize:vertical}
+.pending{color:var(--muted)}
+.site-footer{background:var(--deep);color:#fff;padding:48px 0 24px}
+.foot{display:grid;grid-template-columns:1.4fr .7fr 1fr;gap:28px}
+.site-footer a{text-decoration:none}
+.site-footer ul{margin:8px 0 0;padding:0;list-style:none}
+.site-footer li{margin:6px 0}
+.site-footer p,.site-footer small{color:rgb(255 255 255 / 76%)}
+.legal{display:block;margin-top:22px;color:rgb(255 255 255 / 62%);font-size:13px}
+a:focus-visible,.button:focus-visible,.menu-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 @media (max-width:800px){
-  .nav,.hero,.detail,.features,.visit,footer{width:min(100% - 32px,1180px)}
-  .nav,nav ul{flex-wrap:wrap}
-  .hero,.about,.visit,.features,.services{grid-template-columns:1fr}
-  .hero{padding-top:12px;gap:28px}
-  .hero-visual img,.panel{height:280px;border-radius:28px;font-size:120px}
-  .chip{left:16px;bottom:48px}
-  h1{font-size:clamp(42px,12vw,64px)}
-  .intro{font-size:17px}
+  .site-header,.wrap{width:min(100% - 32px,1120px)}
+  .site-header{min-height:68px}
+  .site-header nav{position:absolute;left:16px;right:16px;top:68px}
+  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 16px 40px rgb(16 24 40 / 12%)}
+  .nav-toggle:checked ~ .site-header nav ul{display:flex}
+  .menu-button{display:inline-flex}
+  .header-cta{display:none}
+  .site-header nav .button{display:inline-flex}
+  .hero,.split,.trio,.tiles,.info-grid,.foot{grid-template-columns:1fr}
+  .hero{padding-top:8px;gap:18px}
+  .hero-media{min-height:240px;order:-1}
+  .trio{margin-top:16px}
+  .wide-media{min-height:220px}
+  .tile-media{min-height:140px}
+  .side-media{min-height:200px}
+  .band,.statement{padding:40px 0}
+  .lede{font-size:16px}
   .button{width:100%}
-  .visit{padding:24px}
-  .banner{font-size:11px;line-height:1.4}
+  .map-frame{height:260px;border-radius:14px}
+  .banner{font-size:11px;line-height:1.45}
+  .wordmark small{display:none}
+}
+@media (max-width:560px){
+  .person{grid-template-columns:96px minmax(0,1fr);gap:14px}
+  .thumb{width:96px;height:96px;border-radius:14px;font-size:28px}
+  h1{font-size:clamp(32px,9vw,42px)}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <p class="banner">FICTIONAL DEMO · Prepared by Parley Systems · Not the business’s official website</p>
-<a class="skip" href="#content">Skip to content</a>
-<header class="nav">
-<a class="brand" href="#content"><span class="wordmark"><span class="mark" aria-hidden="true">N</span><span><strong>Northshore Example Care</strong><small>Example Town</small></span></span></a>
-<nav aria-label="Main navigation"><ul><li><a href="#services">Services</a></li><li><a href="#visit">Visit</a></li></ul></nav>
-<a class="button" href="#visit">Get in touch</a>
+<a class="skip" href="#home">Skip to content</a>
+<input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
+<header class="site-header">
+<a class="brand" href="#home"><span class="wordmark"><span class="mark" aria-hidden="true">N</span><span><strong>Northshore Example Care</strong><small>Example Town</small></span></span></a>
+<nav aria-label="Pages">
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a class="button" href="#contact">Get in touch</a></li>
+</ul>
+</nav>
+<label class="menu-button" for="nav-toggle"><span class="open">Menu</span><span class="close">Close</span></label>
+<a class="button header-cta" href="#contact">Get in touch</a>
 </header>
-<main id="content">
-<section class="hero">
+<main>
+<section id="home" class="page">
+<div class="wrap hero">
 <div>
-<p class="eyebrow">Example Town</p>
+<p class="eyebrow">physiotherapy · Example Town</p>
 <h1>Care shaped around the person in front of you.</h1>
-<p class="intro">This is a fictional layout for reviewing the modern care template. Nothing on this page describes a real practice.</p>
+<p class="lede">This is a fictional layout for reviewing the modern care template. Nothing on this page describes a real practice.</p>
 <a class="button" href="#services">View services</a>
 </div>
-<figure class="hero-visual"><div class="panel" role="img" aria-label="Brand colour panel"><span>N</span></div><div class="chip"><small>Example Town</small><strong>physiotherapy</strong></div><figcaption>Photograph awaiting an approved category image.</figcaption></figure>
-</section>
-<section class="features" aria-label="Published services"><article class="card"><small>01</small><h3>Physiotherapy</h3></article><article class="card"><small>02</small><h3>Movement assessment</h3></article><article class="card"><small>03</small><h3>Sports rehabilitation</h3></article></section>
-<section id="services" class="detail">
+<figure class="hero-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure>
+</div>
+<div class="wrap trio"><article class="tile"><span>01</span><h3>Physiotherapy</h3><a href="#services">View service</a></article><article class="tile"><span>02</span><h3>Movement assessment</h3><a href="#services">View service</a></article><article class="tile"><span>03</span><h3>Sports rehabilitation</h3><a href="#services">View service</a></article></div>
+<section class="band">
+<div class="wrap">
 <p class="eyebrow">Services</p>
-<h2>What is published.</h2>
-<p class="service-line">Physiotherapy<span aria-hidden="true"> · </span>Movement assessment<span aria-hidden="true"> · </span>Sports rehabilitation</p>
-<p class="intro">Fictional services, shown so this layout can be reviewed.</p>
-<aside class="example"><small>ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM</small><h3>Where a welcome note can sit</h3><p>This panel shows illustrative copy. It is not a claim about a real clinic.</p></aside>
+<h2>What is listed.</h2>
+<p class="lede">Fictional services, shown so this layout can be reviewed.</p>
+<div class="tiles"><article class="service-tile"><figure class="tile-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure><div><h3>Physiotherapy</h3><p>Listed for Northshore Example Care. No price, outcome or extra treatment has been added.</p></div></article><article class="service-tile"><figure class="tile-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure><div><h3>Movement assessment</h3><p>Listed for Northshore Example Care. No price, outcome or extra treatment has been added.</p></div></article><article class="service-tile"><figure class="tile-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure><div><h3>Sports rehabilitation</h3><p>Listed for Northshore Example Care. No price, outcome or extra treatment has been added.</p></div></article></div>
+</div>
 </section>
-<section id="visit" class="visit">
+<section class="wrap statement">
+<p class="eyebrow">Example Town</p>
+<h2>This is a fictional layout for reviewing the modern care template. Nothing on this page describes a real practice.</h2>
+</section>
+<section class="band">
+<div class="wrap split">
+<div><aside class="example"><small>ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM</small><h2>Where a welcome note can sit</h2><p>This panel shows illustrative copy. It is not a claim about a real clinic.</p></aside><aside class="example"><small>ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM</small><h2>Where a longer service note can sit</h2><p>Further illustrative copy can explain how a visit is arranged. It must not invent prices, outcomes or guarantees.</p></aside></div>
+<figure class="side-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure>
+</div>
+</section>
+<section class="wrap statement visit-row">
 <div>
 <p class="eyebrow">Visit</p>
 <h2>Speak to Northshore Example Care.</h2>
-<p class="intro">This concept page does not take bookings, payments or orders.</p>
-<a class="button" href="tel:01234567890">Call 01234 567890</a>
+<p class="lede">This concept does not take bookings, payments or orders.</p>
 </div>
-<dl><div><dt>Address</dt><dd>18 Harbour Road, Example Town</dd></div><div><dt>Hours</dt><dd>Monday to Friday, 8:00–18:00</dd></div></dl>
+<a class="button" href="tel:01234567890">Call 01234 567890</a>
+</section>
+</section>
+<section id="services" class="page">
+<div class="wrap page-intro">
+<p class="eyebrow">Service</p>
+<h1>Physiotherapy</h1>
+<p class="lede">Published for Northshore Example Care. This page does not add prices, results or treatments that were not listed.</p>
+<figure class="wide-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure>
+<p>Listed for Northshore Example Care.</p>
+<article class="service-block"><h2>Movement assessment</h2><p>Also on the published list for Northshore Example Care.</p></article><article class="service-block"><h2>Sports rehabilitation</h2><p>Also on the published list for Northshore Example Care.</p></article>
+<aside class="example"><small>ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM</small><h2>Where a welcome note can sit</h2><p>This panel shows illustrative copy. It is not a claim about a real clinic.</p></aside><aside class="example"><small>ILLUSTRATIVE CONTENT — NOT A VERIFIED BUSINESS CLAIM</small><h2>Where a longer service note can sit</h2><p>Further illustrative copy can explain how a visit is arranged. It must not invent prices, outcomes or guarantees.</p></aside>
+<div class="visit-row service-close">
+<div>
+<h2>Talk to Northshore Example Care.</h2>
+<p class="lede">This concept does not take bookings, payments or orders.</p>
+</div>
+<a class="button" href="#contact">Contact</a>
+</div>
+</div>
+</section>
+<section id="team" class="page">
+<div class="wrap page-intro">
+<p class="eyebrow">Team</p>
+<h1>People at Northshore Example Care.</h1>
+<p class="lede">Each thumbnail has the person’s detail beside it. Sample cards are layout only and are not staff.</p>
+<div class="people"><article class="person"><div class="thumb" aria-hidden="true">J</div><div><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Jordan Example</h2><p class="role">Physiotherapy</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real clinician and does not work at a real practice.</p></div></article><article class="person"><div class="thumb" aria-hidden="true">S</div><div><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Sam Example</h2><p class="role">Movement assessment</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p></div></article><article class="person"><div class="thumb" aria-hidden="true">R</div><div><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Riley Example</h2><p class="role">Sports rehabilitation</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p></div></article></div>
+</div>
+</section>
+<section id="contact" class="page">
+<div class="wrap page-intro">
+<p class="eyebrow">Contact</p>
+<h1>Contact Northshore Example Care.</h1>
+<div class="map-frame"><iframe class="map" title="Map of the published address" src="https://maps.google.com/maps?q=18%20Harbour%20Road%2C%20Example%20Town%2C%20Example%20Town&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<p class="map-note">Map of the fictional address. It may not match a real place.</p>
+<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01234567890">01234 567890</a></p></article><article class="info-card"><h2>Address</h2><p>18 Harbour Road, Example Town</p></article><article class="info-card"><h2>Hours</h2><p>Monday to Friday, 8:00–18:00</p></article></div>
+<div class="split">
+<form class="sheet" action="#contact" method="post" onsubmit="return false">
+<h2>Get in touch</h2>
+<p>This preview does not send messages, take bookings or store what you type.</p>
+<label>Name<input name="name" autocomplete="name"></label>
+<label>Phone<input name="tel" type="tel" autocomplete="tel"></label>
+<label>Message<textarea name="message"></textarea></label>
+<a class="button" href="tel:01234567890">Call 01234 567890</a>
+</form>
+<figure class="side-media frame" role="img" aria-label="Photograph awaiting an approved category image."><figcaption>Photograph awaiting an approved category image.</figcaption></figure>
+</div>
+</div>
 </section>
 </main>
-<footer>
-<p>Northshore Example Care · Fictional demonstration by Parley Systems.</p>
-<small>Template care-modern 1.0.0. Colour follows this business’s brand accent. This page does not sell products. Category photography is illustrative.</small>
+<footer class="site-footer">
+<div class="wrap foot">
+<div>
+<strong>Northshore Example Care</strong>
+<p>Fictional demonstration by Parley Systems.</p>
+</div>
+<div>
+<strong>Pages</strong>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+<div>
+<strong>Visit</strong>
+<p>18 Harbour Road, Example Town</p>
+<p>Monday to Friday, 8:00–18:00</p>
+<p><a href="tel:01234567890">01234 567890</a></p>
+</div>
+</div>
+<div class="wrap"><small class="legal">Template care-modern 1.0.0. Colour follows this business’s brand accent. This page does not sell products. Category photography is illustrative.</small></div>
 </footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => { const box = document.getElementById('nav-toggle'); if (box) box.checked = false; }));
+</script>
 </body>
 </html>

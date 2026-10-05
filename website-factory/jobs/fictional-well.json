@@ -7,10 +7,10 @@
     "id": "care-modern",
     "version": "1.0.0"
   },
-  "instructionsVersion": "15a54ce596d21262",
-  "contentHash": "c9c0343b1aef69abd8cd57ff36ab61dd73ab451762b035374536b353be8618cc",
+  "instructionsVersion": "7f4d21545de1d834",
+  "contentHash": "16501d5253cd2a66ceaa6f94954f196ff3b53da9075cfacc99959787d552b65f",
   "demo": true,
   "message": "",
-  "updatedAt": "2026-10-05T11:46:43.806Z",
+  "updatedAt": "2026-10-05T12:06:18.908Z",
   "state": "PREVIEW_READY"
 }

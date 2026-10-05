@@ -24,7 +24,13 @@
   },
   "contentReviewed": true,
   "exampleSections": [
-    {"title": "Where a welcome note can sit", "body": "This panel shows illustrative copy. It is not a claim about a real clinic."}
+    {"title": "Where a welcome note can sit", "body": "This panel shows illustrative copy. It is not a claim about a real clinic."},
+    {"title": "Where a longer service note can sit", "body": "Further illustrative copy can explain how a visit is arranged. It must not invent prices, outcomes or guarantees."}
+  ],
+  "examplePeople": [
+    {"name": "Jordan Example", "role": "Physiotherapy", "detail": "A short biography sits beside the thumbnail. Jordan Example is not a real clinician and does not work at a real practice."},
+    {"name": "Sam Example", "role": "Movement assessment", "detail": "Role and a few sentences stay next to the portrait area. This card is only here to review the team layout."},
+    {"name": "Riley Example", "role": "Sports rehabilitation", "detail": "Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff."}
   ],
   "assets": {"logo": null, "images": [], "librarySelections": []}
 }

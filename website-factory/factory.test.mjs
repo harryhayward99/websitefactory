@@ -122,8 +122,13 @@ test('care-modern follows the brand colour and has no cart',async()=>{
   const html=await renderSite(site,{allowDraft:true});
   assert.match(html,/noindex/);assert.match(html,/FICTIONAL DEMO/);
   assert.match(html,/#2f6fed/i);assert.match(html,/Northshore Example Care/);
-  assert.match(html,/@media \(max-width:800px\)/);
-  assert.doesNotMatch(html,/add to bag|shop now|checkout|shopping cart/i);
+  assert.match(html,/id="services"/);assert.match(html,/id="team"/);assert.match(html,/id="contact"/);
+  assert.match(html,/maps\.google\.com\/maps\?q=/);assert.match(html,/Jordan Example/);
+  assert.match(html,/grid-template-columns:168px minmax\(0,1fr\)/);
+  assert.match(html,/@media \(max-width:800px\)/);assert.match(html,/@media \(max-width:560px\)/);
+  assert.match(html,/grid-template-columns:96px minmax\(0,1fr\)/);
+  assert.match(html,/not a verified member of staff/i);
+  assert.doesNotMatch(html,/add to bag|shop now|checkout|shopping cart|\bcart\b/i);
   const recoloured=structuredClone(site);recoloured.brand.accent='#b42318';
   const red=await renderSite(recoloured,{allowDraft:true});
   assert.match(red,/#b42318/i);assert.doesNotMatch(red,/#2f6fed/i);
