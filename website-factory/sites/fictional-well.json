@@ -1,0 +1,30 @@
+{
+  "slug": "fictional-well",
+  "sector": "physiotherapy",
+  "status": "concept",
+  "demo": true,
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#2f6fed"},
+  "sources": [{"id": "fictional", "url": "demo:fictional", "checkedAt": "2026-10-05"}],
+  "business": {
+    "name": {"value": "Northshore Example Care", "sourceId": "fictional"},
+    "location": {"value": "Example Town", "sourceId": "fictional"},
+    "phone": {"value": "01234 567890", "sourceId": "fictional"},
+    "address": {"value": "18 Harbour Road, Example Town", "sourceId": "fictional"},
+    "hours": {"value": "Monday to Friday, 8:00–18:00", "sourceId": "fictional"},
+    "services": [
+      {"value": "Physiotherapy", "sourceId": "fictional"},
+      {"value": "Movement assessment", "sourceId": "fictional"},
+      {"value": "Sports rehabilitation", "sourceId": "fictional"}
+    ]
+  },
+  "copy": {
+    "headline": "Care shaped around the person in front of you.",
+    "introduction": "This is a fictional layout for reviewing the modern care template. Nothing on this page describes a real practice."
+  },
+  "contentReviewed": true,
+  "exampleSections": [
+    {"title": "Where a welcome note can sit", "body": "This panel shows illustrative copy. It is not a claim about a real clinic."}
+  ],
+  "assets": {"logo": null, "images": [], "librarySelections": []}
+}

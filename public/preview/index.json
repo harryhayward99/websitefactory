@@ -29,6 +29,21 @@
       "demo": true,
       "message": "",
       "updatedAt": "2026-10-02T20:28:02.378Z"
+    },
+    {
+      "slug": "fictional-well",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/fictional-well/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "15a54ce596d21262",
+      "contentHash": "c9c0343b1aef69abd8cd57ff36ab61dd73ab451762b035374536b353be8618cc",
+      "demo": true,
+      "message": "",
+      "updatedAt": "2026-10-05T11:46:43.806Z"
     }
   ]
 }

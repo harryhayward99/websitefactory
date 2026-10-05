@@ -117,6 +117,17 @@ test('a failed rebuild leaves the current page in place',async()=>{
   assert.equal(result.previewPath,'/preview/fictional-clinic/index.html');
   assert.match(await fs.readFile(outputFile,'utf8'),/Meadow Example Clinic/);
 });
+test('care-modern follows the brand colour and has no cart',async()=>{
+  const site=await loadSite('fictional-well');
+  const html=await renderSite(site,{allowDraft:true});
+  assert.match(html,/noindex/);assert.match(html,/FICTIONAL DEMO/);
+  assert.match(html,/#2f6fed/i);assert.match(html,/Northshore Example Care/);
+  assert.match(html,/@media \(max-width:800px\)/);
+  assert.doesNotMatch(html,/add to bag|shop now|checkout|shopping cart/i);
+  const recoloured=structuredClone(site);recoloured.brand.accent='#b42318';
+  const red=await renderSite(recoloured,{allowDraft:true});
+  assert.match(red,/#b42318/i);assert.doesNotMatch(red,/#2f6fed/i);
+});
 test('integration contract matches the hosting config and computed instructions version',async()=>{
   const integration=JSON.parse(await fs.readFile(new URL('./integration.json',import.meta.url),'utf8'));
   const vercel=JSON.parse(await fs.readFile(new URL('../vercel.json',import.meta.url),'utf8'));

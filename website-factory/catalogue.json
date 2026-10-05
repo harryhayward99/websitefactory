@@ -11,5 +11,16 @@
     "demo": "fictional-clinic",
     "screenshots": [],
     "adaptation": "Customise branding and sourced business content. Keep the layout and spacing. Create a new version for design changes."
+  }, {
+    "id": "care-modern",
+    "version": "1.0.0",
+    "name": "Modern care",
+    "status": "draft",
+    "sectors": ["dental", "physiotherapy", "chiropractic", "veterinary"],
+    "description": "Spacious clinic layout. The brand accent colours the page. There is no shop or cart. Draft until the fictional preview is accepted.",
+    "entry": "templates/care-modern/1.0.0/render.mjs",
+    "demo": "fictional-well",
+    "screenshots": [],
+    "adaptation": "Set brand.accent to the company colour. Keep the layout. Create a new version for design changes."
   }]
 }

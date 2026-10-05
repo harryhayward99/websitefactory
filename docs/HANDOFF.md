@@ -13,3 +13,7 @@ Added npm run capture -- <slug>: renders validated local HTML and assets with Ja
 Playwright is pinned to 1.62.1. Run npm install and npx playwright install --with-deps chromium in the build environment. Local syntax validation passed, but Chromium download in the assistant workspace failed with an invalid/truncated archive; visual capture is unverified locally. The read-only PR workflow runs capture on ready previews and uploads artifacts, without committing or publishing them. Artifact success alone does not put screenshots into production.
 
 Before activation: inspect CI images, include matching Courtyard landing.jpg and screenshot.json in a reviewed deployment, merge this capture support, and install outreach controller 2026.10.05.1 after its checks. Do not enable email drafts until matching screenshot, verified contact fields and published privacy URL are ready.
+
+## Modern care template — 2026-10-05
+
+Added draft template `care-modern` 1.0.0 for dental, physiotherapy, chiropractic and veterinary. Colour comes from `brand.accent`. The page has services and a visit section, and no shop or cart. Fictional preview: `public/preview/fictional-well/index.html`. `clinic-clean` 1.0.0 and existing prospect snapshots were left in place. The template is not approved, so real jobs do not switch to it yet. Adding it changes the instructions hash to `15a54ce596d21262`; the installed controller still has `93aa95661ffc71cc` until that property is updated after review. Email drafting stays off.

@@ -16,6 +16,6 @@ Image categories: dental, physiotherapy, chiropractic, barber, veterinary and ge
 
 Read BUILD.md for the research, logo collection and build procedure. Cursor performs research with its available browsing tools; this foundation does not contain an autonomous general-purpose crawler. Failed research must be reported rather than filled with false facts.
 
-The clinic starter is accepted for pipeline previews. Appearance is unfinished, and design changes belong in a new template version. Real prospects still need an approved template for their sector; barber remains blocked. Email drafting stays off.
+The clinic starter is accepted for pipeline previews. `care-modern` 1.0.0 is a separate draft: open `public/preview/fictional-well/index.html`. Its colour comes from the company brand accent, and it has no shop or cart. Real prospects still use an approved template; barber remains blocked. Email drafting stays off.
 
 No live switch is changed by this branch. Missing Cursor/GitHub credentials and end-to-end deployment checks still block activation.
