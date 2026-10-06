@@ -1,6 +1,95 @@
 {
   "schemaVersion": 1,
-  "assets": [],
+  "assets": [
+    {
+      "id": "physio-landing-treatment",
+      "category": "physiotherapy",
+      "file": "images/physiotherapy/landing-treatment.png",
+      "tags": ["landing", "treatment"],
+      "alt": "Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "chiro-landing-treatment",
+      "category": "chiropractic",
+      "file": "images/chiropractic/landing-treatment.png",
+      "tags": ["landing", "treatment"],
+      "alt": "Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "dental-landing-treatment",
+      "category": "dental",
+      "file": "images/dental/landing-treatment.png",
+      "tags": ["landing", "treatment"],
+      "alt": "Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "veterinary-landing-treatment",
+      "category": "veterinary",
+      "file": "images/veterinary/landing-treatment.png",
+      "tags": ["landing", "treatment"],
+      "alt": "Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-portrait-placeholder",
+      "category": "general",
+      "file": "images/general/portrait-placeholder.png",
+      "tags": ["portrait"],
+      "alt": "Illustrative portrait. Not a photograph of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-book-portrait",
+      "category": "general",
+      "file": "images/general/book-portrait.png",
+      "tags": ["booking", "portrait"],
+      "alt": "Illustrative portrait. Not a photograph of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-review-photo",
+      "category": "general",
+      "file": "images/general/review-photo.png",
+      "tags": ["review"],
+      "alt": "Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-service-tile",
+      "category": "general",
+      "file": "images/general/service-tile.png",
+      "tags": ["service"],
+      "alt": "Illustrative treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    }
+  ],
   "exampleOnly": {
     "id": "physio-hero-01",
     "category": "physiotherapy",

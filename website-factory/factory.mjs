@@ -12,6 +12,67 @@ const assetPattern = /^\/factory-assets\/clients\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z
 const rights = ['owned', 'licensed', 'client-permission', 'official-logo-concept'];
 const forbiddenKeys = new Set(['email', 'emails', 'notes', 'privateNotes', 'contactResearch', 'salesScore', 'apiKey', 'token', 'password', 'credentials', 'secret']);
 const fail = message => { throw new Error(message); };
+const landingImageIds = { physiotherapy: 'physio-landing-treatment', chiropractic: 'chiro-landing-treatment', dental: 'dental-landing-treatment', veterinary: 'veterinary-landing-treatment' };
+const defaultBookingId = 'care-book-portrait';
+const defaultReviewId = 'care-review-photo';
+const portraitSectors = new Set(['dental', 'physiotherapy', 'chiropractic', 'veterinary']);
+const defaultPortraitId = 'care-portrait-placeholder';
+const defaultServiceId = 'care-service-tile';
+
+export function defaultLandingImage(sector) {
+  return landingImageIds[sector] || '';
+}
+
+export function defaultPortraitImage(sector) {
+  return portraitSectors.has(sector) ? defaultPortraitId : '';
+}
+
+export function defaultServiceImage(sector) {
+  return portraitSectors.has(sector) ? defaultServiceId : '';
+}
+
+export function withDefaultLandingImage(site) {
+  const id = defaultLandingImage(site?.sector);
+  if (!id || !site?.assets) return site;
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const images = Array.isArray(site.assets.images) ? site.assets.images : [];
+  if (selections.includes(id) || images.some(image => image && image.placement === 'landing')) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
+
+export function withDefaultExtraImage(site, id, placement, optOut) {
+  if (!portraitSectors.has(site?.sector) || !site?.assets || site.assets[optOut] === false) return site;
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const images = Array.isArray(site.assets.images) ? site.assets.images : [];
+  if (selections.includes(id) || images.some(image => image && image.placement === placement)) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
+
+export function withDefaultBookingImage(site) {
+  return withDefaultExtraImage(site, defaultBookingId, 'booking', 'defaultBookingImage');
+}
+
+export function withDefaultReviewImage(site) {
+  return withDefaultExtraImage(site, defaultReviewId, 'review', 'defaultReviewImage');
+}
+
+export function withDefaultPortrait(site) {
+  const id = defaultPortraitImage(site?.sector);
+  if (!id || !site?.assets || site.assets.defaultPortrait === false) return site;
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const images = Array.isArray(site.assets.images) ? site.assets.images : [];
+  if (selections.includes(id) || images.some(image => image && image.placement === 'portrait')) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
+
+export function withDefaultServiceImage(site) {
+  const id = defaultServiceImage(site?.sector);
+  if (!id || !site?.assets || site.assets.defaultServiceImage === false) return site;
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const images = Array.isArray(site.assets.images) ? site.assets.images : [];
+  if (selections.includes(id) || images.some(image => image && image.placement === 'service')) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
 
 export const sheetStatus = {
   PREVIEW_READY: 'Preview ready',
@@ -169,7 +230,12 @@ export async function materialiseLibraryImages(site, manifestAssets, paths) {
         sourceUrl: entry.sourceUrl,
         rights: entry.rights,
         illustrative: true,
-        libraryId: id
+        libraryId: id,
+        ...(Array.isArray(entry.tags) && entry.tags.includes('landing') ? { placement: 'landing' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('booking') ? { placement: 'booking' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('portrait') && !entry.tags.includes('booking') ? { placement: 'portrait' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('service') ? { placement: 'service' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('review') ? { placement: 'review' } : {})
       };
     const previous = images.findIndex(image => image.libraryId === id);
     if (previous < 0) images.push(image); else images[previous] = image;
@@ -282,7 +348,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(await instructionsVersion());
   } else {
     const slug = args.find(arg => !arg.startsWith('--'));
-    const site = await loadSite(slug);
+    const site = withDefaultReviewImage(withDefaultBookingImage(withDefaultServiceImage(withDefaultPortrait(withDefaultLandingImage(await loadSite(slug))))));
     const result = await generatePreview(site);
     if (result.code === 'PREVIEW_READY') await publishIndex();
     const output = {

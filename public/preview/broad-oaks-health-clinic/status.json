@@ -1,0 +1,15 @@
+{
+  "slug": "broad-oaks-health-clinic",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/broad-oaks-health-clinic/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "b7afd3bbda380b91",
+  "contentHash": "dcf96027e0725a0d919bcd533a0cb1f0b02683524d53822e9ff1b35159c36283",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-06T15:32:49.561Z"
+}

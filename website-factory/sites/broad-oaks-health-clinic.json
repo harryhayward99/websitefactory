@@ -1,0 +1,137 @@
+{
+  "slug": "broad-oaks-health-clinic",
+  "sector": "physiotherapy",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "54dd5e65c7787d61",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#2F8EC8"},
+  "sources": [
+    {"id": "homepage", "url": "https://broadoakshealthclinic.com/", "checkedAt": "2026-10-06"},
+    {"id": "about", "url": "https://broadoakshealthclinic.com/about-us.php", "checkedAt": "2026-10-06"},
+    {"id": "practitioners", "url": "https://broadoakshealthclinic.com/practitioners.php", "checkedAt": "2026-10-06"},
+    {"id": "contact", "url": "https://broadoakshealthclinic.com/contact-us.php", "checkedAt": "2026-10-06"},
+    {"id": "treatments", "url": "https://broadoakshealthclinic.com/treatments.php", "checkedAt": "2026-10-06"},
+    {"id": "google-reviews", "url": "https://exa.ai/library/place/7nc6956z2ff", "checkedAt": "2026-10-06"}
+  ],
+  "business": {
+    "name": {"value": "Broad Oaks Health Clinic", "sourceId": "homepage"},
+    "location": {"value": "Solihull", "sourceId": "homepage"},
+    "phone": {"value": "0121 705 3509", "sourceId": "contact"},
+    "address": {"value": "394 Warwick Road, Solihull, West Midlands, B91 1BB", "sourceId": "contact"},
+    "website": {"value": "https://broadoakshealthclinic.com/", "sourceId": "homepage"},
+    "hours": {"value": "Monday to Friday, reception 8:30–17:30. Appointments from 9:00. Evening and Saturday times depend on practitioner availability.", "sourceId": "about"},
+    "services": [
+      {"value": "Physiotherapy", "detail": "Physiotherapy is listed on the Broad Oaks treatments page. The practitioners page names Mark Webb and Anne Hands as chartered physiotherapists.", "sourceId": "treatments"},
+      {"value": "Osteopathy", "detail": "Osteopathy is listed on the treatments page. The practitioners page names Gaynor Kunneke as an osteopath, registered since 2013 after training at Keele and Staffordshire Universities.", "sourceId": "treatments"},
+      {"value": "Chiropody", "detail": "Chiropody is listed on the treatments page. The practitioners page names Justine Callaghan as a chiropodist and podiatrist, qualified from the Birmingham School of Podiatry in 1989.", "sourceId": "treatments"},
+      {"value": "Acupuncture", "detail": "Acupuncture is listed on the treatments page. The practitioners page names Kirsty Garland as an acupuncturist, with a BA (Hons) from the College of Traditional Acupuncture in 2003.", "sourceId": "treatments"},
+      {"value": "Psychological Services", "detail": "Psychological services are listed for the clinic. The practitioners page names Dr Sharna Lewis as a chartered clinical psychologist.", "sourceId": "practitioners"},
+      {"value": "Psychotherapy & Hypnotherapy", "detail": "Psychotherapy and hypnotherapy are listed on the treatments page. The practitioners page names Hilary Dixon as a psychotherapist, counsellor and hypnotherapist.", "sourceId": "treatments"},
+      {"value": "IDD Therapy", "detail": "IDD Therapy is listed among the treatments on the clinic website. The published treatments page does not add a separate description of this service.", "sourceId": "homepage"}
+    ]
+  },
+  "copy": {
+    "headline": "Multidisciplinary care in Solihull.",
+    "introduction": "Broad Oaks Health Clinic lists physiotherapy, osteopathy, chiropody, acupuncture, psychological services, psychotherapy and hypnotherapy, and IDD Therapy. It is on the corner of Warwick Road and Broad Oaks Road, with free customer parking and a bus stop outside. The clinic states that it is recognised by Physiofirst and that insurers including BUPA and PPP approve treatment."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "Hannah",
+      "date": "16 January 2025",
+      "quote": "I was nervous as I'd never had any physio appointments before but Mark was great at putting me at ease and gave helpful advice. Fair prices too.",
+      "rating": 5,
+      "sourceId": "google-reviews"
+    },
+    {
+      "name": "David Fennell",
+      "date": "8 November 2024",
+      "quote": "First class physiotherapy practice using state of the art techniques and equipment. Always an enjoyable experience visiting Mark and the team.",
+      "rating": 5,
+      "sourceId": "google-reviews"
+    },
+    {
+      "name": "Ann Dixon",
+      "date": "1 September 2024",
+      "quote": "Welcoming and thorough investigation of symptoms. A first rate experience.",
+      "rating": 5,
+      "sourceId": "google-reviews"
+    },
+    {
+      "name": "Rebecca Dickson",
+      "date": "20 June 2017",
+      "quote": "Brilliant chiropodist appointment yesterday. No pain now at all. I think I will make this a regular treat.",
+      "rating": 5,
+      "sourceId": "google-reviews"
+    },
+    {
+      "name": "Chris Laing",
+      "date": "30 September 2016",
+      "quote": "A friendly place to visit for many circumstances from chiropody to acupuncture, back pain and even mental health issues like OCD support etc. Discreet and welcoming environment with independent professional staff. Fair private pricing and comfortable surroundings.",
+      "rating": 5,
+      "sourceId": "google-reviews"
+    }
+  ],
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Mark Webb",
+      "role": "Chartered physiotherapist",
+      "detail": "Listed as MCSP, AACP. The practitioners page says he trained at the Wolverhampton School of Physiotherapy and took over Broad Oaks Health Clinic in 2001.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Anne Hands",
+      "role": "Chartered physiotherapist",
+      "detail": "Listed as MCSP. The page says she qualified at the Coventry School of Physio, worked in the NHS at Heartlands and Solihull hospitals, and later joined Broad Oaks.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Gaynor Kunneke",
+      "role": "Osteopath",
+      "detail": "Listed as B. Ost (Hons). The page says she has been a registered osteopath since 2013, after training at Keele and Staffordshire Universities, and that she works at Broad Oaks.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Justine Callaghan",
+      "role": "Chiropodist and podiatrist",
+      "detail": "The page says she qualified from the Birmingham School of Podiatry in 1989 and has been part of the Broad Oaks team for over 10 years.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Hilary Dixon",
+      "role": "Psychotherapist",
+      "detail": "Listed as MBACP. The page says she is a psychotherapist, counsellor and hypnotherapist, a member of BACP and CHNC, and that she works with anxiety, panic, fears, phobias and habits.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Dr Sharna Lewis",
+      "role": "Chartered clinical psychologist",
+      "detail": "The page says she is a chartered clinical psychologist with the British Psychological Society and a registered member of the Health and Care Professions Council.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Kirsty Garland",
+      "role": "Acupuncturist",
+      "detail": "Listed as BA (Hons), Lic. Ac. The page says she completed a three-year course in traditional acupuncture and received a BA (Hons) in 2003 from the College of Traditional Acupuncture, affiliated with Oxford Brookes University.",
+      "sourceId": "practitioners"
+    },
+    {
+      "name": "Ozan Altay",
+      "role": "Prosthetist",
+      "detail": "Listed as ISPO, HCPC-registered. The page says he provides amputee rehabilitation at Broad Oaks and has worked in prosthetics for over 25 years.",
+      "sourceId": "practitioners"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/broad-oaks-health-clinic/logo.png",
+      "alt": "Broad Oaks Health Clinic",
+      "sourceUrl": "https://broadoakshealthclinic.com/images/broaroaks.png",
+      "rights": "official-logo-concept"
+    },
+    "images": [],
+    "librarySelections": ["physio-landing-treatment", "care-portrait-placeholder", "care-service-tile"]
+  }
+}

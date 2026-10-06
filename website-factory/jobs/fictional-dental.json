@@ -1,16 +1,16 @@
 {
-  "slug": "fictional-well",
+  "slug": "fictional-dental",
   "status": "PREVIEW_READY",
   "sheetStatus": "Preview ready",
-  "previewPath": "/preview/fictional-well/index.html",
+  "previewPath": "/preview/fictional-dental/index.html",
   "template": {
     "id": "care-modern",
     "version": "1.0.0"
   },
   "instructionsVersion": "54dd5e65c7787d61",
-  "contentHash": "52a340f79fad9d495d9cbd12f23268be2fb35471083ddd42bf2a5f5c20f69109",
+  "contentHash": "32cde95bccaf26e6c524bb1f11d0c14c8c00b8f386448f7df7260dade6d68fd3",
   "demo": true,
   "message": "",
-  "updatedAt": "2026-10-06T18:10:46.551Z",
+  "updatedAt": "2026-10-06T18:10:46.982Z",
   "state": "PREVIEW_READY"
 }
