@@ -1,6 +1,6 @@
 # Parley factory handover
 
-Updated 2026-10-02. The accepted clinic pipeline starter is deployed. Appearance remains unfinished; email drafting remains a separate approval.
+Updated 2026-10-06. The Broad Oaks concept is published at https://websitefactory-one.vercel.app/preview/broad-oaks-health-clinic/index.html. The accepted clinic pipeline starter is deployed. Appearance remains unfinished; email drafting remains a separate approval.
 
 Factory tests and static build passed. Successful generation refreshes result metadata even when HTML is unchanged, and hosting builds verify existing snapshots rather than rebuilding all prospects. Category assets are staged and use content-based filenames. The image bank is empty; barber still needs a template.
 
