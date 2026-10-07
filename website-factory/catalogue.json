@@ -18,10 +18,10 @@
     "status": "approved",
     "preferred": true,
     "sectors": ["dental", "physiotherapy", "chiropractic", "veterinary"],
-    "description": "Default layout for dental, physiotherapy, chiropractic and veterinary. Home, service, team, reviews and contact pages. At most seven published services, with a short sourced note on each service page. The brand accent colours the page, including its pale tint. There is no shop or cart.",
+    "description": "Accepted layout for a new dental, physiotherapy, chiropractic or veterinary clinic. Home, services, team, reviews and contact use that clinic’s published facts. A prices page appears for a labelled demo, or when the clinic’s own fees are recorded. The brand accent colours the page, including its pale tint. There is no shop or cart.",
     "entry": "templates/care-modern/1.0.0/render.mjs",
     "demo": "fictional-well",
     "screenshots": [],
-    "adaptation": "Set brand.accent to the company colour. Keep the layout. Create a new version for design changes."
+    "adaptation": "Keep this layout. Fill name, logo colour, services, practitioners, hours and reviews from the official site. Sample people and sample fees stay on labelled demos. Record published fees only when the clinic lists them."
   }]
 }

@@ -43,11 +43,13 @@ img{max-width:100%;display:block}
 body:has(#services:target) .site-header nav a[href="#services"],
 body:has(#team:target) .site-header nav a[href="#team"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
-body:has(#contact:target) .site-header nav a[href="#contact"],body:has(#service-cosmetic:target),body:has(#service-oral-hygiene:target),body:has(#service-emergency:target),body:has(#service-family:target),body:has(#service-denplan:target) .site-header nav a[href="#services"]{font-weight:700}
+body:has(#contact:target) .site-header nav a[href="#contact"],
+body:has(#prices:target) .site-header nav a[href="#prices"],body:has(#service-cosmetic:target),body:has(#service-oral-hygiene:target),body:has(#service-emergency:target),body:has(#service-family:target),body:has(#service-denplan:target) .site-header nav a[href="#services"]{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
 body:has(#team:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
-body:has(#contact:target) .site-header nav a[href="#home"],body:has(#service-cosmetic:target),body:has(#service-oral-hygiene:target),body:has(#service-emergency:target),body:has(#service-family:target),body:has(#service-denplan:target) .site-header nav a[href="#home"]{font-weight:500}
+body:has(#contact:target) .site-header nav a[href="#home"],
+body:has(#prices:target) .site-header nav a[href="#home"],body:has(#service-cosmetic:target),body:has(#service-oral-hygiene:target),body:has(#service-emergency:target),body:has(#service-family:target),body:has(#service-denplan:target) .site-header nav a[href="#home"]{font-weight:500}
 .has-menu{position:relative}
 .nav-chevron{display:block;transition:transform .2s ease}
 .has-menu:hover .nav-chevron,.has-menu:focus-within .nav-chevron{transform:rotate(180deg)}
@@ -87,6 +89,7 @@ body:not(:has(.page:target)) #home{display:block}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
+.hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
 .hero-card:nth-child(3){grid-column:auto;grid-row:auto}
@@ -175,6 +178,7 @@ body:not(:has(.page:target)) #home{display:block}
 .meet-slide:nth-child(3) .meet-photo{background:#dbe7fb}
 .meet-photo span{color:rgba(17,24,39,.28);font-size:128px;font-weight:500;letter-spacing:-.05em;line-height:1}
 .meet-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.meet-photo img.anchor-start{object-position:left top}
 .meet-card{display:flex;flex-direction:column;min-height:460px;padding:36px 32px 28px;border-radius:18px;background:#fff}
 .meet-card h3{font-size:28px;font-weight:600;letter-spacing:-.03em}
 .meet-role{margin:6px 0 28px;color:#666;font-size:16px}
@@ -234,7 +238,7 @@ body:not(:has(.page:target)) #home{display:block}
 .review-photo:nth-child(3){background:#e4e0d8}
 .review-photo:nth-child(4){background:#d9e3dc}
 .review-photo span{color:rgba(17,24,39,.28);font-size:120px;font-weight:500;letter-spacing:-.04em;line-height:1}
-.review-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.review-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .review-quote{padding:36px 32px;border-radius:16px;background:#fff}
 .review-quote h3{margin:0 0 22px;font-size:22px;font-weight:500}
 .review-quote p{color:#333;font-size:16px;line-height:1.55}
@@ -294,6 +298,29 @@ body:not(:has(.page:target)) #home{display:block}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
 .services-page{padding-top:56px}
+.prices-page{padding-top:56px}
+.fee-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fee-card{position:relative;display:flex;flex-direction:column;min-height:420px;padding:36px 32px 112px;overflow:hidden;border-radius:28px;background:var(--pale)}
+.fee-gem{position:absolute;right:8%;top:16%;display:grid;place-items:center;width:132px;height:132px;border-radius:40px;background:#fff;color:#111;transform:rotate(-16deg)}
+.fee-gem strong{transform:rotate(16deg);font-size:26px;font-weight:600;letter-spacing:-.03em}
+.fee-gem-sm{right:auto;left:28px;top:auto;bottom:26px;width:48px;height:48px;border-radius:16px;background:#fff;transform:rotate(14deg)}
+.fee-card h2{position:relative;z-index:1;max-width:8em;margin:0 0 22px;font-size:clamp(32px,3vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
+.fee-k{position:relative;z-index:1;margin:0 0 8px;color:#333;font-size:13px;font-weight:600;letter-spacing:.04em}
+.fee-includes{position:relative;z-index:1;margin:0;padding:0 calc(8% + 148px) 0 0;list-style:none}
+.fee-includes li{padding:10px 0;border-top:1px solid rgba(0,0,0,.12);font-size:16px;line-height:1.45}
+.fee-time{position:absolute;z-index:1;left:32px;right:168px;bottom:26px;display:flex;align-items:center;min-height:48px;margin:0;padding-left:84px;font-size:15px;font-weight:600;line-height:1.35}
+.fee-book{position:absolute;z-index:1;right:28px;bottom:28px}
+.fee-board{margin-top:56px}
+.fee-board h2{margin:0 0 8px;font-size:28px;font-weight:600;letter-spacing:-.03em}
+.fee-fold{border-bottom:1px solid rgba(0,0,0,.12)}
+.fee-fold summary{display:flex;align-items:center;gap:16px;min-height:58px;padding:14px 0;color:#000;font-size:18px;font-weight:500;line-height:1.3;cursor:pointer;list-style:none}
+.fee-fold summary::-webkit-details-marker{display:none}
+.fee-fold summary::marker{content:""}
+.fee-fold summary span{flex:1;min-width:0}
+.fee-fold summary strong{flex:none;font-weight:600;letter-spacing:-.02em}
+.fee-fold summary:after{content:"+";flex:none;width:1.2em;font-weight:400;text-align:center}
+.fee-fold[open] summary:after{content:"–"}
+.fee-fold p{max-width:40em;margin:0 0 18px;color:#333;font-size:16px;line-height:1.5}
 .services-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);gap:28px 48px;align-items:end}
 .services-intro .lede{margin:0}
 .offer-board{position:relative;display:grid;grid-template-columns:minmax(240px,.78fr) minmax(0,1.22fr);gap:22px;align-items:stretch;margin-top:42px}
@@ -373,13 +400,15 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .menu-button{justify-self:end}
   .nav-rule,.nav-phone,.header-cta{display:none}
   .site-header nav{position:absolute;left:16px;right:16px;top:68px}
-  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;padding:12px;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:6px;overflow:auto;overscroll-behavior:contain;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
-  .site-header nav .button{display:inline-flex}
+  .site-header nav a{min-height:36px;padding:0 10px;font-size:15px}
+  .site-header .menu-panel a{min-height:32px;padding:2px 10px;font-size:14px}
+  .site-header nav .button{display:inline-flex;min-height:36px;padding:8px 14px}
   .menu-button{display:inline-flex}
   .has-menu{display:flex;flex-direction:column;align-items:stretch}
   .nav-chevron{display:none}
-  .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 8px 12px;border-radius:0;background:transparent;box-shadow:none}
+  .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
   .services-intro,.offer-board,.service-poster,.team-intro,.team-board,.person{grid-template-columns:1fr}
   .team-rail{position:sticky;top:88px;height:64px}
@@ -440,6 +469,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
+  .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .hero-cards::-webkit-scrollbar{display:none}
@@ -447,6 +477,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .wide-media{min-height:220px}
   .side-media{min-height:220px}
   .section,.statement{padding:56px 0}
+  #home>.section:has(.service-accordion){padding-bottom:120px}
   .statement{padding-bottom:88px}
   .button{width:auto}
   .meet-book{width:100%}
@@ -463,7 +494,8 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .review-photo span{font-size:22px}
   .review-quote{position:relative;inset:auto;display:flex;flex-direction:column;height:0;margin:0;padding:0;overflow:hidden;border-radius:0;background:transparent;opacity:0;visibility:hidden;transform:none}
   .review-board[data-active="0"] .review-quote:nth-child(1){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}.review-board[data-active="1"] .review-quote:nth-child(2){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}.review-board[data-active="2"] .review-quote:nth-child(3){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}
-  .review-quote h3{order:1;margin:0 0 4px 68px;font-size:18px;font-weight:600;line-height:1.2}
+  .review-quote h3{order:1;display:flex;align-items:center;min-height:52px;margin:0 0 16px 68px;font-size:18px;font-weight:600;line-height:1.2}
+  .review-quote h3:has(+ .review-stars){min-height:0;align-items:flex-start;margin-bottom:4px}
   .review-quote .review-stars{order:2;display:block;margin:0 0 18px 68px;color:#111;font-size:13px;letter-spacing:.14em;line-height:1}
   .review-quote>p:last-child{order:3;margin:0}
   .review-quote .flag{order:4;display:flex;align-items:center;min-height:42px;margin:18px 0 0;padding-right:104px}
@@ -482,8 +514,20 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   #reviews .page-intro{flex-direction:column;align-items:flex-start;gap:18px}
   #reviews .page-intro .button{margin-bottom:0}
   #reviews > .section.reviews{padding-top:28px}
+  .fee-pair{grid-template-columns:1fr}
+  .fee-card{min-height:0;padding:20px 18px 80px 20px}
+  .fee-card .fee-gem{top:20px;right:16px;width:84px;height:84px;border-radius:26px}
+  .fee-card .fee-gem strong{font-size:22px}
+  .fee-card .fee-gem-sm{left:20px;right:auto;top:auto;bottom:20px;width:40px;height:40px;border-radius:14px}
+  .fee-card h2{display:flex;align-items:center;max-width:none;min-height:84px;margin:0 100px 18px 0}
+  .fee-includes,.fee-time{padding-right:0;padding-left:0}
+  .fee-time{position:relative;left:auto;right:auto;bottom:auto;display:block;min-height:0;margin-top:18px}
+  .fee-book{right:16px;bottom:16px}
   .footer-index{grid-template-columns:1fr}
   .footer-index a:nth-child(2){padding-top:18px}
+}
+@media (max-width:980px){
+  .fee-pair{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   h1{font-size:40px;line-height:1.12}
@@ -508,6 +552,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="menu-panel"><a href="#service-cosmetic">Cosmetic</a><a href="#service-oral-hygiene">Oral Hygiene</a><a href="#service-emergency">Emergency</a><a href="#service-family">Family</a><a href="#service-denplan">DenPlan</a></div></li>
 <li><a href="#team">Team</a></li>
 <li><a href="#reviews">Reviews</a></li>
+<li><a href="#prices">Prices</a></li>
 <li><a href="#contact">Contact</a></li>
 <li><a class="button" href="#contact">Book Now</a></li>
 </ul>
@@ -585,7 +630,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 <div class="meet-nav"><button class="meet-arrow meet-prev" type="button" aria-label="Previous specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow meet-next" type="button" aria-label="Next specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 </div>
-<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img src="/factory-assets/clients/fictional-dental/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Jordan Example</h3><p class="meet-role">Cosmetic</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real dentist and does not work at a real practice.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/fictional-dental/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Sam Example</h3><p class="meet-role">Oral Hygiene</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/fictional-dental/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Riley Example</h3><p class="meet-role">Family</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
+<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img class="anchor-start" src="/factory-assets/clients/fictional-dental/9246217d3e07dee5-jordan-example.png" alt="Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Jordan Example</h3><p class="meet-role">Cosmetic</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real dentist and does not work at a real practice.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img class="anchor-start" src="/factory-assets/clients/fictional-dental/987ce4431a1f2776-sam-example.png" alt="Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Sam Example</h3><p class="meet-role">Oral Hygiene</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img class="anchor-start" src="/factory-assets/clients/fictional-dental/3391f411f136afbf-riley-example.png" alt="Illustrative treatment. Not a photograph of Riley Example or of this clinic’s staff."></figure><div class="meet-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h3>Riley Example</h3><p class="meet-role">Family</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
 </div>
 </section>
 <section class="section social">
@@ -635,7 +680,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
 <h2>Patient reviews</h2>
 <a class="button review-leave-link" href="#reviews">Leave a Google review</a>
-<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>Jordan Example</strong><span>Cosmetic</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Sam Example</strong><span>Oral Hygiene</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Riley Example</strong><span>Family</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/fictional-dental/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" role="img" aria-label="Portrait area for Riley Example" aria-hidden="true"><span aria-hidden="true">R</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>Jordan Example</strong><span>Cosmetic</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Sam Example</strong><span>Oral Hygiene</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Riley Example</strong><span>Family</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/fictional-dental/b8b62d3b5592c7c8-review-arm.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/03d42e9ac584faae-review-ball.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/e8a6ce5c3de40ed0-review-shoulder.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 </div>
 </section>
 </section>
@@ -658,7 +703,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 <p class="lede">Each portrait sits beside the person’s detail. Sample cards are layout only and are not staff.</p>
 </div>
-<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/fictional-dental/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Jordan Example</h2><p class="role">Cosmetic</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real dentist and does not work at a real practice.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/fictional-dental/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Sam Example</h2><p class="role">Oral Hygiene</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p></div></article><article class="person"><figure class="thumb" role="img" aria-label="Portrait area for Riley Example"><span aria-hidden="true">R</span></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Riley Example</h2><p class="role">Family</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p></div></article></div></div>
+<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/fictional-dental/9246217d3e07dee5-jordan-example.png" alt="Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Jordan Example</h2><p class="role">Cosmetic</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real dentist and does not work at a real practice.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/fictional-dental/987ce4431a1f2776-sam-example.png" alt="Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Sam Example</h2><p class="role">Oral Hygiene</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/fictional-dental/3391f411f136afbf-riley-example.png" alt="Illustrative treatment. Not a photograph of Riley Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Riley Example</h2><p class="role">Family</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p></div></article></div></div>
 </section>
 <section id="contact" class="page">
 <div class="wrap page-intro">
@@ -691,9 +736,19 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <section class="section reviews">
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
-<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>Jordan Example</strong><span>Cosmetic</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Sam Example</strong><span>Oral Hygiene</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Riley Example</strong><span>Family</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/fictional-dental/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" role="img" aria-label="Portrait area for Riley Example" aria-hidden="true"><span aria-hidden="true">R</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>Jordan Example</strong><span>Cosmetic</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Sam Example</strong><span>Oral Hygiene</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Riley Example</strong><span>Family</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/fictional-dental/b8b62d3b5592c7c8-review-arm.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/03d42e9ac584faae-review-ball.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/fictional-dental/e8a6ce5c3de40ed0-review-shoulder.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 </div>
 </section>
+</section>
+<section id="prices" class="page prices-page">
+<div class="wrap">
+<p class="flag">Illustrative layout — not a published fee</p>
+<p class="kicker">Prices</p>
+<h1>What a visit includes.</h1>
+<p class="lede">These figures are examples, so the layout can be reviewed. They are not the fees for Harbour Example Dental.</p>
+<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£75</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>New patient visit</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>A consultation and a look at the teeth and gums</li><li>A discussion of what was found</li></ul><p class="fee-time">Duration: 45 minutes.</p><a class="button solid fee-book" href="#contact">Book Now</a></article><article class="fee-card"><span class="fee-gem"><strong>£55</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Treatment visit</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>The care agreed for that visit</li><li>Advice on looking after the area afterwards</li></ul><p class="fee-time">Duration: 30 minutes.</p><a class="button solid fee-book" href="#contact">Book Now</a></article></div>
+<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion"><details class="fee-fold" name="listed-fees"><summary><span>Cosmetic</span><strong>£60</strong></summary><p>Cosmetic is listed for appearance-focused dental visits.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Oral Hygiene</span><strong>£45</strong></summary><p>Oral hygiene is listed for cleaning and day-to-day mouth care.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Emergency</span><strong>£70</strong></summary><p>Emergency is listed for an urgent dental visit.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Family</span><strong>£55</strong></summary><p>Family is listed for dental care across ages.</p></details><details class="fee-fold" name="listed-fees"><summary><span>DenPlan</span><strong>£40</strong></summary><p>DenPlan is a listed payment-plan name for this layout.</p></details></div></div>
+</div>
 </section>
 </main>
 <footer class="site-footer">
@@ -719,6 +774,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <a href="#team"><span>03</span> Team</a>
 <a href="#reviews"><span>04</span> Reviews</a>
 <a href="#contact"><span>05</span> Contact</a>
+<a href="#prices"><span>06</span> Prices</a>
 </nav>
 <div class="footer-visit">
 <p>18 Harbour Road, Example Town</p>

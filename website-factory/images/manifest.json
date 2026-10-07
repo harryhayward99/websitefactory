@@ -79,6 +79,72 @@
       "illustrative": true
     },
     {
+      "id": "care-riley-example",
+      "category": "general",
+      "file": "images/general/riley-example.png",
+      "tags": ["person"],
+      "alt": "Illustrative treatment. Not a photograph of Riley Example or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-jordan-example",
+      "category": "general",
+      "file": "images/general/jordan-example.png",
+      "tags": ["person"],
+      "alt": "Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-sam-example",
+      "category": "general",
+      "file": "images/general/sam-example.png",
+      "tags": ["person"],
+      "alt": "Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-review-arm",
+      "category": "general",
+      "file": "images/general/review-arm.png",
+      "tags": ["sample"],
+      "alt": "Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-review-ball",
+      "category": "general",
+      "file": "images/general/review-ball.png",
+      "tags": ["sample"],
+      "alt": "Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
+      "id": "care-review-shoulder",
+      "category": "general",
+      "file": "images/general/review-shoulder.png",
+      "tags": ["sample"],
+      "alt": "Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
       "id": "care-service-tile",
       "category": "general",
       "file": "images/general/service-tile.png",

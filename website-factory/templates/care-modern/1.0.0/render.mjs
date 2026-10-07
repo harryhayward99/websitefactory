@@ -45,11 +45,20 @@ export function render(s, e) {
   const serviceImage = pictures.find(image => image && image.placement === 'service');
   const bookingImage = pictures.find(image => image && image.placement === 'booking');
   const reviewImage = pictures.find(image => image && image.placement === 'review');
-  const gallery = pictures.filter(image => image && image.placement !== 'landing' && image.placement !== 'portrait' && image.placement !== 'service');
+  const reservedIds = new Set([
+    ...(Array.isArray(s.people) ? s.people : []),
+    ...(Array.isArray(s.examplePeople) ? s.examplePeople : [])
+  ].map(person => person && person.imageId).filter(Boolean));
+  const reviewPortraitIds = ['care-review-arm', 'care-review-ball', 'care-review-shoulder'];
+  const reviewPortraitSet = new Set(reviewPortraitIds);
+  const gallery = pictures.filter(image => image && image.placement !== 'landing' && image.placement !== 'portrait' && image.placement !== 'service' && image.placement !== 'person' && !reservedIds.has(image.libraryId) && !reviewPortraitSet.has(image.libraryId));
   const frame = (image, caption, className) => image
     ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
     : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
-  const heroMedia = frame(landingImage || gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
+  const heroPin = landingImage && landingImage.libraryId === 'physio-landing-treatment' ? ' class="anchor-top-right"' : '';
+  const heroMedia = landingImage
+    ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
+    : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
   const sideMedia = frame(gallery[2] || gallery[0], 'Photograph awaiting an approved category image.', 'side-media');
   const tileMedia = frame(serviceImage || gallery[0], 'Photograph awaiting an approved category image.', 'tile-media');
   const wordCount = value => value ? value.split(' ').length : 0;
@@ -144,9 +153,10 @@ export function render(s, e) {
   const examplePeople = (Array.isArray(s.examplePeople) ? s.examplePeople : [])
     .filter(person => person && person.name && person.detail);
   const people = publishedPeople.length ? publishedPeople : examplePeople;
+  const namedImage = person => person.imageId ? pictures.find(image => image && image.libraryId === person.imageId) : null;
   const personFlag = publishedPeople.length ? '' : '<p class="flag">Illustrative layout — not a verified member of staff</p>';
   const personCards = people.map((person, index) => {
-    const image = gallery[index];
+    const image = namedImage(person) || gallery[index];
     const letter = e(String(person.name).trim().charAt(0).toUpperCase());
     const photo = image
       ? `<figure class="thumb"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
@@ -154,11 +164,13 @@ export function render(s, e) {
     return `<article class="person${index === 0 ? ' is-current' : ''}">${photo}<div class="person-card">${personFlag}<h2>${e(person.name)}</h2><p class="role">${e(person.role || '')}</p><p>${e(person.detail)}</p></div></article>`;
   }).join('');
   const calendarIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+  const anchoredMeet = new Set(['care-riley-example', 'care-jordan-example', 'care-sam-example']);
   const meetSlides = people.map((person, index) => {
-    const ownImage = gallery[index];
+    const ownImage = namedImage(person) || gallery[index];
     const image = ownImage || portraitImage;
+    const anchor = image && anchoredMeet.has(image.libraryId) ? ' class="anchor-start"' : '';
     const photo = image
-      ? `<figure class="meet-photo"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
+      ? `<figure class="meet-photo"><img${anchor} src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
       : `<figure class="meet-photo" role="img" aria-label="Portrait area for ${e(person.name)}"><span aria-hidden="true">${e(String(person.name).trim().charAt(0).toUpperCase())}</span></figure>`;
     const portraitNote = !ownImage && image && publishedPeople.length
       ? '<p class="flag">Illustrative portrait — not a photograph of this person</p>'
@@ -193,6 +205,7 @@ export function render(s, e) {
     const count = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
     return count ? `${'★'.repeat(count)}${'☆'.repeat(5 - count)}` : '';
   };
+  const reviewPortraits = reviewPortraitIds.map(id => pictures.find(image => image && image.libraryId === id)).filter(Boolean);
   const reviewItems = publishedReviews.length
     ? publishedReviews.map(review => ({
         name: review.name,
@@ -212,7 +225,7 @@ export function render(s, e) {
           flag: 'Illustrative layout — not a verified review',
           title: note.title,
           body: note.body,
-          photo: gallery[index] || null
+          photo: (s.demo && reviewPortraits[index]) || gallery[index] || null
         };
       });
   const reviewPicks = reviewItems.map((item, index) => `<button class="review-pick" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}"><strong>${e(item.name)}</strong><span${item.metaLabel ? ` class="stars" aria-label="${e(item.metaLabel)}"` : ''}>${e(item.meta)}</span></button>`).join('');
@@ -318,6 +331,68 @@ export function render(s, e) {
 ${reviewBoard}
 </div>
 </section>`;
+  const pricePacks = {
+    dental: [
+      { title: 'New patient visit', fee: '£75', includes: ['A consultation and a look at the teeth and gums', 'A discussion of what was found'], time: 'Duration: 45 minutes.' },
+      { title: 'Treatment visit', fee: '£55', includes: ['The care agreed for that visit', 'Advice on looking after the area afterwards'], time: 'Duration: 30 minutes.' }
+    ],
+    veterinary: [
+      { title: 'First appointment', fee: '£70', includes: ['A consultation', 'An examination and a discussion of what was found'], time: 'Duration: 45 minutes.' },
+      { title: 'Treatment', fee: '£40', includes: ['The care agreed for that visit', 'A note of what to watch for afterwards'], time: 'Duration: 20 minutes, or up to 40 minutes, depending on the treatment.' }
+    ]
+  };
+  const carePacks = [
+    { title: 'First appointment', fee: '£90', includes: ['A consultation with a chiropractor registered with the General Chiropractic Council', 'An examination, covering a health check and postural, functional, neurological and orthopaedic assessments', 'A discussion of the examination findings'], time: 'Duration: 60 minutes.' },
+    { title: 'Treatment', fee: '£45', includes: ['Physical and manual therapy chosen for the problem', 'A rehabilitation exercise programme'], time: 'Duration: 15 minutes, or up to 30 minutes, depending on the treatment.' }
+  ];
+  const packs = pricePacks[s.sector] || carePacks;
+  const sampleFees = ['£60', '£45', '£70', '£55', '£40', '£80', '£50'];
+  const feeNote = service => {
+    const blurb = serviceBlurbs[service.value];
+    if (!blurb) return `${service.value} is listed for this practice. This note does not describe a method or a result.`;
+    const sentence = blurb.match(/^.*?[.!?](?:\s|$)/);
+    return sentence ? sentence[0].trim() : blurb;
+  };
+  const feeItems = listed.map((service, index) => ({ name: service.value, fee: sampleFees[index % sampleFees.length], note: feeNote(service) }));
+  const publishedVisits = (!s.demo && Array.isArray(s.fees?.visits) ? s.fees.visits : [])
+    .filter(visit => visit && visit.title && visit.fee)
+    .slice(0, 2)
+    .map(visit => ({
+      title: String(visit.title),
+      fee: String(visit.fee),
+      includes: Array.isArray(visit.includes) ? visit.includes.map(item => String(item)).filter(Boolean).slice(0, 6) : [],
+      time: visit.time ? String(visit.time) : ''
+    }));
+  const visits = s.demo ? packs : publishedVisits;
+  const serviceFeeRows = s.demo
+    ? feeItems
+    : (Array.isArray(s.fees?.services) ? s.fees.services : []).filter(item => item && item.name && item.fee).map(item => ({
+        name: String(item.name),
+        fee: String(item.fee),
+        note: item.note ? String(item.note) : ''
+      }));
+  const feeIncludes = items => `<ul class="fee-includes">${items.map(item => `<li>${e(item)}</li>`).join('')}</ul>`;
+  const feeFolds = serviceFeeRows.map(item => `<details class="fee-fold" name="listed-fees"><summary><span>${e(item.name)}</span><strong>${e(item.fee)}</strong></summary>${item.note ? `<p>${e(item.note)}</p>` : ''}</details>`).join('');
+  const posterCards = visits.map(pack => {
+    const includes = pack.includes?.length ? `<p class="fee-k">Includes</p>${feeIncludes(pack.includes)}` : '';
+    const time = pack.time ? `<p class="fee-time">${e(pack.time)}</p>` : '';
+    return `<article class="fee-card"><span class="fee-gem"><strong>${e(pack.fee)}</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>${e(pack.title)}</h2>${includes}${time}<a class="button solid fee-book" href="#contact">Book Now</a></article>`;
+  }).join('');
+  const pricesFlag = s.demo ? 'Illustrative layout — not a published fee' : 'From the published website';
+  const pricesLede = s.demo
+    ? `These figures are examples, so the layout can be reviewed. They are not the fees for ${name}.`
+    : `Fees taken from the published website for ${name}. No amounts have been added.`;
+  const feeBoard = feeFolds ? `<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion">${feeFolds}</div></div>` : '';
+  const pricesPage = visits.length || feeFolds ? `<section id="prices" class="page prices-page">
+<div class="wrap">
+<p class="flag">${pricesFlag}</p>
+<p class="kicker">Prices</p>
+<h1>What a visit includes.</h1>
+<p class="lede">${pricesLede}</p>
+${posterCards ? `<div class="fee-pair">${posterCards}</div>` : ''}
+${feeBoard}
+</div>
+</section>` : '';
   const reviewsPage = `<section id="reviews" class="page">
 <div class="wrap page-intro">
 <div>
@@ -378,11 +453,13 @@ img{max-width:100%;display:block}
 body:has(#services:target) .site-header nav a[href="#services"],
 body:has(#team:target) .site-header nav a[href="#team"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
-body:has(#contact:target) .site-header nav a[href="#contact"]${serviceNavOn}{font-weight:700}
+body:has(#contact:target) .site-header nav a[href="#contact"],
+body:has(#prices:target) .site-header nav a[href="#prices"]${serviceNavOn}{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
 body:has(#team:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
-body:has(#contact:target) .site-header nav a[href="#home"]${serviceHomeOff}{font-weight:500}
+body:has(#contact:target) .site-header nav a[href="#home"],
+body:has(#prices:target) .site-header nav a[href="#home"]${serviceHomeOff}{font-weight:500}
 .has-menu{position:relative}
 .nav-chevron{display:block;transition:transform .2s ease}
 .has-menu:hover .nav-chevron,.has-menu:focus-within .nav-chevron{transform:rotate(180deg)}
@@ -422,6 +499,7 @@ body:not(:has(.page:target)) #home{display:block}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
+.hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
 .hero-card:nth-child(3){grid-column:auto;grid-row:auto}
@@ -510,6 +588,7 @@ ${serviceHover}
 .meet-slide:nth-child(3) .meet-photo{background:#dbe7fb}
 .meet-photo span{color:rgba(17,24,39,.28);font-size:128px;font-weight:500;letter-spacing:-.05em;line-height:1}
 .meet-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.meet-photo img.anchor-start{object-position:left top}
 .meet-card{display:flex;flex-direction:column;min-height:460px;padding:36px 32px 28px;border-radius:18px;background:#fff}
 .meet-card h3{font-size:28px;font-weight:600;letter-spacing:-.03em}
 .meet-role{margin:6px 0 28px;color:#666;font-size:16px}
@@ -569,7 +648,7 @@ ${serviceHover}
 .review-photo:nth-child(3){background:#e4e0d8}
 .review-photo:nth-child(4){background:#d9e3dc}
 .review-photo span{color:rgba(17,24,39,.28);font-size:120px;font-weight:500;letter-spacing:-.04em;line-height:1}
-.review-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.review-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .review-quote{padding:36px 32px;border-radius:16px;background:#fff}
 .review-quote h3{margin:0 0 22px;font-size:22px;font-weight:500}
 .review-quote p{color:#333;font-size:16px;line-height:1.55}
@@ -629,6 +708,29 @@ ${reviewSelect}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
 .services-page{padding-top:56px}
+.prices-page{padding-top:56px}
+.fee-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fee-card{position:relative;display:flex;flex-direction:column;min-height:420px;padding:36px 32px 112px;overflow:hidden;border-radius:28px;background:var(--pale)}
+.fee-gem{position:absolute;right:8%;top:16%;display:grid;place-items:center;width:132px;height:132px;border-radius:40px;background:#fff;color:#111;transform:rotate(-16deg)}
+.fee-gem strong{transform:rotate(16deg);font-size:26px;font-weight:600;letter-spacing:-.03em}
+.fee-gem-sm{right:auto;left:28px;top:auto;bottom:26px;width:48px;height:48px;border-radius:16px;background:#fff;transform:rotate(14deg)}
+.fee-card h2{position:relative;z-index:1;max-width:8em;margin:0 0 22px;font-size:clamp(32px,3vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
+.fee-k{position:relative;z-index:1;margin:0 0 8px;color:#333;font-size:13px;font-weight:600;letter-spacing:.04em}
+.fee-includes{position:relative;z-index:1;margin:0;padding:0 calc(8% + 148px) 0 0;list-style:none}
+.fee-includes li{padding:10px 0;border-top:1px solid rgba(0,0,0,.12);font-size:16px;line-height:1.45}
+.fee-time{position:absolute;z-index:1;left:32px;right:168px;bottom:26px;display:flex;align-items:center;min-height:48px;margin:0;padding-left:84px;font-size:15px;font-weight:600;line-height:1.35}
+.fee-book{position:absolute;z-index:1;right:28px;bottom:28px}
+.fee-board{margin-top:56px}
+.fee-board h2{margin:0 0 8px;font-size:28px;font-weight:600;letter-spacing:-.03em}
+.fee-fold{border-bottom:1px solid rgba(0,0,0,.12)}
+.fee-fold summary{display:flex;align-items:center;gap:16px;min-height:58px;padding:14px 0;color:#000;font-size:18px;font-weight:500;line-height:1.3;cursor:pointer;list-style:none}
+.fee-fold summary::-webkit-details-marker{display:none}
+.fee-fold summary::marker{content:""}
+.fee-fold summary span{flex:1;min-width:0}
+.fee-fold summary strong{flex:none;font-weight:600;letter-spacing:-.02em}
+.fee-fold summary:after{content:"+";flex:none;width:1.2em;font-weight:400;text-align:center}
+.fee-fold[open] summary:after{content:"–"}
+.fee-fold p{max-width:40em;margin:0 0 18px;color:#333;font-size:16px;line-height:1.5}
 .services-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);gap:28px 48px;align-items:end}
 .services-intro .lede{margin:0}
 .offer-board{position:relative;display:grid;grid-template-columns:minmax(240px,.78fr) minmax(0,1.22fr);gap:22px;align-items:stretch;margin-top:42px}
@@ -708,13 +810,15 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .menu-button{justify-self:end}
   .nav-rule,.nav-phone,.header-cta{display:none}
   .site-header nav{position:absolute;left:16px;right:16px;top:68px}
-  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;padding:12px;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:6px;overflow:auto;overscroll-behavior:contain;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
-  .site-header nav .button{display:inline-flex}
+  .site-header nav a{min-height:36px;padding:0 10px;font-size:15px}
+  .site-header .menu-panel a{min-height:32px;padding:2px 10px;font-size:14px}
+  .site-header nav .button{display:inline-flex;min-height:36px;padding:8px 14px}
   .menu-button{display:inline-flex}
   .has-menu{display:flex;flex-direction:column;align-items:stretch}
   .nav-chevron{display:none}
-  .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 8px 12px;border-radius:0;background:transparent;box-shadow:none}
+  .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
   .services-intro,.offer-board,.service-poster,.team-intro,.team-board,.person{grid-template-columns:1fr}
   .team-rail{position:sticky;top:88px;height:64px}
@@ -775,6 +879,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
+  .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .hero-cards::-webkit-scrollbar{display:none}
@@ -782,6 +887,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .wide-media{min-height:220px}
   .side-media{min-height:220px}
   .section,.statement{padding:56px 0}
+  #home>.section:has(.service-accordion){padding-bottom:120px}
   .statement{padding-bottom:88px}
   .button{width:auto}
   .meet-book{width:100%}
@@ -798,7 +904,8 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .review-photo span{font-size:22px}
   .review-quote{position:relative;inset:auto;display:flex;flex-direction:column;height:0;margin:0;padding:0;overflow:hidden;border-radius:0;background:transparent;opacity:0;visibility:hidden;transform:none}
   ${reviewMobile}
-  .review-quote h3{order:1;margin:0 0 4px 68px;font-size:18px;font-weight:600;line-height:1.2}
+  .review-quote h3{order:1;display:flex;align-items:center;min-height:52px;margin:0 0 16px 68px;font-size:18px;font-weight:600;line-height:1.2}
+  .review-quote h3:has(+ .review-stars){min-height:0;align-items:flex-start;margin-bottom:4px}
   .review-quote .review-stars{order:2;display:block;margin:0 0 18px 68px;color:#111;font-size:13px;letter-spacing:.14em;line-height:1}
   .review-quote>p:last-child{order:3;margin:0}
   .review-quote .flag{order:4;display:flex;align-items:center;min-height:42px;margin:18px 0 0;padding-right:104px}
@@ -817,8 +924,20 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   #reviews .page-intro{flex-direction:column;align-items:flex-start;gap:18px}
   #reviews .page-intro .button{margin-bottom:0}
   #reviews > .section.reviews{padding-top:28px}
+  .fee-pair{grid-template-columns:1fr}
+  .fee-card{min-height:0;padding:20px 18px 80px 20px}
+  .fee-card .fee-gem{top:20px;right:16px;width:84px;height:84px;border-radius:26px}
+  .fee-card .fee-gem strong{font-size:22px}
+  .fee-card .fee-gem-sm{left:20px;right:auto;top:auto;bottom:20px;width:40px;height:40px;border-radius:14px}
+  .fee-card h2{display:flex;align-items:center;max-width:none;min-height:84px;margin:0 100px 18px 0}
+  .fee-includes,.fee-time{padding-right:0;padding-left:0}
+  .fee-time{position:relative;left:auto;right:auto;bottom:auto;display:block;min-height:0;margin-top:18px}
+  .fee-book{right:16px;bottom:16px}
   .footer-index{grid-template-columns:1fr}
   .footer-index a:nth-child(2){padding-top:18px}
+}
+@media (max-width:980px){
+  .fee-pair{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   h1{font-size:40px;line-height:1.12}
@@ -843,6 +962,7 @@ ${phoneText}
 <li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>${serviceMenu ? `<div class="menu-panel">${serviceMenu}</div>` : ''}</li>
 <li><a href="#team">Team</a></li>
 <li><a href="#reviews">Reviews</a></li>
+${pricesPage ? '<li><a href="#prices">Prices</a></li>' : ''}
 <li><a href="#contact">Contact</a></li>
 <li><a class="button" href="#contact">Book Now</a></li>
 </ul>
@@ -970,6 +1090,7 @@ ${sideMedia}
 </div>
 </section>
 ${reviewsPage}
+${pricesPage}
 </main>
 <footer class="site-footer">
 <div class="wrap">
@@ -994,6 +1115,7 @@ ${reviewsPage}
 <a href="#team"><span>03</span> Team</a>
 <a href="#reviews"><span>04</span> Reviews</a>
 <a href="#contact"><span>05</span> Contact</a>
+${pricesPage ? '<a href="#prices"><span>06</span> Prices</a>' : ''}
 </nav>
 <div class="footer-visit">
 ${b.address ? `<p>${e(b.address.value)}</p>` : ''}

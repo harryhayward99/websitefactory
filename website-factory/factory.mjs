@@ -15,6 +15,7 @@ const fail = message => { throw new Error(message); };
 const landingImageIds = { physiotherapy: 'physio-landing-treatment', chiropractic: 'chiro-landing-treatment', dental: 'dental-landing-treatment', veterinary: 'veterinary-landing-treatment' };
 const defaultBookingId = 'care-book-portrait';
 const defaultReviewId = 'care-review-photo';
+const reviewPortraitIds = ['care-review-arm', 'care-review-ball', 'care-review-shoulder'];
 const portraitSectors = new Set(['dental', 'physiotherapy', 'chiropractic', 'veterinary']);
 const defaultPortraitId = 'care-portrait-placeholder';
 const defaultServiceId = 'care-service-tile';
@@ -56,6 +57,14 @@ export function withDefaultReviewImage(site) {
   return withDefaultExtraImage(site, defaultReviewId, 'review', 'defaultReviewImage');
 }
 
+export function withDefaultReviewPortraits(site) {
+  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultReviewPortraits === false) return site;
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const missing = reviewPortraitIds.filter(id => !selections.includes(id));
+  if (!missing.length) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, ...missing] } };
+}
+
 export function withDefaultPortrait(site) {
   const id = defaultPortraitImage(site?.sector);
   if (!id || !site?.assets || site.assets.defaultPortrait === false) return site;
@@ -72,6 +81,15 @@ export function withDefaultServiceImage(site) {
   const images = Array.isArray(site.assets.images) ? site.assets.images : [];
   if (selections.includes(id) || images.some(image => image && image.placement === 'service')) return site;
   return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
+
+export function withDefaultPersonImages(site) {
+  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultPersonImages === false) return site;
+  const wanted = [...new Set((Array.isArray(site.examplePeople) ? site.examplePeople : []).map(person => person && person.imageId).filter(Boolean))];
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  const missing = wanted.filter(id => !selections.includes(id));
+  if (!missing.length) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, ...missing] } };
 }
 
 export const sheetStatus = {
@@ -139,6 +157,18 @@ export function validateSite(site, templates, { allowDraft = false, instructions
   if (site.business.website && !/^https:\/\//.test(site.business.website.value)) fail('Official website must use HTTPS');
   if (!Array.isArray(site.business.services)) fail('Services must be a list');
   site.business.services.forEach(value => fact(value, true));
+  if (site.fees != null) {
+    if (site.demo) fail('Sample fees stay in the template, not the site record');
+    const visitList = Array.isArray(site.fees.visits) ? site.fees.visits : [];
+    const serviceList = Array.isArray(site.fees.services) ? site.fees.services : [];
+    if (!visitList.length && !serviceList.length) fail('Published fees need a visit or a service price');
+    for (const visit of visitList) {
+      if (!visit?.title || !visit.fee || !ids.has(visit.sourceId)) fail('Published fees need a title, a fee and a valid sourceId');
+    }
+    for (const item of serviceList) {
+      if (!item?.name || !item.fee || !ids.has(item.sourceId)) fail('Published fees need a name, a fee and a valid sourceId');
+    }
+  }
   if (!site.copy || !site.copy.headline || !site.copy.introduction) fail('Editorial headline and introduction required');
   if (site.contentReviewed !== true) fail('Agent must review copy against sources and record contentReviewed');
   if (!Array.isArray(site.exampleSections)) fail('Example sections must be an explicit list');
@@ -173,7 +203,7 @@ export function assessSite(site, templates, options = {}) {
     let code = 'ERROR';
     if (/approved template|does not support this sector|missing or ambiguous/.test(message)) code = 'NEEDS_TEMPLATE_REVIEW';
     else if (/fresh approval/.test(message)) code = 'NEEDS_FRESH_APPROVAL';
-    else if (/sources need HTTPS|Business facts|contentReviewed|Official website|Sources must/.test(message)) code = 'RESEARCH_INCOMPLETE';
+    else if (/sources need HTTPS|Business facts|contentReviewed|Official website|Sources must|Published fees/.test(message)) code = 'RESEARCH_INCOMPLETE';
     return { ok: false, code, sheetStatus: sheetStatus[code], message };
   }
 }
@@ -235,7 +265,8 @@ export async function materialiseLibraryImages(site, manifestAssets, paths) {
         ...(Array.isArray(entry.tags) && entry.tags.includes('booking') ? { placement: 'booking' } : {}),
         ...(Array.isArray(entry.tags) && entry.tags.includes('portrait') && !entry.tags.includes('booking') ? { placement: 'portrait' } : {}),
         ...(Array.isArray(entry.tags) && entry.tags.includes('service') ? { placement: 'service' } : {}),
-        ...(Array.isArray(entry.tags) && entry.tags.includes('review') ? { placement: 'review' } : {})
+        ...(Array.isArray(entry.tags) && entry.tags.includes('review') ? { placement: 'review' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('person') ? { placement: 'person' } : {})
       };
     const previous = images.findIndex(image => image.libraryId === id);
     if (previous < 0) images.push(image); else images[previous] = image;
@@ -348,7 +379,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(await instructionsVersion());
   } else {
     const slug = args.find(arg => !arg.startsWith('--'));
-    const site = withDefaultReviewImage(withDefaultBookingImage(withDefaultServiceImage(withDefaultPortrait(withDefaultLandingImage(await loadSite(slug))))));
+    const site = withDefaultReviewPortraits(withDefaultPersonImages(withDefaultReviewImage(withDefaultBookingImage(withDefaultServiceImage(withDefaultPortrait(withDefaultLandingImage(await loadSite(slug))))))));
     const result = await generatePreview(site);
     if (result.code === 'PREVIEW_READY') await publishIndex();
     const output = {

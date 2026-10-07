@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {catalogue,loadSite,validateSite,renderSite,assessSite,shouldLaunchBuild,materialiseLibraryImages,generatePreview,instructionsVersion,defaultLandingImage,withDefaultLandingImage,defaultPortraitImage,withDefaultPortrait,defaultServiceImage,withDefaultServiceImage,root} from './factory.mjs';
+import {catalogue,loadSite,validateSite,renderSite,assessSite,shouldLaunchBuild,materialiseLibraryImages,generatePreview,instructionsVersion,defaultLandingImage,withDefaultLandingImage,defaultPortraitImage,withDefaultPortrait,defaultServiceImage,withDefaultServiceImage,withDefaultPersonImages,withDefaultReviewPortraits,root} from './factory.mjs';
 const templates = await catalogue();
 const example = await loadSite('fictional-clinic');
 const pixel = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==','base64');
@@ -122,7 +122,9 @@ test('care-modern follows the brand colour and has no cart',async()=>{
   const html=await renderSite(site,{allowDraft:true});
   assert.match(html,/noindex/);assert.match(html,/FICTIONAL DEMO/);
   assert.match(html,/#2f6fed/i);assert.match(html,/Northshore Example Care/);
-  assert.match(html,/id="services"/);assert.match(html,/id="team"/);assert.match(html,/id="contact"/);
+  assert.match(html,/id="services"/);assert.match(html,/id="team"/);assert.match(html,/id="contact"/);assert.match(html,/id="prices"/);
+  assert.match(html,/First appointment/);assert.match(html,/fee-gem"><strong>£90<\/strong>/);assert.match(html,/class="button solid fee-book" href="#contact">Book Now<\/a>/);assert.match(html,/class="fee-fold"/);assert.match(html,/<summary><span>Physiotherapy<\/span><strong>£60<\/strong><\/summary>/);
+  assert.doesNotMatch(html,/Option 3/);
   assert.match(html,/maps\.google\.com\/maps\?q=/);assert.match(html,/Jordan Example/);
   assert.match(html,/grid-template-columns:minmax\(180px,\.42fr\) minmax\(0,1\.58fr\)/);
   assert.match(html,/team-fall/);
@@ -159,6 +161,8 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.match(html,/<span class="footer-pill">Harbour Example Dental<\/span>/);
   assert.doesNotMatch(html,/<img class="footer-logo"/);
   for (const name of ['Cosmetic','Oral Hygiene','Emergency','Family','DenPlan']) assert.match(html,new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+  assert.match(html,/New patient visit/);
+  assert.doesNotMatch(html,/Doctor of Chiropractic/);
   assert.doesNotMatch(html,/Physiotherapy|Movement assessment|Sports rehabilitation|Exercise rehabilitation|How you move/);
   assert.match(html,/does not confirm a membership/);
 });
@@ -203,6 +207,22 @@ test('a real clinic preview uses published facts and omits sample results',async
   assert.match(html,/Google review · 16 January 2025/);
   assert.match(html,/<strong>Hannah<\/strong><span class="stars" aria-label="5 stars">★★★★★<\/span>/);
   assert.match(html,/Nothing here is from a live account/);
+  assert.doesNotMatch(html,/id="prices"/);
+  assert.doesNotMatch(html,/not a published fee/);
+  const priced = structuredClone(site);
+  priced.fees = {
+    visits: [{ title: 'Initial visit', fee: '£65', includes: ['A consultation'], time: 'Duration: 40 minutes.', sourceId: 'homepage' }],
+    services: [{ name: 'Osteopathy', fee: '£48', note: 'Listed on the fees page.', sourceId: 'homepage' }]
+  };
+  const pricedHtml = await renderSite(priced, { instructionsVersion: version });
+  assert.match(pricedHtml, /id="prices"/);
+  assert.match(pricedHtml, /From the published website/);
+  assert.match(pricedHtml, /Initial visit/);
+  assert.match(pricedHtml, /fee-gem"><strong>£65<\/strong>/);
+  assert.match(pricedHtml, /<summary><span>Osteopathy<\/span><strong>£48<\/strong><\/summary>/);
+  assert.match(pricedHtml, /class="button solid fee-book" href="#contact">Book Now<\/a>/);
+  assert.doesNotMatch(pricedHtml, /not a published fee/);
+  assert.doesNotMatch(pricedHtml, /£90/);
   assert.doesNotMatch(html,/not a verified review/);
   assert.match(html,/Names taken from the official website/);
   const pictured=structuredClone(site);
@@ -253,6 +273,12 @@ test('physiotherapy and chiropractic default to the landing treatment photograph
   }
   const well=await loadSite('fictional-well');
   assert.deepEqual(well.assets.librarySelections,['physio-landing-treatment','care-portrait-placeholder','care-service-tile']);
+  const pinned=structuredClone(well);
+  pinned.assets.images=[{path:'/factory-assets/clients/fictional-well/landing-treatment.png',alt:'Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'physio-landing-treatment',placement:'landing'}];
+  const pinnedHtml=await renderSite(pinned,{allowDraft:true});
+  assert.match(pinnedHtml,/<figure class="hero-media"><img class="anchor-top-right" src="\/factory-assets\/clients\/fictional-well\/landing-treatment.png"/);
+  assert.match(pinnedHtml,/\.hero-media img\.anchor-top-right\{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc\(800px \* 2 \/ 3\)\}/);
+  assert.match(pinnedHtml,/\.hero-media img\.anchor-top-right\{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none\}/);
 });
 test('medical care sites use the shared portrait placeholder unless one is already chosen',async()=>{
   assert.equal(defaultPortraitImage('dental'),'care-portrait-placeholder');
@@ -275,6 +301,79 @@ test('medical care sites use the shared portrait placeholder unless one is alrea
   assert.equal(entry.illustrative,true);
   assert.ok(entry.tags.includes('portrait'));
   await fs.access(path.join(root,entry.file));
+});
+test('Riley Example uses the supplied treatment photograph on demo cards',async()=>{
+  const demo=await loadSite('fictional-well');
+  const selected=withDefaultPersonImages(demo);
+  assert.ok(selected.assets.librarySelections.includes('care-riley-example'));
+  assert.ok(selected.assets.librarySelections.includes('care-jordan-example'));
+  assert.ok(selected.assets.librarySelections.includes('care-sam-example'));
+  const real=await loadSite('broad-oaks-health-clinic');
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-riley-example'),false);
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-jordan-example'),false);
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-sam-example'),false);
+  const manifest=JSON.parse(await fs.readFile(path.join(root,'images','manifest.json'),'utf8'));
+  const entry=manifest.assets.find(asset=>asset.id==='care-riley-example');
+  assert.equal(entry.category,'general');
+  assert.equal(entry.status,'approved');
+  assert.equal(entry.illustrative,true);
+  await fs.access(path.join(root,entry.file));
+  const jordan=manifest.assets.find(asset=>asset.id==='care-jordan-example');
+  assert.equal(jordan.category,'general');
+  assert.equal(jordan.status,'approved');
+  assert.equal(jordan.illustrative,true);
+  await fs.access(path.join(root,jordan.file));
+  const sam=manifest.assets.find(asset=>asset.id==='care-sam-example');
+  assert.equal(sam.category,'general');
+  assert.equal(sam.status,'approved');
+  assert.equal(sam.illustrative,true);
+  await fs.access(path.join(root,sam.file));
+  const site=structuredClone(demo);
+  site.assets.images=[
+    {path:'/factory-assets/clients/fictional-well/jordan-example.png',alt:'Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-jordan-example',placement:'person'},
+    {path:'/factory-assets/clients/fictional-well/sam-example.png',alt:'Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-sam-example',placement:'person'},
+    {path:'/factory-assets/clients/fictional-well/riley-example.png',alt:'Illustrative treatment. Not a photograph of Riley Example or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-riley-example',placement:'person'}
+  ];
+  const html=await renderSite(site,{allowDraft:true,instructionsVersion:await instructionsVersion()});
+  assert.match(html,/<figure class="meet-photo"><img class="anchor-start" src="\/factory-assets\/clients\/fictional-well\/jordan-example.png"[\s\S]{0,500}<h3>Jordan Example<\/h3>/);
+  assert.match(html,/<figure class="thumb"><img src="\/factory-assets\/clients\/fictional-well\/jordan-example.png"[\s\S]{0,400}<h2>Jordan Example<\/h2>/);
+  assert.match(html,/<figure class="meet-photo"><img class="anchor-start" src="\/factory-assets\/clients\/fictional-well\/sam-example.png"[\s\S]{0,500}<h3>Sam Example<\/h3>/);
+  assert.match(html,/<figure class="thumb"><img src="\/factory-assets\/clients\/fictional-well\/sam-example.png"[\s\S]{0,400}<h2>Sam Example<\/h2>/);
+  assert.match(html,/<figure class="meet-photo"><img class="anchor-start" src="\/factory-assets\/clients\/fictional-well\/riley-example.png"[\s\S]{0,500}<h3>Riley Example<\/h3>/);
+  assert.match(html,/\.meet-photo img\.anchor-start\{object-position:left top\}/);
+  assert.match(html,/<figure class="thumb"><img src="\/factory-assets\/clients\/fictional-well\/riley-example.png"[\s\S]{0,400}<h2>Riley Example<\/h2>/);
+  assert.doesNotMatch(html,/riley-example\.png[\s\S]{0,400}<h3>Jordan Example<\/h3>/);
+  assert.doesNotMatch(html,/jordan-example\.png[\s\S]{0,400}<h3>Riley Example<\/h3>/);
+});
+test('demo review cards use three illustrative treatment photographs',async()=>{
+  const manifest=JSON.parse(await fs.readFile(path.join(root,'images','manifest.json'),'utf8'));
+  for (const id of ['care-review-arm','care-review-ball','care-review-shoulder']) {
+    const entry=manifest.assets.find(asset=>asset.id===id);
+    assert.equal(entry.category,'general');
+    assert.equal(entry.status,'approved');
+    assert.equal(entry.illustrative,true);
+    await fs.access(path.join(root,entry.file));
+  }
+  const stored=await loadSite('fictional-well');
+  const prepared=withDefaultReviewPortraits(stored);
+  assert.ok(prepared.assets.librarySelections.includes('care-review-arm'));
+  assert.ok(prepared.assets.librarySelections.includes('care-review-ball'));
+  assert.ok(prepared.assets.librarySelections.includes('care-review-shoulder'));
+  const real=structuredClone(stored);real.demo=false;
+  assert.deepEqual(withDefaultReviewPortraits(real).assets.librarySelections,stored.assets.librarySelections);
+  const site=structuredClone(stored);
+  site.assets.images=[
+    {path:'/factory-assets/clients/fictional-well/book-portrait.png',alt:'Illustrative portrait. Not a photograph of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-book-portrait',placement:'booking'},
+    {path:'/factory-assets/clients/fictional-well/review-arm.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-arm'},
+    {path:'/factory-assets/clients/fictional-well/review-ball.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-ball'},
+    {path:'/factory-assets/clients/fictional-well/review-shoulder.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-shoulder'}
+  ];
+  const html=await renderSite(site,{allowDraft:true});
+  const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
+  assert.ok(photos);
+  assert.match(photos[1],/review-arm\.png[\s\S]*review-ball\.png[\s\S]*review-shoulder\.png/);
+  assert.doesNotMatch(photos[1],/book-portrait/);
+  assert.match(html,/<figure class="book-portrait"><img src="\/factory-assets\/clients\/fictional-well\/book-portrait.png"/);
 });
 test('care sites use the shared service photograph unless one is already chosen',async()=>{
   assert.equal(defaultServiceImage('dental'),'care-service-tile');
