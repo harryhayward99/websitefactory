@@ -51,7 +51,7 @@ export function render(s, e) {
   ].map(person => person && person.imageId).filter(Boolean));
   const reviewPortraitIds = ['care-review-arm', 'care-review-ball', 'care-review-shoulder'];
   const reviewPortraitSet = new Set(reviewPortraitIds);
-  const gallery = pictures.filter(image => image && image.placement !== 'landing' && image.placement !== 'portrait' && image.placement !== 'service' && image.placement !== 'person' && !reservedIds.has(image.libraryId) && !reviewPortraitSet.has(image.libraryId));
+  const gallery = pictures.filter(image => image && image.placement !== 'landing' && image.placement !== 'portrait' && image.placement !== 'service' && image.placement !== 'person' && image.placement !== 'about' && !reservedIds.has(image.libraryId) && !reviewPortraitSet.has(image.libraryId));
   const frame = (image, caption, className) => image
     ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
     : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
@@ -272,9 +272,13 @@ export function render(s, e) {
   const hoursNote = s.demo
     ? 'Hours listed for this concept. No extra days have been added.'
     : extraHours || 'Hours published by the clinic. No extra days have been added.';
-  const teamLede = publishedPeople.length
-    ? 'Names and roles are taken from the published practitioners page.'
-    : 'Each portrait sits beside the person’s detail. Sample cards are layout only and are not staff.';
+  const aboutSummary = s.demo
+    ? `${name} is a sample practice${location ? ` in ${location}` : ''}. This is a short layout summary, not a description of a real clinic.`
+    : e(s.copy?.introduction || '');
+  const aboutImage = pictures.find(image => image && image.libraryId === 'care-about-exterior');
+  const aboutPhoto = aboutImage
+    ? `<figure class="about-photo"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
+    : '';
   const demoStats = `<div class="stat-board" data-stat="patients">
 <div class="rails">
 <button class="rail rail-patients" type="button" data-stat="patients"><span>2000+ happy patients</span></button>
@@ -385,9 +389,9 @@ ${reviewBoard}
   const feeBoard = feeFolds ? `<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion">${feeFolds}</div></div>` : '';
   const pricesPage = visits.length || feeFolds ? `<section id="prices" class="page prices-page">
 <div class="wrap">
-<p class="flag">${pricesFlag}</p>
-<p class="kicker">Prices</p>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
 <h1>What a visit includes.</h1>
+<p class="flag">${pricesFlag}</p>
 <p class="lede">${pricesLede}</p>
 ${posterCards ? `<div class="fee-pair">${posterCards}</div>` : ''}
 ${feeBoard}
@@ -451,12 +455,12 @@ img{max-width:100%;display:block}
 .site-header nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:#000;font-size:16px;font-weight:500;text-decoration:none}
 .site-header nav a[href="#home"],
 body:has(#services:target) .site-header nav a[href="#services"],
-body:has(#team:target) .site-header nav a[href="#team"],
+body:has(#about:target) .site-header nav a[href="#about"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
 body:has(#contact:target) .site-header nav a[href="#contact"],
 body:has(#prices:target) .site-header nav a[href="#prices"]${serviceNavOn}{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
-body:has(#team:target) .site-header nav a[href="#home"],
+body:has(#about:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
 body:has(#contact:target) .site-header nav a[href="#home"],
 body:has(#prices:target) .site-header nav a[href="#home"]${serviceHomeOff}{font-weight:500}
@@ -481,6 +485,8 @@ ${menuCurrent}
 .page{display:none;padding:8px 0 80px}
 .page:target{display:block}
 body:not(:has(.page:target)) #home{display:block}
+body:has(#meet-team:target) #about{display:block}
+body:has(#meet-team:target) #home{display:none}
 #home{padding-top:0;padding-bottom:0}
 .landing{display:block}
 .landing>.hero-head{margin-top:0;margin-bottom:0}
@@ -680,11 +686,23 @@ ${reviewSelect}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.team-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);gap:28px 48px;align-items:end}
-.team-intro .lede{margin:0}
-.team-board{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "copy team";column-gap:48px;row-gap:18px;align-items:start}
+.about-copy{grid-area:copy}
+.about-copy h1{margin:0 0 18px}
+.about-summary .lede{margin:0 0 22px}
+.about-next{display:inline-flex;align-items:center;gap:8px;margin:0;padding:0;background:none;color:#111;font:600 16px/1.4 Manrope,"Segoe UI",sans-serif;text-decoration:none}
+.about-next span{text-decoration:underline;text-underline-offset:4px}
+.about-next svg{flex:none}
+.about-next:hover{color:#111}
+#meet-team{scroll-margin-top:96px}
+.about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.about-team{grid-area:team;margin:0}
+.about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
+.team-board{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
 .team-rail{position:sticky;top:120px;height:min(520px,calc(100vh - 180px))}
-.team-fall{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:18px;background:#111;transform:translateY(12px) rotate(-14deg);transition:transform .55s cubic-bezier(.22,.8,.28,1),background .35s ease,border-radius .35s ease}
+.team-rail,.team-fall{pointer-events:none}
+.team-fall{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:18px;background:#111;transform:translateY(12px) rotate(-14deg);transition:transform .55s cubic-bezier(.22,.8,.28,1),background .35s ease,border-radius .35s ease,opacity .2s ease}
 .team-board[data-person="1"] .team-fall{border-radius:50%;background:var(--pale)}
 .team-board[data-person="2"] .team-fall{border-radius:16px;background:#f3ead2}
 .team-board[data-person="3"] .team-fall{border-radius:50% 18px;background:#111}
@@ -702,8 +720,8 @@ ${reviewSelect}
 .person-card .role{margin:8px 0 16px;color:#333;font-size:16px;font-weight:500;letter-spacing:0;text-transform:none}
 .person-card p:last-child{max-width:36em;color:#333}
 .role{margin:4px 0 8px;color:#000;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-#contact{padding-top:96px}
-#contact .page-intro h1{max-width:none;text-align:center}
+#contact{padding-top:56px}
+#contact .page-intro h1{max-width:none;text-align:left}
 #contact .info-card{text-align:center}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
@@ -809,23 +827,33 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .site-header{grid-template-columns:1fr auto;min-height:68px;padding:0 16px}
   .menu-button{justify-self:end}
   .nav-rule,.nav-phone,.header-cta{display:none}
-  .site-header nav{position:absolute;left:16px;right:16px;top:68px}
-  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:6px;overflow:auto;overscroll-behavior:contain;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+  .site-header nav{position:absolute;left:auto;right:16px;top:68px;width:max-content;max-width:calc(100% - 32px)}
+  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
-  .site-header nav a{min-height:36px;padding:0 10px;font-size:15px}
-  .site-header .menu-panel a{min-height:32px;padding:2px 10px;font-size:14px}
-  .site-header nav .button{display:inline-flex;min-height:36px;padding:8px 14px}
+  .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
+  .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
+  .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:flex-start;min-height:40px;margin-top:10px;padding:10px 4px}
   .menu-button{display:inline-flex}
   .has-menu{display:flex;flex-direction:column;align-items:stretch}
   .nav-chevron{display:none}
   .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
-  .services-intro,.offer-board,.service-poster,.team-intro,.team-board,.person{grid-template-columns:1fr}
-  .team-rail{position:sticky;top:88px;height:64px}
-  .team-fall{width:40px;height:40px}
+  .services-intro,.offer-board,.service-poster,.about-summary,.team-board,.person{grid-template-columns:1fr}
+  .about-summary{grid-template-areas:"copy" "photo" "team";row-gap:22px}
+  .about-copy h1{margin-bottom:16px}
+  .about-summary .lede{margin-bottom:18px}
+  .about-photo{width:100%;height:auto;aspect-ratio:3/2;border-radius:22px}
+  .about-team{margin:18px 0 0}
+  .team-board{display:block;margin-top:40px}
+  .team-rail{position:absolute;top:0;left:0;width:0;height:0;overflow:visible}
+  .team-fall,.team-board[data-person="1"] .team-fall,.team-board[data-person="2"] .team-fall,.team-board[data-person="3"] .team-fall{width:30px;height:30px;border-radius:11px;background:#111;opacity:0;transition:opacity .12s ease}
+  .team-fall.is-on-card,.team-board[data-person="1"] .team-fall.is-on-card,.team-board[data-person="2"] .team-fall.is-on-card,.team-board[data-person="3"] .team-fall.is-on-card{background:#111;opacity:1;transition:none}
+  .services-page,.team-page,.prices-page{padding-top:32px}
+  .person{display:flex;flex-direction:column}
+  .person-card{order:-1}
   .thumb,.person-card{min-height:0}
   .thumb{min-height:220px}
-  .person-card{padding:24px 20px}
+  .person-card{--card-pad-x:20px;--card-pad-y:24px;padding:var(--card-pad-y) var(--card-pad-x) var(--card-pad-y) 70px}
   .offer-board{display:flex;flex-direction:column;gap:10px}
   .offer-stage{display:none}
   .offer-fold:not([open])>.offer-panel{display:none}
@@ -960,7 +988,7 @@ ${phoneText}
 <ul>
 <li><a href="#home">Home</a></li>
 <li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>${serviceMenu ? `<div class="menu-panel">${serviceMenu}</div>` : ''}</li>
-<li><a href="#team">Team</a></li>
+<li><a href="#about">About</a></li>
 <li><a href="#reviews">Reviews</a></li>
 ${pricesPage ? '<li><a href="#prices">Prices</a></li>' : ''}
 <li><a href="#contact">Contact</a></li>
@@ -1051,7 +1079,7 @@ ${reviewBand}
 <section id="services" class="page services-page">
 <div class="wrap services-intro">
 <div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Services</p>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
 <h1>What is listed.</h1>
 </div>
 <p class="lede">${servicesNote}</p>
@@ -1059,19 +1087,23 @@ ${reviewBand}
 ${listed.length ? `<div class="wrap offer-board"><div class="offer-list">${offerItems}</div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>` : '<div class="wrap"><p class="pending">Service details awaiting confirmation.</p></div>'}
 </section>
 ${servicePages}
-<section id="team" class="page team-page">
-<div class="wrap team-intro">
-<div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Team</p>
-<h1>People at ${name}.</h1>
+<section id="about" class="page team-page">
+<div class="wrap about-summary">
+<div class="about-copy">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
+<h1>${name}</h1>
+<p class="lede">${aboutSummary}</p>
+<a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
-<p class="lede">${teamLede}</p>
+${aboutPhoto}
+<p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
 ${people.length ? `<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people">${personCards}</div></div>` : '<div class="wrap"><p class="pending">No individual team members were published, so none are shown here.</p></div>'}
 </section>
 <section id="contact" class="page">
 <div class="wrap page-intro">
-<h1>Contact ${name}.</h1>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
+<h1>${name}.</h1>
 <div class="info-grid">${info}</div>
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
@@ -1112,7 +1144,7 @@ ${pricesPage}
 <nav class="footer-index" aria-label="Pages">
 <a href="#home"><span>01</span> Home</a>
 <a href="#services"><span>02</span> Services</a>
-<a href="#team"><span>03</span> Team</a>
+<a href="#about"><span>03</span> About</a>
 <a href="#reviews"><span>04</span> Reviews</a>
 <a href="#contact"><span>05</span> Contact</a>
 ${pricesPage ? '<a href="#prices"><span>06</span> Prices</a>' : ''}
@@ -1226,10 +1258,49 @@ document.querySelectorAll('.team-board').forEach(board => {
       if (dist < best) { best = dist; active = index; }
     });
     const cardBox = cards[active].getBoundingClientRect();
-    const y = Math.min(Math.max(8, cardBox.top - railBox.top + 18), Math.max(8, railBox.height - 68));
-    fall.style.transform = 'translateY(' + y + 'px) rotate(' + turns[active % turns.length] + 'deg)';
+    const narrow = window.matchMedia('(max-width:800px)').matches;
+    let shift = 'translateY(' + Math.min(Math.max(8, cardBox.top - railBox.top + 18), Math.max(8, railBox.height - 68)) + 'px)';
+    let showOnCard = false;
+    if (narrow) {
+      const textCards = cards.map(card => card.querySelector('.person-card'));
+      const sample = textCards[0];
+      const padX = parseFloat(getComputedStyle(sample).getPropertyValue('--card-pad-x')) || 20;
+      const padY = parseFloat(getComputedStyle(sample).getPropertyValue('--card-pad-y')) || 24;
+      const size = fall.offsetHeight || 30;
+      const line = window.innerHeight * 0.38;
+      let chosen = -1;
+      let y = 0;
+      let passed = false;
+      let park = null;
+      for (let i = 0; i < textCards.length; i++) {
+        const box = textCards[i].getBoundingClientRect();
+        const minY = box.top + padY;
+        const maxY = Math.max(minY, box.bottom - padY - size);
+        if (line < minY) {
+          if (!passed) { chosen = i; y = minY; }
+          break;
+        }
+        if (line <= maxY) { chosen = i; y = line; break; }
+        park = { index: i, y: maxY };
+        passed = true;
+      }
+      if (chosen >= 0) {
+        active = chosen;
+        showOnCard = true;
+        const textBox = textCards[chosen].getBoundingClientRect();
+        shift = 'translate(' + (textBox.left - railBox.left + padX) + 'px,' + (y - railBox.top) + 'px)';
+      } else if (park) {
+        active = park.index;
+        const textBox = textCards[park.index].getBoundingClientRect();
+        shift = 'translate(' + (textBox.left - railBox.left + padX) + 'px,' + (park.y - railBox.top) + 'px)';
+        fall.style.transform = shift + ' rotate(' + turns[active % turns.length] + 'deg)';
+      }
+    }
+    if (!narrow || showOnCard) fall.style.transform = shift + ' rotate(' + turns[active % turns.length] + 'deg)';
     board.dataset.person = String(active);
     cards.forEach((card, index) => card.classList.toggle('is-current', index === active));
+    if (narrow) fall.classList.toggle('is-on-card', showOnCard);
+    else fall.classList.remove('is-on-card');
   };
   const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
   window.addEventListener('scroll', onScroll, { passive: true });

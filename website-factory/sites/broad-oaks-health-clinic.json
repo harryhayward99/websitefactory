@@ -3,7 +3,7 @@
   "sector": "physiotherapy",
   "status": "concept",
   "demo": false,
-  "approvedInstructionsVersion": "658485d3e1fa959b",
+  "approvedInstructionsVersion": "a5c21d33cb717927",
   "template": {"id": "care-modern", "version": "1.0.0"},
   "brand": {"accent": "#2F8EC8"},
   "sources": [

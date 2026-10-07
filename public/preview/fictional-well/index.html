@@ -41,12 +41,12 @@ img{max-width:100%;display:block}
 .site-header nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:#000;font-size:16px;font-weight:500;text-decoration:none}
 .site-header nav a[href="#home"],
 body:has(#services:target) .site-header nav a[href="#services"],
-body:has(#team:target) .site-header nav a[href="#team"],
+body:has(#about:target) .site-header nav a[href="#about"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
 body:has(#contact:target) .site-header nav a[href="#contact"],
 body:has(#prices:target) .site-header nav a[href="#prices"],body:has(#service-physiotherapy:target),body:has(#service-movement-assessment:target),body:has(#service-sports-rehabilitation:target),body:has(#service-chiropractic-care:target),body:has(#service-exercise-rehabilitation:target) .site-header nav a[href="#services"]{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
-body:has(#team:target) .site-header nav a[href="#home"],
+body:has(#about:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
 body:has(#contact:target) .site-header nav a[href="#home"],
 body:has(#prices:target) .site-header nav a[href="#home"],body:has(#service-physiotherapy:target),body:has(#service-movement-assessment:target),body:has(#service-sports-rehabilitation:target),body:has(#service-chiropractic-care:target),body:has(#service-exercise-rehabilitation:target) .site-header nav a[href="#home"]{font-weight:500}
@@ -71,6 +71,8 @@ body:has(#service-physiotherapy:target) .menu-panel a[href="#service-physiothera
 .page{display:none;padding:8px 0 80px}
 .page:target{display:block}
 body:not(:has(.page:target)) #home{display:block}
+body:has(#meet-team:target) #about{display:block}
+body:has(#meet-team:target) #home{display:none}
 #home{padding-top:0;padding-bottom:0}
 .landing{display:block}
 .landing>.hero-head{margin-top:0;margin-bottom:0}
@@ -270,11 +272,23 @@ body:not(:has(.page:target)) #home{display:block}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.team-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);gap:28px 48px;align-items:end}
-.team-intro .lede{margin:0}
-.team-board{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "copy team";column-gap:48px;row-gap:18px;align-items:start}
+.about-copy{grid-area:copy}
+.about-copy h1{margin:0 0 18px}
+.about-summary .lede{margin:0 0 22px}
+.about-next{display:inline-flex;align-items:center;gap:8px;margin:0;padding:0;background:none;color:#111;font:600 16px/1.4 Manrope,"Segoe UI",sans-serif;text-decoration:none}
+.about-next span{text-decoration:underline;text-underline-offset:4px}
+.about-next svg{flex:none}
+.about-next:hover{color:#111}
+#meet-team{scroll-margin-top:96px}
+.about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.about-team{grid-area:team;margin:0}
+.about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
+.team-board{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
 .team-rail{position:sticky;top:120px;height:min(520px,calc(100vh - 180px))}
-.team-fall{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:18px;background:#111;transform:translateY(12px) rotate(-14deg);transition:transform .55s cubic-bezier(.22,.8,.28,1),background .35s ease,border-radius .35s ease}
+.team-rail,.team-fall{pointer-events:none}
+.team-fall{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:18px;background:#111;transform:translateY(12px) rotate(-14deg);transition:transform .55s cubic-bezier(.22,.8,.28,1),background .35s ease,border-radius .35s ease,opacity .2s ease}
 .team-board[data-person="1"] .team-fall{border-radius:50%;background:var(--pale)}
 .team-board[data-person="2"] .team-fall{border-radius:16px;background:#f3ead2}
 .team-board[data-person="3"] .team-fall{border-radius:50% 18px;background:#111}
@@ -292,8 +306,8 @@ body:not(:has(.page:target)) #home{display:block}
 .person-card .role{margin:8px 0 16px;color:#333;font-size:16px;font-weight:500;letter-spacing:0;text-transform:none}
 .person-card p:last-child{max-width:36em;color:#333}
 .role{margin:4px 0 8px;color:#000;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-#contact{padding-top:96px}
-#contact .page-intro h1{max-width:none;text-align:center}
+#contact{padding-top:56px}
+#contact .page-intro h1{max-width:none;text-align:left}
 #contact .info-card{text-align:center}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
@@ -399,23 +413,33 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .site-header{grid-template-columns:1fr auto;min-height:68px;padding:0 16px}
   .menu-button{justify-self:end}
   .nav-rule,.nav-phone,.header-cta{display:none}
-  .site-header nav{position:absolute;left:16px;right:16px;top:68px}
-  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:6px;overflow:auto;overscroll-behavior:contain;border-radius:10px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+  .site-header nav{position:absolute;left:auto;right:16px;top:68px;width:max-content;max-width:calc(100% - 32px)}
+  .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
-  .site-header nav a{min-height:36px;padding:0 10px;font-size:15px}
-  .site-header .menu-panel a{min-height:32px;padding:2px 10px;font-size:14px}
-  .site-header nav .button{display:inline-flex;min-height:36px;padding:8px 14px}
+  .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
+  .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
+  .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:flex-start;min-height:40px;margin-top:10px;padding:10px 4px}
   .menu-button{display:inline-flex}
   .has-menu{display:flex;flex-direction:column;align-items:stretch}
   .nav-chevron{display:none}
   .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
-  .services-intro,.offer-board,.service-poster,.team-intro,.team-board,.person{grid-template-columns:1fr}
-  .team-rail{position:sticky;top:88px;height:64px}
-  .team-fall{width:40px;height:40px}
+  .services-intro,.offer-board,.service-poster,.about-summary,.team-board,.person{grid-template-columns:1fr}
+  .about-summary{grid-template-areas:"copy" "photo" "team";row-gap:22px}
+  .about-copy h1{margin-bottom:16px}
+  .about-summary .lede{margin-bottom:18px}
+  .about-photo{width:100%;height:auto;aspect-ratio:3/2;border-radius:22px}
+  .about-team{margin:18px 0 0}
+  .team-board{display:block;margin-top:40px}
+  .team-rail{position:absolute;top:0;left:0;width:0;height:0;overflow:visible}
+  .team-fall,.team-board[data-person="1"] .team-fall,.team-board[data-person="2"] .team-fall,.team-board[data-person="3"] .team-fall{width:30px;height:30px;border-radius:11px;background:#111;opacity:0;transition:opacity .12s ease}
+  .team-fall.is-on-card,.team-board[data-person="1"] .team-fall.is-on-card,.team-board[data-person="2"] .team-fall.is-on-card,.team-board[data-person="3"] .team-fall.is-on-card{background:#111;opacity:1;transition:none}
+  .services-page,.team-page,.prices-page{padding-top:32px}
+  .person{display:flex;flex-direction:column}
+  .person-card{order:-1}
   .thumb,.person-card{min-height:0}
   .thumb{min-height:220px}
-  .person-card{padding:24px 20px}
+  .person-card{--card-pad-x:20px;--card-pad-y:24px;padding:var(--card-pad-y) var(--card-pad-x) var(--card-pad-y) 70px}
   .offer-board{display:flex;flex-direction:column;gap:10px}
   .offer-stage{display:none}
   .offer-fold:not([open])>.offer-panel{display:none}
@@ -550,7 +574,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <ul>
 <li><a href="#home">Home</a></li>
 <li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="menu-panel"><a href="#service-physiotherapy">Physiotherapy</a><a href="#service-movement-assessment">Movement assessment</a><a href="#service-sports-rehabilitation">Sports rehabilitation</a><a href="#service-chiropractic-care">Chiropractic care</a><a href="#service-exercise-rehabilitation">Exercise rehabilitation</a></div></li>
-<li><a href="#team">Team</a></li>
+<li><a href="#about">About</a></li>
 <li><a href="#reviews">Reviews</a></li>
 <li><a href="#prices">Prices</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -687,7 +711,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <section id="services" class="page services-page">
 <div class="wrap services-intro">
 <div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Services</p>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
 <h1>What is listed.</h1>
 </div>
 <p class="lede">Fictional services, shown so this layout can be reviewed.</p>
@@ -695,19 +719,23 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="wrap offer-board"><div class="offer-list"><div class="offer-item"><details class="offer-fold" name="listed-offers" open><summary class="offer-pick"><span>01</span>Physiotherapy</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Physiotherapy</h2><p>Listed for Northshore Example Care. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-physiotherapy"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>02</span>Movement assessment</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Movement assessment</h2><p>Listed for Northshore Example Care. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-movement-assessment"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>03</span>Sports rehabilitation</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Sports rehabilitation</h2><p>Listed for Northshore Example Care. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-sports-rehabilitation"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>04</span>Chiropractic care</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Chiropractic care</h2><p>Listed for Northshore Example Care. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-chiropractic-care"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>05</span>Exercise rehabilitation</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Exercise rehabilitation</h2><p>Listed for Northshore Example Care. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-exercise-rehabilitation"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div></div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>
 </section>
 <section id="service-physiotherapy" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Physiotherapy</h1><p class="service-lead">Physiotherapy is care for how you move. A visit looks at the joint, muscle or everyday task that is getting in the way, and agrees what to work on together.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-movement-assessment" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Movement assessment</h1><p class="service-lead">A movement assessment is a closer look at how you stand, walk and bend. It is a way to notice what feels limited before a plan is agreed.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-sports-rehabilitation" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Sports rehabilitation</h1><p class="service-lead">Sports rehabilitation is support for returning to training and sport. The work follows the demands of the activity, from the first sessions back through to a fuller schedule.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-chiropractic-care" class="page service-page" data-shape="3"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Chiropractic care</h1><p class="service-lead">Chiropractic care focuses on the spine and how the rest of the body moves around it. A visit starts with what you are feeling in sitting, standing and everyday tasks.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-exercise-rehabilitation" class="page service-page" data-shape="4"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Exercise rehabilitation</h1><p class="service-lead">Exercise rehabilitation uses guided movement alongside hands-on care. The exercises are chosen for the person and the activity they want to get back to.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>
-<section id="team" class="page team-page">
-<div class="wrap team-intro">
-<div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Team</p>
-<h1>People at Northshore Example Care.</h1>
+<section id="about" class="page team-page">
+<div class="wrap about-summary">
+<div class="about-copy">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
+<h1>Northshore Example Care</h1>
+<p class="lede">Northshore Example Care is a sample practice in Example Town. This is a short layout summary, not a description of a real clinic.</p>
+<a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
-<p class="lede">Each portrait sits beside the person’s detail. Sample cards are layout only and are not staff.</p>
+<figure class="about-photo"><img src="/factory-assets/clients/fictional-well/a41b473b29b64fc5-about-exterior.png" alt="Illustrative clinic exterior. Not a photograph of this clinic’s premises."></figure>
+<p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
 <div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/fictional-well/9246217d3e07dee5-jordan-example.png" alt="Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Jordan Example</h2><p class="role">Physiotherapy</p><p>A short biography sits beside the thumbnail. Jordan Example is not a real clinician and does not work at a real practice.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/fictional-well/987ce4431a1f2776-sam-example.png" alt="Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Sam Example</h2><p class="role">Movement assessment</p><p>Role and a few sentences stay next to the portrait area. This card is only here to review the team layout.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/fictional-well/3391f411f136afbf-riley-example.png" alt="Illustrative treatment. Not a photograph of Riley Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Riley Example</h2><p class="role">Sports rehabilitation</p><p>Each person has their own detail, rather than a photo with only a name underneath. None of these people are staff.</p></div></article></div></div>
 </section>
 <section id="contact" class="page">
 <div class="wrap page-intro">
-<h1>Contact Northshore Example Care.</h1>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
+<h1>Northshore Example Care.</h1>
 <div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01234567890">01234 567890</a></p></article><article class="info-card"><h2>Address</h2><p>18 Harbour Road, Example Town</p></article><article class="info-card"><h2>Hours</h2><p>Monday to Friday, 8:00–18:00</p></article></div>
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
@@ -742,9 +770,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </section>
 <section id="prices" class="page prices-page">
 <div class="wrap">
-<p class="flag">Illustrative layout — not a published fee</p>
-<p class="kicker">Prices</p>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
 <h1>What a visit includes.</h1>
+<p class="flag">Illustrative layout — not a published fee</p>
 <p class="lede">These figures are examples, so the layout can be reviewed. They are not the fees for Northshore Example Care.</p>
 <div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£90</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>First appointment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>A consultation with a chiropractor registered with the General Chiropractic Council</li><li>An examination, covering a health check and postural, functional, neurological and orthopaedic assessments</li><li>A discussion of the examination findings</li></ul><p class="fee-time">Duration: 60 minutes.</p><a class="button solid fee-book" href="#contact">Book Now</a></article><article class="fee-card"><span class="fee-gem"><strong>£45</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Treatment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Physical and manual therapy chosen for the problem</li><li>A rehabilitation exercise programme</li></ul><p class="fee-time">Duration: 15 minutes, or up to 30 minutes, depending on the treatment.</p><a class="button solid fee-book" href="#contact">Book Now</a></article></div>
 <div class="fee-board"><h2>Service fees</h2><div class="fee-accordion"><details class="fee-fold" name="listed-fees"><summary><span>Physiotherapy</span><strong>£60</strong></summary><p>Physiotherapy is care for how you move.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Movement assessment</span><strong>£45</strong></summary><p>A movement assessment is a closer look at how you stand, walk and bend.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Sports rehabilitation</span><strong>£70</strong></summary><p>Sports rehabilitation is support for returning to training and sport.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Chiropractic care</span><strong>£55</strong></summary><p>Chiropractic care focuses on the spine and how the rest of the body moves around it.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Exercise rehabilitation</span><strong>£40</strong></summary><p>Exercise rehabilitation uses guided movement alongside hands-on care.</p></details></div></div>
@@ -771,7 +799,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <nav class="footer-index" aria-label="Pages">
 <a href="#home"><span>01</span> Home</a>
 <a href="#services"><span>02</span> Services</a>
-<a href="#team"><span>03</span> Team</a>
+<a href="#about"><span>03</span> About</a>
 <a href="#reviews"><span>04</span> Reviews</a>
 <a href="#contact"><span>05</span> Contact</a>
 <a href="#prices"><span>06</span> Prices</a>
@@ -885,10 +913,49 @@ document.querySelectorAll('.team-board').forEach(board => {
       if (dist < best) { best = dist; active = index; }
     });
     const cardBox = cards[active].getBoundingClientRect();
-    const y = Math.min(Math.max(8, cardBox.top - railBox.top + 18), Math.max(8, railBox.height - 68));
-    fall.style.transform = 'translateY(' + y + 'px) rotate(' + turns[active % turns.length] + 'deg)';
+    const narrow = window.matchMedia('(max-width:800px)').matches;
+    let shift = 'translateY(' + Math.min(Math.max(8, cardBox.top - railBox.top + 18), Math.max(8, railBox.height - 68)) + 'px)';
+    let showOnCard = false;
+    if (narrow) {
+      const textCards = cards.map(card => card.querySelector('.person-card'));
+      const sample = textCards[0];
+      const padX = parseFloat(getComputedStyle(sample).getPropertyValue('--card-pad-x')) || 20;
+      const padY = parseFloat(getComputedStyle(sample).getPropertyValue('--card-pad-y')) || 24;
+      const size = fall.offsetHeight || 30;
+      const line = window.innerHeight * 0.38;
+      let chosen = -1;
+      let y = 0;
+      let passed = false;
+      let park = null;
+      for (let i = 0; i < textCards.length; i++) {
+        const box = textCards[i].getBoundingClientRect();
+        const minY = box.top + padY;
+        const maxY = Math.max(minY, box.bottom - padY - size);
+        if (line < minY) {
+          if (!passed) { chosen = i; y = minY; }
+          break;
+        }
+        if (line <= maxY) { chosen = i; y = line; break; }
+        park = { index: i, y: maxY };
+        passed = true;
+      }
+      if (chosen >= 0) {
+        active = chosen;
+        showOnCard = true;
+        const textBox = textCards[chosen].getBoundingClientRect();
+        shift = 'translate(' + (textBox.left - railBox.left + padX) + 'px,' + (y - railBox.top) + 'px)';
+      } else if (park) {
+        active = park.index;
+        const textBox = textCards[park.index].getBoundingClientRect();
+        shift = 'translate(' + (textBox.left - railBox.left + padX) + 'px,' + (park.y - railBox.top) + 'px)';
+        fall.style.transform = shift + ' rotate(' + turns[active % turns.length] + 'deg)';
+      }
+    }
+    if (!narrow || showOnCard) fall.style.transform = shift + ' rotate(' + turns[active % turns.length] + 'deg)';
     board.dataset.person = String(active);
     cards.forEach((card, index) => card.classList.toggle('is-current', index === active));
+    if (narrow) fall.classList.toggle('is-on-card', showOnCard);
+    else fall.classList.remove('is-on-card');
   };
   const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
   window.addEventListener('scroll', onScroll, { passive: true });

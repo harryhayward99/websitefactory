@@ -83,6 +83,14 @@ export function withDefaultServiceImage(site) {
   return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
 }
 
+export function withDefaultAboutImage(site) {
+  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultAboutImage === false) return site;
+  const id = 'care-about-exterior';
+  const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
+  if (selections.includes(id)) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+}
+
 export function withDefaultPersonImages(site) {
   if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultPersonImages === false) return site;
   const wanted = [...new Set((Array.isArray(site.examplePeople) ? site.examplePeople : []).map(person => person && person.imageId).filter(Boolean))];
@@ -266,7 +274,8 @@ export async function materialiseLibraryImages(site, manifestAssets, paths) {
         ...(Array.isArray(entry.tags) && entry.tags.includes('portrait') && !entry.tags.includes('booking') ? { placement: 'portrait' } : {}),
         ...(Array.isArray(entry.tags) && entry.tags.includes('service') ? { placement: 'service' } : {}),
         ...(Array.isArray(entry.tags) && entry.tags.includes('review') ? { placement: 'review' } : {}),
-        ...(Array.isArray(entry.tags) && entry.tags.includes('person') ? { placement: 'person' } : {})
+        ...(Array.isArray(entry.tags) && entry.tags.includes('person') ? { placement: 'person' } : {}),
+        ...(Array.isArray(entry.tags) && entry.tags.includes('about') ? { placement: 'about' } : {})
       };
     const previous = images.findIndex(image => image.libraryId === id);
     if (previous < 0) images.push(image); else images[previous] = image;
@@ -379,7 +388,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(await instructionsVersion());
   } else {
     const slug = args.find(arg => !arg.startsWith('--'));
-    const site = withDefaultReviewPortraits(withDefaultPersonImages(withDefaultReviewImage(withDefaultBookingImage(withDefaultServiceImage(withDefaultPortrait(withDefaultLandingImage(await loadSite(slug))))))));
+    const site = withDefaultAboutImage(withDefaultReviewPortraits(withDefaultPersonImages(withDefaultReviewImage(withDefaultBookingImage(withDefaultServiceImage(withDefaultPortrait(withDefaultLandingImage(await loadSite(slug)))))))));
     const result = await generatePreview(site);
     if (result.code === 'PREVIEW_READY') await publishIndex();
     const output = {

@@ -101,6 +101,17 @@
       "illustrative": true
     },
     {
+      "id": "care-about-exterior",
+      "category": "general",
+      "file": "images/general/about-exterior.png",
+      "tags": ["about"],
+      "alt": "Illustrative clinic exterior. Not a photograph of this clinic’s premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
       "id": "care-sam-example",
       "category": "general",
       "file": "images/general/sam-example.png",
