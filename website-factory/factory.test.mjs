@@ -140,6 +140,7 @@ test('care-modern follows the brand colour and has no cart',async()=>{
   assert.doesNotMatch(html,/Option 3/);
   assert.match(html,/maps\.google\.com\/maps\?q=/);assert.match(html,/Jordan Example/);
   assert.match(html,/<h2>Why Northshore Example Care\?<\/h2>/);
+  assert.ok(html.indexOf('<h2>Recent posts</h2>') < html.indexOf('<h2>Why Northshore Example Care?</h2>'));
   assert.match(html,/\.rail,\.rail:hover,\.rail-reviews,\.rail-reviews:hover,\.rail-years,\.rail-years:hover\{width:auto;height:100%;min-height:80px/);
   assert.match(html,/class="hours-live" data-hours="Monday to Friday, 8:00–18:00"/);
   assert.match(html,/<h2>Parking<\/h2><p>Parking on site is available\. No extra directions are listed\.<\/p>/);
@@ -428,8 +429,10 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
   assert.match(html,/<figure class="about-photo"><img src="\/factory-assets\/clients\/back-and-neck-clinic\/about-exterior.png"/);
   const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
   assert.ok(photos);
-  assert.match(photos[1],/review-arm\.png[\s\S]*review-ball\.png[\s\S]*review-shoulder\.png/);
-  assert.doesNotMatch(photos[1],/Richard Ridings/);
+  assert.match(photos[1],/Portrait area for Paul Mansell/);
+  assert.match(html,/Google review · 2 December 2023/);
+  assert.match(html,/Highly recommended\./);
+  assert.doesNotMatch(photos[1],/review-arm\.png|review-ball\.png|review-shoulder\.png/);
   const panels=[...html.matchAll(/<div class="accordion-panel"><figure class="tile-media"><img src="([^"]+)"/g)].map(match=>match[1]);
   assert.equal(panels[0],'/factory-assets/clients/back-and-neck-clinic/service-tile.png');
   assert.equal(panels[1],'/factory-assets/clients/back-and-neck-clinic/service-tile-2.png');

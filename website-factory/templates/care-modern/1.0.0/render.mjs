@@ -1115,6 +1115,7 @@ ${bookCall}
 </div>
 </div>
 </section>
+${socialBand}
 <section class="wrap statement">
 <div class="vision">
 <h2>Why ${name}?</h2>
@@ -1125,7 +1126,6 @@ ${bookCall}
 ${demoStats}
 <a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </section>
-${socialBand}
 </section>
 <section id="services" class="page services-page">
 <div class="wrap services-intro">
