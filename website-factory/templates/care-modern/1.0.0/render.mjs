@@ -578,7 +578,7 @@ body:has(#meet-team:target) #home{display:none}
 .shot-copy strong{display:block;margin:0 0 6px;font-size:20px;font-weight:500;line-height:1.2}
 .shot-copy em{color:#333;font-size:14px;font-style:normal;font-weight:400;line-height:1.5}
 ${serviceHover}
-.statement{padding:16px 0 88px}
+.statement{padding:88px 0}
 .statement h2{max-width:12em;font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.02}
 .statement>.about-book{margin-top:36px}
 .vision{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:40px 64px;align-items:center}
@@ -964,9 +964,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-card,.hero-card:nth-child(3){flex:0 0 100%;width:100%;min-width:100%;grid-column:auto;grid-row:auto;scroll-snap-align:start;scroll-snap-stop:always;padding:0 12px 12px;background:transparent;box-shadow:none;border-radius:0}
   .wide-media{min-height:220px}
   .side-media{min-height:220px}
-  .section,.statement{padding:56px 0}
+  .section{padding:56px 0}
   #home>.section:has(.service-accordion){padding-bottom:56px}
-  .statement{padding-bottom:88px}
+  #home>.statement,#home>.social{padding:88px 0}
   .button{width:auto}
   .meet-book{width:100%}
   .meet-slide{grid-template-columns:1fr}
