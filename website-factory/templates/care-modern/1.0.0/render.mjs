@@ -157,7 +157,10 @@ export function render(s, e) {
     .filter(person => person && person.name && person.detail);
   const examplePeople = (Array.isArray(s.examplePeople) ? s.examplePeople : [])
     .filter(person => person && person.name && person.detail);
-  const people = publishedPeople.length ? publishedPeople : examplePeople;
+  const people = [
+    ...publishedPeople.map(person => ({ ...person, illustrative: false })),
+    ...examplePeople.map(person => ({ ...person, illustrative: true }))
+  ];
   const namedImage = person => person.imageId ? pictures.find(image => image && image.libraryId === person.imageId) : null;
   const wellImageSectors = new Set(['physiotherapy', 'chiropractic', 'general']);
   const templateMeetIds = ['care-jordan-example', 'care-sam-example', 'care-riley-example'];
@@ -166,7 +169,8 @@ export function render(s, e) {
     const id = templateMeetIds[index % templateMeetIds.length];
     return pictures.find(image => image && image.libraryId === id) || null;
   };
-  const personFlag = publishedPeople.length ? '' : '<p class="flag">Illustrative layout — not a verified member of staff</p>';
+  const staffFlag = '<p class="flag">Illustrative layout — not a verified member of staff</p>';
+  const personFlag = person => person.illustrative ? staffFlag : '';
   const anchoredMeet = new Set(['care-riley-example', 'care-jordan-example', 'care-sam-example']);
   const faceClass = image => image && image.placement === 'person' && !anchoredMeet.has(image.libraryId) ? ' class="anchor-face"' : '';
   const personCards = people.map((person, index) => {
@@ -176,7 +180,7 @@ export function render(s, e) {
     const photo = image
       ? `<figure class="thumb"><img${thumbFace} src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
       : `<figure class="thumb" role="img" aria-label="Portrait area for ${e(person.name)}"><span aria-hidden="true">${letter}</span></figure>`;
-    return `<article class="person${index === 0 ? ' is-current' : ''}">${photo}<div class="person-card">${personFlag}<h2>${e(person.name)}</h2><p class="role">${e(person.role || '')}</p><p>${e(person.detail)}</p></div></article>`;
+    return `<article class="person${index === 0 ? ' is-current' : ''}">${photo}<div class="person-card">${personFlag(person)}<h2>${e(person.name)}</h2><p class="role">${e(person.role || '')}</p><p>${e(person.detail)}</p></div></article>`;
   }).join('');
   const calendarIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
   const meetSlides = people.map((person, index) => {
@@ -186,9 +190,9 @@ export function render(s, e) {
     const photo = image
       ? `<figure class="meet-photo"><img${anchor} src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
       : `<figure class="meet-photo" role="img" aria-label="Portrait area for ${e(person.name)}"><span aria-hidden="true">${e(String(person.name).trim().charAt(0).toUpperCase())}</span></figure>`;
-    const portraitNote = !ownImage && image && publishedPeople.length
-      ? '<p class="flag">Illustrative portrait — not a photograph of this person</p>'
-      : personFlag;
+    const portraitNote = person.illustrative
+      ? staffFlag
+      : (!ownImage && image ? '<p class="flag">Illustrative portrait — not a photograph of this person</p>' : '');
     return `<article class="meet-slide${index === 0 ? ' is-on' : ''}"${index === 0 ? '' : ' aria-hidden="true"'}>${photo}<div class="meet-card">${portraitNote}<h3>${e(person.name)}</h3><p class="meet-role">${e(person.role || '')}</p><p>${e(person.detail)}</p><a class="button meet-book" href="#contact">${calendarIcon} Make an appointment</a></div></article>`;
   }).join('');
   const hoursValue = b.hours?.value || '';
@@ -737,7 +741,7 @@ ${reviewSelect}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "copy team";column-gap:48px;row-gap:18px;align-items:start}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "team .";column-gap:48px;row-gap:28px;align-items:start}
 .about-copy{grid-area:copy}
 .about-copy h1{margin:0 0 18px}
 .about-summary .lede{margin:0 0 22px}
@@ -748,7 +752,7 @@ ${reviewSelect}
 #meet-team{scroll-margin-top:96px}
 .about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
-.about-team{grid-area:team;margin:0}
+.about-team{grid-area:team;justify-self:start;margin:0}
 .about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
 .team-board{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
 .team-rail{position:sticky;top:120px;height:min(520px,calc(100vh - 180px))}

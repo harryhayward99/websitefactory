@@ -283,7 +283,7 @@ body:has(#meet-team:target) #home{display:none}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "copy team";column-gap:48px;row-gap:18px;align-items:start}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "team .";column-gap:48px;row-gap:28px;align-items:start}
 .about-copy{grid-area:copy}
 .about-copy h1{margin:0 0 18px}
 .about-summary .lede{margin:0 0 22px}
@@ -294,7 +294,7 @@ body:has(#meet-team:target) #home{display:none}
 #meet-team{scroll-margin-top:96px}
 .about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
-.about-team{grid-area:team;margin:0}
+.about-team{grid-area:team;justify-self:start;margin:0}
 .about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
 .team-board{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 28px;align-items:start;margin-top:48px}
 .team-rail{position:sticky;top:120px;height:min(520px,calc(100vh - 180px))}

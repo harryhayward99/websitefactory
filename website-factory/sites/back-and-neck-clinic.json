@@ -3,7 +3,7 @@
   "sector": "chiropractic",
   "status": "concept",
   "demo": false,
-  "approvedInstructionsVersion": "5e7013f7ae78ed2d",
+  "approvedInstructionsVersion": "0cda48697fc54650",
   "template": {
     "id": "care-modern",
     "version": "1.0.0"
@@ -105,67 +105,18 @@
   "contentReviewed": true,
   "reviews": [
     {
+      "name": "Peter jones",
+      "date": "22 February 2025",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "i have followed Richard from his old clinic because i have found he is the best chiropractor in the region. He does everything very thoroughly and has excellent knowledge of spinal issues"
+    },
+    {
       "name": "Paul Mansell",
       "date": "2 December 2023",
       "rating": 5,
       "sourceId": "google-reviews",
       "quote": "Went to the Back & Neck clinic back in April when I was in agony and incapacitated, having suffered on-and-off with my lower back for quite a few years.  Ongoing treatment has helped me hugely; it's been a lengthy process but well worth it, and worth the financial cost too.  Dr Richard is professional and friendly, ready with advice as well as expert treatment.  It's taken a lot of work from myself (daily exercises) as is to be expected, but seven months on and my back feels like it hasn't done in a very long time - I feel comfortable in my day-to-day life and even when handling heavy goods at work I feel fine.  Highly recommended."
-    },
-    {
-      "name": "G KP",
-      "date": "5 June 2025",
-      "rating": 1,
-      "sourceId": "google-reviews",
-      "quote": "My mother had been suffering alot with back and knee pain. After Mt sister had looked at reviews and did her research she took our elderly mum there. My mum paid 85 pounds for a consultation then went for her 1st appointment.  It was raining and my mum with my sister arrived 10 minutes early. They were told to wait outside in the pouring rain. When my mum got seen the male staff Practitioner saw my mum for 20 minutes and charged a further 45 pounds. My mum had high hopes 20 minutes and using a machine how awful . My mum was upset and has decided not to go back am not sure why the great reviews as this was not the experience my mum had. Wasted my mums time and money. Dont know why they charge so much and offer a crap service when my mother has had a better experience with a Practitioner elsewhere. Overcharged for a crappy experience and rude with asking my mother and sister to wait outside in the rain when my mum is elderly and has mobility issues."
-    },
-    {
-      "name": "J C",
-      "date": "23 November 2017",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Purity chiropractic is highly recommended. Ive been suffering with a trapped nerve or the likes of which he was able to pinpoint and is now working on.  A very thorough, very informed and friendly service. Richard is very good at explaining the issues and options. I felt to be in very good hands. I just wish my doctors were as good.  A lovely clean and modern practice with parking available. Good rates and no waiting around."
-    },
-    {
-      "name": "Vicky Carr",
-      "date": "23 June 2018",
-      "rating": 4,
-      "sourceId": "google-reviews",
-      "quote": "Had physio and did yoga to relieve my upper/lower back pain and right shoulder pain but the problem remained and so did the pain. Decided to try Purity Clinic to deal with any underlying issues that couldn't be corrected by physio or yoga/exercise. I am happy to report that after 9 sessions with Richard i am virtually pain free,with just a little pain remaining in right shoulder,which is slowly improving with every session. Staff are lovely and approachable to deal with all concerns,i recommend this treatment to anyone who is fed up with their pain"
-    },
-    {
-      "name": "Odd Job",
-      "date": "4 November 2018",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Too early to comment on effectiveness of treatment, but having just returned from an initial consultation, I can say without hesitation that William Richard Ridings is a complete professional. It is my wife that is receiving treatment (I merely tagged along), but we both agreed that Dr/Mr Ridings delivered a clear, concise, and well informative consultation.  Through this effective consultation, we are confident that follow up treatment will definitely help with my wife's ailment. Edit: 3 sessions in and my wife is feeling a brilliant sense of freedom with her back. Restricted mobility issues virtually eradicated. It may sound too good to be true, but the treatment is working 👍"
-    },
-    {
-      "name": "master li",
-      "date": "7 February 2018",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Having suffered from lower back, neck and shoulder problems for a long time, I came across purity chiropractic online. Richard is very knowledgeable and informative and is helping me relieve my issues. I'm hoping he can sort out my problems and I can stay pain free in the future. I would definitely recommend Richard for any of your Chiropractic needs. Chandan."
-    },
-    {
-      "name": "Lorna-Anne Reeve",
-      "date": "21 August 2017",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "After having a sudden limited mobility and a scary diagnosis on my back I was in a haze when I saw Richard from all the medical terms I was being given, Richard broke this jargon down and explained what was happening in my body.  Richard completed a comprehensive initial exam which highlighted areas which was contributing to the discomfort I was having, he was then able to discuss with me about all possible treatments to first reduce the pain and then how to manage going forward. Along with the various treatments and suggested home exercises from Richard, I have reduced the amount of pain medicine I was given from the GP.  I now have increased mobility and I understand what is happening in my body to enable me to adapt to reduce further discomfort. I would, and have recommended Richard to all."
-    },
-    {
-      "name": "TGL Sports",
-      "date": "7 years ago",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Purity was recommended to me by a relative. I have had lower back and hip pain for around 2yrs now due to bad posture as I sit in a car for long periods of time. After around 12 sessions I can definitely say that my pain is a lot less.. I'm taking a month off due to needing an operation but will be continuing as soon as I'm fit to do so. Thank you Dr Ridings for all your help."
-    },
-    {
-      "name": "jackie hogan",
-      "date": "9 years ago",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "excellent service! I have suffered with my back for 12 years and seen many chiropractors. with Richard I feel he really wanted to get to the root of the problem which he has, now it is just a matter of maintaining my back rather than getting me out of severe pain. I would definitely recommend to friends and family or any body with a back problem. 5 well deserved stars!!"
     },
     {
       "name": "Richard Corrado",
@@ -175,11 +126,11 @@
       "quote": "Had back trouble for a long time now. My job is physical and things had built up over time. Went to my doctor who was no help at all so went to see Dr Ridings. Very knowledgeable and seemed know what the problem was and how he could help. I started treatment and noticed an instant improvement. It has taken time to fully resolve the problem but after a few months have no back problems at all. Almost can't believe where I am now to where I was. I can't recommend highly enough. Dr Ridings is a true professional and a pleasure to work with. Thank you."
     },
     {
-      "name": "Peter jones",
-      "date": "22 February 2025",
+      "name": "TGL Sports",
+      "date": "7 years ago",
       "rating": 5,
       "sourceId": "google-reviews",
-      "quote": "i have followed Richard from his old clinic because i have found he is the best chiropractor in the region. He does everything very thoroughly and has excellent knowledge of spinal issues"
+      "quote": "Purity was recommended to me by a relative. I have had lower back and hip pain for around 2yrs now due to bad posture as I sit in a car for long periods of time. After around 12 sessions I can definitely say that my pain is a lot less.. I'm taking a month off due to needing an operation but will be continuing as soon as I'm fit to do so. Thank you Dr Ridings for all your help."
     },
     {
       "name": "Jane Willetts",
@@ -187,27 +138,6 @@
       "rating": 5,
       "sourceId": "google-reviews",
       "quote": "I had been suffering with neck, shoulder and head pain for quite some years and having taken so much medication I just got so desperate one day I thought enough is enough. That's when I went on line and found Richard at Purity Clinic dudley, I made the call and i haven't looked back since. I have reduced the medication and i feel so much like my old self. All I can advise is don't sit there suffering make the call NOW, as I wish I had years ago, Richard you are so knowledgeable, helpful and understanding and you put me at ease. A big thank you as I am virtually pain free x"
-    },
-    {
-      "name": "Joe Dove",
-      "date": "7 years ago",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Had lower back issues due to work and after seeing doctor Richard he thoroughly explained the cause of the issue and got to work. After four treatments there's no back pain. Always informative and friendly can't recommend him enough."
-    },
-    {
-      "name": "Colin Stevens",
-      "date": "8 years ago",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "After only two treatments my wife is noticing a massive improvement. After being told there is nothing more can be done to help her its a fantastic result and we are looking forward to more improvements. Two thumbs up fantastic practise"
-    },
-    {
-      "name": "Han S",
-      "date": "8 years ago",
-      "rating": 5,
-      "sourceId": "google-reviews",
-      "quote": "Thorough, comprehensive treatment! Would highly recommend!"
     }
   ],
   "fees": {
@@ -236,6 +166,13 @@
     ]
   },
   "exampleSections": [],
+  "examplePeople": [
+    {
+      "name": "Casey Sample",
+      "role": "Sample specialist",
+      "detail": "A made-up card for a second specialist. Casey Sample is not a real person and does not work at this clinic."
+    }
+  ],
   "people": [
     {
       "name": "Richard Ridings",

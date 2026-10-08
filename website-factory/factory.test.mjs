@@ -426,6 +426,13 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
   const html=await renderSite(site,{instructionsVersion:await instructionsVersion()});
   assert.match(html,/<figure class="hero-media"><img class="anchor-top-right" src="\/factory-assets\/clients\/back-and-neck-clinic\/landing-treatment.png"/);
   assert.match(html,/<figure class="meet-photo"><img class="anchor-start" src="\/factory-assets\/clients\/back-and-neck-clinic\/jordan-example.png"[\s\S]{0,800}<h3>Richard Ridings<\/h3>/);
+  const richardSlide=html.match(/<article class="meet-slide is-on"[\s\S]*?<h3>Richard Ridings<\/h3>/);
+  const caseySlide=html.match(/<article class="meet-slide"[\s\S]*?<h3>Casey Sample<\/h3>/);
+  assert.ok(richardSlide);
+  assert.ok(caseySlide);
+  assert.doesNotMatch(richardSlide[0],/not a verified member of staff/);
+  assert.match(caseySlide[0],/not a verified member of staff/);
+  assert.match(html,/Casey Sample is not a real person and does not work at this clinic\./);
   assert.match(html,/<figure class="about-photo"><img src="\/factory-assets\/clients\/back-and-neck-clinic\/about-exterior.png"/);
   const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
   assert.ok(photos);
