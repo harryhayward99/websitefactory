@@ -82,8 +82,14 @@ export function withDefaultServiceImage(site) {
   if (!id || !site?.assets || site.assets.defaultServiceImage === false) return site;
   const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
   const images = Array.isArray(site.assets.images) ? site.assets.images : [];
-  if (selections.includes(id) || images.some(image => image && image.placement === 'service')) return site;
-  return { ...site, assets: { ...site.assets, librarySelections: [...selections, id] } };
+  const hasOwnService = images.some(image => image && image.placement === 'service');
+  let next = selections;
+  if (!selections.includes(id) && !hasOwnService) next = [...next, id];
+  const extras = next.includes(id) && !hasOwnService && wellImageSectors.has(site.sector) ? ['care-service-tile-2'] : [];
+  const missing = extras.filter(extra => !next.includes(extra));
+  if (missing.length) next = [...next, ...missing];
+  if (next === selections) return site;
+  return { ...site, assets: { ...site.assets, librarySelections: next } };
 }
 
 export function withDefaultAboutImage(site) {

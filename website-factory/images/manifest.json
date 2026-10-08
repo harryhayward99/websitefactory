@@ -176,6 +176,17 @@
       "rights": "owned",
       "status": "approved",
       "illustrative": true
+    },
+    {
+      "id": "care-service-tile-2",
+      "category": "general",
+      "file": "images/general/service-tile-2.png",
+      "tags": ["service"],
+      "alt": "Illustrative treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
     }
   ],
   "exampleOnly": {

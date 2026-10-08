@@ -60,7 +60,12 @@ export function render(s, e) {
     ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
     : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
   const sideMedia = frame(gallery[2] || gallery[0], 'Photograph awaiting an approved category image.', 'side-media');
-  const tileMedia = frame(serviceImage || gallery[0], 'Photograph awaiting an approved category image.', 'tile-media');
+  const alternateServiceIds = ['physiotherapy', 'chiropractic', 'general'].includes(s.sector) ? [null, 'care-service-tile-2', 'care-review-shoulder'] : [];
+  const serviceCover = index => {
+    const alternateId = alternateServiceIds[index];
+    const alternate = alternateId && pictures.find(image => image && image.libraryId === alternateId);
+    return frame(alternate || serviceImage || gallery[0], 'Photograph awaiting an approved category image.', 'tile-media');
+  };
   const wordCount = value => value ? value.split(' ').length : 0;
   const heroIntroduction = text => {
     const clean = String(text || '').replace(/\s+/g, ' ').trim();
@@ -88,10 +93,10 @@ export function render(s, e) {
     : '<p class="pending">Service details awaiting confirmation.</p>';
   const shotCopy = service => `<p class="shot-copy"><span><strong>${e(service.value)}</strong><em>Listed for ${name}.</em></span><a class="button" href="#contact">Booking</a></p>`;
   const serviceTiles = services.length
-    ? services.map(service => `<div class="shot">${tileMedia}${shotCopy(service)}</div>`).join('')
+    ? services.map((service, index) => `<div class="shot">${serviceCover(index)}${shotCopy(service)}</div>`).join('')
     : '';
   const serviceAccordion = services.length
-    ? services.map(service => `<details name="listed-services"><summary>${e(service.value)}</summary><div class="accordion-panel">${tileMedia}${shotCopy(service)}</div></details>`).join('') + '<a class="button accordion-book" href="#contact">Book appointment</a>'
+    ? services.map((service, index) => `<details name="listed-services"><summary>${e(service.value)}</summary><div class="accordion-panel">${serviceCover(index)}${shotCopy(service)}</div></details>`).join('') + '<a class="button accordion-book" href="#contact">Book appointment</a>'
     : '';
   const serviceHover = services.map((_, index) => {
     const n = index + 1;

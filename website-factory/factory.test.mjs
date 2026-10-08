@@ -418,7 +418,9 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
     {path:'/factory-assets/clients/back-and-neck-clinic/review-arm.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-arm'},
     {path:'/factory-assets/clients/back-and-neck-clinic/review-ball.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-ball'},
     {path:'/factory-assets/clients/back-and-neck-clinic/review-shoulder.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-shoulder'},
-    {path:'/factory-assets/clients/back-and-neck-clinic/about-exterior.png',alt:'Illustrative clinic exterior. Not a photograph of this clinic’s premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-about-exterior',placement:'about'}
+    {path:'/factory-assets/clients/back-and-neck-clinic/about-exterior.png',alt:'Illustrative clinic exterior. Not a photograph of this clinic’s premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-about-exterior',placement:'about'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/service-tile.png',alt:'Illustrative treatment. Not a photograph of this clinic’s staff or premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-service-tile',placement:'service'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/service-tile-2.png',alt:'Illustrative treatment. Not a photograph of this clinic’s staff or premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-service-tile-2',placement:'service'}
   ];
   const html=await renderSite(site,{instructionsVersion:await instructionsVersion()});
   assert.match(html,/<figure class="hero-media"><img class="anchor-top-right" src="\/factory-assets\/clients\/back-and-neck-clinic\/landing-treatment.png"/);
@@ -428,6 +430,10 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
   assert.ok(photos);
   assert.match(photos[1],/review-arm\.png[\s\S]*review-ball\.png[\s\S]*review-shoulder\.png/);
   assert.doesNotMatch(photos[1],/Richard Ridings/);
+  const panels=[...html.matchAll(/<div class="accordion-panel"><figure class="tile-media"><img src="([^"]+)"/g)].map(match=>match[1]);
+  assert.equal(panels[0],'/factory-assets/clients/back-and-neck-clinic/service-tile.png');
+  assert.equal(panels[1],'/factory-assets/clients/back-and-neck-clinic/service-tile-2.png');
+  assert.equal(panels[2],'/factory-assets/clients/back-and-neck-clinic/review-shoulder.png');
 });
 test('care sites use the shared service photograph unless one is already chosen',async()=>{
   assert.equal(defaultServiceImage('dental'),'care-service-tile');
