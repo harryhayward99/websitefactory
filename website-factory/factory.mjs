@@ -12,11 +12,13 @@ const assetPattern = /^\/factory-assets\/clients\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z
 const rights = ['owned', 'licensed', 'client-permission', 'official-logo-concept'];
 const forbiddenKeys = new Set(['email', 'emails', 'notes', 'privateNotes', 'contactResearch', 'salesScore', 'apiKey', 'token', 'password', 'credentials', 'secret']);
 const fail = message => { throw new Error(message); };
-const landingImageIds = { physiotherapy: 'physio-landing-treatment', chiropractic: 'chiro-landing-treatment', dental: 'dental-landing-treatment', veterinary: 'veterinary-landing-treatment' };
+const landingImageIds = { physiotherapy: 'physio-landing-treatment', chiropractic: 'care-landing-treatment', general: 'care-landing-treatment', dental: 'dental-landing-treatment', veterinary: 'veterinary-landing-treatment' };
 const defaultBookingId = 'care-book-portrait';
 const defaultReviewId = 'care-review-photo';
 const reviewPortraitIds = ['care-review-arm', 'care-review-ball', 'care-review-shoulder'];
-const portraitSectors = new Set(['dental', 'physiotherapy', 'chiropractic', 'veterinary']);
+const templatePersonIds = ['care-jordan-example', 'care-sam-example', 'care-riley-example'];
+const portraitSectors = new Set(['dental', 'physiotherapy', 'chiropractic', 'veterinary', 'general']);
+const wellImageSectors = new Set(['physiotherapy', 'chiropractic', 'general']);
 const defaultPortraitId = 'care-portrait-placeholder';
 const defaultServiceId = 'care-service-tile';
 
@@ -58,7 +60,8 @@ export function withDefaultReviewImage(site) {
 }
 
 export function withDefaultReviewPortraits(site) {
-  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultReviewPortraits === false) return site;
+  const allowed = wellImageSectors.has(site?.sector) || (site?.demo && portraitSectors.has(site?.sector));
+  if (!allowed || !site?.assets || site.assets.defaultReviewPortraits === false) return site;
   const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
   const missing = reviewPortraitIds.filter(id => !selections.includes(id));
   if (!missing.length) return site;
@@ -84,7 +87,8 @@ export function withDefaultServiceImage(site) {
 }
 
 export function withDefaultAboutImage(site) {
-  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultAboutImage === false) return site;
+  const allowed = wellImageSectors.has(site?.sector) || (site?.demo && portraitSectors.has(site?.sector));
+  if (!allowed || !site?.assets || site.assets.defaultAboutImage === false) return site;
   const id = 'care-about-exterior';
   const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
   if (selections.includes(id)) return site;
@@ -92,8 +96,13 @@ export function withDefaultAboutImage(site) {
 }
 
 export function withDefaultPersonImages(site) {
-  if (!site?.demo || !portraitSectors.has(site?.sector) || !site?.assets || site.assets.defaultPersonImages === false) return site;
-  const wanted = [...new Set((Array.isArray(site.examplePeople) ? site.examplePeople : []).map(person => person && person.imageId).filter(Boolean))];
+  if (!site?.assets || site.assets.defaultPersonImages === false) return site;
+  const fromExamples = site.demo && portraitSectors.has(site.sector)
+    ? (Array.isArray(site.examplePeople) ? site.examplePeople : []).map(person => person && person.imageId).filter(Boolean)
+    : [];
+  const fromTemplate = wellImageSectors.has(site.sector) ? templatePersonIds : [];
+  const wanted = [...new Set([...fromTemplate, ...fromExamples])];
+  if (!wanted.length) return site;
   const selections = Array.isArray(site.assets.librarySelections) ? site.assets.librarySelections : [];
   const missing = wanted.filter(id => !selections.includes(id));
   if (!missing.length) return site;

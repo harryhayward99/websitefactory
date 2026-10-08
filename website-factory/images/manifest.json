@@ -46,6 +46,17 @@
       "illustrative": true
     },
     {
+      "id": "care-landing-treatment",
+      "category": "general",
+      "file": "images/general/landing-treatment.png",
+      "tags": ["landing", "treatment"],
+      "alt": "Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.",
+      "sourceUrl": "owned:Harry",
+      "rights": "owned",
+      "status": "approved",
+      "illustrative": true
+    },
+    {
       "id": "care-portrait-placeholder",
       "category": "general",
       "file": "images/general/portrait-placeholder.png",

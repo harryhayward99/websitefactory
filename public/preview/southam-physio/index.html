@@ -257,7 +257,7 @@ body:has(#meet-team:target) #home{display:none}
 .review-quote p{color:#333;font-size:16px;line-height:1.55}
 .review-quote .flag{margin-bottom:16px}
 .review-stars,.review-nav{display:none}
-
+.review-board[data-active="0"] .review-pick:nth-child(1){background:var(--pale)}.review-board[data-active="0"] .review-photo:nth-child(1),.review-board[data-active="0"] .review-quote:nth-child(1){opacity:1;visibility:visible;transform:none}.review-board[data-active="1"] .review-pick:nth-child(2){background:var(--pale)}.review-board[data-active="1"] .review-photo:nth-child(2),.review-board[data-active="1"] .review-quote:nth-child(2){opacity:1;visibility:visible;transform:none}.review-board[data-active="2"] .review-pick:nth-child(3){background:var(--pale)}.review-board[data-active="2"] .review-photo:nth-child(3),.review-board[data-active="2"] .review-quote:nth-child(3){opacity:1;visibility:visible;transform:none}
 .social h2{font-size:clamp(32px,3.4vw,44px);font-weight:600;line-height:1.15}
 .social-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
 .social-lede{max-width:34em;margin:12px 0 0;color:#333}
@@ -527,7 +527,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .review-photo{width:52px;height:52px;border-radius:50%}
   .review-photo span{font-size:22px}
   .review-quote{position:relative;inset:auto;display:flex;flex-direction:column;height:0;margin:0;padding:0;overflow:hidden;border-radius:0;background:transparent;opacity:0;visibility:hidden;transform:none}
-  
+  .review-board[data-active="0"] .review-quote:nth-child(1){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}.review-board[data-active="1"] .review-quote:nth-child(2){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}.review-board[data-active="2"] .review-quote:nth-child(3){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}
   .review-quote h3{order:1;display:flex;align-items:center;min-height:52px;margin:0 0 16px 68px;font-size:18px;font-weight:600;line-height:1.2}
   .review-quote h3:has(+ .review-stars){min-height:0;align-items:flex-start;margin-bottom:4px}
   .review-quote .review-stars{order:2;display:block;margin:0 0 18px 68px;color:#111;font-size:13px;letter-spacing:.14em;line-height:1}
@@ -542,14 +542,14 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   #contact .info-card h2{font-size:20px;line-height:1.15}
   #contact .split{gap:16px;margin-bottom:16px}
   #contact .sheet{padding:16px;gap:10px}
-  #contact .side-media{display:none}
+  #contact .side-media{display:block;min-height:0;height:auto;aspect-ratio:3/2;border-radius:22px}
   #contact .map{height:180px}
   #reviews{padding-top:32px;padding-bottom:56px}
   #reviews .page-intro{flex-direction:column;align-items:flex-start;gap:18px}
   #reviews .page-intro .button{margin-bottom:0}
   #reviews > .section.reviews{padding-top:28px}
   .fee-pair{grid-template-columns:1fr}
-  .fee-card{min-height:0;padding:20px 18px 80px 20px}
+  .fee-card{min-height:0;padding:20px 18px 120px 20px}
   .fee-card .fee-gem{top:20px;right:16px;width:84px;height:84px;border-radius:26px}
   .fee-card .fee-gem strong{font-size:22px}
   .fee-card .fee-gem-sm{left:20px;right:auto;top:auto;bottom:20px;width:40px;height:40px;border-radius:14px}
@@ -621,6 +621,53 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="shots"><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Shockwave Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Manual Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Exercise Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Functional and Sports Specific Rehabilitation</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Posture Correction and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Acupuncture</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Biomechanical Analysis</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Education and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></div>
 </div>
 </section>
+<section class="section band meet">
+<div class="wrap">
+<div class="meet-head">
+<div>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Our specialists</p>
+<h2>Meet the specialists</h2>
+</div>
+
+</div>
+<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img class="anchor-face" src="/factory-assets/clients/southam-physio/paul-nicholls.png" alt="Paul Nicholls at the entrance of Southam Physio &amp; Sports Injury Clinic."></figure><div class="meet-card"><h3>Paul Nicholls</h3><p class="meet-role">Chartered physiotherapist</p><p>The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
+</div>
+</section>
+<section class="section reviews">
+<div class="wrap">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
+<h2>Patient reviews</h2>
+<a class="button review-leave-link" href="#reviews">Leave a Google review</a>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>A sample note</strong><span>Layout</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Another sample</strong><span>Layout</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Layout only</strong><span>Layout</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/southam-physio/b8b62d3b5592c7c8-review-arm.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/southam-physio/03d42e9ac584faae-review-ball.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/southam-physio/e8a6ce5c3de40ed0-review-shoulder.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+</div>
+</section>
+<section class="section book">
+<div class="wrap book-layout">
+<form class="book-form" action="#contact" method="post" onsubmit="return false">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Schedule</p>
+<h2>Book your appointment</h2>
+<p class="book-note">This preview does not send what you type or take a booking.</p>
+<div class="book-fields">
+<label>Name*<input name="name" autocomplete="name" placeholder="Enter first name" required></label>
+<label>Email*<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+<label>Phone<input name="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
+<label class="book-date"><span>Appointment date*</span><span class="date-field"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><input name="date" placeholder="DD / MM / YYYY" required></span></label>
+<label class="span">Message*<textarea name="message" placeholder="Type message here..." required></textarea></label>
+</div>
+<div class="book-actions"><button class="book-submit" type="submit">Book appointment</button></div>
+</form>
+<div class="book-stage">
+<figure class="book-portrait"><img src="/factory-assets/clients/southam-physio/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
+<aside class="book-hours">
+<h3>Opening &amp; closing times</h3>
+<p>Hours published by the clinic. No extra days have been added.</p>
+<p class="hours-live" data-hours="Usually 5 days a week, including 2 evening sessions; some Saturday mornings"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
+<div class="hours-row"><span>Usually 5 days a week</span><span>including 2 evening sessions; some Saturday mornings</span></div>
+<a class="button book-call" href="tel:07941856156">Call 07941 856156</a>
+</aside>
+</div>
+</div>
+</section>
 <section class="wrap statement">
 <div class="vision">
 <h2>Why Southam Physio &amp; Sports Injury Clinic?</h2>
@@ -655,18 +702,6 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 <a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </section>
-<section class="section band meet">
-<div class="wrap">
-<div class="meet-head">
-<div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Our specialists</p>
-<h2>Meet the specialists</h2>
-</div>
-
-</div>
-<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img class="anchor-face" src="/factory-assets/clients/southam-physio/paul-nicholls.png" alt="Paul Nicholls at the entrance of Southam Physio &amp; Sports Injury Clinic."></figure><div class="meet-card"><h3>Paul Nicholls</h3><p class="meet-role">Chartered physiotherapist</p><p>The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
-</div>
-</section>
 <section class="section social">
 <div class="wrap social-head">
 <div>
@@ -681,41 +716,6 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="social-set"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Shockwave Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Manual Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Exercise Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Functional and Sports Specific Rehabilitation</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Posture Correction and Advice</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Acupuncture</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
 <div class="social-set" aria-hidden="true"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Shockwave Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Manual Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Exercise Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Functional and Sports Specific Rehabilitation</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Posture Correction and Advice</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Acupuncture</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
 </div>
-</div>
-</section>
-<section class="section book">
-<div class="wrap book-layout">
-<form class="book-form" action="#contact" method="post" onsubmit="return false">
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Schedule</p>
-<h2>Book your appointment</h2>
-<p class="book-note">This preview does not send what you type or take a booking.</p>
-<div class="book-fields">
-<label>Name*<input name="name" autocomplete="name" placeholder="Enter first name" required></label>
-<label>Email*<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
-<label>Phone<input name="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
-<label class="book-date"><span>Appointment date*</span><span class="date-field"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><input name="date" placeholder="DD / MM / YYYY" required></span></label>
-<label class="span">Message*<textarea name="message" placeholder="Type message here..." required></textarea></label>
-</div>
-<div class="book-actions"><button class="book-submit" type="submit">Book appointment</button></div>
-</form>
-<div class="book-stage">
-<figure class="book-portrait"><img src="/factory-assets/clients/southam-physio/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
-<aside class="book-hours">
-<h3>Opening &amp; closing times</h3>
-<p>Hours published by the clinic. No extra days have been added.</p>
-<p class="hours-live" data-hours="Usually 5 days a week, including 2 evening sessions; some Saturday mornings"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
-<div class="hours-row"><span>Usually 5 days a week</span><span>including 2 evening sessions; some Saturday mornings</span></div>
-<a class="button book-call" href="tel:07941856156">Call 07941 856156</a>
-</aside>
-</div>
-</div>
-</section>
-<section class="section reviews">
-<div class="wrap">
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
-<h2>Patient reviews</h2>
-<a class="button review-leave-link" href="#reviews">Leave a Google review</a>
-<p class="pending">Google reviews for this clinic are still being checked.</p>
 </div>
 </section>
 </section>
@@ -738,7 +738,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <p class="lede">Physiotherapy at Tithe Place, next to the library on Southam High Street. Paul Nicholls is the named physiotherapist.</p>
 <a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
-
+<figure class="about-photo"><img src="/factory-assets/clients/southam-physio/a41b473b29b64fc5-about-exterior.png" alt="Illustrative clinic exterior. Not a photograph of this clinic’s premises."></figure>
 <p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
 <div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img class="anchor-face" src="/factory-assets/clients/southam-physio/paul-nicholls.png" alt="Paul Nicholls at the entrance of Southam Physio &amp; Sports Injury Clinic."></figure><div class="person-card"><h2>Paul Nicholls</h2><p class="role">Chartered physiotherapist</p><p>The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.</p></div></article></div></div>
@@ -759,7 +759,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <label>Message<textarea name="message"></textarea></label>
 <button class="button solid" type="submit">Submit message</button>
 </form>
-<figure class="side-media"><img src="/factory-assets/clients/southam-physio/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
+<figure class="side-media"><img src="/factory-assets/clients/southam-physio/a41b473b29b64fc5-about-exterior.png" alt="Illustrative clinic exterior. Not a photograph of this clinic’s premises."></figure>
 </div>
 <div class="map-frame"><iframe class="map" title="Map of the published address" width="600" height="420" src="https://maps.google.com/maps?q=Tithe%20Place%20(next%20to%20the%20Library)%2C%20High%20Street%2C%20Southam%2C%20CV47%200HB&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 <p class="map-note">Map of the published address.</p>
@@ -776,7 +776,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <section class="section reviews">
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
-<p class="pending">Google reviews for this clinic are still being checked.</p>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Sample clients"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>A sample note</strong><span>Layout</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Another sample</strong><span>Layout</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Layout only</strong><span>Layout</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/southam-physio/b8b62d3b5592c7c8-review-arm.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/southam-physio/03d42e9ac584faae-review-ball.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" aria-hidden="true"><img src="/factory-assets/clients/southam-physio/e8a6ce5c3de40ed0-review-shoulder.png" alt="Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Illustrative layout — not a verified review</p><h3>“A sample note”</h3><p>This panel shows where a short client line can sit. It is not a review from a real patient.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Another sample”</h3><p>Choosing a name on the left swaps this note. None of these lines are verified reviews.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Illustrative layout — not a verified review</p><h3>“Layout only”</h3><p>The portrait and this card change together. They do not describe a real appointment.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 </div>
 </section>
 </section>

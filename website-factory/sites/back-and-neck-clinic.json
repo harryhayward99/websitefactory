@@ -1,0 +1,83 @@
+{
+  "slug": "back-and-neck-clinic",
+  "sector": "chiropractic",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "052890bf66e52343",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#001CA9"},
+  "sources": [
+    {"id": "homepage", "url": "https://thebackandneckclinic.com/", "checkedAt": "2026-10-08"},
+    {"id": "about", "url": "https://thebackandneckclinic.com/about-2/", "checkedAt": "2026-10-08"},
+    {"id": "contact", "url": "https://thebackandneckclinic.com/contact/", "checkedAt": "2026-10-08"},
+    {"id": "experiences", "url": "https://thebackandneckclinic.com/patient-experiences/", "checkedAt": "2026-10-08"}
+  ],
+  "business": {
+    "name": {"value": "The Back & Neck Pain Clinic", "sourceId": "homepage"},
+    "location": {"value": "Tipton", "sourceId": "contact"},
+    "phone": {"value": "01270 332 332", "sourceId": "contact"},
+    "address": {"value": "186 Dudley Port, Tipton, West Midlands, DY4 7RG", "sourceId": "contact"},
+    "hours": {"value": "Monday to Tuesday, 9:00–17:00, Thursday to Friday, 9:00–17:00. Wednesday service and Saturday appointments are also listed.", "sourceId": "homepage"},
+    "parking": {"value": "Parking on site is available. No extra directions are listed.", "sourceId": "contact"},
+    "services": [
+      {"value": "Back pain", "sourceId": "homepage"},
+      {"value": "Sciatica", "sourceId": "homepage"},
+      {"value": "Neck pain", "sourceId": "homepage"},
+      {"value": "Whiplash", "sourceId": "homepage"},
+      {"value": "Sprain/strain injuries", "sourceId": "homepage"},
+      {"value": "Disc prolapse (slipped disc)", "sourceId": "homepage"},
+      {"value": "Arthritis stiffness and pain", "sourceId": "homepage"},
+      {"value": "Tennis/golfers elbow", "sourceId": "homepage"}
+    ]
+  },
+  "copy": {
+    "headline": "Chiropractic care on Dudley Port.",
+    "introduction": "Chiropractic care at the Dudley Port Treatment Room, 186 Dudley Port, Tipton. Dr Richard Ridings is the named chiropractor."
+  },
+  "contentReviewed": true,
+  "reviews": [],
+  "fees": {
+    "visits": [
+      {
+        "title": "First appointment",
+        "fee": "£85",
+        "includes": [
+          "Consultation with a General Chiropractic Council registered Doctor of Chiropractic",
+          "Examination: health check, postural assessment, functional assessment, neurological assessment and orthopaedic assessment",
+          "Discussion of the examination findings"
+        ],
+        "time": "Duration: 60 minutes.",
+        "sourceId": "homepage"
+      },
+      {
+        "title": "Treatment",
+        "fee": "£46",
+        "includes": [
+          "Integrated physical and manual therapy for the problem",
+          "A rehabilitation exercise programme"
+        ],
+        "time": "Duration: 15 minutes, or up to 30 minutes, depending on the treatment.",
+        "sourceId": "homepage"
+      }
+    ]
+  },
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Richard Ridings",
+      "role": "Doctor of Chiropractic",
+      "detail": "Patient experiences name Dr Richard Ridings, also called William Richard Ridings. The homepage says the first appointment is a consultation with a General Chiropractic Council registered Doctor of Chiropractic.",
+      "sourceId": "experiences"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/back-and-neck-clinic/logo.png",
+      "alt": "The Back & Neck Pain Clinic",
+      "sourceUrl": "https://thebackandneckclinic.com/wp-content/uploads/2020/07/The-Back-Neck-Pain-Clinic-dark-grey-HQ-PNG.png",
+      "rights": "official-logo-concept"
+    },
+    "images": [],
+    "librarySelections": ["care-portrait-placeholder", "care-service-tile"]
+  }
+}

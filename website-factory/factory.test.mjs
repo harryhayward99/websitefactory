@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {catalogue,loadSite,validateSite,renderSite,assessSite,shouldLaunchBuild,materialiseLibraryImages,generatePreview,instructionsVersion,defaultLandingImage,withDefaultLandingImage,defaultPortraitImage,withDefaultPortrait,defaultServiceImage,withDefaultServiceImage,withDefaultPersonImages,withDefaultReviewPortraits,root} from './factory.mjs';
+import {catalogue,loadSite,validateSite,renderSite,assessSite,shouldLaunchBuild,materialiseLibraryImages,generatePreview,instructionsVersion,defaultLandingImage,withDefaultLandingImage,defaultPortraitImage,withDefaultPortrait,defaultServiceImage,withDefaultServiceImage,withDefaultPersonImages,withDefaultReviewPortraits,withDefaultAboutImage,root} from './factory.mjs';
 const templates = await catalogue();
 const example = await loadSite('fictional-clinic');
 const pixel = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==','base64');
@@ -175,7 +175,7 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.equal(modern.status,'approved');
   assert.equal(preferred.length,1);
   assert.equal(preferred[0].id,'care-modern');
-  assert.deepEqual(modern.sectors,['dental','physiotherapy','chiropractic','veterinary']);
+  assert.deepEqual(modern.sectors,['dental','physiotherapy','chiropractic','veterinary','general']);
   const site=await loadSite('fictional-dental');
   const html=await renderSite(site,{allowDraft:true});
   assert.match(html,/FICTIONAL DEMO/);
@@ -282,17 +282,18 @@ test('a real clinic preview uses published facts and omits sample results',async
 });
 test('physiotherapy and chiropractic default to the landing treatment photograph',async()=>{
   assert.equal(defaultLandingImage('physiotherapy'),'physio-landing-treatment');
-  assert.equal(defaultLandingImage('chiropractic'),'chiro-landing-treatment');
+  assert.equal(defaultLandingImage('chiropractic'),'care-landing-treatment');
+  assert.equal(defaultLandingImage('general'),'care-landing-treatment');
   assert.equal(defaultLandingImage('dental'),'dental-landing-treatment');
   assert.equal(defaultLandingImage('veterinary'),'veterinary-landing-treatment');
   const empty=structuredClone(example);empty.sector='chiropractic';empty.assets.librarySelections=[];empty.assets.images=[];
-  assert.deepEqual(withDefaultLandingImage(empty).assets.librarySelections,['chiro-landing-treatment']);
+  assert.deepEqual(withDefaultLandingImage(empty).assets.librarySelections,['care-landing-treatment']);
   const dental=structuredClone(example);dental.sector='dental';dental.assets.librarySelections=[];dental.assets.images=[];
   assert.deepEqual(withDefaultLandingImage(dental).assets.librarySelections,['dental-landing-treatment']);
   const chosen=structuredClone(example);chosen.assets.librarySelections=['other'];chosen.assets.images=[];
   assert.deepEqual(withDefaultLandingImage(chosen).assets.librarySelections,['other','physio-landing-treatment']);
   const manifest=JSON.parse(await fs.readFile(path.join(root,'images','manifest.json'),'utf8'));
-  for (const id of ['physio-landing-treatment','chiro-landing-treatment','dental-landing-treatment','veterinary-landing-treatment']) {
+  for (const id of ['physio-landing-treatment','care-landing-treatment','chiro-landing-treatment','dental-landing-treatment','veterinary-landing-treatment']) {
     const entry=manifest.assets.find(asset=>asset.id===id);
     assert.equal(entry.status,'approved');
     assert.equal(entry.illustrative,true);
@@ -337,9 +338,11 @@ test('Riley Example uses the supplied treatment photograph on demo cards',async(
   assert.ok(selected.assets.librarySelections.includes('care-jordan-example'));
   assert.ok(selected.assets.librarySelections.includes('care-sam-example'));
   const real=await loadSite('broad-oaks-health-clinic');
-  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-riley-example'),false);
-  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-jordan-example'),false);
-  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-sam-example'),false);
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-riley-example'),true);
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-jordan-example'),true);
+  assert.equal(withDefaultPersonImages(real).assets.librarySelections.includes('care-sam-example'),true);
+  const dentist=structuredClone(real);dentist.sector='dental';dentist.demo=false;dentist.assets.librarySelections=[];
+  assert.equal(withDefaultPersonImages(dentist).assets.librarySelections.includes('care-jordan-example'),false);
   const manifest=JSON.parse(await fs.readFile(path.join(root,'images','manifest.json'),'utf8'));
   const entry=manifest.assets.find(asset=>asset.id==='care-riley-example');
   assert.equal(entry.category,'general');
@@ -388,7 +391,11 @@ test('demo review cards use three illustrative treatment photographs',async()=>{
   assert.ok(prepared.assets.librarySelections.includes('care-review-ball'));
   assert.ok(prepared.assets.librarySelections.includes('care-review-shoulder'));
   const real=structuredClone(stored);real.demo=false;
-  assert.deepEqual(withDefaultReviewPortraits(real).assets.librarySelections,stored.assets.librarySelections);
+  assert.equal(withDefaultReviewPortraits(real).assets.librarySelections.includes('care-review-arm'),true);
+  assert.equal(withDefaultAboutImage(real).assets.librarySelections.includes('care-about-exterior'),true);
+  const dentist=structuredClone(stored);dentist.demo=false;dentist.sector='dental';dentist.assets.librarySelections=[];
+  assert.equal(withDefaultReviewPortraits(dentist).assets.librarySelections.includes('care-review-arm'),false);
+  assert.equal(withDefaultAboutImage(dentist).assets.librarySelections.includes('care-about-exterior'),false);
   const site=structuredClone(stored);
   site.assets.images=[
     {path:'/factory-assets/clients/fictional-well/book-portrait.png',alt:'Illustrative portrait. Not a photograph of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-book-portrait',placement:'booking'},
@@ -402,6 +409,25 @@ test('demo review cards use three illustrative treatment photographs',async()=>{
   assert.match(photos[1],/review-arm\.png[\s\S]*review-ball\.png[\s\S]*review-shoulder\.png/);
   assert.doesNotMatch(photos[1],/book-portrait/);
   assert.match(html,/<figure class="book-portrait"><img src="\/factory-assets\/clients\/fictional-well\/book-portrait.png"/);
+});
+test('a chiropractic concept uses the Northshore photographs',async()=>{
+  const site=await loadSite('back-and-neck-clinic');
+  site.assets.images=[
+    {path:'/factory-assets/clients/back-and-neck-clinic/landing-treatment.png',alt:'Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-landing-treatment',placement:'landing'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/jordan-example.png',alt:'Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-jordan-example',placement:'person'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/review-arm.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-arm'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/review-ball.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-ball'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/review-shoulder.png',alt:'Illustrative treatment. Not a photograph of a reviewer or of this clinic’s staff.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-review-shoulder'},
+    {path:'/factory-assets/clients/back-and-neck-clinic/about-exterior.png',alt:'Illustrative clinic exterior. Not a photograph of this clinic’s premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,libraryId:'care-about-exterior',placement:'about'}
+  ];
+  const html=await renderSite(site,{instructionsVersion:await instructionsVersion()});
+  assert.match(html,/<figure class="hero-media"><img class="anchor-top-right" src="\/factory-assets\/clients\/back-and-neck-clinic\/landing-treatment.png"/);
+  assert.match(html,/<figure class="meet-photo"><img class="anchor-start" src="\/factory-assets\/clients\/back-and-neck-clinic\/jordan-example.png"[\s\S]{0,800}<h3>Richard Ridings<\/h3>/);
+  assert.match(html,/<figure class="about-photo"><img src="\/factory-assets\/clients\/back-and-neck-clinic\/about-exterior.png"/);
+  const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
+  assert.ok(photos);
+  assert.match(photos[1],/review-arm\.png[\s\S]*review-ball\.png[\s\S]*review-shoulder\.png/);
+  assert.doesNotMatch(photos[1],/Richard Ridings/);
 });
 test('care sites use the shared service photograph unless one is already chosen',async()=>{
   assert.equal(defaultServiceImage('dental'),'care-service-tile');

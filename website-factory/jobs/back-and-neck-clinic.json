@@ -1,16 +1,16 @@
 {
-  "slug": "southam-physio",
+  "slug": "back-and-neck-clinic",
   "status": "PREVIEW_READY",
   "sheetStatus": "Preview ready",
-  "previewPath": "/preview/southam-physio/index.html",
+  "previewPath": "/preview/back-and-neck-clinic/index.html",
   "template": {
     "id": "care-modern",
     "version": "1.0.0"
   },
   "instructionsVersion": "052890bf66e52343",
-  "contentHash": "c1946ed955b014efa5145c6968a86ab4c7f60bde99f10ebf490971651e159553",
+  "contentHash": "d8a4024a8ba519fe1d547da30f0522c6100d6d3faf602980dfdd3a53a0add251",
   "demo": false,
   "message": "",
-  "updatedAt": "2026-10-08T15:15:01.799Z",
+  "updatedAt": "2026-10-08T15:15:01.314Z",
   "state": "PREVIEW_READY"
 }

@@ -55,7 +55,7 @@ export function render(s, e) {
   const frame = (image, caption, className) => image
     ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
     : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
-  const heroPin = landingImage && landingImage.libraryId === 'physio-landing-treatment' ? ' class="anchor-top-right"' : '';
+  const heroPin = landingImage && (landingImage.libraryId === 'physio-landing-treatment' || landingImage.libraryId === 'care-landing-treatment') ? ' class="anchor-top-right"' : '';
   const heroMedia = landingImage
     ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
     : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
@@ -154,11 +154,18 @@ export function render(s, e) {
     .filter(person => person && person.name && person.detail);
   const people = publishedPeople.length ? publishedPeople : examplePeople;
   const namedImage = person => person.imageId ? pictures.find(image => image && image.libraryId === person.imageId) : null;
+  const wellImageSectors = new Set(['physiotherapy', 'chiropractic', 'general']);
+  const templateMeetIds = ['care-jordan-example', 'care-sam-example', 'care-riley-example'];
+  const templateMeetImage = index => {
+    if (!wellImageSectors.has(s.sector)) return null;
+    const id = templateMeetIds[index % templateMeetIds.length];
+    return pictures.find(image => image && image.libraryId === id) || null;
+  };
   const personFlag = publishedPeople.length ? '' : '<p class="flag">Illustrative layout — not a verified member of staff</p>';
   const anchoredMeet = new Set(['care-riley-example', 'care-jordan-example', 'care-sam-example']);
   const faceClass = image => image && image.placement === 'person' && !anchoredMeet.has(image.libraryId) ? ' class="anchor-face"' : '';
   const personCards = people.map((person, index) => {
-    const image = namedImage(person) || gallery[index];
+    const image = namedImage(person) || templateMeetImage(index) || gallery[index];
     const letter = e(String(person.name).trim().charAt(0).toUpperCase());
     const thumbFace = faceClass(image);
     const photo = image
@@ -168,7 +175,7 @@ export function render(s, e) {
   }).join('');
   const calendarIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
   const meetSlides = people.map((person, index) => {
-    const ownImage = namedImage(person) || gallery[index];
+    const ownImage = namedImage(person) || templateMeetImage(index) || gallery[index];
     const image = ownImage || portraitImage;
     const anchor = image && anchoredMeet.has(image.libraryId) ? ' class="anchor-start"' : faceClass(image);
     const photo = image
@@ -208,6 +215,20 @@ export function render(s, e) {
     return count ? `${'★'.repeat(count)}${'☆'.repeat(5 - count)}` : '';
   };
   const reviewPortraits = reviewPortraitIds.map(id => pictures.find(image => image && image.libraryId === id)).filter(Boolean);
+  const layoutReviews = !publishedReviews.length && !s.demo && wellImageSectors.has(s.sector) && reviewPortraits.length
+    ? reviewPortraits.map((photo, index) => {
+        const note = reviewNotes[index % reviewNotes.length];
+        return {
+          name: note.title,
+          meta: 'Layout',
+          metaLabel: '',
+          flag: 'Illustrative layout — not a verified review',
+          title: note.title,
+          body: note.body,
+          photo
+        };
+      })
+    : null;
   const reviewItems = publishedReviews.length
     ? publishedReviews.map(review => ({
         name: review.name,
@@ -231,7 +252,7 @@ export function render(s, e) {
             photo: (reviewPortraits[index]) || gallery[index] || null
           };
         })
-      : [];
+      : (layoutReviews || []);
   const reviewPicks = reviewItems.map((item, index) => `<button class="review-pick" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}"><strong>${e(item.name)}</strong><span${item.metaLabel ? ` class="stars" aria-label="${e(item.metaLabel)}"` : ''}>${e(item.meta)}</span></button>`).join('');
   const reviewPhotos = reviewItems.map((item, index) => {
     const hidden = index === 0 ? '' : ' aria-hidden="true"';
@@ -290,6 +311,9 @@ export function render(s, e) {
   const aboutPhoto = aboutImage
     ? `<figure class="about-photo"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
     : '';
+  const contactMedia = aboutImage
+    ? `<figure class="side-media"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
+    : sideMedia;
   const demoStats = `<div class="stat-board" data-stat="patients">
 <div class="rails">
 <button class="rail rail-patients" type="button" data-stat="patients"><span>2000+ happy patients</span></button>
@@ -967,14 +991,14 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   #contact .info-card h2{font-size:20px;line-height:1.15}
   #contact .split{gap:16px;margin-bottom:16px}
   #contact .sheet{padding:16px;gap:10px}
-  #contact .side-media{display:none}
+  #contact .side-media{display:block;min-height:0;height:auto;aspect-ratio:3/2;border-radius:22px}
   #contact .map{height:180px}
   #reviews{padding-top:32px;padding-bottom:56px}
   #reviews .page-intro{flex-direction:column;align-items:flex-start;gap:18px}
   #reviews .page-intro .button{margin-bottom:0}
   #reviews > .section.reviews{padding-top:28px}
   .fee-pair{grid-template-columns:1fr}
-  .fee-card{min-height:0;padding:20px 18px 80px 20px}
+  .fee-card{min-height:0;padding:20px 18px 120px 20px}
   .fee-card .fee-gem{top:20px;right:16px;width:84px;height:84px;border-radius:26px}
   .fee-card .fee-gem strong{font-size:22px}
   .fee-card .fee-gem-sm{left:20px;right:auto;top:auto;bottom:20px;width:40px;height:40px;border-radius:14px}
@@ -1046,16 +1070,6 @@ ${heroMedia}
 <div class="shots">${serviceTiles}</div>
 </div>
 </section>
-<section class="wrap statement">
-<div class="vision">
-<h2>Why ${name}?</h2>
-<div class="vision-side">
-<p>${s.demo ? e(s.copy.introduction) : e(b.hours?.value || 'Hours awaiting confirmation.')}</p>
-</div>
-</div>
-${demoStats}
-<a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
-</section>
 <section class="section band meet">
 <div class="wrap">
 <div class="meet-head">
@@ -1068,7 +1082,7 @@ ${people.length > 1 ? `<div class="meet-nav"><button class="meet-arrow meet-prev
 <div class="meet-stage">${meetSlides || '<p class="pending">No individual team members were published, so none are shown here.</p>'}</div>
 </div>
 </section>
-${socialBand}
+${reviewBand}
 <section class="section book">
 <div class="wrap book-layout">
 <form class="book-form" action="#contact" method="post" onsubmit="return false">
@@ -1096,7 +1110,17 @@ ${bookCall}
 </div>
 </div>
 </section>
-${reviewBand}
+<section class="wrap statement">
+<div class="vision">
+<h2>Why ${name}?</h2>
+<div class="vision-side">
+<p>${s.demo ? e(s.copy.introduction) : e(b.hours?.value || 'Hours awaiting confirmation.')}</p>
+</div>
+</div>
+${demoStats}
+<a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
+</section>
+${socialBand}
 </section>
 <section id="services" class="page services-page">
 <div class="wrap services-intro">
@@ -1138,7 +1162,7 @@ ${schedule ? `<p class="hours-live" data-hours="${e(schedule)}" data-open="Recep
 <label>Message<textarea name="message"></textarea></label>
 <button class="button solid" type="submit">Submit message</button>
 </form>
-${sideMedia}
+${contactMedia}
 </div>
 <div class="map-frame">${map}</div>
 <p class="map-note">${mapNote}</p>
