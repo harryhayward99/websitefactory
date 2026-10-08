@@ -139,6 +139,15 @@ test('care-modern follows the brand colour and has no cart',async()=>{
   assert.match(html,/First appointment/);assert.match(html,/fee-gem"><strong>£90<\/strong>/);assert.match(html,/class="button solid fee-book" href="#contact">Book Now<\/a>/);assert.match(html,/class="fee-fold"/);assert.match(html,/<summary><span>Physiotherapy<\/span><strong>£60<\/strong><\/summary>/);
   assert.doesNotMatch(html,/Option 3/);
   assert.match(html,/maps\.google\.com\/maps\?q=/);assert.match(html,/Jordan Example/);
+  assert.match(html,/<h2>Why Northshore Example Care\?<\/h2>/);
+  assert.match(html,/\.rail,\.rail:hover,\.rail-reviews,\.rail-reviews:hover,\.rail-years,\.rail-years:hover\{width:auto;height:100%;min-height:80px/);
+  assert.match(html,/class="hours-live" data-hours="Monday to Friday, 8:00–18:00"/);
+  assert.match(html,/<h2>Parking<\/h2><p>Parking on site is available\. No extra directions are listed\.<\/p>/);
+  assert.ok('Parking on site is available. No extra directions are listed.'.split(/\s+/).length <= 15);
+  assert.match(html,/\.info-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\);gap:16px;width:min\(100%,760px\);margin:28px auto 22px\}/);
+  assert.match(html,/class="hours-live-tag">Live</);
+  assert.match(html,/open \? \(line\.dataset\.open \|\| 'Open now'\) : \(line\.dataset\.closed \|\| 'Closed now'\)/);
+  assert.match(html,/data-open="Reception is open" data-closed="Reception is closed"/);
   assert.match(html,/grid-template-columns:minmax\(180px,\.42fr\) minmax\(0,1\.58fr\)/);
   assert.match(html,/team-fall/);
   assert.match(html,/name="listed-offers"/);
@@ -155,10 +164,10 @@ test('care-modern follows the brand colour and has no cart',async()=>{
   assert.match(tinted,/Leave a Google review\. Please\.\.\./);
   assert.match(tinted,/id="reviews"/);
   const crowded=structuredClone(site);
-  crowded.business.services=Array.from({length:8},(_,index)=>({value:`Listed service ${index+1}`,sourceId:'fictional'}));
+  crowded.business.services=Array.from({length:9},(_,index)=>({value:`Listed service ${index+1}`,sourceId:'fictional'}));
   const capped=await renderSite(crowded,{allowDraft:true});
-  assert.match(capped,/Listed service 7/);
-  assert.doesNotMatch(capped,/Listed service 8/);
+  assert.match(capped,/Listed service 8/);
+  assert.doesNotMatch(capped,/Listed service 9/);
 });
 test('care-modern is the default for clinic sectors and a dentist keeps dental services',async()=>{
   const modern=templates.find(template=>template.id==='care-modern');
@@ -217,9 +226,15 @@ test('a real clinic preview uses published facts and omits sample results',async
   assert.match(html,/class="about-link about-book" href="#contact">Book appointment<span class="about-orb"/);
   assert.match(html,/\.about-book:hover \.about-orb\{transform:none;/);
   assert.match(html,/putting me at ease/);
+  const unreviewed = structuredClone(site);
+  unreviewed.reviews = [];
+  const unreviewedHtml = await renderSite(unreviewed, { instructionsVersion: version });
+  assert.match(unreviewedHtml, /Google reviews for this clinic are still being checked/);
+  assert.doesNotMatch(unreviewedHtml, /A sample note/);
   assert.match(html,/Google review · 16 January 2025/);
   assert.match(html,/<strong>Hannah<\/strong><span class="stars" aria-label="5 stars">★★★★★<\/span>/);
   assert.match(html,/Nothing here is from a live account/);
+  assert.doesNotMatch(html,/<h2>Parking<\/h2>/);
   assert.doesNotMatch(html,/id="prices"/);
   assert.doesNotMatch(html,/not a published fee/);
   const priced = structuredClone(site);

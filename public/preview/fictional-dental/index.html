@@ -125,7 +125,8 @@ body:has(#meet-team:target) #home{display:none}
 .shot-copy em{color:#333;font-size:14px;font-style:normal;font-weight:400;line-height:1.5}
 .service-split[data-active="0"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="0"] .shots .shot:nth-child(1){opacity:1;visibility:visible}.service-split[data-active="0"] .service-links button{font-weight:500}.service-split[data-active="0"] .service-links button:nth-child(1){font-weight:600}.service-split[data-active="1"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="1"] .shots .shot:nth-child(2){opacity:1;visibility:visible}.service-split[data-active="1"] .service-links button{font-weight:500}.service-split[data-active="1"] .service-links button:nth-child(2){font-weight:600}.service-split[data-active="2"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="2"] .shots .shot:nth-child(3){opacity:1;visibility:visible}.service-split[data-active="2"] .service-links button{font-weight:500}.service-split[data-active="2"] .service-links button:nth-child(3){font-weight:600}.service-split[data-active="3"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="3"] .shots .shot:nth-child(4){opacity:1;visibility:visible}.service-split[data-active="3"] .service-links button{font-weight:500}.service-split[data-active="3"] .service-links button:nth-child(4){font-weight:600}.service-split[data-active="4"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="4"] .shots .shot:nth-child(5){opacity:1;visibility:visible}.service-split[data-active="4"] .service-links button{font-weight:500}.service-split[data-active="4"] .service-links button:nth-child(5){font-weight:600}
 .statement{padding:16px 0 88px}
-.statement h2{max-width:10em;font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.02}
+.statement h2{max-width:12em;font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.02}
+.statement>.about-book{margin-top:36px}
 .vision{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:40px 64px;align-items:center}
 .vision-side{display:flex;align-items:center;gap:28px}
 .vision-side p{max-width:36em;color:#333}
@@ -181,6 +182,7 @@ body:has(#meet-team:target) #home{display:none}
 .meet-photo span{color:rgba(17,24,39,.28);font-size:128px;font-weight:500;letter-spacing:-.05em;line-height:1}
 .meet-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .meet-photo img.anchor-start{object-position:left top}
+.meet-photo img.anchor-face,.thumb img.anchor-face{object-position:center top}
 .meet-card{display:flex;flex-direction:column;min-height:460px;padding:36px 32px 28px;border-radius:18px;background:#fff}
 .meet-card h3{font-size:28px;font-weight:600;letter-spacing:-.03em}
 .meet-role{margin:6px 0 28px;color:#666;font-size:16px}
@@ -215,6 +217,15 @@ body:has(#meet-team:target) #home{display:none}
 .book-hours{position:absolute;top:50%;right:0;z-index:1;width:min(290px,72%);padding:28px 24px 22px;border-radius:16px;background:#fff;transform:translateY(-50%)}
 .book-hours h3{margin-bottom:8px;font-size:22px;font-weight:600}
 .book-hours p{margin-bottom:16px;color:#333;font-size:14px;line-height:1.45}
+.book-hours .hours-live{display:none;align-items:center;gap:8px;margin:0 0 16px;color:#000;font-size:15px;font-weight:600;line-height:1.2}
+.book-hours .hours-live.is-set{display:flex}
+.hours-light{flex:none;width:9px;height:9px;border-radius:50%;background:#d1242f;box-shadow:0 0 0 4px rgba(209,36,47,.16);animation:hours-pulse 1.6s ease-in-out infinite}
+.hours-live.is-open .hours-light{background:#1b8f3a;box-shadow:0 0 0 4px rgba(27,143,58,.18)}
+.sheet .hours-live{display:none;align-items:center;gap:8px;margin:0;color:#000;font-size:15px;font-weight:600;line-height:1.2}
+.sheet .hours-live.is-set{display:flex}
+.hours-live-tag{margin-left:auto;color:#666;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+@keyframes hours-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.hours-light{animation:none}}
 .hours-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #eee;color:#000;font-size:14px;font-weight:500}
 .hours-row span:last-child{color:#333;font-weight:500;white-space:nowrap}
 .book-call{width:100%;margin-top:16px;min-height:48px;border-radius:10px}
@@ -376,7 +387,7 @@ body:has(#meet-team:target) #home{display:none}
 .map-frame{margin:0 0 10px;border-radius:10px;overflow:hidden;background:var(--pale)}
 .map{display:block;width:100%;height:420px;border:0}
 .map-note{margin-bottom:22px;color:#333;font-size:14px}
-.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:28px 0 22px}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:min(100%,760px);margin:28px auto 22px}
 .info-card,.sheet{padding:22px;border-radius:10px;background:#fff}
 .sheet{display:grid;gap:12px}
 .sheet label{display:grid;gap:6px;color:#333;font-size:14px}
@@ -418,7 +429,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
   .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
   .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
-  .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:flex-start;min-height:40px;margin-top:10px;padding:10px 4px}
+  .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:center;min-height:40px;margin-top:10px;padding:10px 4px}
   .menu-button{display:inline-flex}
   .has-menu{display:flex;flex-direction:column;align-items:stretch}
   .nav-chevron{display:none}
@@ -480,10 +491,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .vision{grid-template-columns:1fr;gap:22px}
   .vision-side{align-items:flex-start;flex-direction:column;gap:18px}
   .stat-board{grid-template-columns:1fr;gap:18px;min-height:0;margin-top:28px}
-  .rails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;align-items:stretch}
-  .rail,.rail:hover{width:auto;height:auto;min-height:92px;padding:16px}
-  .rail-reviews,.rail-reviews:hover{min-height:124px}
-  .rail-years,.rail-years:hover{min-height:156px}
+  .rails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;align-items:stretch;gap:8px}
+  .rail,.rail:hover,.rail-reviews,.rail-reviews:hover,.rail-years,.rail-years:hover{width:auto;height:100%;min-height:80px;padding:12px 8px}
+  .statement>.about-book{margin-top:22px}
   .rail span{writing-mode:horizontal-tb;transform:none;white-space:normal}
   .stat-stage{min-height:0;padding:8px 0 0}
   .geo{width:92px;height:92px;top:0;right:0}
@@ -501,7 +511,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .wide-media{min-height:220px}
   .side-media{min-height:220px}
   .section,.statement{padding:56px 0}
-  #home>.section:has(.service-accordion){padding-bottom:120px}
+  #home>.section:has(.service-accordion){padding-bottom:56px}
   .statement{padding-bottom:88px}
   .button{width:auto}
   .meet-book{width:100%}
@@ -613,10 +623,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </section>
 <section class="wrap statement">
 <div class="vision">
-<h2>Get to know how this practice concept is put together.</h2>
+<h2>Why Harbour Example Dental?</h2>
 <div class="vision-side">
 <p>A dental concept for Example Town. Nothing on this page describes a real practice.</p>
-<a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </div>
 </div>
 <div class="stat-board" data-stat="patients">
@@ -644,6 +653,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 </div>
 </div>
+<a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </section>
 <section class="section band meet">
 <div class="wrap">
@@ -693,6 +703,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <aside class="book-hours">
 <h3>Opening &amp; closing times</h3>
 <p>Hours listed for this concept. No extra days have been added.</p>
+<p class="hours-live" data-hours="Monday to Friday, 8:00–18:00"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
 <div class="hours-row"><span>Monday to Friday</span><span>8:00–18:00</span></div>
 <a class="button book-call" href="tel:01234567890">Call 01234 567890</a>
 </aside>
@@ -736,11 +747,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
 <h1>Harbour Example Dental.</h1>
-<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01234567890">01234 567890</a></p></article><article class="info-card"><h2>Address</h2><p>18 Harbour Road, Example Town</p></article><article class="info-card"><h2>Hours</h2><p>Monday to Friday, 8:00–18:00</p></article></div>
+<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01234567890">01234 567890</a></p></article><article class="info-card"><h2>Address</h2><p>18 Harbour Road, Example Town</p></article><article class="info-card"><h2>Hours</h2><p>Monday to Friday, 8:00–18:00</p></article><article class="info-card"><h2>Parking</h2><p>Parking on site is available. No extra directions are listed.</p></article></div>
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
 <h2>Get in touch</h2>
 <p>Call <a class="contact-call" href="tel:01234567890">01234 567890</a>, or submit a message here. Reception will get back to you as soon as possible.</p>
+<p class="hours-live" data-hours="Monday to Friday, 8:00–18:00" data-open="Reception is open" data-closed="Reception is closed"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
 <p class="map-note">This preview does not send the message.</p>
 <label>Name<input name="name" autocomplete="name"></label>
 <label>Phone<input name="tel" type="tel" autocomplete="tel"></label>
@@ -998,6 +1010,56 @@ document.querySelectorAll('.hero-cards').forEach(row => {
   narrow.addEventListener('change', start);
   motion.addEventListener('change', start);
   start();
+});
+document.querySelectorAll('.hours-live').forEach(line => {
+  const names = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const daySet = text => {
+    const found = text.toLowerCase().match(/sunday|monday|tuesday|wednesday|thursday|friday|saturday/g) || [];
+    if (!found.length) return null;
+    if (found.length >= 2 && / to /.test(text.toLowerCase())) {
+      const start = names.indexOf(found[0]);
+      const end = names.indexOf(found[found.length - 1]);
+      const days = [];
+      for (let i = start; days.length < 7; i = (i + 1) % 7) { days.push(i); if (i === end) break; }
+      return days;
+    }
+    return found.map(name => names.indexOf(name));
+  };
+  const clock = text => {
+    const match = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*[–-]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+    if (!match) return null;
+    const mins = (hourText, minuteText, marker) => {
+      let hour = Number(hourText);
+      const minute = Number(minuteText || 0);
+      if (marker) {
+        const ap = marker.toLowerCase();
+        if (ap === 'pm' && hour < 12) hour += 12;
+        if (ap === 'am' && hour === 12) hour = 0;
+      }
+      return hour * 60 + minute;
+    };
+    return [mins(match[1], match[2], match[3]), mins(match[4], match[5], match[6])];
+  };
+  const windows = [];
+  let days = null;
+  String(line.dataset.hours || '').split(',').forEach(part => {
+    const nextDays = daySet(part);
+    const span = clock(part);
+    if (nextDays) days = nextDays;
+    if (span && days) windows.push({ days: days, start: span[0], end: span[1] });
+  });
+  const apply = instant => {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(instant);
+    const pick = type => { const part = parts.find(item => item.type === type); return part ? part.value : ''; };
+    const today = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[pick('weekday')];
+    const now = Number(pick('hour')) * 60 + Number(pick('minute'));
+    const open = windows.some(window => window.days.indexOf(today) !== -1 && now >= window.start && now < window.end);
+    line.classList.add('is-set');
+    line.classList.toggle('is-open', open);
+    line.querySelector('.hours-live-label').textContent = open ? (line.dataset.open || 'Open now') : (line.dataset.closed || 'Closed now');
+  };
+  if (windows.length) apply(new Date());
+  line._applyHours = apply;
 });
 </script>
 </body>

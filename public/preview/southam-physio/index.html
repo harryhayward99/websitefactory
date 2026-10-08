@@ -1,441 +1,16 @@
-// Clinic layout for dental, physiotherapy, chiropractic and veterinary.
-// Service names come from the site record. Brand tint comes from site.brand.accent. No shop, cart, invented reviews or statistics.
-export function render(s, e) {
-  const b = s.business;
-  const name = e(b.name.value);
-  const location = e(b.location.value);
-  const accent = /^#[0-9a-fA-F]{6}$/.test(s.brand?.accent || '') ? s.brand.accent : '#1f4b99';
-  const rgb = [parseInt(accent.slice(1, 3), 16), parseInt(accent.slice(3, 5), 16), parseInt(accent.slice(5, 7), 16)];
-  const mix = (target, t) => '#' + rgb.map((channel, index) => Math.max(0, Math.min(255, Math.round(channel + (target[index] - channel) * t))).toString(16).padStart(2, '0')).join('');
-  const lum = rgb.map(channel => {
-    const value = channel / 255;
-    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
-  });
-  const bright = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2] > 0.62;
-  const onAccent = bright ? '#111111' : '#ffffff';
-  const pale = mix([255, 255, 255], 0.82);
-  const initial = e((b.name.value || '•').trim().charAt(0).toUpperCase());
-  const logo = s.assets.logo
-    ? `<img class="logo" src="${e(s.assets.logo.path)}" alt="${e(s.assets.logo.alt)}">`
-    : `<span class="wordmark"><span class="mark" aria-hidden="true">${initial}</span><span><strong>${name}</strong><small>${location}</small></span></span>`;
-  const footerMark = s.assets.logo
-    ? `<img class="footer-logo" src="${e(s.assets.logo.path)}" alt="${e(s.assets.logo.alt)}">`
-    : name;
-  const phoneDigits = (b.phone?.value || '').replace(/[^\d+]/g, '');
-  const phoneOk = /^\+?\d{7,15}$/.test(phoneDigits);
-  const phoneText = phoneOk ? `<a class="nav-phone" href="tel:${phoneDigits}">${e(b.phone.value)}</a>` : '';
-  const contactLead = phoneOk
-    ? `<p>Call <a class="contact-call" href="tel:${phoneDigits}">${e(b.phone.value)}</a>, or submit a message here. Reception will get back to you as soon as possible.</p>`
-    : '<p>Submit a message here. Reception will get back to you as soon as possible.</p>';
-  const website = b.website && /^https:\/\//.test(b.website.value)
-    ? `<a href="${e(b.website.value)}" rel="noopener noreferrer">Official website</a>`
-    : '';
-  const services = (Array.isArray(b.services) ? b.services : []).slice(0, 8);
-  const serviceSlug = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'item';
-  const usedServiceSlugs = new Map();
-  const listed = services.map(service => {
-    const base = serviceSlug(service.value);
-    const count = usedServiceSlugs.get(base) || 0;
-    usedServiceSlugs.set(base, count + 1);
-    return { value: service.value, detail: service.detail, id: `service-${base}${count ? `-${count + 1}` : ''}` };
-  });
-  const pictures = Array.isArray(s.assets?.images) ? s.assets.images : [];
-  const landingImage = pictures.find(image => image && image.placement === 'landing');
-  const portraitImage = pictures.find(image => image && image.placement === 'portrait');
-  const serviceImage = pictures.find(image => image && image.placement === 'service');
-  const bookingImage = pictures.find(image => image && image.placement === 'booking');
-  const reviewImage = pictures.find(image => image && image.placement === 'review');
-  const reservedIds = new Set([
-    ...(Array.isArray(s.people) ? s.people : []),
-    ...(Array.isArray(s.examplePeople) ? s.examplePeople : [])
-  ].map(person => person && person.imageId).filter(Boolean));
-  const reviewPortraitIds = ['care-review-arm', 'care-review-ball', 'care-review-shoulder'];
-  const reviewPortraitSet = new Set(reviewPortraitIds);
-  const gallery = pictures.filter(image => image && image.placement !== 'landing' && image.placement !== 'portrait' && image.placement !== 'service' && image.placement !== 'person' && image.placement !== 'about' && !reservedIds.has(image.libraryId) && !reviewPortraitSet.has(image.libraryId));
-  const frame = (image, caption, className) => image
-    ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
-    : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
-  const heroPin = landingImage && landingImage.libraryId === 'physio-landing-treatment' ? ' class="anchor-top-right"' : '';
-  const heroMedia = landingImage
-    ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
-    : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
-  const sideMedia = frame(gallery[2] || gallery[0], 'Photograph awaiting an approved category image.', 'side-media');
-  const tileMedia = frame(serviceImage || gallery[0], 'Photograph awaiting an approved category image.', 'tile-media');
-  const wordCount = value => value ? value.split(' ').length : 0;
-  const heroIntroduction = text => {
-    const clean = String(text || '').replace(/\s+/g, ' ').trim();
-    if (wordCount(clean) <= 50) return clean;
-    const sentences = clean.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [];
-    let kept = '';
-    for (const sentence of sentences) {
-      const next = `${kept}${sentence}`;
-      if (wordCount(next.trim()) > 50) break;
-      kept = next;
-    }
-    return kept.trim() || clean.split(' ').slice(0, 50).join(' ');
-  };
-  const heroFace = (title, detail) => `<span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>${title}</strong><em>${detail}</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>`;
-  const place = b.address?.value || b.location?.value || '';
-  const heroCards = [
-    `<a class="hero-card" href="#services">${heroFace('Services', 'Open the list.')}</a>`,
-    phoneOk
-      ? `<a class="hero-card" href="tel:${phoneDigits}">${heroFace(e(b.phone.value), 'Phone')}</a>`
-      : `<a class="hero-card" href="#contact">${heroFace('Phone', 'Awaiting confirmation.')}</a>`,
-    `<a class="hero-card" href="#contact">${heroFace(place ? e(place) : 'Location', place ? 'Location' : 'Address awaiting confirmation.')}</a>`
-  ].join('');
-  const serviceLinks = services.length
-    ? listed.map(service => `<button type="button">${e(service.value)}</button>`).join('')
-    : '<p class="pending">Service details awaiting confirmation.</p>';
-  const shotCopy = service => `<p class="shot-copy"><span><strong>${e(service.value)}</strong><em>Listed for ${name}.</em></span><a class="button" href="#contact">Booking</a></p>`;
-  const serviceTiles = services.length
-    ? services.map(service => `<div class="shot">${tileMedia}${shotCopy(service)}</div>`).join('')
-    : '';
-  const serviceAccordion = services.length
-    ? services.map(service => `<details name="listed-services"><summary>${e(service.value)}</summary><div class="accordion-panel">${tileMedia}${shotCopy(service)}</div></details>`).join('') + '<a class="button accordion-book" href="#contact">Book appointment</a>'
-    : '';
-  const serviceHover = services.map((_, index) => {
-    const n = index + 1;
-    const on = `.service-split[data-active="${index}"]`;
-    return `${on} .shots .shot{opacity:0;visibility:hidden}${on} .shots .shot:nth-child(${n}){opacity:1;visibility:visible}${on} .service-links button{font-weight:500}${on} .service-links button:nth-child(${n}){font-weight:600}`;
-  }).join('');
-  const serviceTargets = listed.map(service => `body:has(#${service.id}:target)`).join(',');
-  const serviceNavOn = serviceTargets ? `,${serviceTargets} .site-header nav a[href="#services"]` : '';
-  const serviceHomeOff = serviceTargets ? `,${serviceTargets} .site-header nav a[href="#home"]` : '';
-  const menuCurrent = listed.map(service => `body:has(#${service.id}:target) .menu-panel a[href="#${service.id}"]{background:var(--pale)}`).join('');
-  const serviceMenu = listed.map(service => `<a href="#${service.id}">${e(service.value)}</a>`).join('');
-  const offerItems = listed.map((service, index) => {
-    const open = index === 0 ? ' open' : '';
-    const num = String(index + 1).padStart(2, '0');
-    return `<div class="offer-item"><details class="offer-fold" name="listed-offers"${open}><summary class="offer-pick"><span>${num}</span>${e(service.value)}</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>${e(service.value)}</h2><p>Listed for ${name}. This panel does not add a price, a method or a result.</p><a class="about-link" href="#${service.id}"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div>`;
-  }).join('');
-  const offerSelect = listed.map((_, index) => {
-    const n = index + 1;
-    const turn = [-14, 22, 40, -8, 28][index % 5];
-    const on = `.offer-board:has(.offer-item:nth-child(${n}) .offer-fold[open])`;
-    return `${on} .offer-shape{transform:rotate(${turn}deg)}${on} .offer-shape-b{transform:rotate(${-turn}deg)}`;
-  }).join('');
-  const serviceBlurbs = (s.demo ? {
-    physiotherapy: {
-      Physiotherapy: 'Physiotherapy is care for how you move. A visit looks at the joint, muscle or everyday task that is getting in the way, and agrees what to work on together.',
-      'Movement assessment': 'A movement assessment is a closer look at how you stand, walk and bend. It is a way to notice what feels limited before a plan is agreed.',
-      'Sports rehabilitation': 'Sports rehabilitation is support for returning to training and sport. The work follows the demands of the activity, from the first sessions back through to a fuller schedule.',
-      'Chiropractic care': 'Chiropractic care focuses on the spine and how the rest of the body moves around it. A visit starts with what you are feeling in sitting, standing and everyday tasks.',
-      'Exercise rehabilitation': 'Exercise rehabilitation uses guided movement alongside hands-on care. The exercises are chosen for the person and the activity they want to get back to.'
-    },
-    chiropractic: {
-      'Chiropractic care': 'Chiropractic care focuses on the spine and how the rest of the body moves around it. A visit starts with what you are feeling in sitting, standing and everyday tasks.'
-    },
-    dental: {
-      Cosmetic: 'Cosmetic is listed for appearance-focused dental visits. This page does not describe a treatment or a result.',
-      'Oral Hygiene': 'Oral hygiene is listed for cleaning and day-to-day mouth care. This page does not describe a method or a result.',
-      Emergency: 'Emergency is listed for an urgent dental visit. This page does not promise a same-day appointment or a result.',
-      Family: 'Family is listed for dental care across ages. This page does not describe who is treated or a result.',
-      DenPlan: 'DenPlan is a listed payment-plan name for this layout. This page does not confirm a membership, a price or a result.'
-    }
-  }[s.sector] : {}) || {};
-  const clipDetail = value => {
-    const clean = String(value || '').replace(/\s+/g, ' ').trim();
-    if (!clean) return '';
-    const words = clean.split(' ');
-    if (words.length <= 55) return clean;
-    const cut = words.slice(0, 55).join(' ');
-    const sentence = cut.match(/^[\s\S]*[.!?](?=\s|$)/);
-    return (sentence ? sentence[0] : cut).trim();
-  };
-  const servicePages = listed.map((service, index) => {
-    const sourced = s.demo ? '' : clipDetail(service.detail);
-    const blurb = sourced || serviceBlurbs[service.value] || `${e(service.value)} is listed for ${name}. A short description of the service belongs on this page. It does not add a price or a promised result.`;
-    const flag = sourced ? 'From the published website' : 'Illustrative layout — not a treatment description';
-    return `<section id="${service.id}" class="page service-page" data-shape="${index % 5}"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">${String(index + 1).padStart(2, '0')}</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">${flag}</p><h1>${e(service.value)}</h1><p class="service-lead">${sourced ? e(sourced) : blurb}</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>`;
-  }).join('');
-  const publishedPeople = (Array.isArray(s.people) ? s.people : [])
-    .filter(person => person && person.name && person.detail);
-  const examplePeople = (Array.isArray(s.examplePeople) ? s.examplePeople : [])
-    .filter(person => person && person.name && person.detail);
-  const people = publishedPeople.length ? publishedPeople : examplePeople;
-  const namedImage = person => person.imageId ? pictures.find(image => image && image.libraryId === person.imageId) : null;
-  const personFlag = publishedPeople.length ? '' : '<p class="flag">Illustrative layout — not a verified member of staff</p>';
-  const anchoredMeet = new Set(['care-riley-example', 'care-jordan-example', 'care-sam-example']);
-  const faceClass = image => image && image.placement === 'person' && !anchoredMeet.has(image.libraryId) ? ' class="anchor-face"' : '';
-  const personCards = people.map((person, index) => {
-    const image = namedImage(person) || gallery[index];
-    const letter = e(String(person.name).trim().charAt(0).toUpperCase());
-    const thumbFace = faceClass(image);
-    const photo = image
-      ? `<figure class="thumb"><img${thumbFace} src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
-      : `<figure class="thumb" role="img" aria-label="Portrait area for ${e(person.name)}"><span aria-hidden="true">${letter}</span></figure>`;
-    return `<article class="person${index === 0 ? ' is-current' : ''}">${photo}<div class="person-card">${personFlag}<h2>${e(person.name)}</h2><p class="role">${e(person.role || '')}</p><p>${e(person.detail)}</p></div></article>`;
-  }).join('');
-  const calendarIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
-  const meetSlides = people.map((person, index) => {
-    const ownImage = namedImage(person) || gallery[index];
-    const image = ownImage || portraitImage;
-    const anchor = image && anchoredMeet.has(image.libraryId) ? ' class="anchor-start"' : faceClass(image);
-    const photo = image
-      ? `<figure class="meet-photo"><img${anchor} src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
-      : `<figure class="meet-photo" role="img" aria-label="Portrait area for ${e(person.name)}"><span aria-hidden="true">${e(String(person.name).trim().charAt(0).toUpperCase())}</span></figure>`;
-    const portraitNote = !ownImage && image && publishedPeople.length
-      ? '<p class="flag">Illustrative portrait — not a photograph of this person</p>'
-      : personFlag;
-    return `<article class="meet-slide${index === 0 ? ' is-on' : ''}"${index === 0 ? '' : ' aria-hidden="true"'}>${photo}<div class="meet-card">${portraitNote}<h3>${e(person.name)}</h3><p class="meet-role">${e(person.role || '')}</p><p>${e(person.detail)}</p><a class="button meet-book" href="#contact">${calendarIcon} Make an appointment</a></div></article>`;
-  }).join('');
-  const hoursValue = b.hours?.value || '';
-  const hoursBreak = hoursValue.indexOf('. ');
-  const schedule = !s.demo && hoursBreak !== -1 ? hoursValue.slice(0, hoursBreak) : hoursValue;
-  const extraHours = !s.demo && hoursBreak !== -1 ? hoursValue.slice(hoursBreak + 2) : '';
-  const hoursBits = schedule.split(',').map(part => part.trim()).filter(Boolean);
-  const hoursRows = hoursBits.length >= 2
-    ? `<div class="hours-row"><span>${e(hoursBits.slice(0, -1).join(', '))}</span><span>${e(hoursBits[hoursBits.length - 1])}</span></div>`
-    : hoursValue
-      ? `<div class="hours-row"><span>${e(hoursValue)}</span></div>`
-      : '<p class="pending">Hours awaiting confirmation.</p>';
-  const bookCall = phoneOk
-    ? `<a class="button book-call" href="tel:${phoneDigits}">Call ${e(b.phone.value)}</a>`
-    : '<p class="pending">Phone awaiting confirmation.</p>';
-  const bookingPhoto = bookingImage || gallery[0];
-  const bookPortrait = bookingPhoto
-    ? `<figure class="book-portrait"><img src="${e(bookingPhoto.path)}" alt="${e(bookingPhoto.alt)}"></figure>`
-    : `<figure class="book-portrait" role="img" aria-label="Portrait area"><span aria-hidden="true">${initial}</span></figure>`;
-  const reviewNotes = [
-    { title: 'A sample note', body: 'This panel shows where a short client line can sit. It is not a review from a real patient.' },
-    { title: 'Another sample', body: 'Choosing a name on the left swaps this note. None of these lines are verified reviews.' },
-    { title: 'Layout only', body: 'The portrait and this card change together. They do not describe a real appointment.' },
-    { title: 'For the layout', body: 'This card is here so the list can be clicked through. It is not a testimonial.' }
-  ];
-  const publishedReviews = (Array.isArray(s.reviews) ? s.reviews : []).filter(review => review && review.name && review.quote);
-  const starLabel = rating => {
-    const count = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
-    return count ? `${'★'.repeat(count)}${'☆'.repeat(5 - count)}` : '';
-  };
-  const reviewPortraits = reviewPortraitIds.map(id => pictures.find(image => image && image.libraryId === id)).filter(Boolean);
-  const reviewItems = publishedReviews.length
-    ? publishedReviews.map(review => ({
-        name: review.name,
-        meta: starLabel(review.rating),
-        metaLabel: review.rating ? `${review.rating} stars` : '',
-        flag: `Google review${review.date ? ` · ${review.date}` : ''}`,
-        title: review.name,
-        body: review.quote,
-        photo: null
-      }))
-    : s.demo
-      ? people.map((person, index) => {
-          const note = reviewNotes[index % reviewNotes.length];
-          return {
-            name: person.name,
-            meta: person.role || 'Client',
-            metaLabel: '',
-            flag: 'Illustrative layout — not a verified review',
-            title: note.title,
-            body: note.body,
-            photo: (reviewPortraits[index]) || gallery[index] || null
-          };
-        })
-      : [];
-  const reviewPicks = reviewItems.map((item, index) => `<button class="review-pick" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}"><strong>${e(item.name)}</strong><span${item.metaLabel ? ` class="stars" aria-label="${e(item.metaLabel)}"` : ''}>${e(item.meta)}</span></button>`).join('');
-  const reviewPhotos = reviewItems.map((item, index) => {
-    const hidden = index === 0 ? '' : ' aria-hidden="true"';
-    const photo = item.photo || (index === 0 ? reviewImage : null);
-    return photo
-      ? `<figure class="review-photo"${hidden}><img src="${e(photo.path)}" alt="${e(photo.alt)}"></figure>`
-      : `<figure class="review-photo" role="img" aria-label="Portrait area for ${e(item.name)}"${hidden}><span aria-hidden="true">${e(String(item.name).trim().charAt(0).toUpperCase())}</span></figure>`;
-  }).join('');
-  const reviewQuotes = reviewItems.map((item, index) => {
-    const stars = item.metaLabel ? `<p class="review-stars"><span class="stars" aria-label="${e(item.metaLabel)}">${e(item.meta)}</span></p>` : '';
-    return `<article class="review-quote"${index === 0 ? '' : ' aria-hidden="true"'}><p class="flag">${e(item.flag)}</p><h3>${publishedReviews.length ? e(item.title) : `“${e(item.title)}”`}</h3>${stars}<p>${e(item.body)}</p></article>`;
-  }).join('');
-  const reviewSelect = reviewItems.map((_, index) => {
-    const n = index + 1;
-    const on = `.review-board[data-active="${index}"]`;
-    return `${on} .review-pick:nth-child(${n}){background:var(--pale)}${on} .review-photo:nth-child(${n}),${on} .review-quote:nth-child(${n}){opacity:1;visibility:visible;transform:none}`;
-  }).join('');
-  const reviewMobile = reviewItems.map((_, index) => `.review-board[data-active="${index}"] .review-quote:nth-child(${index + 1}){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}`).join('');
-  const socialFillers = s.sector === 'dental' || s.sector === 'veterinary' ? ['A visit', 'A check-up'] : ['A visit', 'How you move'];
-  const socialTopics = [
-    ...(services.length ? services.map(service => service.value) : ['Care']),
-    ...socialFillers
-  ].slice(0, 6);
-  const socialCards = socialTopics.map(topic => `<article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>${e(topic)}</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article>`).join('');
-  const mapQuery = b.address?.value || b.location?.value || '';
-  const map = mapQuery
-    ? `<iframe class="map" title="Map of the published address" width="600" height="420" src="${e('https://maps.google.com/maps?q=' + encodeURIComponent(mapQuery) + '&hl=en&z=15&output=embed')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
-    : '<p class="pending">Address awaiting confirmation, so no map is shown.</p>';
-  const parkingNote = s.demo
-    ? 'Parking on site is available. No extra directions are listed.'
-    : (typeof b.parking?.value === 'string' ? b.parking.value.trim() : '');
-  const parkingCard = parkingNote && parkingNote.split(/\s+/).filter(Boolean).length <= 15
-    ? `<article class="info-card"><h2>Parking</h2><p>${e(parkingNote)}</p></article>`
-    : '';
-  const info = [
-    phoneOk ? `<article class="info-card"><h2>Phone</h2><p><a href="tel:${phoneDigits}">${e(b.phone.value)}</a></p></article>` : '',
-    b.address ? `<article class="info-card"><h2>Address</h2><p>${e(b.address.value)}</p></article>` : '',
-    b.hours ? `<article class="info-card"><h2>Hours</h2><p>${e(b.hours.value)}</p></article>` : '',
-    parkingCard,
-    website ? `<article class="info-card"><h2>Website</h2><p>${website}</p></article>` : ''
-  ].join('');
-  const banner = s.demo ? 'FICTIONAL DEMO' : 'CONCEPT WEBSITE';
-  const mapNote = s.demo
-    ? 'Map of the fictional address. It may not match a real place.'
-    : 'Map of the published address.';
-  const servicesNote = s.demo
-    ? 'Fictional services, shown so this layout can be reviewed.'
-    : 'Names taken from the official website. No extra treatments, prices or results have been added.';
-  const hoursNote = s.demo
-    ? 'Hours listed for this concept. No extra days have been added.'
-    : extraHours || 'Hours published by the clinic. No extra days have been added.';
-  const aboutSummary = s.demo
-    ? `${name} is a sample practice${location ? ` in ${location}` : ''}. This is a short layout summary, not a description of a real clinic.`
-    : e(s.copy?.introduction || '');
-  const aboutImage = pictures.find(image => image && image.libraryId === 'care-about-exterior');
-  const aboutPhoto = aboutImage
-    ? `<figure class="about-photo"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
-    : '';
-  const demoStats = `<div class="stat-board" data-stat="patients">
-<div class="rails">
-<button class="rail rail-patients" type="button" data-stat="patients"><span>2000+ happy patients</span></button>
-<button class="rail rail-reviews" type="button" data-stat="reviews"><span>480 five-star reviews</span></button>
-<button class="rail rail-years" type="button" data-stat="years"><span>15+ years of experience</span></button>
-</div>
-<div class="stat-stage">
-<span class="geo" aria-hidden="true"></span>
-<div class="stat-show show-patients">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">2000+</p>
-<p>Happy patients, shown so this layout can be reviewed.</p>
-</div>
-<div class="stat-show show-reviews">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">480</p>
-<p>Five-star reviews, shown so this layout can be reviewed.</p>
-</div>
-<div class="stat-show show-years">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">15+</p>
-<p>Years of experience, shown so this layout can be reviewed.</p>
-</div>
-</div>
-</div>`;
-  const socialBand = `<section class="section social">
-<div class="wrap social-head">
-<div>
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="4.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="11.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 7.2 9.4 5.4M7.1 8.8l2.2 1.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Social</p>
-<h2>Recent posts</h2>
-<p class="social-lede">A looping row of sample posts. Nothing here is from a live account.</p>
-</div>
-<button class="social-pause" type="button" aria-pressed="false">Pause</button>
-</div>
-<div class="social-marquee">
-<div class="social-track">
-<div class="social-set">${socialCards}</div>
-<div class="social-set" aria-hidden="true">${socialCards}</div>
-</div>
-</div>
-</section>`;
-  const reviewNav = `<div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>`;
-  const reviewBoard = reviewItems.length
-    ? `<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="${publishedReviews.length ? 'Google reviews' : 'Sample clients'}">${reviewPicks}</div><div class="review-photos">${reviewPhotos}</div><div class="review-quotes">${reviewQuotes}</div>${reviewNav}</div>`
-    : '<p class="pending">Google reviews for this clinic are still being checked.</p>';
-  const reviewMark = `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
-  const reviewQuery = [b.name?.value, b.address?.value || b.location?.value].filter(Boolean).join(' ');
-  const reviewHref = e('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(reviewQuery));
-  const reviewBand = `<section class="section reviews">
-<div class="wrap">
-<p class="meet-kicker">${reviewMark} Testimonials</p>
-<h2>Patient reviews</h2>
-<a class="button review-leave-link" href="#reviews">Leave a Google review</a>
-${reviewBoard}
-</div>
-</section>`;
-  const pricePacks = {
-    dental: [
-      { title: 'New patient visit', fee: '£75', includes: ['A consultation and a look at the teeth and gums', 'A discussion of what was found'], time: 'Duration: 45 minutes.' },
-      { title: 'Treatment visit', fee: '£55', includes: ['The care agreed for that visit', 'Advice on looking after the area afterwards'], time: 'Duration: 30 minutes.' }
-    ],
-    veterinary: [
-      { title: 'First appointment', fee: '£70', includes: ['A consultation', 'An examination and a discussion of what was found'], time: 'Duration: 45 minutes.' },
-      { title: 'Treatment', fee: '£40', includes: ['The care agreed for that visit', 'A note of what to watch for afterwards'], time: 'Duration: 20 minutes, or up to 40 minutes, depending on the treatment.' }
-    ]
-  };
-  const carePacks = [
-    { title: 'First appointment', fee: '£90', includes: ['A consultation with a chiropractor registered with the General Chiropractic Council', 'An examination, covering a health check and postural, functional, neurological and orthopaedic assessments', 'A discussion of the examination findings'], time: 'Duration: 60 minutes.' },
-    { title: 'Treatment', fee: '£45', includes: ['Physical and manual therapy chosen for the problem', 'A rehabilitation exercise programme'], time: 'Duration: 15 minutes, or up to 30 minutes, depending on the treatment.' }
-  ];
-  const packs = pricePacks[s.sector] || carePacks;
-  const sampleFees = ['£60', '£45', '£70', '£55', '£40', '£80', '£50'];
-  const feeNote = service => {
-    const blurb = serviceBlurbs[service.value];
-    if (!blurb) return `${service.value} is listed for this practice. This note does not describe a method or a result.`;
-    const sentence = blurb.match(/^.*?[.!?](?:\s|$)/);
-    return sentence ? sentence[0].trim() : blurb;
-  };
-  const feeItems = listed.map((service, index) => ({ name: service.value, fee: sampleFees[index % sampleFees.length], note: feeNote(service) }));
-  const publishedVisits = (!s.demo && Array.isArray(s.fees?.visits) ? s.fees.visits : [])
-    .filter(visit => visit && visit.title && visit.fee)
-    .slice(0, 2)
-    .map(visit => ({
-      title: String(visit.title),
-      fee: String(visit.fee),
-      includes: Array.isArray(visit.includes) ? visit.includes.map(item => String(item)).filter(Boolean).slice(0, 6) : [],
-      time: visit.time ? String(visit.time) : ''
-    }));
-  const visits = s.demo ? packs : publishedVisits;
-  const serviceFeeRows = s.demo
-    ? feeItems
-    : (Array.isArray(s.fees?.services) ? s.fees.services : []).filter(item => item && item.name && item.fee).map(item => ({
-        name: String(item.name),
-        fee: String(item.fee),
-        note: item.note ? String(item.note) : ''
-      }));
-  const feeIncludes = items => `<ul class="fee-includes">${items.map(item => `<li>${e(item)}</li>`).join('')}</ul>`;
-  const feeFolds = serviceFeeRows.map(item => `<details class="fee-fold" name="listed-fees"><summary><span>${e(item.name)}</span><strong>${e(item.fee)}</strong></summary>${item.note ? `<p>${e(item.note)}</p>` : ''}</details>`).join('');
-  const posterCards = visits.map(pack => {
-    const includes = pack.includes?.length ? `<p class="fee-k">Includes</p>${feeIncludes(pack.includes)}` : '';
-    const time = pack.time ? `<p class="fee-time">${e(pack.time)}</p>` : '';
-    return `<article class="fee-card"><span class="fee-gem"><strong>${e(pack.fee)}</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>${e(pack.title)}</h2>${includes}${time}<a class="button solid fee-book" href="#contact">Book Now</a></article>`;
-  }).join('');
-  const pricesFlag = s.demo ? 'Illustrative layout — not a published fee' : 'From the published website';
-  const pricesLede = s.demo
-    ? `These figures are examples, so the layout can be reviewed. They are not the fees for ${name}.`
-    : `Fees taken from the published website for ${name}. No amounts have been added.`;
-  const feeBoard = feeFolds ? `<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion">${feeFolds}</div></div>` : '';
-  const pricesPage = visits.length || feeFolds ? `<section id="prices" class="page prices-page">
-<div class="wrap">
-<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
-<h1>What a visit includes.</h1>
-<p class="flag">${pricesFlag}</p>
-<p class="lede">${pricesLede}</p>
-${posterCards ? `<div class="fee-pair">${posterCards}</div>` : ''}
-${feeBoard}
-</div>
-</section>` : '';
-  const reviewsPage = `<section id="reviews" class="page">
-<div class="wrap page-intro">
-<div>
-<p class="meet-kicker">${reviewMark} Reviews</p>
-<h1>Leave a Google review. Please...</h1>
-</div>
-<a class="button solid" href="${reviewHref}" target="_blank" rel="noopener noreferrer">Leave a review</a>
-</div>
-<section class="section reviews">
-<div class="wrap">
-<p class="meet-kicker">${reviewMark} Testimonials</p>
-${reviewBoard}
-</div>
-</section>
-</section>`;
-  return `<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="generator" content="parley-website-factory care-modern 1.0.0">
-<title>${name} — concept by Parley</title>
+<title>Southam Physio &amp; Sports Injury Clinic — concept by Parley</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light;--accent:${accent};--on:${onAccent};--pale:${pale}}
+:root{color-scheme:light;--accent:#018CD1;--on:#ffffff;--pale:#d1eaf7}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:#fff;color:#333;font:16px/1.5 Manrope,"Segoe UI",sans-serif}
@@ -469,12 +44,12 @@ body:has(#services:target) .site-header nav a[href="#services"],
 body:has(#about:target) .site-header nav a[href="#about"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
 body:has(#contact:target) .site-header nav a[href="#contact"],
-body:has(#prices:target) .site-header nav a[href="#prices"]${serviceNavOn}{font-weight:700}
+body:has(#prices:target) .site-header nav a[href="#prices"],body:has(#service-shockwave-therapy:target),body:has(#service-manual-therapy:target),body:has(#service-exercise-therapy:target),body:has(#service-functional-and-sports-specific-rehabilitation:target),body:has(#service-posture-correction-and-advice:target),body:has(#service-acupuncture:target),body:has(#service-biomechanical-analysis:target),body:has(#service-education-and-advice:target) .site-header nav a[href="#services"]{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
 body:has(#about:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
 body:has(#contact:target) .site-header nav a[href="#home"],
-body:has(#prices:target) .site-header nav a[href="#home"]${serviceHomeOff}{font-weight:500}
+body:has(#prices:target) .site-header nav a[href="#home"],body:has(#service-shockwave-therapy:target),body:has(#service-manual-therapy:target),body:has(#service-exercise-therapy:target),body:has(#service-functional-and-sports-specific-rehabilitation:target),body:has(#service-posture-correction-and-advice:target),body:has(#service-acupuncture:target),body:has(#service-biomechanical-analysis:target),body:has(#service-education-and-advice:target) .site-header nav a[href="#home"]{font-weight:500}
 .has-menu{position:relative}
 .nav-chevron{display:block;transition:transform .2s ease}
 .has-menu:hover .nav-chevron,.has-menu:focus-within .nav-chevron{transform:rotate(180deg)}
@@ -483,7 +58,7 @@ body:has(#prices:target) .site-header nav a[href="#home"]${serviceHomeOff}{font-
 .has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{opacity:1;visibility:visible;pointer-events:auto}
 .site-header .menu-panel a{justify-content:flex-start;min-height:40px;padding:8px 16px;border-radius:10px;font-size:15px;font-weight:500;white-space:nowrap}
 .site-header .menu-panel a:hover{background:#f3f4f6}
-${menuCurrent}
+body:has(#service-shockwave-therapy:target) .menu-panel a[href="#service-shockwave-therapy"]{background:var(--pale)}body:has(#service-manual-therapy:target) .menu-panel a[href="#service-manual-therapy"]{background:var(--pale)}body:has(#service-exercise-therapy:target) .menu-panel a[href="#service-exercise-therapy"]{background:var(--pale)}body:has(#service-functional-and-sports-specific-rehabilitation:target) .menu-panel a[href="#service-functional-and-sports-specific-rehabilitation"]{background:var(--pale)}body:has(#service-posture-correction-and-advice:target) .menu-panel a[href="#service-posture-correction-and-advice"]{background:var(--pale)}body:has(#service-acupuncture:target) .menu-panel a[href="#service-acupuncture"]{background:var(--pale)}body:has(#service-biomechanical-analysis:target) .menu-panel a[href="#service-biomechanical-analysis"]{background:var(--pale)}body:has(#service-education-and-advice:target) .menu-panel a[href="#service-education-and-advice"]{background:var(--pale)}
 .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 22px;border:0;border-radius:25px;background:var(--pale);color:#000;font:500 14px/1 Manrope,"Segoe UI",sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
 .button.solid,.header-cta{background:#111;color:#fff}
 .button:hover,.header-cta:hover{background:var(--accent);color:var(--on)}
@@ -548,7 +123,7 @@ body:has(#meet-team:target) #home{display:none}
 .shot-copy .button{flex:none}
 .shot-copy strong{display:block;margin:0 0 6px;font-size:20px;font-weight:500;line-height:1.2}
 .shot-copy em{color:#333;font-size:14px;font-style:normal;font-weight:400;line-height:1.5}
-${serviceHover}
+.service-split[data-active="0"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="0"] .shots .shot:nth-child(1){opacity:1;visibility:visible}.service-split[data-active="0"] .service-links button{font-weight:500}.service-split[data-active="0"] .service-links button:nth-child(1){font-weight:600}.service-split[data-active="1"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="1"] .shots .shot:nth-child(2){opacity:1;visibility:visible}.service-split[data-active="1"] .service-links button{font-weight:500}.service-split[data-active="1"] .service-links button:nth-child(2){font-weight:600}.service-split[data-active="2"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="2"] .shots .shot:nth-child(3){opacity:1;visibility:visible}.service-split[data-active="2"] .service-links button{font-weight:500}.service-split[data-active="2"] .service-links button:nth-child(3){font-weight:600}.service-split[data-active="3"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="3"] .shots .shot:nth-child(4){opacity:1;visibility:visible}.service-split[data-active="3"] .service-links button{font-weight:500}.service-split[data-active="3"] .service-links button:nth-child(4){font-weight:600}.service-split[data-active="4"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="4"] .shots .shot:nth-child(5){opacity:1;visibility:visible}.service-split[data-active="4"] .service-links button{font-weight:500}.service-split[data-active="4"] .service-links button:nth-child(5){font-weight:600}.service-split[data-active="5"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="5"] .shots .shot:nth-child(6){opacity:1;visibility:visible}.service-split[data-active="5"] .service-links button{font-weight:500}.service-split[data-active="5"] .service-links button:nth-child(6){font-weight:600}.service-split[data-active="6"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="6"] .shots .shot:nth-child(7){opacity:1;visibility:visible}.service-split[data-active="6"] .service-links button{font-weight:500}.service-split[data-active="6"] .service-links button:nth-child(7){font-weight:600}.service-split[data-active="7"] .shots .shot{opacity:0;visibility:hidden}.service-split[data-active="7"] .shots .shot:nth-child(8){opacity:1;visibility:visible}.service-split[data-active="7"] .service-links button{font-weight:500}.service-split[data-active="7"] .service-links button:nth-child(8){font-weight:600}
 .statement{padding:16px 0 88px}
 .statement h2{max-width:12em;font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.02}
 .statement>.about-book{margin-top:36px}
@@ -682,7 +257,7 @@ ${serviceHover}
 .review-quote p{color:#333;font-size:16px;line-height:1.55}
 .review-quote .flag{margin-bottom:16px}
 .review-stars,.review-nav{display:none}
-${reviewSelect}
+
 .social h2{font-size:clamp(32px,3.4vw,44px);font-weight:600;line-height:1.15}
 .social-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
 .social-lede{max-width:34em;margin:12px 0 0;color:#333}
@@ -808,7 +383,7 @@ ${reviewSelect}
 .service-copy h1{max-width:11em;font-size:clamp(44px,5.4vw,76px);font-weight:600;line-height:.96}
 .service-lead{max-width:28em;margin-top:22px;color:#222;font-size:clamp(18px,2vw,22px);line-height:1.45}
 .service-cta{margin-top:36px;min-height:56px;padding:16px 32px;font-size:16px;font-weight:600}
-${offerSelect}
+.offer-board:has(.offer-item:nth-child(1) .offer-fold[open]) .offer-shape{transform:rotate(-14deg)}.offer-board:has(.offer-item:nth-child(1) .offer-fold[open]) .offer-shape-b{transform:rotate(14deg)}.offer-board:has(.offer-item:nth-child(2) .offer-fold[open]) .offer-shape{transform:rotate(22deg)}.offer-board:has(.offer-item:nth-child(2) .offer-fold[open]) .offer-shape-b{transform:rotate(-22deg)}.offer-board:has(.offer-item:nth-child(3) .offer-fold[open]) .offer-shape{transform:rotate(40deg)}.offer-board:has(.offer-item:nth-child(3) .offer-fold[open]) .offer-shape-b{transform:rotate(-40deg)}.offer-board:has(.offer-item:nth-child(4) .offer-fold[open]) .offer-shape{transform:rotate(-8deg)}.offer-board:has(.offer-item:nth-child(4) .offer-fold[open]) .offer-shape-b{transform:rotate(8deg)}.offer-board:has(.offer-item:nth-child(5) .offer-fold[open]) .offer-shape{transform:rotate(28deg)}.offer-board:has(.offer-item:nth-child(5) .offer-fold[open]) .offer-shape-b{transform:rotate(-28deg)}.offer-board:has(.offer-item:nth-child(6) .offer-fold[open]) .offer-shape{transform:rotate(-14deg)}.offer-board:has(.offer-item:nth-child(6) .offer-fold[open]) .offer-shape-b{transform:rotate(14deg)}.offer-board:has(.offer-item:nth-child(7) .offer-fold[open]) .offer-shape{transform:rotate(22deg)}.offer-board:has(.offer-item:nth-child(7) .offer-fold[open]) .offer-shape-b{transform:rotate(-22deg)}.offer-board:has(.offer-item:nth-child(8) .offer-fold[open]) .offer-shape{transform:rotate(40deg)}.offer-board:has(.offer-item:nth-child(8) .offer-fold[open]) .offer-shape-b{transform:rotate(-40deg)}
 .map-frame{margin:0 0 10px;border-radius:10px;overflow:hidden;background:var(--pale)}
 .map{display:block;width:100%;height:420px;border:0}
 .map-note{margin-bottom:22px;color:#333;font-size:14px}
@@ -952,7 +527,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .review-photo{width:52px;height:52px;border-radius:50%}
   .review-photo span{font-size:22px}
   .review-quote{position:relative;inset:auto;display:flex;flex-direction:column;height:0;margin:0;padding:0;overflow:hidden;border-radius:0;background:transparent;opacity:0;visibility:hidden;transform:none}
-  ${reviewMobile}
+  
   .review-quote h3{order:1;display:flex;align-items:center;min-height:52px;margin:0 0 16px 68px;font-size:18px;font-weight:600;line-height:1.2}
   .review-quote h3:has(+ .review-stars){min-height:0;align-items:flex-start;margin-bottom:4px}
   .review-quote .review-stars{order:2;display:block;margin:0 0 18px 68px;color:#111;font-size:13px;letter-spacing:.14em;line-height:1}
@@ -996,22 +571,22 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </style>
 </head>
 <body>
-<p class="banner">${banner} · Prepared by Parley Systems · Not the business’s official website</p>
+<p class="banner">CONCEPT WEBSITE · Prepared by Parley Systems · Not the business’s official website</p>
 <a class="skip" href="#home">Skip to content</a>
 <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
 <header class="site-header">
 <div class="nav-left">
-<a class="brand" href="#home">${logo}</a>
+<a class="brand" href="#home"><img class="logo" src="/factory-assets/clients/southam-physio/logo.jpg" alt="Southam Physio &amp; Sports Injury Clinic"></a>
 <span class="nav-rule" aria-hidden="true"></span>
-${phoneText}
+<a class="nav-phone" href="tel:07941856156">07941 856156</a>
 </div>
 <nav aria-label="Pages">
 <ul>
 <li><a href="#home">Home</a></li>
-<li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>${serviceMenu ? `<div class="menu-panel">${serviceMenu}</div>` : ''}</li>
+<li class="has-menu"><a href="#services">Services <svg class="nav-chevron" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6.2 8 10l4-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="menu-panel"><a href="#service-shockwave-therapy">Shockwave Therapy</a><a href="#service-manual-therapy">Manual Therapy</a><a href="#service-exercise-therapy">Exercise Therapy</a><a href="#service-functional-and-sports-specific-rehabilitation">Functional and Sports Specific Rehabilitation</a><a href="#service-posture-correction-and-advice">Posture Correction and Advice</a><a href="#service-acupuncture">Acupuncture</a><a href="#service-biomechanical-analysis">Biomechanical Analysis</a><a href="#service-education-and-advice">Education and Advice</a></div></li>
 <li><a href="#about">About</a></li>
 <li><a href="#reviews">Reviews</a></li>
-${pricesPage ? '<li><a href="#prices">Prices</a></li>' : ''}
+<li><a href="#prices">Prices</a></li>
 <li><a href="#contact">Contact</a></li>
 <li><a class="button" href="#contact">Book Now</a></li>
 </ul>
@@ -1023,15 +598,15 @@ ${pricesPage ? '<li><a href="#prices">Prices</a></li>' : ''}
 <section id="home" class="page">
 <div class="landing">
 <div class="wrap hero-head">
-<h1>${e(s.copy.headline)}</h1>
+<h1>Physiotherapy on Southam High Street.</h1>
 <div class="hero-aside">
-<p class="lede">${e(heroIntroduction(s.copy.introduction))}</p>
+<p class="lede">Physiotherapy at Tithe Place, next to the library on Southam High Street. Paul Nicholls is the named physiotherapist.</p>
 <a class="button" href="#contact">Book appointment</a>
 </div>
 </div>
 <div class="wrap hero-stage">
-${heroMedia}
-<div class="hero-cards">${heroCards}</div>
+<figure class="hero-media"><img src="/factory-assets/clients/southam-physio/landing-treatment.png" alt="Knee treatment photograph supplied for Southam Physio &amp; Sports Injury Clinic."></figure>
+<div class="hero-cards"><a class="hero-card" href="#services"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>Services</strong><em>Open the list.</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="tel:07941856156"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>07941 856156</strong><em>Phone</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="#contact"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>Tithe Place (next to the Library), High Street, Southam, CV47 0HB</strong><em>Location</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a></div>
 </div>
 </div>
 <section class="section">
@@ -1039,21 +614,45 @@ ${heroMedia}
 <div class="service-side">
 <p class="kicker">Services</p>
 <h2>What is listed.</h2>
-<p class="lede">${servicesNote}</p>
-<nav class="service-links" aria-label="Services">${serviceLinks}</nav>
-<div class="service-accordion">${serviceAccordion}</div>
+<p class="lede">Names taken from the official website. No extra treatments, prices or results have been added.</p>
+<nav class="service-links" aria-label="Services"><button type="button">Shockwave Therapy</button><button type="button">Manual Therapy</button><button type="button">Exercise Therapy</button><button type="button">Functional and Sports Specific Rehabilitation</button><button type="button">Posture Correction and Advice</button><button type="button">Acupuncture</button><button type="button">Biomechanical Analysis</button><button type="button">Education and Advice</button></nav>
+<div class="service-accordion"><details name="listed-services"><summary>Shockwave Therapy</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Shockwave Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Manual Therapy</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Manual Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Exercise Therapy</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Exercise Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Functional and Sports Specific Rehabilitation</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Functional and Sports Specific Rehabilitation</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Posture Correction and Advice</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Posture Correction and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Acupuncture</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Acupuncture</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Biomechanical Analysis</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Biomechanical Analysis</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Education and Advice</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Education and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></details><a class="button accordion-book" href="#contact">Book appointment</a></div>
 </div>
-<div class="shots">${serviceTiles}</div>
+<div class="shots"><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Shockwave Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Manual Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Exercise Therapy</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Functional and Sports Specific Rehabilitation</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Posture Correction and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Acupuncture</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Biomechanical Analysis</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-physio/e7612f6f8fe42794-service-tile.png" alt="Illustrative treatment. Not a photograph of this clinic’s staff or premises."></figure><p class="shot-copy"><span><strong>Education and Advice</strong><em>Listed for Southam Physio &amp; Sports Injury Clinic.</em></span><a class="button" href="#contact">Booking</a></p></div></div>
 </div>
 </section>
 <section class="wrap statement">
 <div class="vision">
-<h2>Why ${name}?</h2>
+<h2>Why Southam Physio &amp; Sports Injury Clinic?</h2>
 <div class="vision-side">
-<p>${s.demo ? e(s.copy.introduction) : e(b.hours?.value || 'Hours awaiting confirmation.')}</p>
+<p>Usually 5 days a week, including 2 evening sessions; some Saturday mornings</p>
 </div>
 </div>
-${demoStats}
+<div class="stat-board" data-stat="patients">
+<div class="rails">
+<button class="rail rail-patients" type="button" data-stat="patients"><span>2000+ happy patients</span></button>
+<button class="rail rail-reviews" type="button" data-stat="reviews"><span>480 five-star reviews</span></button>
+<button class="rail rail-years" type="button" data-stat="years"><span>15+ years of experience</span></button>
+</div>
+<div class="stat-stage">
+<span class="geo" aria-hidden="true"></span>
+<div class="stat-show show-patients">
+<p class="flag">Illustrative figure — not a verified result</p>
+<p class="stat-num">2000+</p>
+<p>Happy patients, shown so this layout can be reviewed.</p>
+</div>
+<div class="stat-show show-reviews">
+<p class="flag">Illustrative figure — not a verified result</p>
+<p class="stat-num">480</p>
+<p>Five-star reviews, shown so this layout can be reviewed.</p>
+</div>
+<div class="stat-show show-years">
+<p class="flag">Illustrative figure — not a verified result</p>
+<p class="stat-num">15+</p>
+<p>Years of experience, shown so this layout can be reviewed.</p>
+</div>
+</div>
+</div>
 <a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </section>
 <section class="section band meet">
@@ -1063,12 +662,27 @@ ${demoStats}
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 1.1l1.05 3.35h3.5l-2.85 2.1 1.1 3.4L8 7.9l-2.8 2.05 1.1-3.4-2.85-2.1h3.5z"/></svg> Our specialists</p>
 <h2>Meet the specialists</h2>
 </div>
-${people.length > 1 ? `<div class="meet-nav"><button class="meet-arrow meet-prev" type="button" aria-label="Previous specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow meet-next" type="button" aria-label="Next specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>` : ''}
+
 </div>
-<div class="meet-stage">${meetSlides || '<p class="pending">No individual team members were published, so none are shown here.</p>'}</div>
+<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img class="anchor-face" src="/factory-assets/clients/southam-physio/paul-nicholls.png" alt="Paul Nicholls at the entrance of Southam Physio &amp; Sports Injury Clinic."></figure><div class="meet-card"><h3>Paul Nicholls</h3><p class="meet-role">Chartered physiotherapist</p><p>The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
 </div>
 </section>
-${socialBand}
+<section class="section social">
+<div class="wrap social-head">
+<div>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="4.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="11.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 7.2 9.4 5.4M7.1 8.8l2.2 1.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Social</p>
+<h2>Recent posts</h2>
+<p class="social-lede">A looping row of sample posts. Nothing here is from a live account.</p>
+</div>
+<button class="social-pause" type="button" aria-pressed="false">Pause</button>
+</div>
+<div class="social-marquee">
+<div class="social-track">
+<div class="social-set"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Shockwave Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Manual Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Exercise Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Functional and Sports Specific Rehabilitation</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Posture Correction and Advice</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Acupuncture</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
+<div class="social-set" aria-hidden="true"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Shockwave Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Manual Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Exercise Therapy</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Functional and Sports Specific Rehabilitation</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Posture Correction and Advice</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Acupuncture</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
+</div>
+</div>
+</section>
 <section class="section book">
 <div class="wrap book-layout">
 <form class="book-form" action="#contact" method="post" onsubmit="return false">
@@ -1079,24 +693,31 @@ ${socialBand}
 <label>Name*<input name="name" autocomplete="name" placeholder="Enter first name" required></label>
 <label>Email*<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
 <label>Phone<input name="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
-<label class="book-date"><span>Appointment date*</span><span class="date-field">${calendarIcon}<input name="date" placeholder="DD / MM / YYYY" required></span></label>
+<label class="book-date"><span>Appointment date*</span><span class="date-field"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><input name="date" placeholder="DD / MM / YYYY" required></span></label>
 <label class="span">Message*<textarea name="message" placeholder="Type message here..." required></textarea></label>
 </div>
 <div class="book-actions"><button class="book-submit" type="submit">Book appointment</button></div>
 </form>
 <div class="book-stage">
-${bookPortrait}
+<figure class="book-portrait"><img src="/factory-assets/clients/southam-physio/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
 <aside class="book-hours">
 <h3>Opening &amp; closing times</h3>
-<p>${hoursNote}</p>
-${schedule ? `<p class="hours-live" data-hours="${e(schedule)}"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>` : ''}
-${hoursRows}
-${bookCall}
+<p>Hours published by the clinic. No extra days have been added.</p>
+<p class="hours-live" data-hours="Usually 5 days a week, including 2 evening sessions; some Saturday mornings"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
+<div class="hours-row"><span>Usually 5 days a week</span><span>including 2 evening sessions; some Saturday mornings</span></div>
+<a class="button book-call" href="tel:07941856156">Call 07941 856156</a>
 </aside>
 </div>
 </div>
 </section>
-${reviewBand}
+<section class="section reviews">
+<div class="wrap">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
+<h2>Patient reviews</h2>
+<a class="button review-leave-link" href="#reviews">Leave a Google review</a>
+<p class="pending">Google reviews for this clinic are still being checked.</p>
+</div>
+</section>
 </section>
 <section id="services" class="page services-page">
 <div class="wrap services-intro">
@@ -1104,55 +725,78 @@ ${reviewBand}
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
 <h1>What is listed.</h1>
 </div>
-<p class="lede">${servicesNote}</p>
+<p class="lede">Names taken from the official website. No extra treatments, prices or results have been added.</p>
 </div>
-${listed.length ? `<div class="wrap offer-board"><div class="offer-list">${offerItems}</div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>` : '<div class="wrap"><p class="pending">Service details awaiting confirmation.</p></div>'}
+<div class="wrap offer-board"><div class="offer-list"><div class="offer-item"><details class="offer-fold" name="listed-offers" open><summary class="offer-pick"><span>01</span>Shockwave Therapy</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Shockwave Therapy</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-shockwave-therapy"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>02</span>Manual Therapy</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Manual Therapy</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-manual-therapy"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>03</span>Exercise Therapy</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Exercise Therapy</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-exercise-therapy"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>04</span>Functional and Sports Specific Rehabilitation</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Functional and Sports Specific Rehabilitation</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-functional-and-sports-specific-rehabilitation"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>05</span>Posture Correction and Advice</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Posture Correction and Advice</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-posture-correction-and-advice"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>06</span>Acupuncture</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Acupuncture</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-acupuncture"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>07</span>Biomechanical Analysis</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Biomechanical Analysis</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-biomechanical-analysis"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>08</span>Education and Advice</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Education and Advice</h2><p>Listed for Southam Physio &amp; Sports Injury Clinic. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-education-and-advice"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div></div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>
 </section>
-${servicePages}
+<section id="service-shockwave-therapy" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Shockwave Therapy</h1><p class="service-lead">The treatments page lists Shockwave, also called extracorporeal shockwave therapy (ESWT). The clinic page says a course is usually 3–6 sessions, and each application lasts 5–10 minutes within a visit of up to half an hour.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-manual-therapy" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Manual Therapy</h1><p class="service-lead">The treatments page lists joint manipulation and mobilisations, and soft tissue techniques.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-exercise-therapy" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Exercise Therapy</h1><p class="service-lead">The treatments page lists return to sport, core stability, core strength and traditional strength training.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-functional-and-sports-specific-rehabilitation" class="page service-page" data-shape="3"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Functional and Sports Specific Rehabilitation</h1><p class="service-lead">Listed on the treatments page. That page does not add a separate description of this service.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-posture-correction-and-advice" class="page service-page" data-shape="4"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Posture Correction and Advice</h1><p class="service-lead">Listed on the treatments page. That page does not add a separate description of this service.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-acupuncture" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">06</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Acupuncture</h1><p class="service-lead">Acupuncture is listed on the treatments page.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-biomechanical-analysis" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">07</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Biomechanical Analysis</h1><p class="service-lead">The treatments page lists orthotics and insoles under biomechanical analysis.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-education-and-advice" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">08</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Education and Advice</h1><p class="service-lead">The treatments page lists the nature and cause of a problem, self-management, and prevention of further episodes.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>
 <section id="about" class="page team-page">
 <div class="wrap about-summary">
 <div class="about-copy">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
-<h1>${name}</h1>
-<p class="lede">${aboutSummary}</p>
+<h1>Southam Physio &amp; Sports Injury Clinic</h1>
+<p class="lede">Physiotherapy at Tithe Place, next to the library on Southam High Street. Paul Nicholls is the named physiotherapist.</p>
 <a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
-${aboutPhoto}
+
 <p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
-${people.length ? `<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people">${personCards}</div></div>` : '<div class="wrap"><p class="pending">No individual team members were published, so none are shown here.</p></div>'}
+<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img class="anchor-face" src="/factory-assets/clients/southam-physio/paul-nicholls.png" alt="Paul Nicholls at the entrance of Southam Physio &amp; Sports Injury Clinic."></figure><div class="person-card"><h2>Paul Nicholls</h2><p class="role">Chartered physiotherapist</p><p>The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.</p></div></article></div></div>
 </section>
 <section id="contact" class="page">
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
-<h1>${name}.</h1>
-<div class="info-grid">${info}</div>
+<h1>Southam Physio &amp; Sports Injury Clinic.</h1>
+<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:07941856156">07941 856156</a></p></article><article class="info-card"><h2>Address</h2><p>Tithe Place (next to the Library), High Street, Southam, CV47 0HB</p></article><article class="info-card"><h2>Hours</h2><p>Usually 5 days a week, including 2 evening sessions; some Saturday mornings</p></article><article class="info-card"><h2>Parking</h2><p>Free street parking on Coventry Street, or the Wood Street car park.</p></article><article class="info-card"><h2>Website</h2><p><a href="https://www.southamphysio.com/" rel="noopener noreferrer">Official website</a></p></article></div>
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
 <h2>Get in touch</h2>
-${contactLead}
-${schedule ? `<p class="hours-live" data-hours="${e(schedule)}" data-open="Reception is open" data-closed="Reception is closed"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>` : ''}
+<p>Call <a class="contact-call" href="tel:07941856156">07941 856156</a>, or submit a message here. Reception will get back to you as soon as possible.</p>
+<p class="hours-live" data-hours="Usually 5 days a week, including 2 evening sessions; some Saturday mornings" data-open="Reception is open" data-closed="Reception is closed"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
 <p class="map-note">This preview does not send the message.</p>
 <label>Name<input name="name" autocomplete="name"></label>
 <label>Phone<input name="tel" type="tel" autocomplete="tel"></label>
 <label>Message<textarea name="message"></textarea></label>
 <button class="button solid" type="submit">Submit message</button>
 </form>
-${sideMedia}
+<figure class="side-media"><img src="/factory-assets/clients/southam-physio/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
 </div>
-<div class="map-frame">${map}</div>
-<p class="map-note">${mapNote}</p>
+<div class="map-frame"><iframe class="map" title="Map of the published address" width="600" height="420" src="https://maps.google.com/maps?q=Tithe%20Place%20(next%20to%20the%20Library)%2C%20High%20Street%2C%20Southam%2C%20CV47%200HB&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<p class="map-note">Map of the published address.</p>
 </div>
 </section>
-${reviewsPage}
-${pricesPage}
+<section id="reviews" class="page">
+<div class="wrap page-intro">
+<div>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Reviews</p>
+<h1>Leave a Google review. Please...</h1>
+</div>
+<a class="button solid" href="https://www.google.com/maps/search/?api=1&amp;query=Southam%20Physio%20%26%20Sports%20Injury%20Clinic%20Tithe%20Place%20(next%20to%20the%20Library)%2C%20High%20Street%2C%20Southam%2C%20CV47%200HB" target="_blank" rel="noopener noreferrer">Leave a review</a>
+</div>
+<section class="section reviews">
+<div class="wrap">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
+<p class="pending">Google reviews for this clinic are still being checked.</p>
+</div>
+</section>
+</section>
+<section id="prices" class="page prices-page">
+<div class="wrap">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
+<h1>What a visit includes.</h1>
+<p class="flag">From the published website</p>
+<p class="lede">Fees taken from the published website for Southam Physio &amp; Sports Injury Clinic. No amounts have been added.</p>
+<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£45</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Initial session</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Discounted rate when paid on the day</li><li>Card payments accepted</li></ul><p class="fee-time">Duration: typically 30–40 minutes.</p><a class="button solid fee-book" href="#contact">Book Now</a></article><article class="fee-card"><span class="fee-gem"><strong>£45</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Follow-up session</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Discounted rate when paid on the day</li><li>Card payments accepted</li></ul><p class="fee-time">Duration: typically 25–30 minutes.</p><a class="button solid fee-book" href="#contact">Book Now</a></article></div>
+
+</div>
+</section>
 </main>
 <footer class="site-footer">
 <div class="wrap">
-<a class="footer-brand" href="#home"><span class="footer-pill">${footerMark}</span></a>
+<a class="footer-brand" href="#home"><span class="footer-pill"><img class="footer-logo" src="/factory-assets/clients/southam-physio/logo.jpg" alt="Southam Physio &amp; Sports Injury Clinic"></span></a>
 <div class="foot">
 <div class="footer-intro">
-<p class="footer-note">${e(s.copy.introduction)}</p>
+<p class="footer-note">Physiotherapy at Tithe Place, next to the library on Southam High Street. Paul Nicholls is the named physiotherapist.</p>
 <div class="footer-actions">
 <a class="button" href="#services">Services</a>
 <a class="button" href="#contact">Book appointment</a>
@@ -1170,12 +814,12 @@ ${pricesPage}
 <a href="#about"><span>03</span> About</a>
 <a href="#reviews"><span>04</span> Reviews</a>
 <a href="#contact"><span>05</span> Contact</a>
-${pricesPage ? '<a href="#prices"><span>06</span> Prices</a>' : ''}
+<a href="#prices"><span>06</span> Prices</a>
 </nav>
 <div class="footer-visit">
-${b.address ? `<p>${e(b.address.value)}</p>` : ''}
-${b.hours ? `<p>${e(b.hours.value)}</p>` : ''}
-${phoneOk ? `<a class="footer-phone" href="tel:${phoneDigits}">${e(b.phone.value)}</a>` : ''}
+<p>Tithe Place (next to the Library), High Street, Southam, CV47 0HB</p>
+<p>Usually 5 days a week, including 2 evening sessions; some Saturday mornings</p>
+<a class="footer-phone" href="tel:07941856156">07941 856156</a>
 <a class="button" href="#contact">Contact us</a>
 </div>
 </div>
@@ -1382,7 +1026,7 @@ document.querySelectorAll('.hours-live').forEach(line => {
     return found.map(name => names.indexOf(name));
   };
   const clock = text => {
-    const match = text.match(/(\\d{1,2})(?::(\\d{2}))?\\s*(am|pm)?\\s*[–-]\\s*(\\d{1,2})(?::(\\d{2}))?\\s*(am|pm)?/i);
+    const match = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*[–-]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
     if (!match) return null;
     const mins = (hourText, minuteText, marker) => {
       let hour = Number(hourText);
@@ -1420,5 +1064,3 @@ document.querySelectorAll('.hours-live').forEach(line => {
 </script>
 </body>
 </html>
-`;
-}

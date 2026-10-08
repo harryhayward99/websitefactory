@@ -1,0 +1,95 @@
+{
+  "slug": "southam-physio",
+  "sector": "physiotherapy",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "73b8f89e3d267ba6",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#018CD1"},
+  "sources": [
+    {"id": "homepage", "url": "https://www.southamphysio.com/", "checkedAt": "2026-10-08"},
+    {"id": "treatments", "url": "https://www.southamphysio.com/treatments-1", "checkedAt": "2026-10-08"},
+    {"id": "contact", "url": "https://www.southamphysio.com/contact-us", "checkedAt": "2026-10-08"},
+    {"id": "faqs", "url": "https://www.southamphysio.com/faqs", "checkedAt": "2026-10-08"},
+    {"id": "shockwave", "url": "https://www.southamphysio.com/services-1", "checkedAt": "2026-10-08"}
+  ],
+  "business": {
+    "name": {"value": "Southam Physio & Sports Injury Clinic", "sourceId": "homepage"},
+    "location": {"value": "Southam", "sourceId": "contact"},
+    "phone": {"value": "07941 856156", "sourceId": "contact"},
+    "address": {"value": "Tithe Place (next to the Library), High Street, Southam, CV47 0HB", "sourceId": "contact"},
+    "website": {"value": "https://www.southamphysio.com/", "sourceId": "homepage"},
+    "hours": {"value": "Usually 5 days a week, including 2 evening sessions; some Saturday mornings", "sourceId": "faqs"},
+    "parking": {"value": "Free street parking on Coventry Street, or the Wood Street car park.", "sourceId": "faqs"},
+    "services": [
+      {"value": "Shockwave Therapy", "detail": "The treatments page lists Shockwave, also called extracorporeal shockwave therapy (ESWT). The clinic page says a course is usually 3–6 sessions, and each application lasts 5–10 minutes within a visit of up to half an hour.", "sourceId": "shockwave"},
+      {"value": "Manual Therapy", "detail": "The treatments page lists joint manipulation and mobilisations, and soft tissue techniques.", "sourceId": "treatments"},
+      {"value": "Exercise Therapy", "detail": "The treatments page lists return to sport, core stability, core strength and traditional strength training.", "sourceId": "treatments"},
+      {"value": "Functional and Sports Specific Rehabilitation", "detail": "Listed on the treatments page. That page does not add a separate description of this service.", "sourceId": "treatments"},
+      {"value": "Posture Correction and Advice", "detail": "Listed on the treatments page. That page does not add a separate description of this service.", "sourceId": "treatments"},
+      {"value": "Acupuncture", "detail": "Acupuncture is listed on the treatments page.", "sourceId": "treatments"},
+      {"value": "Biomechanical Analysis", "detail": "The treatments page lists orthotics and insoles under biomechanical analysis.", "sourceId": "treatments"},
+      {"value": "Education and Advice", "detail": "The treatments page lists the nature and cause of a problem, self-management, and prevention of further episodes.", "sourceId": "treatments"}
+    ]
+  },
+  "copy": {
+    "headline": "Physiotherapy on Southam High Street.",
+    "introduction": "Physiotherapy at Tithe Place, next to the library on Southam High Street. Paul Nicholls is the named physiotherapist."
+  },
+  "contentReviewed": true,
+  "reviews": [],
+  "fees": {
+    "visits": [
+      {
+        "title": "Initial session",
+        "fee": "£45",
+        "includes": ["Discounted rate when paid on the day", "Card payments accepted"],
+        "time": "Duration: typically 30–40 minutes.",
+        "sourceId": "faqs"
+      },
+      {
+        "title": "Follow-up session",
+        "fee": "£45",
+        "includes": ["Discounted rate when paid on the day", "Card payments accepted"],
+        "time": "Duration: typically 25–30 minutes.",
+        "sourceId": "faqs"
+      }
+    ]
+  },
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Paul Nicholls",
+      "role": "Chartered physiotherapist",
+      "detail": "The homepage lists Paul Nicholls as MMACP, MCSP and HCPC. It says he qualified from Nottingham School of Physiotherapy in 1987 and has provided physiotherapy in Southam for 18 years.",
+      "sourceId": "homepage",
+      "imageId": "paul-nicholls"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/southam-physio/logo.jpg",
+      "alt": "Southam Physio & Sports Injury Clinic",
+      "sourceUrl": "https://static.wixstatic.com/media/f73422_8e222861f48540d6b10a45fe20a2bfdc~mv2_d_6539_2361_s_2.jpg",
+      "rights": "official-logo-concept"
+    },
+    "images": [
+      {
+        "path": "/factory-assets/clients/southam-physio/landing-treatment.png",
+        "alt": "Knee treatment photograph supplied for Southam Physio & Sports Injury Clinic.",
+        "sourceUrl": "supplied-for-concept:southam-physio-landing",
+        "rights": "client-permission",
+        "placement": "landing"
+      },
+      {
+        "path": "/factory-assets/clients/southam-physio/paul-nicholls.png",
+        "alt": "Paul Nicholls at the entrance of Southam Physio & Sports Injury Clinic.",
+        "sourceUrl": "supplied-for-concept:southam-physio-paul",
+        "rights": "client-permission",
+        "libraryId": "paul-nicholls",
+        "placement": "person"
+      }
+    ],
+    "librarySelections": ["care-portrait-placeholder", "care-service-tile"]
+  }
+}

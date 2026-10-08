@@ -1,0 +1,15 @@
+{
+  "slug": "southam-physio",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/southam-physio/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "73b8f89e3d267ba6",
+  "contentHash": "2b617c39e0547be9263e055e0c96981b783482bdb7c2fe9e6c618ff7c55795e7",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-08T12:14:22.055Z"
+}

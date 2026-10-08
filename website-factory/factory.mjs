@@ -161,7 +161,8 @@ export function validateSite(site, templates, { allowDraft = false, instructions
   if (!site.business) fail('Business record required');
   fact(site.business.name, true);
   fact(site.business.location, true);
-  for (const field of ['phone', 'address', 'website', 'hours']) fact(site.business[field]);
+  for (const field of ['phone', 'address', 'website', 'hours', 'parking']) fact(site.business[field]);
+  if (site.business.parking && site.business.parking.value.trim().split(/\s+/).filter(Boolean).length > 15) fail('Parking note must be 15 words or fewer');
   if (site.business.website && !/^https:\/\//.test(site.business.website.value)) fail('Official website must use HTTPS');
   if (!Array.isArray(site.business.services)) fail('Services must be a list');
   site.business.services.forEach(value => fact(value, true));
