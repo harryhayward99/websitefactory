@@ -307,7 +307,17 @@ export function render(s, e) {
     website ? `<article class="info-card"><h2>Website</h2><p>${website}</p></article>` : ''
   ].join('');
   const banner = s.demo ? 'FICTIONAL DEMO' : 'CONCEPT WEBSITE';
-  const bannerAddress = b.address?.value ? `<span class="banner-address">${e(b.address.value)}</span>` : '';
+  const bannerStreet = value => {
+    const raw = String(value || '').trim();
+    const parts = raw.split(/\s*(?:,|\n)\s*/).map(part => part.trim()).filter(Boolean);
+    const found = raw.match(/\b([A-Z]{1,2}\d[A-Z\d]?)\s*(\d[A-Z]{2})\b/i);
+    const code = found ? `${found[1].toUpperCase()} ${found[2].toUpperCase()}` : '';
+    let first = parts[0] || '';
+    if (code) first = first.replace(new RegExp(`\\b${found[1]}\\s*${found[2]}\\b`, 'i'), '').replace(/^[,\s]+|[,\s]+$/g, '').trim();
+    if (first && code) return `${first}, ${code}`;
+    return first || code;
+  };
+  const bannerAddress = b.address?.value ? `<span class="banner-address">${e(bannerStreet(b.address.value))}</span>` : '';
   const bannerPhone = phoneOk ? `<a href="tel:${phoneDigits}">${e(b.phone.value)}</a>` : '';
   const bannerContact = [bannerAddress, bannerPhone].filter(Boolean).join('<span class="banner-gap" aria-hidden="true">|</span>');
   const mapNote = s.demo
@@ -449,6 +459,10 @@ ${posterCards ? `<div class="fee-pair">${posterCards}</div>` : ''}
 ${feeBoard}
 </div>
 </section>` : '';
+  const movementEnquiries = ['Initial assessment', 'Continued treatment', 'Massage', 'Sports Massage', 'Acupuncture', 'General Enquiry'];
+  const dentalEnquiries = ['Cosmetic', 'Preventative', 'Emergency', 'Check-Up', 'General Enquiry', 'Unsure'];
+  const enquiryChoices = s.sector === 'physiotherapy' || s.sector === 'chiropractic' ? movementEnquiries : dentalEnquiries;
+  const enquiryFields = enquiryChoices.map(label => `<label class="book-choice"><input type="radio" name="setter-enquiry" value="${e(label)}">${e(label)}</label>`).join('');
   const reviewsPage = `<section id="reviews" class="page">
 ${guideLine}
 <div class="wrap page-intro">
@@ -643,7 +657,7 @@ ${serviceHover}
 .meet-arrow{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid rgba(0,0,0,.16);border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
 .meet-arrow:hover{background:var(--pale);border-color:transparent}
 .meet-arrow:active{transform:scale(.96)}
-.meet-stage{display:grid;margin-top:28px}
+.meet-stage{display:grid;margin-top:28px;overflow:hidden}
 .meet-slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.28fr) minmax(280px,.72fr);gap:18px;align-items:stretch;opacity:0;visibility:hidden;pointer-events:none}
 .meet-slide.is-on{opacity:1;visibility:visible;pointer-events:auto;z-index:1}
 .meet.is-animated .meet-slide.play-in-next{animation:meet-in-next .5s ease both}
@@ -1032,10 +1046,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   #home>.statement,#home>.social{padding:88px 0}
   .button{width:auto}
   .meet-book{width:100%}
+  .meet-card > p:last-of-type{margin-bottom:24px}
   .meet-slide{grid-template-columns:1fr}
   .meet-photo,.meet-card{min-height:0}
   .meet-photo{min-height:240px}
   .meet-card{padding:24px 20px}
+  .book-setter input,.book-setter textarea{font-size:16px}
   .review-board{position:relative;display:block;margin-top:22px;padding:20px 18px 16px;border-radius:16px;background:#fff}
   .review-list{display:none}
   .review-nav{display:flex;gap:8px;position:absolute;right:16px;bottom:16px;z-index:2}
@@ -1323,12 +1339,7 @@ ${phoneOk ? `<a class="footer-phone" href="tel:${phoneDigits}">${e(b.phone.value
 <p class="book-step-count">2 of 4</p>
 <fieldset>
 <legend>Appointment or enquiry type*</legend>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="Cosmetic">Cosmetic</label>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="Preventative">Preventative</label>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="Emergency">Emergency</label>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="Check-Up">Check-Up</label>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="General Enquiry">General Enquiry</label>
-<label class="book-choice"><input type="radio" name="setter-enquiry" value="Unsure">Unsure</label>
+${enquiryFields}
 </fieldset>
 <label>Description (optional)<textarea data-field="message" placeholder="A short note, if you want to add one"></textarea></label>
 </section>
@@ -1388,6 +1399,10 @@ document.querySelectorAll('.meet').forEach(meet => {
   const previous = meet.querySelector('.meet-prev');
   const next = meet.querySelector('.meet-next');
   if (slides.length < 2 || !previous || !next) return;
+  slides.forEach(slide => slide.addEventListener('animationend', event => {
+    if (event.target !== slide) return;
+    slide.classList.remove('play-in-next', 'play-in-prev', 'play-out-next', 'play-out-prev');
+  }));
   let index = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-on')));
   const go = (direction) => {
     const incomingIndex = (index + direction + slides.length) % slides.length;
@@ -1403,6 +1418,10 @@ document.querySelectorAll('.meet').forEach(meet => {
     incoming.classList.add('is-on', direction > 0 ? 'play-in-next' : 'play-in-prev');
     incoming.removeAttribute('aria-hidden');
     index = incomingIndex;
+    window.setTimeout(() => {
+      outgoing.classList.remove('play-in-next', 'play-in-prev', 'play-out-next', 'play-out-prev');
+      incoming.classList.remove('play-in-next', 'play-in-prev', 'play-out-next', 'play-out-prev');
+    }, 600);
   };
   next.addEventListener('click', () => go(1));
   previous.addEventListener('click', () => go(-1));
@@ -1911,7 +1930,7 @@ document.querySelectorAll('.hours-live').forEach(line => {
     }
     var done = steps[index].querySelector('.book-setter-done');
     if (done) done.hidden = true;
-    if (moveFocus) {
+    if (moveFocus && !window.matchMedia('(max-width: 800px)').matches) {
       var focusable = steps[index].querySelector('input:not(:disabled), textarea');
       if (focusable) focusable.focus();
     }

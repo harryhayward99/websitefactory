@@ -212,6 +212,12 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.match(html,/We will aim to confirm appointment time within 1 working day\./);
   assert.match(html,/\* 0\.22 \+ 10/);
   assert.match(html,/id="book-setter-sync"/);
+  assert.match(html,/\.meet-stage\{display:grid;margin-top:28px;overflow:hidden\}/);
+  assert.match(html,/slide\.addEventListener\('animationend'/);
+  assert.match(html,/moveFocus && !window\.matchMedia\('\(max-width: 800px\)'\)\.matches/);
+  assert.match(html,/\.book-setter input,\.book-setter textarea\{font-size:16px\}/);
+  assert.match(html,/\.meet-card > p:last-of-type\{margin-bottom:24px\}/);
+  assert.doesNotMatch(html,/value="Initial assessment"/);
 });
 test('a real clinic preview uses published facts and omits sample results',async()=>{
   const site=await loadSite('broad-oaks-health-clinic');
@@ -239,6 +245,15 @@ test('a real clinic preview uses published facts and omits sample results',async
   assert.match(html,/setInterval\(tick, 5000\)/);
   assert.match(html,/0121 705 3509/);
   assert.match(html,/394 Warwick Road/);
+  assert.match(html,/<span class="banner-address">394 Warwick Road, B91 1BB<\/span>/);
+  assert.match(html,/<h2>Address<\/h2><p>394 Warwick Road, Solihull, West Midlands, B91 1BB<\/p>/);
+  const streetOnly = structuredClone(site);
+  streetOnly.business.address.value = '18 Harbour Road, Example Town';
+  assert.match(await renderSite(streetOnly, { instructionsVersion: version }), /<span class="banner-address">18 Harbour Road<\/span>/);
+  streetOnly.business.address.value = 'Tithe Place (next to the Library), High Street, Southam, CV47 0HB';
+  const streetHtml = await renderSite(streetOnly, { instructionsVersion: version });
+  assert.match(streetHtml, /<span class="banner-address">Tithe Place \(next to the Library\), CV47 0HB<\/span>/);
+  assert.match(streetHtml, /<h2>Address<\/h2><p>Tithe Place \(next to the Library\), High Street, Southam, CV47 0HB<\/p>/);
   assert.match(html,/IDD Therapy/);
   assert.match(html,/Mark Webb/);
   assert.match(html,/Ozan Altay/);
@@ -457,6 +472,11 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
   assert.doesNotMatch(richardSlide[0],/not a verified member of staff/);
   assert.match(caseySlide[0],/not a verified member of staff/);
   assert.match(html,/Casey Sample is not a real person and does not work at this clinic\./);
+  for (const label of ['Initial assessment', 'Continued treatment', 'Massage', 'Sports Massage', 'Acupuncture', 'General Enquiry']) {
+    assert.match(html, new RegExp(`name="setter-enquiry" value="${label}"`));
+  }
+  assert.doesNotMatch(html,/name="setter-enquiry" value="Cosmetic"/);
+  assert.doesNotMatch(html,/name="setter-enquiry" value="Unsure"/);
   assert.match(html,/<figure class="about-photo"><img src="\/factory-assets\/clients\/back-and-neck-clinic\/about-exterior.png"/);
   const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
   assert.ok(photos);
