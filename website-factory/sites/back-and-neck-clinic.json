@@ -3,7 +3,7 @@
   "sector": "chiropractic",
   "status": "concept",
   "demo": false,
-  "approvedInstructionsVersion": "d7fccfeaea047098",
+  "approvedInstructionsVersion": "523ed8d7221d4d29",
   "template": {
     "id": "care-modern",
     "version": "1.0.0"

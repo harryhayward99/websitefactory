@@ -183,7 +183,8 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.match(html,/Harbour Example Dental/);
   assert.match(html,/<span class="footer-pill">Harbour Example Dental<\/span>/);
   assert.doesNotMatch(html,/<img class="footer-logo"/);
-  for (const name of ['Cosmetic','Oral Hygiene','Emergency','Family','DenPlan']) assert.match(html,new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+  for (const name of ['Cosmetic','Oral Hygiene','Preventative','Emergency','Family','DenPlan']) assert.match(html,new RegExp(`<summary>${name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}</summary>`));
+  assert.match(html,/<span class="book-setter-word" aria-hidden="true">BOOK<\/span>/);
   assert.match(html,/New patient visit/);
   assert.doesNotMatch(html,/Doctor of Chiropractic/);
   assert.doesNotMatch(html,/Physiotherapy|Movement assessment|Sports rehabilitation|Exercise rehabilitation|How you move/);
@@ -477,6 +478,7 @@ test('a chiropractic concept uses the Northshore photographs',async()=>{
   }
   assert.doesNotMatch(html,/name="setter-enquiry" value="Cosmetic"/);
   assert.doesNotMatch(html,/name="setter-enquiry" value="Unsure"/);
+  assert.doesNotMatch(html,/<span class="book-setter-word"/);
   assert.match(html,/<figure class="about-photo"><img src="\/factory-assets\/clients\/back-and-neck-clinic\/about-exterior.png"/);
   const photos=html.match(/<div class="review-photos">([\s\S]*?)<\/div>/);
   assert.ok(photos);

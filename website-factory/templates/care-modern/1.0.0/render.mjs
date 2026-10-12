@@ -135,6 +135,7 @@ export function render(s, e) {
     dental: {
       Cosmetic: 'Cosmetic is listed for appearance-focused dental visits. This page does not describe a treatment or a result.',
       'Oral Hygiene': 'Oral hygiene is listed for cleaning and day-to-day mouth care. This page does not describe a method or a result.',
+      Preventative: 'Preventative is listed for routine dental visits. This page does not describe a method or a result.',
       Emergency: 'Emergency is listed for an urgent dental visit. This page does not promise a same-day appointment or a result.',
       Family: 'Family is listed for dental care across ages. This page does not describe who is treated or a result.',
       DenPlan: 'DenPlan is a listed payment-plan name for this layout. This page does not confirm a membership, a price or a result.'
@@ -725,6 +726,9 @@ ${serviceHover}
 .book-setter{position:fixed;right:22px;bottom:22px;z-index:30;width:72px;height:72px}
 .book-setter-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 12px 28px rgba(17,17,17,.16);cursor:pointer}
 .book-setter-ring svg{display:block}
+.book-setter-ring.has-word{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.book-setter-ring.has-word svg{width:30px;height:30px;transform:translateY(-4px)}
+.book-setter-word{color:var(--accent);font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;transform:translateY(-2px)}
 .book-setter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .book-setter-panel{position:absolute;right:0;bottom:0;display:flex;flex-direction:column;width:min(320px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 40px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 16px 40px rgba(17,17,17,.16);transform-origin:bottom right;transform:scale(.2);opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
 .book-setter.is-open .book-setter-panel{transform:scale(1);opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 16px 40px rgba(17,17,17,.16)}
@@ -1316,7 +1320,7 @@ ${phoneOk ? `<a class="footer-phone" href="tel:${phoneDigits}">${e(b.phone.value
 <div class="wrap footer-base"><small class="legal">Template care-modern 1.0.0. Colour follows this business’s brand accent. This page does not sell products. Category photography is illustrative.</small></div>
 </footer>
 <aside class="book-setter" aria-label="Appointment and enquiry setter">
-<button class="book-setter-ring" type="button" aria-expanded="false" aria-controls="book-setter-panel"><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="book-setter-label">Request an appointment</span></button>
+<button class="book-setter-ring${s.sector === 'dental' ? ' has-word' : ''}" type="button" aria-expanded="false" aria-controls="book-setter-panel"><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="book-setter-label">Request an appointment</span>${s.sector === 'dental' ? '<span class="book-setter-word" aria-hidden="true">BOOK</span>' : ''}</button>
 <div class="book-setter-panel" id="book-setter-panel" inert>
 <div class="book-setter-cover">
 <svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
