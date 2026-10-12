@@ -1,0 +1,170 @@
+{
+  "slug": "45-the-green",
+  "sector": "dental",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "d8468894adcdb7fe",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#33ae52"},
+  "sources": [
+    {"id": "homepage", "url": "https://45thegreen.com/", "checkedAt": "2026-10-12"},
+    {"id": "cqc", "url": "https://www.cqc.org.uk/location/1-14142908877", "checkedAt": "2026-10-12"},
+    {"id": "google-reviews", "url": "https://exa.ai/library/place/0jb973qvcn4", "checkedAt": "2026-10-12"},
+    {"id": "review-names", "url": "https://dentistlocator.co.uk/dentists/banbury/45-the-green-dental-practice/", "checkedAt": "2026-10-12"}
+  ],
+  "business": {
+    "name": {"value": "45 The Green Dental Practice", "sourceId": "homepage"},
+    "location": {"value": "Banbury", "sourceId": "homepage"},
+    "phone": {"value": "01295 261566", "sourceId": "homepage"},
+    "address": {"value": "45 The Green, South Bar Street, Banbury, Oxford, OX16 9AB", "sourceId": "homepage"},
+    "website": {"value": "https://www.45thegreen.com/", "sourceId": "homepage"},
+    "hours": {"value": "Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00. Saturdays are by appointment.", "sourceId": "homepage"},
+    "parking": {"value": "Free parking at the rear via Crouch Street, and disabled parking at the front.", "sourceId": "homepage"},
+    "services": [
+      {"value": "General and Preventive Dentistry", "detail": "The procedures list names routine dental health checks, gum care and maintenance, scale and polish appointments, digital X-rays and 3D scans, fillings and restorations, root canal treatment, and emergency appointments.", "sourceId": "homepage"},
+      {"value": "Restorative and Advanced Dentistry", "detail": "The procedures list names dental implants to replace missing teeth, bone grafting and sinus lift procedures, crowns, bridges and dentures, full mouth rehabilitation and bite correction, and wisdom tooth removal and oral surgery.", "sourceId": "homepage"},
+      {"value": "Cosmetic Dentistry", "detail": "The procedures list names professional teeth whitening, composite bonding, veneers and smile makeovers, Invisalign and short-term orthodontics, and tooth reshaping and contouring.", "sourceId": "homepage"},
+      {"value": "Family Dentistry", "detail": "The procedures list names gentle care for children, teen and student check-ups, preventive sealants and fluoride treatments, and practical advice on brushing and diet.", "sourceId": "homepage"},
+      {"value": "Dental emergencies", "detail": "The site says to call as soon as possible. It says the practice does its best to see registered or new patients on the same day, and lists an out of hours service for patients of the practice.", "sourceId": "homepage"},
+      {"value": "Dental implants", "detail": "The site says implant treatments are led by Dr Fady Michel Tadros. It lists a BDS, MFDS RCSEd, a master’s in Oral and Maxillofacial Surgery and a master’s in Oral Implantology.", "sourceId": "homepage"},
+      {"value": "Denplan", "detail": "Denplan Care and Denplan Essentials are listed. The site says these plans help budget monthly, and that the practice is an accredited Denplan Excel practice.", "sourceId": "homepage"}
+    ]
+  },
+  "copy": {
+    "headline": "Private Dentistry in Banbury",
+    "headerTitle": "Dental Practice",
+    "headerPlace": "Banbury",
+    "introduction": "Feel Confident About Your Smile.\nTrusted in this location for over 100 years.\nCurrently taking on new patients."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "bec hinchliffe",
+      "date": "2 March 2026",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Dan my son saw a lady Dentist Naz, he had knocked and broken his front tooth. Naz saw Dan on the same day, she was attentive, gentle and did a lovely job repairing his tooth with a composite filling. Thank you Naz and the lovely team at 45 The Green."
+    },
+    {
+      "name": "katie sunderland",
+      "date": "12 February 2026",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Once again i was seen within 24 hours - Naz was incredible. Same friendly team and most importantly, exceptional work on not the best teeth!"
+    },
+    {
+      "name": "Garry Williams",
+      "date": "17 February 2023",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "I attended the surgery this morning for part two of a crown fitting. As usual I was greeted by name and with a smile by the receptionist which in its self sets them apart. Then called into the treatment room by my dentist Tim Sunderland. This “legend” has been my dentist for many years and I would NOT go anywhere else. After our usual chat putting the world to rights he did what he had to do to finish the crown and as normal I did not feel a thing. I would like to say a huge thank you to Tim, and his nurse Pauline plus the whole team. Thank you and kind regards Garry Williams."
+    },
+    {
+      "name": "Alexander",
+      "date": "27 January 2022",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "5 star for good reason lovely team and professional. Came to my support when let down by other practices absolute incompetence. Thank you The Green Team restored my faith in dentistry. Alexander."
+    }
+  ],
+  "fees": {
+    "visits": [
+      {
+        "title": "New patient examination",
+        "fee": "£99",
+        "includes": ["Examination", "Gum health and oral cancer screening", "Initial X-rays"],
+        "sourceId": "homepage"
+      },
+      {
+        "title": "Examination",
+        "fee": "£52",
+        "includes": [],
+        "sourceId": "homepage"
+      }
+    ],
+    "services": [
+      {"name": "Children’s examination (under 18)", "fee": "£28", "sourceId": "homepage"},
+      {"name": "Young adult examination (18–20)", "fee": "£36", "sourceId": "homepage"},
+      {"name": "Scale and polish with dentist", "fee": "£70", "sourceId": "homepage"},
+      {"name": "Hygienist (30 minutes)", "fee": "£80", "sourceId": "homepage"},
+      {"name": "Small X-ray", "fee": "£30+", "sourceId": "homepage"},
+      {"name": "OPG X-ray (adult)", "fee": "£60", "sourceId": "homepage"},
+      {"name": "OPG X-ray (child)", "fee": "£35", "sourceId": "homepage"},
+      {"name": "Composite filling", "fee": "£145+", "sourceId": "homepage"},
+      {"name": "Root canal treatment", "fee": "£575–£600", "sourceId": "homepage"},
+      {"name": "Extraction", "fee": "£175+", "sourceId": "homepage"},
+      {"name": "Surgical extraction", "fee": "£225", "sourceId": "homepage"},
+      {"name": "Whitening trays", "fee": "£410", "sourceId": "homepage"},
+      {"name": "Whitening top-up", "fee": "£130 x 4", "sourceId": "homepage"},
+      {"name": "Whitening top-up", "fee": "£35", "sourceId": "homepage"},
+      {"name": "Waterlase treatment", "fee": "£250+", "sourceId": "homepage"},
+      {"name": "Crown, bridge or veneer (per unit)", "fee": "£650+", "sourceId": "homepage"},
+      {"name": "Acrylic denture", "fee": "£1,200+", "sourceId": "homepage"},
+      {"name": "Chrome denture", "fee": "£1,800+", "sourceId": "homepage"},
+      {"name": "Soft reline", "fee": "£195", "sourceId": "homepage"},
+      {"name": "Orthodontic consultation", "fee": "£150", "sourceId": "homepage"},
+      {"name": "Retainers", "fee": "£150", "sourceId": "homepage"},
+      {"name": "Gum shield", "fee": "£95", "sourceId": "homepage"},
+      {"name": "Denplan lab fee (per unit)", "fee": "£410", "sourceId": "homepage"},
+      {"name": "Night guard", "fee": "£175", "sourceId": "homepage"},
+      {"name": "Booking deposit", "fee": "£40", "note": "Taken at the time of booking and fully credited after the appointment.", "sourceId": "homepage"},
+      {"name": "Sedation", "fee": "from £500", "note": "Intravenous sedation per session, including clinical facilities, nursing support, monitoring and recovery, plus treatment costs. Additional charges may apply for longer appointments.", "sourceId": "homepage"},
+      {"name": "Out of hours emergency call out", "fee": "£250", "note": "Telephone advice and triage are free. The call out fee applies when the practice is opened outside normal working hours. Treatment is charged separately.", "sourceId": "homepage"},
+      {"name": "Denplan", "fee": "from £15.20 per month", "note": "Denplan Care and Essentials are listed. The site says this is the starting amount.", "sourceId": "homepage"},
+      {"name": "Implant consultation", "fee": "£70", "sourceId": "homepage"},
+      {"name": "CBCT scan", "fee": "£100", "sourceId": "homepage"},
+      {"name": "Single dental implant with crown", "fee": "£3,000", "sourceId": "homepage"},
+      {"name": "Bone graft", "fee": "£750", "sourceId": "homepage"},
+      {"name": "Sinus lift", "fee": "£800", "sourceId": "homepage"}
+    ]
+  },
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Tim Sunderland",
+      "role": "Principal dentist",
+      "imageId": "care-portrait-placeholder",
+      "detail": "The site names Tim Sunderland as principal dentist, with a BDS from the University of Birmingham and GDC number 59433. It says he has over 30 years in restorative and general dentistry and leads the clinical team.",
+      "sourceId": "homepage"
+    },
+    {
+      "name": "Nazanin Ziaeefard",
+      "role": "Associate dentist",
+      "imageId": "care-portrait-placeholder",
+      "detail": "The site names Nazanin Ziaeefard as associate dentist. It lists a B Dent Sc from Trinity College Dublin, an MSc in Biomaterials and Tissue Engineering from UCL, and GDC number 269293.",
+      "sourceId": "homepage"
+    },
+    {
+      "name": "Dr Fady Michel Tadros",
+      "role": "Dentist",
+      "imageId": "care-portrait-placeholder",
+      "detail": "The site lists BDS, MFDS RCSEd, MSc in Oral and Maxillofacial Surgery and MSc in Oral Implantology, GDC 304544. It says he qualified in 2012, gained MFDS in 2016, and completed those master’s degrees in 2021 and 2022. The implants section says he leads implant treatment.",
+      "sourceId": "homepage"
+    },
+    {
+      "name": "Nader Al Homsi Mofti",
+      "role": "Dentist",
+      "imageId": "care-portrait-placeholder",
+      "detail": "The site names Dr Nader Al Homsi Mofti, with a BDS from the European University of Madrid, an MSc in Implantology from Cardiff University, and GDC number 268045. It says he joins the practice in December 2025.",
+      "sourceId": "homepage"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/45-the-green/logo.png",
+      "alt": "45 The Green Dental Practice",
+      "sourceUrl": "https://static.wixstatic.com/shapes/30b138_b2f260cf3be5442091e1a34130552b45.svg",
+      "rights": "official-logo-concept"
+    },
+    "images": [
+      {
+        "path": "/factory-assets/clients/45-the-green/service-treatment.png",
+        "alt": "Treatment photograph supplied for 45 The Green Dental Practice.",
+        "sourceUrl": "supplied-for-concept:45-the-green-service",
+        "rights": "client-permission",
+        "placement": "service"
+      }
+    ],
+    "librarySelections": []
+  }
+}

@@ -1,6 +1,21 @@
 {
   "previews": [
     {
+      "slug": "45-the-green",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/45-the-green/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "d8468894adcdb7fe",
+      "contentHash": "36263ffafa7be634e6429b91ba2f16b5e024129264e5b4586ca355aceb17642f",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-12T23:32:12.166Z"
+    },
+    {
       "slug": "back-and-neck-clinic",
       "status": "PREVIEW_READY",
       "sheetStatus": "Preview ready",

@@ -57,7 +57,10 @@ export function render(s, e) {
   const frame = (image, caption, className) => image
     ? `<figure class="${className}"><img src="${e(image.path)}" alt="${e(image.alt)}"></figure>`
     : `<figure class="${className} frame" role="img" aria-label="${caption}"></figure>`;
-  const heroPin = landingImage && (landingImage.libraryId === 'physio-landing-treatment' || landingImage.libraryId === 'care-landing-treatment') ? ' class="anchor-top-right"' : '';
+  const heroClasses = [];
+  if (landingImage && (landingImage.libraryId === 'physio-landing-treatment' || landingImage.libraryId === 'care-landing-treatment')) heroClasses.push('anchor-top-right');
+  if (landingImage && landingImage.libraryId === 'dental-landing-treatment') heroClasses.push('fit-facade');
+  const heroPin = heroClasses.length ? ` class="${heroClasses.join(' ')}"` : '';
   const heroMedia = landingImage
     ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
     : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
@@ -70,17 +73,24 @@ export function render(s, e) {
   };
   const wordCount = value => value ? value.split(' ').length : 0;
   const heroIntroduction = text => {
-    const clean = String(text || '').replace(/\s+/g, ' ').trim();
-    if (wordCount(clean) <= 50) return clean;
-    const sentences = clean.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [];
+    const lines = String(text || '').split(/\r?\n/).map(line => line.replace(/[ \t]+/g, ' ').trim()).filter(Boolean);
+    const clean = lines.join('\n');
+    const flat = lines.join(' ');
+    if (wordCount(flat) <= 50) return clean;
+    const sentences = flat.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [];
     let kept = '';
     for (const sentence of sentences) {
       const next = `${kept}${sentence}`;
       if (wordCount(next.trim()) > 50) break;
       kept = next;
     }
-    return kept.trim() || clean.split(' ').slice(0, 50).join(' ');
+    return kept.trim() || flat.split(' ').slice(0, 50).join(' ');
   };
+  const headerTitle = String(s.copy?.headerTitle || '').trim();
+  const headerPlace = String(s.copy?.headerPlace || '').trim();
+  const headerWords = headerTitle
+    ? `<span class="wordmark"><span><strong>${e(headerTitle)}</strong>${headerPlace ? `<small>${e(headerPlace)}</small>` : ''}</span></span>`
+    : '';
   const heroFace = (title, detail) => `<span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>${title}</strong><em>${detail}</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>`;
   const place = b.address?.value || b.location?.value || '';
   const heroCards = [
@@ -507,7 +517,7 @@ img{max-width:100%;display:block}
 .skip:focus{top:12px}
 .banner{display:flex;align-items:stretch;min-height:34px;margin:0;background:#fff;color:#111}
 .banner-note{flex:1;min-width:0;margin:0;padding:7px 20px;overflow:hidden;color:#333;font-size:11px;font-weight:500;letter-spacing:.04em;line-height:1.2;white-space:nowrap;text-overflow:ellipsis}
-.banner-contact{display:flex;align-items:center;gap:12px;flex:none;max-width:min(68%,760px);margin:0;padding:7px 22px 7px 44px;background:var(--accent);color:var(--on);font-size:13px;font-weight:500;line-height:1.2;clip-path:polygon(0 0,100% 0,100% 100%,22px 100%)}
+.banner-contact{display:flex;align-items:center;gap:12px;flex:none;max-width:min(68%,760px);margin:0;padding:7px 22px 7px 44px;background:var(--pale);color:#111;font-size:13px;font-weight:500;line-height:1.2;clip-path:polygon(0 0,100% 0,100% 100%,22px 100%)}
 .banner-contact .banner-address,.banner-contact a{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .banner-contact a{color:inherit;text-decoration:none}
 .banner-gap{flex:none;opacity:.72}
@@ -584,6 +594,7 @@ body:has(#meet-team:target) #home{display:none}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
+.hero-media img.fit-facade{object-position:center 68%}
 .hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
@@ -723,7 +734,7 @@ ${serviceHover}
 .hours-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #eee;color:#000;font-size:14px;font-weight:500}
 .hours-row span:last-child{color:#333;font-weight:500;white-space:nowrap}
 .book-call{width:100%;margin-top:16px;min-height:48px;border-radius:10px}
-.book-setter{position:fixed;right:22px;bottom:22px;z-index:30;width:72px;height:72px}
+.book-setter{position:fixed;right:22px;bottom:22px;z-index:80;width:72px;height:72px}
 .book-setter-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 12px 28px rgba(17,17,17,.16);cursor:pointer}
 .book-setter-ring svg{display:block}
 .book-setter-ring.has-word{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
@@ -1038,6 +1049,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
+  .hero-media img.fit-facade{transform:translateY(-18%);object-position:center 72%}
   .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -1127,6 +1139,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <header class="site-header">
 <div class="nav-left">
 <a class="brand" href="#home">${logo}</a>
+${headerWords}
 </div>
 <nav aria-label="Pages">
 <ul>
@@ -1149,7 +1162,7 @@ ${guideLine}
 <div class="wrap hero-head">
 <h1>${e(s.copy.headline)}<span class="title-stop"></span></h1>
 <div class="hero-aside">
-<p class="lede">${e(heroIntroduction(s.copy.introduction))}</p>
+<p class="lede">${e(heroIntroduction(s.copy.introduction)).replace(/\n/g, '<br>')}</p>
 <div class="hero-book">
 <a class="button" href="#contact">Book appointment</a>
 <svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true"><path class="nudge-shaft" d="M68 30C56 32 38 28 18 10"/><path class="nudge-head" d="M18 10 23 21M18 10 30 13"/></svg>
