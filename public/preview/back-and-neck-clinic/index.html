@@ -77,11 +77,32 @@ body:has(#meet-team:target) #home{display:none}
 .landing{display:block}
 .landing>.hero-head{margin-top:0;margin-bottom:0}
 .landing>.hero-stage{margin-top:32px;margin-bottom:0}
-.hero-head{display:grid;grid-template-columns:minmax(0,680px) minmax(260px,380px);justify-content:space-between;align-items:center;column-gap:56px;row-gap:20px;padding-top:48px}
-.hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none}
+.hero-head{position:relative;display:grid;grid-template-columns:minmax(0,680px) minmax(260px,380px);justify-content:space-between;align-items:center;column-gap:56px;row-gap:20px;padding-top:48px}
+.hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none;line-height:1.2}
 .hero-aside{display:contents}
 .hero-aside .lede{grid-column:2;grid-row:1;margin:0}
-.hero-aside .button{grid-column:2;grid-row:2;justify-self:start}
+.hero-book{grid-column:2;grid-row:2;justify-self:start;display:flex;align-items:center;gap:14px}
+.title-mark{display:inline}
+.title-gap{display:inline}
+.title-run{position:relative;display:inline}
+.title-run::after{content:"";position:absolute;left:0;right:0;bottom:0.12em;height:3px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+.run-a::after,.run-b::after{right:0.08em}
+.run-a2::after,.run-b2::after{left:0.08em}
+.run-a::after{animation:title-line .4s ease 2.15s forwards}
+.run-a2::after{animation:title-line .36s ease 2.55s forwards}
+.run-b::after{animation:title-line .36s ease 3.05s forwards}
+.run-b2::after{animation:title-line .4s ease 3.41s forwards}
+@keyframes title-line{to{transform:scaleX(1)}}
+.title-arrow{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.title-nudge{display:none;width:64px;height:36px;margin-bottom:6px;color:var(--accent);flex:none;overflow:visible;transform:rotate(-35deg);transform-origin:center}
+.title-nudge path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.title-nudge .nudge-shaft{stroke-dasharray:90;stroke-dashoffset:90;animation:nudge-draw .5s ease 3.95s forwards}
+.title-nudge .nudge-head{stroke-dasharray:28;stroke-dashoffset:28;animation:nudge-draw .22s ease 4.4s forwards}
+@keyframes nudge-draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){
+  .title-run::after{animation:none;transform:none}
+  .title-nudge path{animation:none;stroke-dashoffset:0}
+}
 .lede{margin:0 0 28px;color:#333;font-size:16px;line-height:1.55}
 .hero-stage{position:relative;margin-top:32px}
 .hero-media,.wide-media,.side-media,.tile-media,.frame{margin:0;position:relative;overflow:hidden;border-radius:10px;background:var(--pale)}
@@ -283,16 +304,18 @@ body:has(#meet-team:target) #home{display:none}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "team .";column-gap:48px;row-gap:28px;align-items:start}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team";row-gap:28px;align-items:start}
 .about-copy{grid-area:copy}
 .about-copy h1{margin:0 0 18px}
+.about-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);column-gap:48px;align-items:center;margin:0 0 22px}
 .about-summary .lede{margin:0 0 22px}
+.about-lead .lede:last-child{margin-bottom:0}
 .about-next{display:inline-flex;align-items:center;gap:8px;margin:0;padding:0;background:none;color:#111;font:600 16px/1.4 Manrope,"Segoe UI",sans-serif;text-decoration:none}
 .about-next span{text-decoration:underline;text-underline-offset:4px}
 .about-next svg{flex:none}
 .about-next:hover{color:#111}
 #meet-team{scroll-margin-top:96px}
-.about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
+.about-photo{margin:0;width:100%;height:196px;border-radius:18px;overflow:hidden;background:var(--pale)}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .about-team{grid-area:team;justify-self:start;margin:0}
 .about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
@@ -436,8 +459,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
   .services-intro,.offer-board,.service-poster,.about-summary,.team-board,.person{grid-template-columns:1fr}
-  .about-summary{grid-template-areas:"copy" "photo" "team";row-gap:22px}
+  .about-summary{grid-template-areas:"copy" "team";row-gap:22px}
   .about-copy h1{margin-bottom:16px}
+  .about-pair{grid-template-columns:1fr;row-gap:18px}
   .about-summary .lede{margin-bottom:18px}
   .about-photo{width:100%;height:auto;aspect-ratio:3/2;border-radius:22px}
   .about-team{margin:18px 0 0}
@@ -473,10 +497,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .book-portrait{position:relative;inset:auto;min-height:240px;transform:none}
   .book-hours{position:relative;top:auto;right:auto;width:auto;transform:none}
   .hero-head{grid-template-columns:1fr;padding-top:36px;row-gap:18px;align-items:start}
-  .hero-head h1,.hero-aside .lede,.hero-aside .button{grid-column:1;width:auto;max-width:none}
+  .hero-head h1,.hero-aside .lede,.hero-book{grid-column:1;width:auto;max-width:none}
   .hero-head h1{grid-row:1}
   .hero-aside .lede{grid-row:2}
-  .hero-aside .button{grid-row:3}
+  .hero-book{grid-row:3;justify-self:start}
+  .title-arrow{display:none}
+  .title-nudge{display:block}
   .hero-stage{display:block;flex:none;min-height:0;margin-top:28px}
   .service-side,.shots{width:auto;max-width:none}
   .service-side{display:block;width:auto;min-width:0}
@@ -568,6 +594,19 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .thumb span{font-size:84px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}}
+.page:not(.service-page){position:relative}
+.page:not(.service-page)>.guide-line{position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;pointer-events:none}
+.page:not(.service-page)>*:not(.guide-line){position:relative;z-index:2}
+#home>.section.band,#home>.section.book,#home>.section.reviews{z-index:auto;background:transparent}
+#home>.section.band::before,#home>.section.book::before,#home>.section.reviews::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
+#home>.section.band::before,#home>.section.book::before{background:var(--pale)}
+#home>.section.reviews::before{background:#f6f7f8}
+#home>.section.band>*,#home>.section.book>*,#home>.section.reviews>*{position:relative;z-index:2}
+#contact>.wrap{z-index:auto}
+#contact .info-grid,#contact .split,#contact .info-card,#contact .sheet{position:relative;z-index:auto}
+#contact .info-card,#contact .sheet{background:transparent}
+#contact .info-card::before,#contact .sheet::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;background:#fff;pointer-events:none}
+#contact>.wrap>.meet-kicker,#contact>.wrap>h1,#contact .info-card>*,#contact .sheet>*,#contact .side-media,#contact .map-frame,#contact .map-note{position:relative;z-index:2}
 </style>
 </head>
 <body>
@@ -596,13 +635,18 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </header>
 <main>
 <section id="home" class="page">
+<svg id="guide-line" class="guide-line" aria-hidden="true"></svg>
 <div class="landing">
 <div class="wrap hero-head">
-<h1>Chiropractic care on Dudley Port.</h1>
+<h1><span class="title-mark"><span class="title-run run-a">Chiro</span><span class="title-gap">p</span><span class="title-run run-a2">ractic</span></span> care on <span class="title-mark title-mark-b"><span class="title-run run-b">Dudle</span><span class="title-gap">y</span><span class="title-run run-b2"> Port</span></span><span class="title-stop">.</span></h1>
 <div class="hero-aside">
-<p class="lede">Chiropractic care at the Dudley Port Treatment Room, 186 Dudley Port, Tipton. Dr Richard Ridings is the named chiropractor.</p>
+<p class="lede">One complete solution. Expert Diagnosis and Fully Integrated Treatments for Back, Neck and a Wide Range of Painful Conditions.</p>
+<div class="hero-book">
 <a class="button" href="#contact">Book appointment</a>
+<svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true"><path class="nudge-shaft" d="M68 30C56 32 38 28 18 10"/><path class="nudge-head" d="M18 10 23 21M18 10 30 13"/></svg>
 </div>
+</div>
+<svg class="title-arrow" aria-hidden="true"><path class="title-shaft" fill="none" stroke="#001CA9" stroke-width="1.9" stroke-linecap="round"/><path class="title-head" fill="none" stroke="#001CA9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div class="wrap hero-stage">
 <figure class="hero-media"><img class="anchor-top-right" src="/factory-assets/clients/back-and-neck-clinic/3c68e6ca849e4105-landing-treatment.png" alt="Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises."></figure>
@@ -720,6 +764,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </section>
 </section>
 <section id="services" class="page services-page">
+<svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap services-intro">
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
@@ -731,19 +776,26 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </section>
 <section id="service-back-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Back pain</h1><p class="service-lead">Back pain is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-sciatica" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Sciatica</h1><p class="service-lead">Sciatica is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-neck-pain" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Neck pain</h1><p class="service-lead">Neck pain is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-whiplash" class="page service-page" data-shape="3"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Whiplash</h1><p class="service-lead">Whiplash is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-sprain-strain-injuries" class="page service-page" data-shape="4"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Sprain/strain injuries</h1><p class="service-lead">Sprain/strain injuries is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-disc-prolapse-slipped-disc" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">06</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Disc prolapse (slipped disc)</h1><p class="service-lead">Disc prolapse (slipped disc) is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-arthritis-stiffness-and-pain" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">07</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Arthritis stiffness and pain</h1><p class="service-lead">Arthritis stiffness and pain is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-tennis-golfers-elbow" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">08</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Illustrative layout — not a treatment description</p><h1>Tennis/golfers elbow</h1><p class="service-lead">Tennis/golfers elbow is listed for The Back &amp; Neck Pain Clinic. A short description of the service belongs on this page. It does not add a price or a promised result.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>
 <section id="about" class="page team-page">
+<svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap about-summary">
 <div class="about-copy">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
 <h1>The Back &amp; Neck Pain Clinic</h1>
-<p class="lede">Chiropractic care at the Dudley Port Treatment Room, 186 Dudley Port, Tipton. Dr Richard Ridings is the named chiropractor.</p>
-<a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
+<div class="about-pair">
+<div class="about-lead">
+<p class="lede">We provide professional Clinical Diagnosis and a wide-range of Treatments for all the most common causes of pain, injury and stiffness.</p>
+<p class="lede">With over two decades of established clinical experience, we are proud to bring you the most complete approach to treating back, neck and painful muscle, joint and nerve conditions. We have brought together the most powerful and effective treatment techniques from the world of Chiropractic, Osteopathy, Rehabilitation, Physiotherapy and Sports Therapy. This unique and comprehensive approach means you no longer have to choose which profession to see because we have you covered!</p>
 </div>
 <figure class="about-photo"><img src="/factory-assets/clients/back-and-neck-clinic/a41b473b29b64fc5-about-exterior.png" alt="Illustrative clinic exterior. Not a photograph of this clinic’s premises."></figure>
+</div>
+<a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
+</div>
 <p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
 <div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/back-and-neck-clinic/9246217d3e07dee5-jordan-example.png" alt="Illustrative treatment. Not a photograph of Jordan Example or of this clinic’s staff."></figure><div class="person-card"><h2>Richard Ridings</h2><p class="role">Doctor of Chiropractic</p><p>Patient experiences name Dr Richard Ridings, also called William Richard Ridings. The homepage says the first appointment is a consultation with a General Chiropractic Council registered Doctor of Chiropractic.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/back-and-neck-clinic/987ce4431a1f2776-sam-example.png" alt="Illustrative treatment. Not a photograph of Sam Example or of this clinic’s staff."></figure><div class="person-card"><p class="flag">Illustrative layout — not a verified member of staff</p><h2>Casey Sample</h2><p class="role">Sample specialist</p><p>A made-up card for a second specialist. Casey Sample is not a real person and does not work at this clinic.</p></div></article></div></div>
 </section>
 <section id="contact" class="page">
+<svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
 <h1>The Back &amp; Neck Pain Clinic.</h1>
@@ -766,6 +818,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 </section>
 <section id="reviews" class="page">
+<svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap page-intro">
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Reviews</p>
@@ -781,6 +834,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </section>
 </section>
 <section id="prices" class="page prices-page">
+<svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
 <h1>What a visit includes.</h1>
@@ -1061,6 +1115,203 @@ document.querySelectorAll('.hours-live').forEach(line => {
   if (windows.length) apply(new Date());
   line._applyHours = apply;
 });
+</script>
+<script id="guide-draw">
+(function () {
+  var svg = null;
+  function visiblePage() {
+    var pages = document.querySelectorAll('.page:not(.service-page)');
+    for (var i = 0; i < pages.length; i++) {
+      if (getComputedStyle(pages[i]).display !== 'none') return pages[i];
+    }
+    return null;
+  }
+  var ns = 'http://www.w3.org/2000/svg';
+  function node(name, attrs, parent) {
+    var el = document.createElementNS(ns, name);
+    Object.keys(attrs).forEach(function (key) { el.setAttribute(key, attrs[key]); });
+    (parent || svg).appendChild(el);
+    return el;
+  }
+  function smooth(pts) {
+    var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[Math.max(0, i - 1)];
+      var p1 = pts[i];
+      var p2 = pts[i + 1];
+      var p3 = pts[Math.min(pts.length - 1, i + 2)];
+      d += 'C' + (p1.x + (p2.x - p0.x) / 7).toFixed(1) + ' ' + (p1.y + (p2.y - p0.y) / 7).toFixed(1) + ' ' + (p2.x - (p3.x - p1.x) / 7).toFixed(1) + ' ' + (p2.y - (p3.y - p1.y) / 7).toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+    return d;
+  }
+  function wavePath(dx) {
+    var page = svg.parentNode;
+    var w = page.offsetWidth;
+    var h = page.offsetHeight;
+    if (w < 80 || h < 120) return '';
+    var edge = Math.min(32, w * 0.03);
+    var tune = {
+      services: { phase: 0.15, period: 920, reach: 0.26, center: 0.6 },
+      about: { phase: 2.7, period: 1040, reach: 0.23, center: 0.36 },
+      contact: { phase: 1.45, period: 1240, reach: 0.28, center: 0.5 },
+      reviews: { phase: 4.35, period: 820, reach: 0.25, center: 0.72 },
+      prices: { phase: 5.5, period: 880, reach: 0.22, center: 0.4 }
+    }[page.id];
+    var pts = [];
+    for (var y = 36; y < h - 20; y += 56) {
+      var swing;
+      var center = 0.5;
+      var reach = w * 0.5 + edge * 0.8;
+      if (tune) {
+        center = tune.center;
+        reach = w * tune.reach;
+        swing = Math.sin(y / tune.period * Math.PI * 2 + tune.phase);
+        swing += 0.28 * Math.sin(y / (tune.period * 0.58) * Math.PI * 2 + tune.phase * 1.6);
+      } else {
+        swing = Math.sin(y / h * Math.PI * 3.15 + 0.7);
+      }
+      var x = w * center + swing * reach;
+      if (x < -edge) x = -edge;
+      if (x > w + edge) x = w + edge;
+      pts.push({ x: x + dx, y: y });
+    }
+    if (pts.length < 4) return '';
+    return smooth(pts);
+  }
+  function draw() {
+    var page = visiblePage();
+    if (!page) return;
+    svg = page.querySelector('.guide-line');
+    if (!svg) return;
+    var w = page.offsetWidth;
+    var h = page.offsetHeight;
+    var stamp = page.id || 'page';
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var defs = node('defs', {});
+    var fade = node('linearGradient', { id: 'guide-fade-' + stamp, gradientUnits: 'userSpaceOnUse', x1: '0', y1: '0', x2: '0', y2: String(h) }, defs);
+    node('stop', { offset: '0', 'stop-color': '#000' }, fade);
+    node('stop', { offset: '0.045', 'stop-color': '#fff' }, fade);
+    node('stop', { offset: '0.955', 'stop-color': '#fff' }, fade);
+    node('stop', { offset: '1', 'stop-color': '#000' }, fade);
+    var mask = node('mask', { id: 'guide-mask-' + stamp }, defs);
+    node('rect', { x: '0', y: '0', width: String(w), height: String(h), fill: 'url(#guide-fade-' + stamp + ')' }, mask);
+    var blur = node('filter', { id: 'guide-soft-' + stamp, x: '-40%', y: '-8%', width: '180%', height: '116%' }, defs);
+    node('feGaussianBlur', { stdDeviation: '3.2' }, blur);
+    var group = node('g', { mask: 'url(#guide-mask-' + stamp + ')' });
+    [
+      { dx: 0, stroke: '#c5d4fb', width: '12', opacity: '0.28', filter: 'url(#guide-soft-' + stamp + ')' },
+      { dx: 14, stroke: '#8eaaef', width: '1.5', opacity: '0.16' },
+      { dx: -12, stroke: '#6d8ae6', width: '1.05', opacity: '0.14' },
+      { dx: 8, stroke: '#001CA9', width: '0.9', opacity: '0.16' },
+      { dx: 0, stroke: '#001CA9', width: '1.05', opacity: '0.28' }
+    ].forEach(function (layer) {
+      var attrs = {
+        fill: 'none',
+        stroke: layer.stroke,
+        'stroke-width': layer.width,
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        opacity: layer.opacity,
+        d: wavePath(layer.dx)
+      };
+      if (layer.filter) attrs.filter = layer.filter;
+      node('path', attrs, group);
+    });
+  }
+  var kick = function () { requestAnimationFrame(draw); };
+  window.addEventListener('resize', kick);
+  window.addEventListener('hashchange', kick);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(kick);
+  kick();
+})();
+</script>
+<script>
+(function () {
+  var head = document.querySelector('#home .hero-head');
+  var svg = head.querySelector('.title-arrow');
+  var shaft = svg.querySelector('.title-shaft');
+  var arrowHead = svg.querySelector('.title-head');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrowQuery = window.matchMedia('(max-width: 800px)');
+  var intro = null;
+  function hide() {
+    shaft.setAttribute('d', '');
+    arrowHead.setAttribute('d', '');
+  }
+  function showFull() {
+    shaft.style.strokeDasharray = 'none';
+    shaft.style.strokeDashoffset = '0';
+    arrowHead.style.strokeDasharray = 'none';
+    arrowHead.style.strokeDashoffset = '0';
+  }
+  function paint() {
+    if (getComputedStyle(document.getElementById('home')).display === 'none' || narrowQuery.matches) {
+      hide();
+      return;
+    }
+    var stop = head.querySelector('.title-stop');
+    var button = head.querySelector('.hero-book .button');
+    var hr = head.getBoundingClientRect();
+    var sr = stop.getBoundingClientRect();
+    var br = button.getBoundingClientRect();
+    if (sr.width < 1 || br.width < 1) return;
+    var x1 = sr.right - hr.left + 10;
+    var y1 = sr.bottom - hr.top - sr.height * 0.22;
+    var x2 = br.left - hr.left - 16;
+    var y2 = br.top - hr.top + br.height / 2;
+    var reach = 0.56;
+    var pad = (1 - reach) / 2;
+    var spanX = x2 - x1;
+    var spanY = y2 - y1;
+    x1 += spanX * pad;
+    y1 += spanY * pad;
+    x2 -= spanX * pad;
+    y2 -= spanY * pad;
+    if (x2 < x1 + 36) {
+      hide();
+      return;
+    }
+    var dx = x2 - x1;
+    var dy = y2 - y1;
+    var drop = Math.max(26, Math.min(42, dx * 0.15));
+    var cx = x1 + dx * 0.5;
+    var cy = y1 + dy * 0.5 + drop;
+    var tx = x2 - cx;
+    var ty = y2 - cy;
+    var mag = Math.hypot(tx, ty) || 1;
+    tx /= mag;
+    ty /= mag;
+    var px = -ty;
+    var py = tx;
+    var headReach = 10.5;
+    var headSpread = 5.2;
+    var shaftEndX = x2 - tx * 1.2;
+    var shaftEndY = y2 - ty * 1.2;
+    shaft.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' Q ' + cx + ' ' + cy + ' ' + shaftEndX + ' ' + shaftEndY);
+    var hx = x2 - tx * headReach;
+    var hy = y2 - ty * headReach;
+    arrowHead.setAttribute('d', 'M ' + (hx + px * headSpread) + ' ' + (hy + py * headSpread) + ' L ' + x2 + ' ' + y2 + ' L ' + (hx - px * headSpread) + ' ' + (hy - py * headSpread));
+    var len = shaft.getTotalLength();
+    var headLen = arrowHead.getTotalLength();
+    if (reduce || (intro && intro.playState === 'finished')) {
+      showFull();
+      return;
+    }
+    if (intro) return;
+    shaft.style.strokeDasharray = String(len);
+    shaft.style.strokeDashoffset = String(len);
+    arrowHead.style.strokeDasharray = String(headLen);
+    arrowHead.style.strokeDashoffset = String(headLen);
+    intro = shaft.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 650, delay: 4000, easing: 'ease', fill: 'forwards' });
+    arrowHead.animate([{ strokeDashoffset: headLen }, { strokeDashoffset: 0 }], { duration: 220, delay: 4580, easing: 'ease', fill: 'forwards' });
+  }
+  var kick = function () { requestAnimationFrame(paint); };
+  window.addEventListener('resize', kick);
+  window.addEventListener('hashchange', kick);
+  if (document.fonts && document.fonts.status !== 'loaded') document.fonts.ready.then(kick);
+  else kick();
+})();
 </script>
 </body>
 </html>
