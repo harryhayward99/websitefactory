@@ -14,6 +14,9 @@ export function render(s, e) {
   const bright = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2] > 0.62;
   const onAccent = bright ? '#111111' : '#ffffff';
   const pale = mix([255, 255, 255], 0.82);
+  const waveHalo = mix([255, 255, 255], 0.72);
+  const waveMid = mix([255, 255, 255], 0.48);
+  const waveSoft = mix([255, 255, 255], 0.32);
   const initial = e((b.name.value || '•').trim().charAt(0).toUpperCase());
   const logo = s.assets.logo
     ? `<img class="logo" src="${e(s.assets.logo.path)}" alt="${e(s.assets.logo.alt)}">`
@@ -23,7 +26,6 @@ export function render(s, e) {
     : name;
   const phoneDigits = (b.phone?.value || '').replace(/[^\d+]/g, '');
   const phoneOk = /^\+?\d{7,15}$/.test(phoneDigits);
-  const phoneText = phoneOk ? `<a class="nav-phone" href="tel:${phoneDigits}">${e(b.phone.value)}</a>` : '';
   const contactLead = phoneOk
     ? `<p>Call <a class="contact-call" href="tel:${phoneDigits}">${e(b.phone.value)}</a>, or submit a message here. Reception will get back to you as soon as possible.</p>`
     : '<p>Submit a message here. Reception will get back to you as soon as possible.</p>';
@@ -183,6 +185,7 @@ export function render(s, e) {
     return `<article class="person${index === 0 ? ' is-current' : ''}">${photo}<div class="person-card">${personFlag(person)}<h2>${e(person.name)}</h2><p class="role">${e(person.role || '')}</p><p>${e(person.detail)}</p></div></article>`;
   }).join('');
   const calendarIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+  const clockIcon = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8.2" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 5.2V8.2l2.1 1.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
   const meetSlides = people.map((person, index) => {
     const ownImage = namedImage(person) || templateMeetImage(index) || gallery[index];
     const image = ownImage || portraitImage;
@@ -304,6 +307,9 @@ export function render(s, e) {
     website ? `<article class="info-card"><h2>Website</h2><p>${website}</p></article>` : ''
   ].join('');
   const banner = s.demo ? 'FICTIONAL DEMO' : 'CONCEPT WEBSITE';
+  const bannerAddress = b.address?.value ? `<span class="banner-address">${e(b.address.value)}</span>` : '';
+  const bannerPhone = phoneOk ? `<a href="tel:${phoneDigits}">${e(b.phone.value)}</a>` : '';
+  const bannerContact = [bannerAddress, bannerPhone].filter(Boolean).join('<span class="banner-gap" aria-hidden="true">|</span>');
   const mapNote = s.demo
     ? 'Map of the fictional address. It may not match a real place.'
     : 'Map of the published address.';
@@ -320,6 +326,7 @@ export function render(s, e) {
   const aboutPhoto = aboutImage
     ? `<figure class="about-photo"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
     : '';
+  const guideLine = '<svg class="guide-line" aria-hidden="true"></svg>';
   const contactMedia = aboutImage
     ? `<figure class="side-media"><img src="${e(aboutImage.path)}" alt="${e(aboutImage.alt)}"></figure>`
     : sideMedia;
@@ -432,6 +439,7 @@ ${reviewBoard}
     : `Fees taken from the published website for ${name}. No amounts have been added.`;
   const feeBoard = feeFolds ? `<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion">${feeFolds}</div></div>` : '';
   const pricesPage = visits.length || feeFolds ? `<section id="prices" class="page prices-page">
+${guideLine}
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
 <h1>What a visit includes.</h1>
@@ -442,6 +450,7 @@ ${feeBoard}
 </div>
 </section>` : '';
   const reviewsPage = `<section id="reviews" class="page">
+${guideLine}
 <div class="wrap page-intro">
 <div>
 <p class="meet-kicker">${reviewMark} Reviews</p>
@@ -481,7 +490,12 @@ a{color:inherit}
 img{max-width:100%;display:block}
 .skip{position:absolute;left:12px;top:-48px;background:#fff;padding:8px 12px;z-index:9}
 .skip:focus{top:12px}
-.banner{margin:0;padding:8px 16px;background:#111;color:#fff;text-align:center;font-size:11px;font-weight:500;letter-spacing:.08em}
+.banner{display:flex;align-items:stretch;min-height:34px;margin:0;background:#fff;color:#111}
+.banner-note{flex:1;min-width:0;margin:0;padding:7px 20px;overflow:hidden;color:#333;font-size:11px;font-weight:500;letter-spacing:.04em;line-height:1.2;white-space:nowrap;text-overflow:ellipsis}
+.banner-contact{display:flex;align-items:center;gap:12px;flex:none;max-width:min(68%,760px);margin:0;padding:7px 22px 7px 44px;background:var(--accent);color:var(--on);font-size:13px;font-weight:500;line-height:1.2;clip-path:polygon(0 0,100% 0,100% 100%,22px 100%)}
+.banner-contact .banner-address,.banner-contact a{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.banner-contact a{color:inherit;text-decoration:none}
+.banner-gap{flex:none;opacity:.72}
 .nav-toggle{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .site-header{position:sticky;top:0;z-index:8;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;min-height:84px;padding:0 28px;border-bottom:1px solid #e6e6e6;background:#fff}
 .site-header nav{justify-self:center}
@@ -493,8 +507,6 @@ img{max-width:100%;display:block}
 .wordmark strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em}
 .wordmark small{display:block;color:#333;font-size:12px;font-weight:500}
 .mark{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:var(--on);font-weight:700}
-.nav-rule{width:1px;height:16px;background:#ddd}
-.nav-phone{color:#000;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}
 .site-header nav ul{display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none}
 .site-header nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:#000;font-size:16px;font-weight:500;text-decoration:none}
 .site-header nav a[href="#home"],
@@ -534,14 +546,22 @@ body:has(#meet-team:target) #home{display:none}
 #home{padding-top:0;padding-bottom:0}
 .landing{display:block}
 .landing>.hero-head{margin-top:0;margin-bottom:0}
-.landing>.hero-stage{margin-top:32px;margin-bottom:0}
-.hero-head{display:grid;grid-template-columns:minmax(0,680px) minmax(260px,380px);justify-content:space-between;align-items:center;column-gap:56px;row-gap:20px;padding-top:48px}
-.hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none}
-.hero-aside{display:contents}
-.hero-aside .lede{grid-column:2;grid-row:1;margin:0}
-.hero-aside .button{grid-column:2;grid-row:2;justify-self:start}
+.landing>.hero-stage{margin-top:56px;margin-bottom:0}
+.hero-head{position:relative;display:grid;grid-template-columns:minmax(0,680px) minmax(260px,380px);justify-content:space-between;align-items:center;column-gap:56px;row-gap:20px;padding-top:48px}
+.hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none;line-height:1.2}
+.hero-aside{grid-column:2;grid-row:1;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0}
+.hero-aside .lede{margin:0}
+.hero-book{display:flex;align-items:center;gap:14px}
+.title-stop{display:inline}
+.title-line{position:absolute;height:3px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left center;pointer-events:none}
+.title-arrow{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.title-nudge{display:none;width:64px;height:36px;margin-bottom:6px;color:var(--accent);flex:none;overflow:visible;transform:rotate(-35deg);transform-origin:center}
+.title-nudge path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.title-nudge .nudge-shaft{stroke-dasharray:90;stroke-dashoffset:90;animation:nudge-draw .5s ease 3.95s forwards}
+.title-nudge .nudge-head{stroke-dasharray:28;stroke-dashoffset:28;animation:nudge-draw .22s ease 4.4s forwards}
+@keyframes nudge-draw{to{stroke-dashoffset:0}}
 .lede{margin:0 0 28px;color:#333;font-size:16px;line-height:1.55}
-.hero-stage{position:relative;margin-top:32px}
+.hero-stage{position:relative;margin-top:56px}
 .hero-media,.wide-media,.side-media,.tile-media,.frame{margin:0;position:relative;overflow:hidden;border-radius:10px;background:var(--pale)}
 .hero-media{height:400px;border-radius:28px}
 .wide-media{min-height:420px;margin:28px 0}
@@ -651,7 +671,8 @@ ${serviceHover}
 .example small,.flag{display:block;margin-bottom:8px;color:#333;font-size:12px;font-weight:600}
 .example{margin-bottom:22px}
 .example h2{font-size:28px;margin-bottom:8px}
-.kicker{margin-bottom:10px;color:#000;font-size:14px;font-weight:500}
+.kicker{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#000;font-size:14px;font-weight:500}
+.kicker svg{display:block;flex:none}
 .home-team{display:grid;gap:8px;margin:28px 0}
 .book{background:var(--pale)}
 .book-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.92fr);gap:28px 36px;align-items:stretch}
@@ -663,9 +684,9 @@ ${serviceHover}
 .book-form input,.book-form textarea{width:100%;min-height:48px;padding:12px 14px;border:0;border-radius:8px;background:#fff;color:#000;font:inherit}
 .book-form textarea{min-height:148px;resize:vertical}
 .book-form input::placeholder,.book-form textarea::placeholder{color:#9aa0a6}
-.book-date .date-field{position:relative;display:block}
-.book-date svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#666;pointer-events:none}
-.book-date input{padding-right:42px}
+.book-date .date-field,.book-time .date-field{position:relative;display:block}
+.book-date svg,.book-time svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#666;pointer-events:none}
+.book-date input,.book-time input{padding-right:42px}
 .book-actions{display:flex;justify-content:flex-end;margin-top:22px}
 .book-submit{min-height:48px;padding:12px 22px;border:0;border-radius:8px;background:#111;color:#fff;font:500 15px/1 Manrope,"Segoe UI",sans-serif;cursor:pointer}
 .book-stage{position:relative;min-height:520px}
@@ -687,6 +708,39 @@ ${serviceHover}
 .hours-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #eee;color:#000;font-size:14px;font-weight:500}
 .hours-row span:last-child{color:#333;font-weight:500;white-space:nowrap}
 .book-call{width:100%;margin-top:16px;min-height:48px;border-radius:10px}
+.book-setter{position:fixed;right:22px;bottom:22px;z-index:30;width:72px;height:72px}
+.book-setter-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 12px 28px rgba(17,17,17,.16);cursor:pointer}
+.book-setter-ring svg{display:block}
+.book-setter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.book-setter-panel{position:absolute;right:0;bottom:0;display:flex;flex-direction:column;width:min(320px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 40px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 16px 40px rgba(17,17,17,.16);transform-origin:bottom right;transform:scale(.2);opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
+.book-setter.is-open .book-setter-panel{transform:scale(1);opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 16px 40px rgba(17,17,17,.16)}
+.book-setter-cover{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;flex:none;padding:14px 10px 14px 14px;background:var(--accent);color:var(--on)}
+.book-setter-cover svg{display:block}
+.book-setter-title{margin:0;color:inherit;font-size:15px;font-weight:600;line-height:1.25;text-align:left}
+.book-setter-close{display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
+.book-setter-progress{flex:none;height:4px;background:#e4e4e7}
+.book-setter-progress span{display:block;height:100%;width:25%;background:#111;transition:width .22s ease}
+.book-setter-steps{overflow:auto;padding:16px}
+.book-setter-steps [hidden]{display:none}
+.book-step{display:grid;gap:10px}
+.book-step-count{margin:0;color:#666;font-size:12px;font-weight:600}
+.book-setter fieldset{display:grid;gap:8px;margin:0;padding:0;border:0}
+.book-setter legend{margin:0 0 2px;color:#000;font-size:12px;font-weight:600}
+.book-setter label{display:grid;gap:4px;color:#000;font-size:12px;font-weight:600}
+.book-setter .book-choice{display:flex;align-items:center;gap:8px;min-height:40px;padding:8px 10px;border:1px solid #eee;border-radius:8px;background:#fff;font-weight:500;cursor:pointer}
+.book-setter .book-choice:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,#fff)}
+.book-setter .book-choice input{width:auto;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
+.book-setter input,.book-setter textarea{width:100%;min-height:38px;padding:8px 10px;border:1px solid #eee;border-radius:8px;background:#fff;color:#000;font:inherit;font-size:14px}
+.book-setter textarea{min-height:64px;resize:vertical}
+.book-setter input:disabled,.book-setter textarea:disabled{background:#f6f7f8;color:#888}
+.book-setter-note{margin:2px 0 0;color:#333;font-size:12px;font-weight:500;line-height:1.35}
+.book-setter-error{margin:0 16px 8px;color:#9b1c1c;font-size:12px;font-weight:600;line-height:1.35}
+.book-setter-error[hidden]{display:none}
+.book-setter-nav{display:flex;align-items:center;gap:8px;flex:none;padding:0 16px 16px}
+.book-setter-back{flex:none;min-height:40px;padding:8px 14px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#111;font:600 13px/1 Manrope,"Segoe UI",sans-serif;cursor:pointer}
+.book-setter-back[hidden]{display:none}
+.book-setter-nav .book-submit{flex:1;width:auto;margin:0}
+.book-setter-done{margin:0;color:#333;font-size:13px;font-weight:500;line-height:1.4}
 .reviews{background:#f6f7f8}
 .review-leave-link{margin-top:18px}
 #reviews{padding-top:56px;padding-bottom:88px;background:#f6f7f8}
@@ -741,16 +795,18 @@ ${reviewSelect}
 @keyframes social-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social-marquee:hover .social-track,.social.is-paused .social-track{animation-play-state:paused}
 .team-page{padding-top:56px}
-.about-summary{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);grid-template-areas:"copy photo" "team .";column-gap:48px;row-gap:28px;align-items:start}
+.about-summary{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team";row-gap:28px;align-items:start}
 .about-copy{grid-area:copy}
 .about-copy h1{margin:0 0 18px}
+.about-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);column-gap:48px;align-items:center;margin:0 0 22px}
 .about-summary .lede{margin:0 0 22px}
+.about-lead .lede:last-child{margin-bottom:0}
 .about-next{display:inline-flex;align-items:center;gap:8px;margin:0;padding:0;background:none;color:#111;font:600 16px/1.4 Manrope,"Segoe UI",sans-serif;text-decoration:none}
 .about-next span{text-decoration:underline;text-underline-offset:4px}
 .about-next svg{flex:none}
 .about-next:hover{color:#111}
 #meet-team{scroll-margin-top:96px}
-.about-photo{grid-area:photo;margin:0;width:100%;height:168px;border-radius:18px;overflow:hidden;background:var(--pale)}
+.about-photo{margin:0;width:100%;height:196px;border-radius:18px;overflow:hidden;background:var(--pale)}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .about-team{grid-area:team;justify-self:start;margin:0}
 .about-summary:not(:has(.about-photo)){grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "team"}
@@ -876,12 +932,13 @@ ${offerSelect}
 .site-footer a{color:#fff;text-decoration:none}
 .site-footer p{color:rgba(255,255,255,.72)}
 .site-footer .legal{display:block;margin:0;color:rgba(255,255,255,.5);font-size:13px}
-a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:focus-visible,.book-submit:focus-visible,.review-pick:focus-visible,.offer-pick:focus-visible,.service-back:focus-visible,.social-pause:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #000;outline-offset:3px}
+a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:focus-visible,.book-submit:focus-visible,.book-setter-ring:focus-visible,.book-setter-close:focus-visible,.book-setter-back:focus-visible,.review-pick:focus-visible,.offer-pick:focus-visible,.service-back:focus-visible,.social-pause:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #000;outline-offset:3px}
 @media (max-width:800px){
   html{scroll-padding-top:76px}
   .site-header{grid-template-columns:1fr auto;min-height:68px;padding:0 16px}
   .menu-button{justify-self:end}
-  .nav-rule,.nav-phone,.header-cta{display:none}
+  .header-cta{display:none}
+  .banner-contact{max-width:none;padding-left:28px}
   .site-header nav{position:absolute;left:auto;right:16px;top:68px;width:max-content;max-width:calc(100% - 32px)}
   .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
@@ -894,8 +951,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .menu-panel,.has-menu:hover .menu-panel,.has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
   .menu-panel::before{display:none}
   .services-intro,.offer-board,.service-poster,.about-summary,.team-board,.person{grid-template-columns:1fr}
-  .about-summary{grid-template-areas:"copy" "photo" "team";row-gap:22px}
+  .about-summary{grid-template-areas:"copy" "team";row-gap:22px}
   .about-copy h1{margin-bottom:16px}
+  .about-pair{grid-template-columns:1fr;row-gap:18px}
   .about-summary .lede{margin-bottom:18px}
   .about-photo{width:100%;height:auto;aspect-ratio:3/2;border-radius:22px}
   .about-team{margin:18px 0 0}
@@ -923,7 +981,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .service-blob{left:auto;right:8px;bottom:0;width:120px}
   .service-page[data-shape="3"] .service-blob{box-shadow:22px -18px 0 var(--pale)}
   .landing{display:block;min-height:0}
-  .landing>.hero-stage{margin-top:36px}
+  .landing>.hero-stage{margin-top:48px}
   .hero-head,.service-split,.split,.appoint,.book-layout,.foot,.info-grid,.shots{display:grid;grid-template-columns:1fr;width:auto}
   .wrap{width:min(100% - 32px,1180px)}
   .book-fields{grid-template-columns:1fr}
@@ -931,10 +989,11 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .book-portrait{position:relative;inset:auto;min-height:240px;transform:none}
   .book-hours{position:relative;top:auto;right:auto;width:auto;transform:none}
   .hero-head{grid-template-columns:1fr;padding-top:36px;row-gap:18px;align-items:start}
-  .hero-head h1,.hero-aside .lede,.hero-aside .button{grid-column:1;width:auto;max-width:none}
+  .hero-head h1,.hero-aside{grid-column:1;width:auto;max-width:none}
   .hero-head h1{grid-row:1}
-  .hero-aside .lede{grid-row:2}
-  .hero-aside .button{grid-row:3}
+  .hero-aside{grid-row:2;align-self:start}
+  .title-arrow{display:none}
+  .title-nudge{display:block}
   .hero-stage{display:block;flex:none;min-height:0;margin-top:28px}
   .service-side,.shots{width:auto;max-width:none}
   .service-side{display:block;width:auto;min-width:0}
@@ -1025,18 +1084,29 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   h1{font-size:40px;line-height:1.12}
   .thumb span{font-size:84px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}.title-line{transform:none}.title-nudge path{animation:none;stroke-dashoffset:0}.book-setter-panel{transition:none}.book-setter-progress span{transition:none}}
+.page:not(.service-page){position:relative}
+.page:not(.service-page)>.guide-line{position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;pointer-events:none}
+.page:not(.service-page)>*:not(.guide-line){position:relative;z-index:2}
+#home>.section.band,#home>.section.book,#home>.section.reviews{z-index:auto;background:transparent}
+#home>.section.band::before,#home>.section.book::before,#home>.section.reviews::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
+#home>.section.band::before,#home>.section.book::before{background:var(--pale)}
+#home>.section.reviews::before{background:#f6f7f8}
+#home>.section.band>*,#home>.section.book>*,#home>.section.reviews>*{position:relative;z-index:2}
+#contact>.wrap{z-index:auto}
+#contact .info-grid,#contact .split,#contact .info-card,#contact .sheet{position:relative;z-index:auto}
+#contact .info-card,#contact .sheet{background:transparent}
+#contact .info-card::before,#contact .sheet::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;background:#fff;pointer-events:none}
+#contact>.wrap>.meet-kicker,#contact>.wrap>h1,#contact .info-card>*,#contact .sheet>*,#contact .side-media,#contact .map-frame,#contact .map-note{position:relative;z-index:2}
 </style>
 </head>
 <body>
-<p class="banner">${banner} · Prepared by Parley Systems · Not the business’s official website</p>
+<div class="banner"><p class="banner-note">${banner} · Prepared by Parley Systems · Not the business’s official website</p>${bannerContact ? `<p class="banner-contact">${bannerContact}</p>` : ''}</div>
 <a class="skip" href="#home">Skip to content</a>
 <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
 <header class="site-header">
 <div class="nav-left">
 <a class="brand" href="#home">${logo}</a>
-<span class="nav-rule" aria-hidden="true"></span>
-${phoneText}
 </div>
 <nav aria-label="Pages">
 <ul>
@@ -1054,13 +1124,18 @@ ${pricesPage ? '<li><a href="#prices">Prices</a></li>' : ''}
 </header>
 <main>
 <section id="home" class="page">
+${guideLine}
 <div class="landing">
 <div class="wrap hero-head">
-<h1>${e(s.copy.headline)}</h1>
+<h1>${e(s.copy.headline)}<span class="title-stop"></span></h1>
 <div class="hero-aside">
 <p class="lede">${e(heroIntroduction(s.copy.introduction))}</p>
+<div class="hero-book">
 <a class="button" href="#contact">Book appointment</a>
+<svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true"><path class="nudge-shaft" d="M68 30C56 32 38 28 18 10"/><path class="nudge-head" d="M18 10 23 21M18 10 30 13"/></svg>
 </div>
+</div>
+<svg class="title-arrow" aria-hidden="true"><path class="title-shaft" fill="none" stroke="${accent}" stroke-width="1.9" stroke-linecap="round"/><path class="title-head" fill="none" stroke="${accent}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div class="wrap hero-stage">
 ${heroMedia}
@@ -1070,7 +1145,7 @@ ${heroMedia}
 <section class="section">
 <div class="wrap service-split" data-active="0">
 <div class="service-side">
-<p class="kicker">Services</p>
+<p class="kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
 <h2>What is listed.</h2>
 <p class="lede">${servicesNote}</p>
 <nav class="service-links" aria-label="Services">${serviceLinks}</nav>
@@ -1099,11 +1174,15 @@ ${reviewBand}
 <h2>Book your appointment</h2>
 <p class="book-note">This preview does not send what you type or take a booking.</p>
 <div class="book-fields">
-<label>Name*<input name="name" autocomplete="name" placeholder="Enter first name" required></label>
+<label>First name*<input name="given-name" autocomplete="given-name" placeholder="Enter first name" required></label>
+<label>Last name*<input name="family-name" autocomplete="family-name" placeholder="Enter last name" required></label>
 <label>Email*<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
 <label>Phone<input name="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
 <label class="book-date"><span>Appointment date*</span><span class="date-field">${calendarIcon}<input name="date" placeholder="DD / MM / YYYY" required></span></label>
+<label class="book-time"><span>Preferred time*</span><span class="date-field">${clockIcon}<input name="time" placeholder="HH:MM" required></span></label>
 <label class="span">Message*<textarea name="message" placeholder="Type message here..." required></textarea></label>
+<input type="hidden" name="patient" value="">
+<input type="hidden" name="enquiry" value="">
 </div>
 <div class="book-actions"><button class="book-submit" type="submit">Book appointment</button></div>
 </form>
@@ -1132,6 +1211,7 @@ ${demoStats}
 </section>
 </section>
 <section id="services" class="page services-page">
+${guideLine}
 <div class="wrap services-intro">
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
@@ -1143,19 +1223,23 @@ ${listed.length ? `<div class="wrap offer-board"><div class="offer-list">${offer
 </section>
 ${servicePages}
 <section id="about" class="page team-page">
+${guideLine}
 <div class="wrap about-summary">
 <div class="about-copy">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
 <h1>${name}</h1>
-<p class="lede">${aboutSummary}</p>
+<div class="about-pair">
+<div class="about-lead"><p class="lede">${aboutSummary}</p></div>
+${aboutPhoto}
+</div>
 <a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
-${aboutPhoto}
 <p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
 ${people.length ? `<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people">${personCards}</div></div>` : '<div class="wrap"><p class="pending">No individual team members were published, so none are shown here.</p></div>'}
 </section>
 <section id="contact" class="page">
+${guideLine}
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
 <h1>${name}.</h1>
@@ -1215,6 +1299,61 @@ ${phoneOk ? `<a class="footer-phone" href="tel:${phoneDigits}">${e(b.phone.value
 </div>
 <div class="wrap footer-base"><small class="legal">Template care-modern 1.0.0. Colour follows this business’s brand accent. This page does not sell products. Category photography is illustrative.</small></div>
 </footer>
+<aside class="book-setter" aria-label="Appointment and enquiry setter">
+<button class="book-setter-ring" type="button" aria-expanded="false" aria-controls="book-setter-panel"><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="book-setter-label">Request an appointment</span></button>
+<div class="book-setter-panel" id="book-setter-panel" inert>
+<div class="book-setter-cover">
+<svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<h2 class="book-setter-title" id="book-setter-title">Appointment &amp; Enquiry Setter</h2>
+<button class="book-setter-close" type="button" aria-label="Close"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+</div>
+<div class="book-setter-progress" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Step progress"><span></span></div>
+<div class="book-setter-steps">
+<section class="book-step" data-step="1">
+<p class="book-step-count">1 of 4</p>
+<label>First name*<input data-field="given-name" autocomplete="given-name" placeholder="Enter first name"></label>
+<label>Second name*<input data-field="family-name" autocomplete="family-name" placeholder="Enter second name"></label>
+<fieldset>
+<legend>New or existing patient*</legend>
+<label class="book-choice"><input type="radio" name="setter-patient" value="New patient">New patient</label>
+<label class="book-choice"><input type="radio" name="setter-patient" value="Existing patient">Existing patient</label>
+</fieldset>
+</section>
+<section class="book-step" data-step="2" hidden>
+<p class="book-step-count">2 of 4</p>
+<fieldset>
+<legend>Appointment or enquiry type*</legend>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="Cosmetic">Cosmetic</label>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="Preventative">Preventative</label>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="Emergency">Emergency</label>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="Check-Up">Check-Up</label>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="General Enquiry">General Enquiry</label>
+<label class="book-choice"><input type="radio" name="setter-enquiry" value="Unsure">Unsure</label>
+</fieldset>
+<label>Description (optional)<textarea data-field="message" placeholder="A short note, if you want to add one"></textarea></label>
+</section>
+<section class="book-step" data-step="3" hidden>
+<p class="book-step-count">3 of 4</p>
+<label class="book-choice"><input type="radio" name="setter-timing" value="Applicable" checked>Applicable</label>
+<label class="book-choice"><input type="radio" name="setter-timing" value="Not applicable">Not applicable</label>
+<label>Preferred appointment date*<input data-field="date" placeholder="DD / MM / YYYY"></label>
+<label>Preferred appointment time*<input data-field="time" placeholder="HH:MM"></label>
+</section>
+<section class="book-step" data-step="4" hidden>
+<p class="book-step-count">4 of 4</p>
+<label>Email*<input data-field="email" type="email" autocomplete="email" placeholder="name@example.com"></label>
+<label>Phone<input data-field="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
+<p class="book-setter-note">We will aim to confirm appointment time within 1 working day.</p>
+<p class="book-setter-done" hidden>This preview does not send a request.</p>
+</section>
+</div>
+<p class="book-setter-error" hidden></p>
+<div class="book-setter-nav">
+<button class="book-setter-back" type="button" hidden>Back</button>
+<button class="book-submit book-setter-next" type="button">Next</button>
+</div>
+</div>
+</aside>
 <script>
 document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => { const box = document.getElementById('nav-toggle'); if (box) box.checked = false; }));
 document.querySelectorAll('.service-split').forEach(split => {
@@ -1450,6 +1589,378 @@ document.querySelectorAll('.hours-live').forEach(line => {
   if (windows.length) apply(new Date());
   line._applyHours = apply;
 });
+</script>
+<script id="guide-draw">
+(function () {
+  var svg = null;
+  function visiblePage() {
+    var pages = document.querySelectorAll('.page:not(.service-page)');
+    for (var i = 0; i < pages.length; i++) {
+      if (getComputedStyle(pages[i]).display !== 'none') return pages[i];
+    }
+    return null;
+  }
+  var ns = 'http://www.w3.org/2000/svg';
+  function node(name, attrs, parent) {
+    var el = document.createElementNS(ns, name);
+    Object.keys(attrs).forEach(function (key) { el.setAttribute(key, attrs[key]); });
+    (parent || svg).appendChild(el);
+    return el;
+  }
+  function smooth(pts) {
+    var d = 'M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[Math.max(0, i - 1)];
+      var p1 = pts[i];
+      var p2 = pts[i + 1];
+      var p3 = pts[Math.min(pts.length - 1, i + 2)];
+      d += 'C' + (p1.x + (p2.x - p0.x) / 7).toFixed(1) + ' ' + (p1.y + (p2.y - p0.y) / 7).toFixed(1) + ' ' + (p2.x - (p3.x - p1.x) / 7).toFixed(1) + ' ' + (p2.y - (p3.y - p1.y) / 7).toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+    return d;
+  }
+  function wavePath(dx) {
+    var page = svg.parentNode;
+    var w = page.offsetWidth;
+    var h = page.offsetHeight;
+    if (w < 80 || h < 120) return '';
+    var edge = Math.min(32, w * 0.03);
+    var tune = {
+      services: { phase: 0.15, period: 920, reach: 0.26, center: 0.6 },
+      about: { phase: 2.7, period: 1040, reach: 0.23, center: 0.36 },
+      contact: { phase: 1.45, period: 1240, reach: 0.28, center: 0.5 },
+      reviews: { phase: 4.35, period: 820, reach: 0.25, center: 0.72 },
+      prices: { phase: 5.5, period: 880, reach: 0.22, center: 0.4 }
+    }[page.id];
+    var pts = [];
+    for (var y = 36; y < h - 20; y += 56) {
+      var swing;
+      var center = 0.5;
+      var reach = w * 0.5 + edge * 0.8;
+      if (tune) {
+        center = tune.center;
+        reach = w * tune.reach;
+        swing = Math.sin(y / tune.period * Math.PI * 2 + tune.phase);
+        swing += 0.28 * Math.sin(y / (tune.period * 0.58) * Math.PI * 2 + tune.phase * 1.6);
+      } else {
+        swing = Math.sin(y / h * Math.PI * 3.15 + 0.7);
+      }
+      var x = w * center + swing * reach;
+      if (x < -edge) x = -edge;
+      if (x > w + edge) x = w + edge;
+      pts.push({ x: x + dx, y: y });
+    }
+    if (pts.length < 4) return '';
+    return smooth(pts);
+  }
+  function draw() {
+    var page = visiblePage();
+    if (!page) return;
+    svg = page.querySelector('.guide-line');
+    if (!svg) return;
+    var w = page.offsetWidth;
+    var h = page.offsetHeight;
+    var stamp = page.id || 'page';
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var defs = node('defs', {});
+    var fade = node('linearGradient', { id: 'guide-fade-' + stamp, gradientUnits: 'userSpaceOnUse', x1: '0', y1: '0', x2: '0', y2: String(h) }, defs);
+    node('stop', { offset: '0', 'stop-color': '#000' }, fade);
+    node('stop', { offset: '0.045', 'stop-color': '#fff' }, fade);
+    node('stop', { offset: '0.955', 'stop-color': '#fff' }, fade);
+    node('stop', { offset: '1', 'stop-color': '#000' }, fade);
+    var mask = node('mask', { id: 'guide-mask-' + stamp }, defs);
+    node('rect', { x: '0', y: '0', width: String(w), height: String(h), fill: 'url(#guide-fade-' + stamp + ')' }, mask);
+    var blur = node('filter', { id: 'guide-soft-' + stamp, x: '-40%', y: '-8%', width: '180%', height: '116%' }, defs);
+    node('feGaussianBlur', { stdDeviation: '3.2' }, blur);
+    var group = node('g', { mask: 'url(#guide-mask-' + stamp + ')' });
+    [
+      { dx: 0, stroke: '${waveHalo}', width: '12', opacity: '0.28', filter: 'url(#guide-soft-' + stamp + ')' },
+      { dx: 14, stroke: '${waveMid}', width: '1.5', opacity: '0.16' },
+      { dx: -12, stroke: '${waveSoft}', width: '1.05', opacity: '0.14' },
+      { dx: 8, stroke: '${accent}', width: '0.9', opacity: '0.16' },
+      { dx: 0, stroke: '${accent}', width: '1.05', opacity: '0.28' }
+    ].forEach(function (layer) {
+      var attrs = { fill: 'none', stroke: layer.stroke, 'stroke-width': layer.width, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: layer.opacity, d: wavePath(layer.dx) };
+      if (layer.filter) attrs.filter = layer.filter;
+      node('path', attrs, group);
+    });
+  }
+  var kick = function () { requestAnimationFrame(draw); };
+  window.addEventListener('resize', kick);
+  window.addEventListener('hashchange', kick);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(kick);
+  kick();
+})();
+</script>
+<script id="title-draw">
+(function () {
+  var head = document.querySelector('#home .hero-head');
+  if (!head) return;
+  var svg = head.querySelector('.title-arrow');
+  var shaft = svg.querySelector('.title-shaft');
+  var arrowHead = svg.querySelector('.title-head');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrowQuery = window.matchMedia('(max-width: 800px)');
+  var intro = null;
+  var bars = [];
+  function hide() {
+    shaft.setAttribute('d', '');
+    arrowHead.setAttribute('d', '');
+  }
+  function showFull() {
+    shaft.style.strokeDasharray = 'none';
+    shaft.style.strokeDashoffset = '0';
+    arrowHead.style.strokeDasharray = 'none';
+    arrowHead.style.strokeDashoffset = '0';
+    bars.forEach(function (bar) { bar.style.transform = 'scaleX(1)'; });
+  }
+  function lineBoxes() {
+    var h1 = head.querySelector('h1');
+    var stop = head.querySelector('.title-stop');
+    if (!h1 || !stop) return [];
+    var range = document.createRange();
+    range.setStart(h1, 0);
+    range.setEndBefore(stop);
+    var lines = [];
+    Array.from(range.getClientRects()).forEach(function (rect) {
+      if (rect.width < 2) return;
+      var last = lines[lines.length - 1];
+      if (last && Math.abs(last.top - rect.top) < 3) {
+        last.left = Math.min(last.left, rect.left);
+        last.right = Math.max(last.right, rect.right);
+        last.bottom = Math.max(last.bottom, rect.bottom);
+        last.top = Math.min(last.top, rect.top);
+      } else {
+        lines.push({ left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
+      }
+    });
+    return lines;
+  }
+  function placeLines(hr) {
+    var lines = lineBoxes();
+    if (bars.length !== lines.length) {
+      bars.forEach(function (bar) { bar.remove(); });
+      if (intro) intro.cancel();
+      shaft.getAnimations().forEach(function (item) { item.cancel(); });
+      arrowHead.getAnimations().forEach(function (item) { item.cancel(); });
+      intro = null;
+      bars = lines.map(function () {
+        var bar = document.createElement('span');
+        bar.className = 'title-line';
+        bar.setAttribute('aria-hidden', 'true');
+        head.appendChild(bar);
+        return bar;
+      });
+    }
+    lines.forEach(function (line, index) {
+      var bar = bars[index];
+      bar.style.left = (line.left - hr.left) + 'px';
+      bar.style.width = (line.right - line.left) + 'px';
+      bar.style.top = (line.bottom - hr.top - (line.bottom - line.top) * 0.22 + 10) + 'px';
+    });
+    return lines;
+  }
+  function paint() {
+    if (getComputedStyle(document.getElementById('home')).display === 'none') return;
+    var button = head.querySelector('.hero-book .button');
+    var hr = head.getBoundingClientRect();
+    var br = button.getBoundingClientRect();
+    var lines = placeLines(hr);
+    if (!lines.length || br.width < 1) return;
+    var last = lines[lines.length - 1];
+    if (narrowQuery.matches) {
+      hide();
+      if (reduce) showFull();
+      else if (!bars[0].getAnimations().length) {
+        bars.forEach(function (bar, index) {
+          bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
+        });
+      }
+      return;
+    }
+    var x1 = last.right - hr.left + 10;
+    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 10;
+    var x2 = br.left - hr.left - 16;
+    var y2 = br.top - hr.top + br.height / 2;
+    var reach = 0.56;
+    var pad = (1 - reach) / 2;
+    var spanX = x2 - x1;
+    var spanY = y2 - y1;
+    x1 += spanX * pad;
+    y1 += spanY * pad;
+    x2 -= spanX * pad;
+    y2 -= spanY * pad;
+    if (x2 < x1 + 36) {
+      hide();
+      return;
+    }
+    var dx = x2 - x1;
+    var dy = y2 - y1;
+    var drop = Math.max(26, Math.min(42, dx * 0.15));
+    var cx = x1 + dx * 0.5;
+    var cy = y1 + dy * 0.5 + drop;
+    var tx = x2 - cx;
+    var ty = y2 - cy;
+    var mag = Math.hypot(tx, ty) || 1;
+    tx /= mag;
+    ty /= mag;
+    var px = -ty;
+    var py = tx;
+    var shaftEndX = x2 - tx * 1.2;
+    var shaftEndY = y2 - ty * 1.2;
+    shaft.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' Q ' + cx + ' ' + cy + ' ' + shaftEndX + ' ' + shaftEndY);
+    var hx = x2 - tx * 10.5;
+    var hy = y2 - ty * 10.5;
+    arrowHead.setAttribute('d', 'M ' + (hx + px * 5.2) + ' ' + (hy + py * 5.2) + ' L ' + x2 + ' ' + y2 + ' L ' + (hx - px * 5.2) + ' ' + (hy - py * 5.2));
+    if (reduce || (intro && intro.playState === 'finished')) {
+      showFull();
+      return;
+    }
+    if (intro) return;
+    var len = shaft.getTotalLength();
+    var headLen = arrowHead.getTotalLength();
+    shaft.style.strokeDasharray = String(len);
+    shaft.style.strokeDashoffset = String(len);
+    arrowHead.style.strokeDasharray = String(headLen);
+    arrowHead.style.strokeDashoffset = String(headLen);
+    var arrowDelay = 2150 + Math.max(0, lines.length - 1) * 900 + 950;
+    bars.forEach(function (bar, index) {
+      if (!bar.getAnimations().length) bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
+    });
+    intro = shaft.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 650, delay: arrowDelay, easing: 'ease', fill: 'forwards' });
+    arrowHead.animate([{ strokeDashoffset: headLen }, { strokeDashoffset: 0 }], { duration: 220, delay: arrowDelay + 580, easing: 'ease', fill: 'forwards' });
+  }
+  var kick = function () { requestAnimationFrame(paint); };
+  window.addEventListener('resize', kick);
+  window.addEventListener('hashchange', kick);
+  narrowQuery.addEventListener('change', kick);
+  if (document.fonts && document.fonts.status !== 'loaded') document.fonts.ready.then(kick);
+  else kick();
+})();
+</script>
+<script id="book-setter-sync">
+(function () {
+  var widget = document.querySelector('.book-setter');
+  var form = document.querySelector('.section.book .book-form');
+  if (!widget || !form) return;
+  var ring = widget.querySelector('.book-setter-ring');
+  var panel = widget.querySelector('.book-setter-panel');
+  var closeButton = widget.querySelector('.book-setter-close');
+  var back = widget.querySelector('.book-setter-back');
+  var next = widget.querySelector('.book-setter-next');
+  var error = widget.querySelector('.book-setter-error');
+  var steps = [].slice.call(widget.querySelectorAll('.book-step'));
+  var step = 0;
+  var keys = ['given-name', 'family-name', 'email', 'tel', 'date', 'time', 'message'];
+  function field(key) { return widget.querySelector('[data-field="' + key + '"]'); }
+  function copy(from, to) { if (to && !to.disabled && to.value !== from.value) to.value = from.value; }
+  keys.forEach(function (key) {
+    var source = form.querySelector('[name="' + key + '"]');
+    var mirror = field(key);
+    if (!source || !mirror) return;
+    source.addEventListener('input', function () { if (!mirror.disabled) copy(source, mirror); });
+    mirror.addEventListener('input', function () { copy(mirror, source); });
+  });
+  function chosen(name) {
+    var input = widget.querySelector('input[name="' + name + '"]:checked');
+    return input ? input.value : '';
+  }
+  function syncChoices() {
+    var patient = form.querySelector('[name="patient"]');
+    var enquiry = form.querySelector('[name="enquiry"]');
+    if (patient) patient.value = chosen('setter-patient');
+    if (enquiry) enquiry.value = chosen('setter-enquiry');
+  }
+  widget.querySelectorAll('input[name="setter-patient"], input[name="setter-enquiry"]').forEach(function (input) {
+    input.addEventListener('change', syncChoices);
+  });
+  function timingOff() { return chosen('setter-timing') === 'Not applicable'; }
+  function applySkip() {
+    var off = timingOff();
+    ['date', 'time'].forEach(function (key) {
+      var mirror = field(key);
+      var source = form.querySelector('[name="' + key + '"]');
+      if (!mirror) return;
+      mirror.disabled = off;
+      if (off) {
+        mirror.value = '';
+        if (source) source.value = 'Not applicable';
+      } else if (source && source.value === 'Not applicable') {
+        source.value = mirror.value;
+      }
+    });
+  }
+  widget.querySelectorAll('input[name="setter-timing"]').forEach(function (input) {
+    input.addEventListener('change', applySkip);
+  });
+  function show(index, moveFocus) {
+    step = index;
+    steps.forEach(function (section, i) { section.hidden = i !== index; });
+    if (back) back.hidden = index === 0;
+    if (next) {
+      next.hidden = false;
+      next.disabled = false;
+      next.textContent = index === steps.length - 1 ? 'Request appointment' : 'Next';
+    }
+    if (error) error.hidden = true;
+    var bar = widget.querySelector('.book-setter-progress');
+    var fill = bar ? bar.querySelector('span') : null;
+    if (bar && fill) {
+      bar.setAttribute('aria-valuenow', String(index + 1));
+      fill.style.width = ((index + 1) / steps.length * 100) + '%';
+    }
+    var done = steps[index].querySelector('.book-setter-done');
+    if (done) done.hidden = true;
+    if (moveFocus) {
+      var focusable = steps[index].querySelector('input:not(:disabled), textarea');
+      if (focusable) focusable.focus();
+    }
+  }
+  function problem() {
+    if (step === 0) {
+      if (!field('given-name').value.trim() || !field('family-name').value.trim() || !chosen('setter-patient')) return 'Add your first name, second name, and whether you are a new or existing patient.';
+    }
+    if (step === 1 && !chosen('setter-enquiry')) return 'Choose an appointment or enquiry type.';
+    if (step === 2 && !timingOff() && (!field('date').value.trim() || !field('time').value.trim())) return 'Add a preferred date and time, or choose not applicable.';
+    if (step === 3) {
+      var email = field('email');
+      if (!email.value.trim() || (email.validity && email.validity.typeMismatch)) return 'Add an email address.';
+    }
+    return '';
+  }
+  function setOpen(open) {
+    var was = widget.classList.contains('is-open');
+    widget.classList.toggle('is-open', open);
+    if (ring) ring.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!panel) return;
+    panel.toggleAttribute('inert', !open);
+    if (open) show(step, true);
+    else if (was && ring) ring.focus();
+  }
+  if (ring) ring.addEventListener('click', function () { setOpen(!widget.classList.contains('is-open')); });
+  if (closeButton) closeButton.addEventListener('click', function () { setOpen(false); });
+  if (back) back.addEventListener('click', function () { if (step > 0) show(step - 1, true); });
+  if (next) next.addEventListener('click', function () {
+    var message = problem();
+    if (message) {
+      error.textContent = message;
+      error.hidden = false;
+      return;
+    }
+    syncChoices();
+    applySkip();
+    if (step < steps.length - 1) {
+      show(step + 1, true);
+      return;
+    }
+    var done = steps[step].querySelector('.book-setter-done');
+    if (done) done.hidden = false;
+    next.disabled = true;
+  });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape') setOpen(false); });
+  document.addEventListener('click', function (event) { if (!widget.contains(event.target)) setOpen(false); });
+  show(0, false);
+})();
 </script>
 </body>
 </html>
