@@ -1,0 +1,15 @@
+{
+  "slug": "whyte-physio",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/whyte-physio/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "569783cbd9c819b36a3e2defa7f407b362053af5c126b09de60301f2b467a686",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-15T12:14:55.673Z"
+}

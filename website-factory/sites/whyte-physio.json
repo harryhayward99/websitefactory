@@ -1,0 +1,186 @@
+{
+  "slug": "whyte-physio",
+  "sector": "physiotherapy",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#10ABFF"
+  },
+  "sources": [
+    {
+      "id": "homepage",
+      "url": "https://whytephysio.wixsite.com/whytephysio",
+      "checkedAt": "2026-10-15"
+    },
+    {
+      "id": "services",
+      "url": "https://whytephysio.wixsite.com/whytephysio/services",
+      "checkedAt": "2026-10-15"
+    },
+    {
+      "id": "testimonials",
+      "url": "https://whytephysio.wixsite.com/whytephysio/testimonials",
+      "checkedAt": "2026-10-15"
+    },
+    {
+      "id": "about",
+      "url": "https://whytephysio.wixsite.com/whytephysio/about-us",
+      "checkedAt": "2026-10-15"
+    },
+    {
+      "id": "pain-injury-alex",
+      "url": "https://paininjuryclinic.co.uk/team/alex-whyte/",
+      "checkedAt": "2026-10-15"
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Whyte Physio",
+      "sourceId": "homepage"
+    },
+    "location": {
+      "value": "Coventry, Warwickshire & West Midlands",
+      "sourceId": "homepage"
+    },
+    "phone": {
+      "value": "07463 501737",
+      "sourceId": "homepage"
+    },
+    "email": {
+      "value": "alex@whytephysio.com",
+      "sourceId": "homepage"
+    },
+    "address": {
+      "value": "The Old Toll House, Bridgefoot, Stratford-upon-Avon, CV37 6YY",
+      "sourceId": "services"
+    },
+    "website": {
+      "value": "https://whytephysio.wixsite.com/whytephysio",
+      "sourceId": "homepage"
+    },
+    "hours": {
+      "value": "Home visits by arrangement. Clinic Thursdays 14:00–20:00 at The Pain and Injury Clinic, Stratford-upon-Avon.",
+      "sourceId": "services"
+    },
+    "services": [
+      {
+        "value": "Mobile physiotherapy",
+        "detail": "Assessment and treatment in your own home across Coventry, Warwickshire and the West Midlands.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Vestibular rehabilitation",
+        "detail": "Assessment and treatment for dizziness and vertigo, including unsteadiness and positional symptoms.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Neck pain",
+        "detail": "Support for neck pain, including symptoms linked to trapped nerves.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Back pain and sciatica",
+        "detail": "Care for back pain, including sciatica, as part of musculoskeletal physiotherapy.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Lower limb",
+        "detail": "Hip, knee, ankle, foot and heel pain — new or longer-standing.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Upper limb",
+        "detail": "Shoulder, elbow, wrist, hand, thumb and shoulder-blade pain.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Chronic pain",
+        "detail": "Support for longer-standing pain, with honest advice and a whole-person approach.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Polytrauma",
+        "detail": "Physiotherapy support after more complex, multi-area injury.",
+        "sourceId": "services"
+      }
+    ]
+  },
+  "copy": {
+    "headline": "Physiotherapy at home across Coventry.",
+    "introduction": "Evidence-based musculoskeletal physiotherapy in the comfort of your home across Coventry, Warwickshire and the West Midlands. Clinic sessions are also available in Stratford-upon-Avon on Thursdays."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "NHS Patient",
+      "rating": null,
+      "sourceId": "testimonials",
+      "quote": "With only a few sessions with Alex the progress was Amazing. I’ve been coming for physio for a while and losing faith, until Alex took me on."
+    },
+    {
+      "name": "Patient",
+      "rating": null,
+      "sourceId": "testimonials",
+      "quote": "First class, very efficient and I was in and out. Alex is excellent, lovely guy I would recommend to anyone with an injury."
+    },
+    {
+      "name": "Patient",
+      "rating": null,
+      "sourceId": "testimonials",
+      "quote": "Alex really helped with calming my muscles down and my overall fear with my back strains. I’m excited to see my improvement."
+    },
+    {
+      "name": "NHS Patient",
+      "rating": null,
+      "sourceId": "testimonials",
+      "quote": "Alex the physio was prompt and polite also. In the session he was very knowledgeable and explained all the stages in a manner that I understood. When we discussed options again it was done very well and not pushy. Everything was explained to me."
+    },
+    {
+      "name": "Patient",
+      "rating": null,
+      "sourceId": "testimonials",
+      "quote": "As before, there was hardly any waiting time. Alex was friendly and professional. He listened to me and incorporated my suggestions into the treatment plan."
+    }
+  ],
+  "fees": {
+    "visits": [
+      {
+        "title": "First appointment",
+        "fee": null,
+        "includes": [
+          "60 minutes",
+          "Assessment and starting treatment"
+        ],
+        "time": "Duration: 60 minutes.",
+        "sourceId": "services"
+      }
+    ]
+  },
+  "people": [
+    {
+      "name": "Alex Whyte",
+      "role": "Specialist musculoskeletal physiotherapist",
+      "detail": "Alex is the physiotherapist behind Whyte Physio. He offers specialist musculoskeletal physiotherapy at home, with experience in injury recovery, post-surgical rehabilitation and chronic pain. He also works in the NHS as a Clinical Specialist and Team Lead in MSK Outpatients. Published credentials include BSc (Hons) Physiotherapy, HCPC and MCSP.",
+      "sourceId": "about"
+    },
+    {
+      "name": "Ellie",
+      "role": "Behind the scenes · rehabilitation case manager",
+      "detail": "Ellie is introduced on the Whyte Physio About page as the person behind the scenes. She is a physiotherapist by background and works as a rehabilitation case manager, supporting people who need coordinated rehabilitation after injury. Whyte Physio grew from the difficulty of finding specialist home-based MSK physiotherapy.",
+      "sourceId": "about"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/whyte-physio/logo.svg",
+      "alt": "Whyte Physio",
+      "sourceUrl": "https://whytephysio.wixsite.com/whytephysio",
+      "rights": "official-logo-concept"
+    }
+  }
+}
