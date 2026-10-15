@@ -1,0 +1,15 @@
+{
+  "slug": "maginnis-opticians",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/maginnis-opticians/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "6160033eaea7b8d7",
+  "contentHash": "03c30ba383f1d7ee1eac457fea15a02d6e85c786440dca76ae0ec13f00ab8cc3",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-15T12:47:23.864Z"
+}
