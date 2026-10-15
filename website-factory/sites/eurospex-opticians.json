@@ -1,0 +1,110 @@
+{
+  "slug": "eurospex-opticians",
+  "sector": "optician",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "6160033eaea7b8d7",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#14A8DF"},
+  "sources": [
+    {"id": "google-listing", "url": "https://www.google.com/maps/place/Eurospex+Opticians/@52.5045314,-1.9402859,17z", "checkedAt": "2026-10-14"},
+    {"id": "nhs", "url": "https://www.nhs.uk/services/service-directory/eurospex-opticians-ltd/N11004577", "checkedAt": "2026-10-14"},
+    {"id": "directory", "url": "https://www.opticianslocator.co.uk/optician/410238/eurospex-opticians", "checkedAt": "2026-10-14"}
+  ],
+  "business": {
+    "name": {"value": "Eurospex Opticians", "sourceId": "google-listing"},
+    "location": {"value": "Handsworth", "sourceId": "google-listing"},
+    "phone": {"value": "0121 554 7727", "sourceId": "google-listing"},
+    "address": {"value": "332 Soho Road, Handsworth, Birmingham, B21 9NA", "sourceId": "google-listing"},
+    "hours": {"value": "Monday to Friday, 10:00–17:00, Saturday, 9:30–18:00, Sunday closed", "sourceId": "google-listing"},
+    "services": [
+      {"value": "NHS sight tests", "detail": "NHS sight tests are available at Eurospex Opticians, 332 Soho Road, Handsworth. Call 0121 554 7727 and you are welcome to arrange a visit.", "sourceId": "nhs"},
+      {"value": "Assessments", "detail": "Assessments are available at this practice. Call 0121 554 7727 if you would like to arrange one.", "sourceId": "directory"},
+      {"value": "Glasses", "detail": "Glasses are available at this practice on Soho Road. Come in and you are welcome to look through what we have.", "sourceId": "directory"},
+      {"value": "Contact lenses", "detail": "Contact lenses are available at this practice. Ask us about them when you call or visit.", "sourceId": "directory"},
+      {"value": "Frames", "detail": "Frames are available here. A patient review thanks the practice for the wide selection, and you are welcome to come and see them.", "sourceId": "directory"},
+      {"value": "Varifocal", "detail": "Varifocal lenses are available at this practice. Ask when you visit if you would like to know more.", "sourceId": "directory"}
+    ]
+  },
+  "copy": {
+    "headline": "Optical Care on Soho Road",
+    "introduction": "Welcome to Eurospex Opticians in Handsworth. Dr Gill is the lead specialist, and NHS sight tests are available. If you need glasses, frames or contact lenses, you are very welcome to call or come in."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "Linda Krumina",
+      "date": "2 months ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "Very kinde and professional doctor and lady at front desk.Very,very helpful!Recommend to everyone!Thank you ❤"
+    },
+    {
+      "name": "M Khan Hanifi",
+      "date": "3 months ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "Excellent service. The optometrist was kind, professional, and very patient with my son during his eye examination. Everything was explained clearly, and we felt well looked after. Highly recommended!"
+    },
+    {
+      "name": "AVTAR SINGH",
+      "date": "7 October 2025",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "A great first initial consultation for my mother. They were on time, gave us a friendly welcome and were very informative and helpful. Thank you."
+    },
+    {
+      "name": "molio G",
+      "date": "14 March 2022",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "Honest, genuine, and helpful opticians. Thorough eye tests with no rush! I would like to thank Mr Gill for the wide selection of frames and speedy turnover time!! Been attending this place for over 5 years and wouldn’t go anywhere else!"
+    }
+  ],
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Dr Gill",
+      "role": "Lead specialist",
+      "detail": "Dr Gill is the lead specialist here, and you are very welcome to see him. A patient thanks him for the wide choice of frames and an eye test with no rush.",
+      "sourceId": "google-listing",
+      "imageId": "eurospex-specialist"
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/eurospex-opticians/mark.png",
+      "alt": "Eurospex Optical Labs",
+      "sourceUrl": "supplied-for-concept:eurospex-opticians-logo",
+      "rights": "official-logo-concept"
+    },
+    "images": [
+      {
+        "path": "/factory-assets/clients/eurospex-opticians/landing.png",
+        "alt": "An optician holding glasses beside a display of frames. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-landing",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "landing"
+      },
+      {
+        "path": "/factory-assets/clients/eurospex-opticians/service.png",
+        "alt": "An eye examination with a trial frame. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-service",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "service"
+      },
+      {
+        "path": "/factory-assets/clients/eurospex-opticians/specialist.png",
+        "alt": "A man wearing glasses in front of a frame display. Not a photograph of Dr Gill or of this practice’s staff.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-specialist",
+        "rights": "client-permission",
+        "illustrative": true,
+        "libraryId": "eurospex-specialist",
+        "placement": "person"
+      }
+    ],
+    "librarySelections": ["care-service-tile-2"]
+  }
+}

@@ -176,7 +176,7 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.equal(modern.status,'approved');
   assert.equal(preferred.length,1);
   assert.equal(preferred[0].id,'care-modern');
-  assert.deepEqual(modern.sectors,['dental','physiotherapy','chiropractic','veterinary','general']);
+  assert.deepEqual(modern.sectors,['dental','physiotherapy','chiropractic','veterinary','general','optician']);
   const site=await loadSite('fictional-dental');
   const html=await renderSite(site,{allowDraft:true});
   assert.match(html,/FICTIONAL DEMO/);
@@ -211,7 +211,8 @@ test('care-modern is the default for clinic sectors and a dentist keeps dental s
   assert.match(html,/>Next</);
   assert.match(html,/Request appointment/);
   assert.match(html,/We will aim to confirm appointment time within 1 working day\./);
-  assert.match(html,/\* 0\.22 \+ 10/);
+  assert.match(html,/\* 0\.22 \+ 4/);
+  assert.match(html,/\[gjpqy\]/);
   assert.match(html,/id="book-setter-sync"/);
   assert.match(html,/\.meet-stage\{display:grid;margin-top:28px;overflow:hidden\}/);
   assert.match(html,/slide\.addEventListener\('animationend'/);
@@ -297,7 +298,7 @@ test('a real clinic preview uses published facts and omits sample results',async
   const pictured=structuredClone(site);
   pictured.assets.images=[{path:'/factory-assets/clients/broad-oaks-health-clinic/landing-treatment.png',alt:'Illustrative clinic treatment. Not a photograph of this clinic’s staff or premises.',sourceUrl:'owned:Harry',rights:'owned',illustrative:true,placement:'landing'}];
   const picturedHtml=await renderSite(pictured,{instructionsVersion:version});
-  assert.match(picturedHtml,/<figure class="hero-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
+  assert.match(picturedHtml,/<figure class="hero-media"><img class="fit-subject" src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
   assert.doesNotMatch(picturedHtml,/class="thumb"><img/);
   assert.doesNotMatch(picturedHtml,/class="meet-photo"><img/);
   const withPortrait=structuredClone(site);
@@ -308,7 +309,7 @@ test('a real clinic preview uses published facts and omits sample results',async
   const portraitHtml=await renderSite(withPortrait,{instructionsVersion:version});
   assert.equal((portraitHtml.match(/class="meet-photo"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/portrait-placeholder.png"/g)||[]).length,site.people.length);
   assert.match(portraitHtml,/Illustrative portrait — not a photograph of this person/);
-  assert.match(portraitHtml,/<figure class="hero-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
+  assert.match(portraitHtml,/<figure class="hero-media"><img class="fit-subject" src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
   assert.doesNotMatch(portraitHtml,/class="hero-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/portrait-placeholder.png"/);
   assert.doesNotMatch(portraitHtml,/class="thumb"><img/);
   const withService=structuredClone(withPortrait);
@@ -316,7 +317,7 @@ test('a real clinic preview uses published facts and omits sample results',async
   const serviceHtml=await renderSite(withService,{instructionsVersion:version});
   assert.match(serviceHtml,/<figure class="tile-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/service-tile.png"/);
   assert.doesNotMatch(serviceHtml,/class="tile-media frame"/);
-  assert.match(serviceHtml,/<figure class="hero-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
+  assert.match(serviceHtml,/<figure class="hero-media"><img class="fit-subject" src="\/factory-assets\/clients\/broad-oaks-health-clinic\/landing-treatment.png"/);
   assert.match(serviceHtml,/class="meet-photo"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/portrait-placeholder.png"/);
   assert.doesNotMatch(serviceHtml,/class="hero-media"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/service-tile.png"/);
   assert.doesNotMatch(serviceHtml,/class="meet-photo"><img src="\/factory-assets\/clients\/broad-oaks-health-clinic\/service-tile.png"/);

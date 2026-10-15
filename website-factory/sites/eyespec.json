@@ -1,0 +1,122 @@
+{
+  "slug": "eyespec",
+  "sector": "optician",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "6160033eaea7b8d7",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#E8D56A"},
+  "sources": [
+    {"id": "google-listing", "url": "https://www.google.com/maps/place/Eyespec/@52.472161,-1.8642148,17z", "checkedAt": "2026-10-14"},
+    {"id": "nhs", "url": "https://www.nhs.uk/services/service-directory/eyespec/N11004768", "checkedAt": "2026-10-14"}
+  ],
+  "business": {
+    "name": {"value": "Eyespec", "sourceId": "google-listing"},
+    "location": {"value": "Small Heath", "sourceId": "google-listing"},
+    "phone": {"value": "0121 772 1526", "sourceId": "google-listing"},
+    "address": {"value": "340 Coventry Road, Small Heath, Birmingham, B10 0XE", "sourceId": "google-listing"},
+    "hours": {"value": "Monday to Thursday, 9:30–13:00, 13:30–17:00, Friday closed, Saturday, 10:30–16:30, Sunday closed", "sourceId": "google-listing"},
+    "services": [
+      {"value": "NHS sight tests", "detail": "NHS sight tests are available at Eyespec, 340 Coventry Road, Small Heath. Call 0121 772 1526 and you are very welcome to arrange a visit.", "sourceId": "nhs"},
+      {"value": "Eye tests", "detail": "Eye tests are available at this practice on Coventry Road. Call 0121 772 1526 if you would like to arrange one.", "sourceId": "google-listing"},
+      {"value": "Glasses", "detail": "Glasses are available at this practice. Patients mention the choice of frames, and you are very welcome to come in and look.", "sourceId": "google-listing"},
+      {"value": "Lenses", "detail": "Lenses are available at this practice. A patient describes a lens fitted to a new frame. Ask us when you call or visit.", "sourceId": "google-listing"},
+      {"value": "Frames", "detail": "Frames are available here. Patients thank the practice for the selection, and you are welcome to come and see them.", "sourceId": "google-listing"},
+      {"value": "Repairs", "detail": "A patient describes help with a broken frame at this practice. Call 0121 772 1526 if you would like to ask about a repair.", "sourceId": "google-listing"}
+    ]
+  },
+  "copy": {
+    "headline": "Optical Care on Coventry Road",
+    "introduction": "Welcome to Eyespec on Coventry Road in Small Heath. NHS sight tests are available, and you are very welcome to come in for glasses, frames or lenses. We would be glad to see you."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "Iqra Bibi",
+      "date": "a month ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "Amazing customer service, Ayesha was very helpful and kind compared to the other lady."
+    },
+    {
+      "name": "Shuayb M",
+      "date": "2 months ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "I had a really great experience and would highly recommend this opticians. The lady who assisted me was professional, knowledgeable, and thorough. She carried out all the necessary checks, explained everything clearly, and somehow made an eye test more enjoyable than I expected. A genuinely great service. Thank you to the lady who did the test —I didn’t catch your name, but your help was very much appreciated."
+    },
+    {
+      "name": "Faithful",
+      "date": "a year ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "Excellent service by mohammed and the stuff. Never been there before but decided to see if they can repair my broken frame but they offered me alot better solution with another frame that fit my original lens with great deal. They also offer cut/adjusted lens to to fit new frame on site which is brilliant idea and time saver. Due the excellent service, deal and advice i received i will be returning for another pair of glasses."
+    },
+    {
+      "name": "Fran Symonds",
+      "date": "5 years ago",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "quote": "I attended for an appointment today. I was so pleased with the care I received. I felt extremely comfortable. I was very impressed with Mohammed's level of knowledge and that he was so professional and kind too. There was a huge range to choose from. The service was excellent from start to finish. I will advise everyone I know to attend this Optician."
+    }
+  ],
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Ayesha",
+      "role": "Practice team",
+      "detail": "Ayesha is part of the team at Eyespec, and you are very welcome to see her. A recent patient thanks her for being helpful and kind. Please call if you would like to visit.",
+      "sourceId": "google-listing",
+      "imageId": "eyespec-specialist"
+    },
+    {
+      "name": "Mohammed",
+      "role": "Practice team",
+      "detail": "Mohammed is part of the team here, and you are very welcome to come in. Patients thank him for kind, professional help and for time spent choosing a frame.",
+      "sourceId": "google-listing"
+    }
+  ],
+  "examplePeople": [
+    {
+      "name": "Riley Cole",
+      "role": "Practice team",
+      "detail": "Riley Cole is a stand-in name for this demo, so the team has a third profile. Riley Cole does not work at Eyespec and should be replaced before launch."
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "/factory-assets/clients/eyespec/mark.png",
+      "alt": "Eyespec",
+      "sourceUrl": "supplied-for-concept:eyespec-logo",
+      "rights": "official-logo-concept"
+    },
+    "images": [
+      {
+        "path": "/factory-assets/clients/eyespec/landing.png",
+        "alt": "An optician holding glasses beside a display of frames. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-landing",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "landing"
+      },
+      {
+        "path": "/factory-assets/clients/eyespec/service.png",
+        "alt": "An eye examination with a trial frame. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-service",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "service"
+      },
+      {
+        "path": "/factory-assets/clients/eyespec/specialist.png",
+        "alt": "A man wearing glasses in front of a frame display. Not a photograph of Ayesha or of this practice’s staff.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-specialist",
+        "rights": "client-permission",
+        "illustrative": true,
+        "libraryId": "eyespec-specialist",
+        "placement": "person"
+      }
+    ],
+    "librarySelections": ["care-service-tile-2"]
+  }
+}

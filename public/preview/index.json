@@ -61,6 +61,36 @@
       "updatedAt": "2026-10-02T22:13:00.042Z"
     },
     {
+      "slug": "eurospex-opticians",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/eurospex-opticians/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "6160033eaea7b8d7",
+      "contentHash": "861ce4a3518d02a23a6a34a9191d048bcf142835844f721ade4fb4b144a29a5a",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-14T15:55:09.736Z"
+    },
+    {
+      "slug": "eyespec",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/eyespec/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "6160033eaea7b8d7",
+      "contentHash": "69e3426817e0c74994710ddb634acf88745ee0b577a179cd170d6e441d110831",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-14T17:51:20.360Z"
+    },
+    {
       "slug": "fictional-clinic",
       "status": "PREVIEW_READY",
       "sheetStatus": "Preview ready",

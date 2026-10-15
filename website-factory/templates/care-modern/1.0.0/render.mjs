@@ -29,9 +29,6 @@ export function render(s, e) {
   const contactLead = phoneOk
     ? `<p>Call <a class="contact-call" href="tel:${phoneDigits}">${e(b.phone.value)}</a>, or submit a message here. Reception will get back to you as soon as possible.</p>`
     : '<p>Submit a message here. Reception will get back to you as soon as possible.</p>';
-  const website = b.website && /^https:\/\//.test(b.website.value)
-    ? `<a href="${e(b.website.value)}" rel="noopener noreferrer">Official website</a>`
-    : '';
   const services = (Array.isArray(b.services) ? b.services : []).slice(0, 8);
   const serviceSlug = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'item';
   const usedServiceSlugs = new Map();
@@ -60,12 +57,13 @@ export function render(s, e) {
   const heroClasses = [];
   if (landingImage && (landingImage.libraryId === 'physio-landing-treatment' || landingImage.libraryId === 'care-landing-treatment')) heroClasses.push('anchor-top-right');
   if (landingImage && landingImage.libraryId === 'dental-landing-treatment') heroClasses.push('fit-facade');
+  if (landingImage && !landingImage.libraryId) heroClasses.push('fit-subject');
   const heroPin = heroClasses.length ? ` class="${heroClasses.join(' ')}"` : '';
   const heroMedia = landingImage
     ? `<figure class="hero-media"><img${heroPin} src="${e(landingImage.path)}" alt="${e(landingImage.alt)}"></figure>`
     : frame(gallery[0], 'Photograph awaiting an approved category image.', 'hero-media');
   const sideMedia = frame(gallery[2] || gallery[0], 'Photograph awaiting an approved category image.', 'side-media');
-  const alternateServiceIds = ['physiotherapy', 'chiropractic', 'general'].includes(s.sector) ? [null, 'care-service-tile-2', 'care-review-shoulder'] : [];
+  const alternateServiceIds = ['physiotherapy', 'chiropractic', 'general', 'optician'].includes(s.sector) ? [null, 'care-service-tile-2', 'care-review-shoulder'] : [];
   const serviceCover = index => {
     const alternateId = alternateServiceIds[index];
     const alternate = alternateId && pictures.find(image => image && image.libraryId === alternateId);
@@ -88,9 +86,12 @@ export function render(s, e) {
   };
   const headerTitle = String(s.copy?.headerTitle || '').trim();
   const headerPlace = String(s.copy?.headerPlace || '').trim();
-  const headerWords = headerTitle
-    ? `<span class="wordmark"><span><strong>${e(headerTitle)}</strong>${headerPlace ? `<small>${e(headerPlace)}</small>` : ''}</span></span>`
+  const headerTown = String(s.copy?.headerTown || '').trim();
+  const headerMark = (place, town) => headerTitle
+    ? `<span class="wordmark"><span><strong>${e(headerTitle)}</strong>${place ? `<small>${e(place)}</small>` : ''}${town ? `<small>${e(town)}</small>` : ''}</span></span>`
     : '';
+  const headerWords = headerMark(headerPlace, '');
+  const headerLockup = headerMark(headerPlace, headerTown);
   const heroFace = (title, detail) => `<span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>${title}</strong><em>${detail}</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>`;
   const place = b.address?.value || b.location?.value || '';
   const heroCards = [
@@ -175,7 +176,7 @@ export function render(s, e) {
     ...examplePeople.map(person => ({ ...person, illustrative: true }))
   ];
   const namedImage = person => person.imageId ? pictures.find(image => image && image.libraryId === person.imageId) : null;
-  const wellImageSectors = new Set(['physiotherapy', 'chiropractic', 'general']);
+  const wellImageSectors = new Set(['physiotherapy', 'chiropractic', 'general', 'optician']);
   const templateMeetIds = ['care-jordan-example', 'care-sam-example', 'care-riley-example'];
   const templateMeetImage = index => {
     if (!wellImageSectors.has(s.sector)) return null;
@@ -294,7 +295,7 @@ export function render(s, e) {
     return `${on} .review-pick:nth-child(${n}){background:var(--pale)}${on} .review-photo:nth-child(${n}),${on} .review-quote:nth-child(${n}){opacity:1;visibility:visible;transform:none}`;
   }).join('');
   const reviewMobile = reviewItems.map((_, index) => `.review-board[data-active="${index}"] .review-quote:nth-child(${index + 1}){height:auto;overflow:visible;padding:2px 0 0;opacity:1;visibility:visible;transform:none}`).join('');
-  const socialFillers = s.sector === 'dental' || s.sector === 'veterinary' ? ['A visit', 'A check-up'] : ['A visit', 'How you move'];
+  const socialFillers = s.sector === 'optician' ? ['An eye test', 'A new pair'] : s.sector === 'dental' || s.sector === 'veterinary' ? ['A visit', 'A check-up'] : ['A visit', 'How you move'];
   const socialTopics = [
     ...(services.length ? services.map(service => service.value) : ['Care']),
     ...socialFillers
@@ -314,8 +315,7 @@ export function render(s, e) {
     phoneOk ? `<article class="info-card"><h2>Phone</h2><p><a href="tel:${phoneDigits}">${e(b.phone.value)}</a></p></article>` : '',
     b.address ? `<article class="info-card"><h2>Address</h2><p>${e(b.address.value)}</p></article>` : '',
     b.hours ? `<article class="info-card"><h2>Hours</h2><p>${e(b.hours.value)}</p></article>` : '',
-    parkingCard,
-    website ? `<article class="info-card"><h2>Website</h2><p>${website}</p></article>` : ''
+    parkingCard
   ].join('');
   const banner = s.demo ? 'FICTIONAL DEMO' : 'CONCEPT WEBSITE';
   const bannerStreet = value => {
@@ -472,7 +472,8 @@ ${feeBoard}
 </section>` : '';
   const movementEnquiries = ['Initial assessment', 'Continued treatment', 'Massage', 'Sports Massage', 'Acupuncture', 'General Enquiry'];
   const dentalEnquiries = ['Cosmetic', 'Preventative', 'Emergency', 'Check-Up', 'General Enquiry', 'Unsure'];
-  const enquiryChoices = s.sector === 'physiotherapy' || s.sector === 'chiropractic' ? movementEnquiries : dentalEnquiries;
+  const opticianEnquiries = ['Eye test', 'Glasses', 'Contact lenses', 'NHS sight test', 'General enquiry', 'Unsure'];
+  const enquiryChoices = s.sector === 'physiotherapy' || s.sector === 'chiropractic' ? movementEnquiries : s.sector === 'optician' ? opticianEnquiries : dentalEnquiries;
   const enquiryFields = enquiryChoices.map(label => `<label class="book-choice"><input type="radio" name="setter-enquiry" value="${e(label)}">${e(label)}</label>`).join('');
   const reviewsPage = `<section id="reviews" class="page">
 ${guideLine}
@@ -529,6 +530,7 @@ img{max-width:100%;display:block}
 .brand{display:flex;align-items:center;min-height:44px;color:#000;text-decoration:none}
 .logo{max-width:180px;max-height:42px;object-fit:contain}
 .wordmark{display:flex;align-items:center;gap:10px}
+.site-header .wordmark{margin-left:-5px}
 .wordmark strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em}
 .wordmark small{display:block;color:#333;font-size:12px;font-weight:500}
 .mark{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:var(--on);font-weight:700}
@@ -594,7 +596,9 @@ body:has(#meet-team:target) #home{display:none}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
-.hero-media img.fit-facade{object-position:center 68%}
+.hero-media img.fit-subject{object-position:center 42%;transform:none}
+.hero-media img.fit-facade{top:0;right:0;bottom:0;left:0;z-index:0;width:100%;height:100%;object-position:center 68%;transform:translateX(200px)}
+.hero-media:has(img.fit-facade)::after{z-index:1;background:linear-gradient(90deg,var(--pale) 0,var(--pale) 310px,color-mix(in srgb,var(--pale) 70%,transparent) calc(310px + 7%),transparent calc(310px + 18%))}
 .hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
@@ -941,7 +945,8 @@ ${offerSelect}
 .pending{color:#333}
 .site-footer{background:#111;color:#fff;padding:64px 0 0}
 .footer-brand{display:inline-flex;margin:0 0 36px;color:#000;text-decoration:none}
-.footer-pill{display:inline-flex;align-items:center;max-width:16em;padding:12px 16px;border-radius:12px;background:#fff;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.footer-pill{display:inline-flex;align-items:center;gap:12px;max-width:16em;padding:12px 16px;border-radius:12px;background:#fff;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.footer-pill:has(.wordmark){max-width:none}
 .footer-logo{display:block;max-width:180px;max-height:42px;object-fit:contain}
 .foot{display:grid;grid-template-columns:minmax(240px,1.05fr) minmax(320px,1.35fr) minmax(180px,.75fr);gap:48px 40px;align-items:start;padding-bottom:48px}
 .footer-note{max-width:28em;margin:0;color:rgba(255,255,255,.62);font-size:14px;line-height:1.5}
@@ -1049,7 +1054,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
-  .hero-media img.fit-facade{transform:translateY(-18%);object-position:center 72%}
+  .hero-media img.fit-subject{top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:none}
+  .hero-media img.fit-facade{top:0;right:0;bottom:0;left:0;width:100%;height:100%;transform:translateY(-20%);object-position:center 62%}
+  .hero-media:has(img.fit-facade)::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -1115,6 +1122,8 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 @media (max-width:560px){
   h1{font-size:40px;line-height:1.12}
   .thumb span{font-size:84px}
+  .hero-media img.fit-facade{top:0;right:0;bottom:0;left:0;width:100%;height:100%;transform:translateY(-18%);object-position:center 72%}
+  .hero-media:has(img.fit-facade)::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}.title-line{transform:none}.title-nudge path{animation:none;stroke-dashoffset:0}.book-setter-panel{transition:none}.book-setter-progress span{transition:none}}
 .page:not(.service-page){position:relative}
@@ -1139,7 +1148,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <header class="site-header">
 <div class="nav-left">
 <a class="brand" href="#home">${logo}</a>
-${headerWords}
+${headerLockup}
 </div>
 <nav aria-label="Pages">
 <ul>
@@ -1299,7 +1308,7 @@ ${pricesPage}
 </main>
 <footer class="site-footer">
 <div class="wrap">
-<a class="footer-brand" href="#home"><span class="footer-pill">${footerMark}</span></a>
+<a class="footer-brand" href="#home"><span class="footer-pill">${footerMark}${headerWords}</span></a>
 <div class="foot">
 <div class="footer-intro">
 <p class="footer-note">${e(s.copy.introduction)}</p>
@@ -1772,15 +1781,65 @@ document.querySelectorAll('.hours-live').forEach(line => {
     });
     return lines;
   }
+  function inkSegments(line) {
+    var h1 = head.querySelector('h1');
+    var stop = head.querySelector('.title-stop');
+    var fallback = [{ left: line.left, right: line.right, top: line.top, bottom: line.bottom }];
+    if (!h1) return fallback;
+    var walker = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT, null);
+    var glyphs = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      if (stop && stop.contains(node)) continue;
+      var text = node.textContent || '';
+      for (var i = 0; i < text.length; i++) {
+        var range = document.createRange();
+        range.setStart(node, i);
+        range.setEnd(node, i + 1);
+        var rect = range.getBoundingClientRect();
+        if (rect.width < 0.4) continue;
+        var mid = (rect.top + rect.bottom) / 2;
+        if (Math.abs(mid - (line.top + line.bottom) / 2) > (line.bottom - line.top) * 0.55) continue;
+        glyphs.push({ left: rect.left, right: rect.right, hang: /[gjpqy]/.test(text.charAt(i)) });
+      }
+    }
+    if (!glyphs.length) return fallback;
+    var em = (line.bottom - line.top) / 1.2;
+    var pad = Math.max(2, em * 0.08);
+    var runs = [];
+    var afterHang = false;
+    glyphs.forEach(function (glyph) {
+      if (glyph.hang) {
+        var open = runs[runs.length - 1];
+        if (open) open.right = Math.min(open.right, glyph.left - pad);
+        afterHang = true;
+        return;
+      }
+      var left = glyph.left + (afterHang ? pad : 0);
+      afterHang = false;
+      var prev = runs[runs.length - 1];
+      if (prev && left - prev.right < em * 0.55) prev.right = Math.max(prev.right, glyph.right);
+      else runs.push({ left: left, right: glyph.right, top: line.top, bottom: line.bottom });
+    });
+    runs = runs.filter(function (run) { return run.right - run.left > 2; });
+    return runs.length ? runs : fallback;
+  }
   function placeLines(hr) {
     var lines = lineBoxes();
-    if (bars.length !== lines.length) {
+    var segments = [];
+    lines.forEach(function (line, lineIndex) {
+      inkSegments(line).forEach(function (segment) {
+        segment.lineIndex = lineIndex;
+        segments.push(segment);
+      });
+    });
+    if (bars.length !== segments.length) {
       bars.forEach(function (bar) { bar.remove(); });
       if (intro) intro.cancel();
       shaft.getAnimations().forEach(function (item) { item.cancel(); });
       arrowHead.getAnimations().forEach(function (item) { item.cancel(); });
       intro = null;
-      bars = lines.map(function () {
+      bars = segments.map(function () {
         var bar = document.createElement('span');
         bar.className = 'title-line';
         bar.setAttribute('aria-hidden', 'true');
@@ -1788,11 +1847,12 @@ document.querySelectorAll('.hours-live').forEach(line => {
         return bar;
       });
     }
-    lines.forEach(function (line, index) {
+    segments.forEach(function (segment, index) {
       var bar = bars[index];
-      bar.style.left = (line.left - hr.left) + 'px';
-      bar.style.width = (line.right - line.left) + 'px';
-      bar.style.top = (line.bottom - hr.top - (line.bottom - line.top) * 0.22 + 10) + 'px';
+      bar.dataset.line = String(segment.lineIndex);
+      bar.style.left = (segment.left - hr.left) + 'px';
+      bar.style.width = (segment.right - segment.left) + 'px';
+      bar.style.top = (segment.bottom - hr.top - (segment.bottom - segment.top) * 0.22 + 4) + 'px';
     });
     return lines;
   }
@@ -1808,14 +1868,15 @@ document.querySelectorAll('.hours-live').forEach(line => {
       hide();
       if (reduce) showFull();
       else if (!bars[0].getAnimations().length) {
-        bars.forEach(function (bar, index) {
-          bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
+        bars.forEach(function (bar) {
+          var lineIndex = Number(bar.dataset.line || 0);
+          bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + lineIndex * 900, easing: 'ease', fill: 'forwards' });
         });
       }
       return;
     }
     var x1 = last.right - hr.left + 10;
-    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 10;
+    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 4;
     var x2 = br.left - hr.left - 16;
     var y2 = br.top - hr.top + br.height / 2;
     var reach = 0.56;
@@ -1860,8 +1921,9 @@ document.querySelectorAll('.hours-live').forEach(line => {
     arrowHead.style.strokeDasharray = String(headLen);
     arrowHead.style.strokeDashoffset = String(headLen);
     var arrowDelay = 2150 + Math.max(0, lines.length - 1) * 900 + 950;
-    bars.forEach(function (bar, index) {
-      if (!bar.getAnimations().length) bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
+    bars.forEach(function (bar) {
+      var lineIndex = Number(bar.dataset.line || 0);
+      if (!bar.getAnimations().length) bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + lineIndex * 900, easing: 'ease', fill: 'forwards' });
     });
     intro = shaft.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 650, delay: arrowDelay, easing: 'ease', fill: 'forwards' });
     arrowHead.animate([{ strokeDashoffset: headLen }, { strokeDashoffset: 0 }], { duration: 220, delay: arrowDelay + 580, easing: 'ease', fill: 'forwards' });
