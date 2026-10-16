@@ -151,12 +151,24 @@
     "visits": [
       {
         "title": "First appointment",
-        "fee": null,
+        "fee": "£50",
         "includes": [
-          "60 minutes",
-          "Assessment and starting treatment"
+          "History taking and assessment — usually about half to three-quarters of the visit",
+          "Feedback on findings and a working diagnosis where appropriate",
+          "Starting treatment, often with exercises or lifestyle changes between sessions"
         ],
         "time": "Duration: 60 minutes.",
+        "sourceId": "services"
+      },
+      {
+        "title": "Follow-up appointment",
+        "fee": "£40",
+        "includes": [
+          "Review of progress since the last visit",
+          "Continued treatment for the problem being managed",
+          "Updates to exercises or lifestyle changes where helpful"
+        ],
+        "time": "Booked after your first appointment.",
         "sourceId": "services"
       }
     ]
