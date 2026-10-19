@@ -178,10 +178,7 @@ html = html.replace(
   `<div class="menu-panel">${menuLinks}</div></li>\n<li><a href="#about">About</a></li>`
 );
 
-html = html.replace(
-  /<a class="button header-cta" href="#contact">Contact<\/a>/,
-  `<a class="button header-cta" href="tel:${phoneTel}">Book Now</a>`
-);
+// Keep header CTA as Contact → #contact (both clinic locations sit on that page).
 
 html = html.replace(
   /<h1>Podiatry Care in Halesowen<span class="title-stop"><\/span><\/h1>\s*<div class="hero-aside">\s*<p class="lede">[\s\S]*?<\/p>/,
@@ -507,12 +504,12 @@ html = html.replace(
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
 <h1>Tidy Feet Podiatry.</h1>
-<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:${phoneTel}">${phone}</a><br><a href="tel:${mobileTel}">${mobile}</a></p></article><article class="info-card"><h2>Southam</h2><p>74B Coventry Street<br>Southam<br>CV47 0EA</p></article><article class="info-card"><h2>Stratford</h2><p>Trinity House<br>Aintree Road<br>Stratford-upon-Avon<br>CV37 9FL</p><p style="margin-top:8px;font-size:14px;color:#333">Clinic sessions are held at Stratford Dental, Trinity House — venue name only.</p></article><article class="info-card"><h2>Hours</h2><ul class="hours-list">
+<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:${phoneTel}">${phone}</a><br><a href="tel:${mobileTel}">${mobile}</a></p></article><article class="info-card"><h2>Hours</h2><ul class="hours-list">
 <li><span>Tue–Wed (Southam)</span><strong>8:00–12:30, 13:30–18:00</strong></li>
 <li><span>Thu (Stratford)</span><strong>8:30 – 17:00</strong></li>
 <li><span>Mon / Fri</span><strong>Special appointment</strong></li>
 <li><span>Sat–Sun</span><strong>Closed</strong></li>
-</ul></article></div>
+</ul></article><article class="info-card"><h2>Southam</h2><p>74B Coventry Street<br>Southam<br>CV47 0EA</p><p style="margin-top:8px;font-size:14px;color:#333">Tuesday &amp; Wednesday 8:00–12:30 and 13:30–18:00 · Friday by special appointment</p><p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&amp;query=Tidy%20Feet%20Podiatry%2074B%20Coventry%20Street%20Southam%20CV47%200EA" target="_blank" rel="noopener noreferrer">Get directions</a></p></article><article class="info-card"><h2>Stratford</h2><p>Trinity House<br>Aintree Road<br>Stratford-upon-Avon<br>CV37 9FL</p><p style="margin-top:8px;font-size:14px;color:#333">Thursday 8:30–17:00 · Monday by special appointment<br>Clinic sessions at Stratford Dental, Trinity House — venue name only.</p><p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&amp;query=Trinity%20House%20Aintree%20Road%20Stratford-upon-Avon%20CV37%209FL" target="_blank" rel="noopener noreferrer">Get directions</a></p></article></div>
 <div class="split">
 <form class="sheet" action="#contact" method="get" onsubmit="return false">
 <h2>Get in touch</h2>
@@ -527,7 +524,9 @@ html = html.replace(
 <figure class="side-media"><img src="${tpl("9a4bd25078f1a5ea-book-portrait.png")}" alt="Illustrative portrait. Not a photograph of Tidy Feet staff."></figure>
 </div>
 <div class="map-frame"><iframe class="map" title="Map of Tidy Feet Southam" width="600" height="420" src="https://maps.google.com/maps?q=Tidy%20Feet%20Podiatry%2074B%20Coventry%20Street%20Southam%20CV47%200EA&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-<p class="map-note">Southam: 74B Coventry Street, CV47 0EA · <a href="https://www.google.com/maps/search/?api=1&amp;query=Tidy%20Feet%20Podiatry%2074B%20Coventry%20Street%20Southam%20CV47%200EA" target="_blank" rel="noopener noreferrer">Get directions</a><br>Stratford: Trinity House, Aintree Road, CV37 9FL · <a href="https://www.google.com/maps/search/?api=1&amp;query=Trinity%20House%20Aintree%20Road%20Stratford-upon-Avon%20CV37%209FL" target="_blank" rel="noopener noreferrer">Get directions</a></p>
+<p class="map-note">Southam: 74B Coventry Street, CV47 0EA · <a href="https://www.google.com/maps/search/?api=1&amp;query=Tidy%20Feet%20Podiatry%2074B%20Coventry%20Street%20Southam%20CV47%200EA" target="_blank" rel="noopener noreferrer">Get directions</a></p>
+<div class="map-frame" style="margin-top:18px"><iframe class="map" title="Map of Tidy Feet Stratford" width="600" height="420" src="https://maps.google.com/maps?q=Trinity%20House%20Aintree%20Road%20Stratford-upon-Avon%20CV37%209FL&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<p class="map-note">Stratford: Trinity House, Aintree Road, CV37 9FL · <a href="https://www.google.com/maps/search/?api=1&amp;query=Trinity%20House%20Aintree%20Road%20Stratford-upon-Avon%20CV37%209FL" target="_blank" rel="noopener noreferrer">Get directions</a></p>
 </div>
 </section>
 <section id="reviews"`
