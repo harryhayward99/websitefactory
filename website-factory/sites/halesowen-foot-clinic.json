@@ -1,0 +1,104 @@
+{
+  "slug": "halesowen-foot-clinic",
+  "sector": "foot-health",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#2A7A72"
+  },
+  "sources": [
+    {
+      "id": "facebook",
+      "url": "https://www.facebook.com/fitchyfeet/",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "facebook-mirror",
+      "url": "https://www.gyms1.com/GB/Halesowen/679237688822514/Halesowen-Foot-Clinic",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "cofh",
+      "url": "https://cofh.org.uk/practitioners/",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "google-maps",
+      "url": "https://www.google.com/maps/search/?api=1&query=Halesowen+Foot+Clinic",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "service-reference-tidy-feet",
+      "url": "https://www.tidyfeet.co.uk/services",
+      "checkedAt": "2026-10-19",
+      "note": "Category reference only; not this clinic"
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Halesowen Foot Clinic",
+      "sourceId": "facebook"
+    },
+    "location": {
+      "value": "Halesowen",
+      "sourceId": "facebook"
+    },
+    "phone": {
+      "value": "07883 098454",
+      "sourceId": "cofh"
+    },
+    "address": {
+      "value": "79C Hagley Road, Halesowen, B63 4PY",
+      "sourceId": "cofh"
+    },
+    "website": {
+      "value": "https://www.facebook.com/fitchyfeet/",
+      "sourceId": "facebook"
+    },
+    "hours": {
+      "value": "Open Mondays, Thursdays and alternate Wednesdays. Indicative Monday 10:00–20:00 and Thursday 10:00–21:00 from directory listings; confirm by phone. Local home visits available.",
+      "sourceId": "facebook"
+    },
+    "services": [
+      {
+        "value": "General Footcare",
+        "detail": "Verified as the clinic’s core foot-health offering.",
+        "sourceId": "facebook"
+      },
+      {
+        "value": "Home Visits",
+        "detail": "Local home visits available — confirmed on Facebook.",
+        "sourceId": "facebook"
+      },
+      {
+        "value": "Nail Care",
+        "detail": "Demo service — confirm with the clinic before launch.",
+        "sourceId": "service-reference-tidy-feet"
+      },
+      {
+        "value": "Verruca Treatment",
+        "detail": "Demo service — confirm with the clinic before launch.",
+        "sourceId": "service-reference-tidy-feet"
+      },
+      {
+        "value": "Insoles & Support",
+        "detail": "Demo service — confirm with the clinic before launch.",
+        "sourceId": "service-reference-tidy-feet"
+      }
+    ],
+    "people": [
+      {
+        "value": "Emma Evans",
+        "role": "Foot Health Practitioner · MCFH",
+        "detail": "Mrs Emma Evans MCFH, College of Foot Health listing. Qualified 2006; clinic since 2009. No HCPC number shown on COFH listing.",
+        "sourceId": "cofh"
+      }
+    ]
+  },
+  "notes": "Manual adaptation from public/preview/45-the-green/. Do not regenerate this slug from the dental factory job or the layout will be replaced."
+}

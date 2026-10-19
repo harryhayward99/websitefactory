@@ -1,0 +1,15 @@
+{
+  "slug": "halesowen-foot-clinic",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/halesowen-foot-clinic/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "dd36ac73b3485b09061837baedff718f6460124e30e211e53e1e7adbfe5a796d",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-19T16:32:16.165Z"
+}

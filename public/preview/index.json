@@ -10,10 +10,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "ae687e71ca74ed5e",
-      "contentHash": "3383f2a8846d470b930862cb458f7e0a7f35c32b41e595455a336fa1de1ab26c",
+      "contentHash": "c15bde2e488368f2ff12663b834199744be29c5b0874f42b667e44e9af090c81",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T15:03:31.419Z"
+      "updatedAt": "2026-10-19T16:33:49.670Z"
     },
     {
       "slug": "back-and-neck-clinic",
@@ -134,6 +134,21 @@
       "demo": true,
       "message": "",
       "updatedAt": "2026-10-12T19:32:18.182Z"
+    },
+    {
+      "slug": "halesowen-foot-clinic",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/halesowen-foot-clinic/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "dd36ac73b3485b09061837baedff718f6460124e30e211e53e1e7adbfe5a796d",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-19T16:32:16.165Z"
     },
     {
       "slug": "maginnis-opticians",
