@@ -755,6 +755,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 #home>.section.reviews::before{background:#f6f7f8}
 #home>.section.mist::before{background:#fff}
 #home>.section.band>*,#home>.section.book>*,#home>.section.reviews>*,#home>.section.mist>*{position:relative;z-index:2}
+#home>.statement:not(.promo-statement){position:relative;z-index:auto}
+#home>.statement:not(.promo-statement)::before{content:"";position:absolute;top:0;bottom:0;left:50%;z-index:0;width:100vw;transform:translateX(-50%);background:#f6f7f8;pointer-events:none}
+#home>.statement:not(.promo-statement)>*{position:relative;z-index:2}
 #contact>.wrap{z-index:auto}
 #contact .info-grid,#contact .split,#contact .info-card,#contact .sheet{position:relative;z-index:auto}
 #contact .info-card,#contact .sheet{background:transparent}
