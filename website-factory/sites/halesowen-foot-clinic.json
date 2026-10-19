@@ -9,7 +9,8 @@
     "version": "1.0.0"
   },
   "brand": {
-    "accent": "#2A7A72"
+    "accent": "#2A7A72",
+    "logo": "/factory-assets/clients/halesowen-foot-clinic/logo.png"
   },
   "sources": [
     {
