@@ -1,0 +1,15 @@
+{
+  "slug": "onkar-eye-centre",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/onkar-eye-centre/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "6160033eaea7b8d7",
+  "contentHash": "1032bfdc1f6f1492b76216a923da8dc3484cbe7bddc823b4c59ebb8cceb0b268",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-19T18:03:14.870Z"
+}
