@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Fully private dental practice in Banbury. New patient examination £99. Same-day emergencies, implants, cosmetic care and Denplan. Call 01295 261566.">
 <meta name="generator" content="parley-website-factory care-modern 1.0.0">
-<title>45 The Green Dental Practice — concept by Parley</title>
+<title>45 The Green Dental Practice | Private Dentist in Banbury</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,7 +36,7 @@ img{max-width:100%;display:block}
 .header-cta{justify-self:end}
 .nav-left{display:flex;align-items:center;gap:18px;min-width:0}
 .brand{display:flex;align-items:center;min-height:44px;color:#000;text-decoration:none}
-.logo{max-width:180px;max-height:42px;object-fit:contain}
+.logo{width:42px;height:42px;object-fit:contain;display:block}
 .wordmark{display:flex;align-items:center;gap:10px}
 .wordmark strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em}
 .wordmark small{display:block;color:#333;font-size:12px;font-weight:500}
@@ -47,12 +48,14 @@ body:has(#services:target) .site-header nav a[href="#services"],
 body:has(#about:target) .site-header nav a[href="#about"],
 body:has(#reviews:target) .site-header nav a[href="#reviews"],
 body:has(#contact:target) .site-header nav a[href="#contact"],
-body:has(#prices:target) .site-header nav a[href="#prices"],body:has(#service-general-and-preventive-dentistry:target),body:has(#service-restorative-and-advanced-dentistry:target),body:has(#service-cosmetic-dentistry:target),body:has(#service-family-dentistry:target),body:has(#service-dental-emergencies:target),body:has(#service-dental-implants:target),body:has(#service-denplan:target) .site-header nav a[href="#services"]{font-weight:700}
+body:has(#prices:target) .site-header nav a[href="#prices"],
+body:has(#faq:target) .site-header nav a[href="#faq"],body:has(#service-general-and-preventive-dentistry:target),body:has(#service-restorative-and-advanced-dentistry:target),body:has(#service-cosmetic-dentistry:target),body:has(#service-family-dentistry:target),body:has(#service-dental-emergencies:target),body:has(#service-dental-implants:target),body:has(#service-denplan:target) .site-header nav a[href="#services"]{font-weight:700}
 body:has(#services:target) .site-header nav a[href="#home"],
 body:has(#about:target) .site-header nav a[href="#home"],
 body:has(#reviews:target) .site-header nav a[href="#home"],
 body:has(#contact:target) .site-header nav a[href="#home"],
-body:has(#prices:target) .site-header nav a[href="#home"],body:has(#service-general-and-preventive-dentistry:target),body:has(#service-restorative-and-advanced-dentistry:target),body:has(#service-cosmetic-dentistry:target),body:has(#service-family-dentistry:target),body:has(#service-dental-emergencies:target),body:has(#service-dental-implants:target),body:has(#service-denplan:target) .site-header nav a[href="#home"]{font-weight:500}
+body:has(#prices:target) .site-header nav a[href="#home"],
+body:has(#faq:target) .site-header nav a[href="#home"],body:has(#service-general-and-preventive-dentistry:target),body:has(#service-restorative-and-advanced-dentistry:target),body:has(#service-cosmetic-dentistry:target),body:has(#service-family-dentistry:target),body:has(#service-dental-emergencies:target),body:has(#service-dental-implants:target),body:has(#service-denplan:target) .site-header nav a[href="#home"]{font-weight:500}
 .has-menu{position:relative}
 .nav-chevron{display:block;transition:transform .2s ease}
 .has-menu:hover .nav-chevron,.has-menu:focus-within .nav-chevron{transform:rotate(180deg)}
@@ -84,6 +87,7 @@ body:has(#meet-team:target) #home{display:none}
 .hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none;line-height:1.2}
 .hero-aside{grid-column:2;grid-row:1;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0}
 .hero-aside .lede{margin:0}
+.hero-aside .lede-welcome{display:block;margin-top:10px;color:#000;font-size:17px;font-weight:700;letter-spacing:.06em;line-height:1.35;text-transform:uppercase}
 .hero-book{display:flex;align-items:center;gap:14px}
 .title-stop{display:inline}
 .title-line{position:absolute;height:3px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left center;pointer-events:none}
@@ -102,7 +106,7 @@ body:has(#meet-team:target) #home{display:none}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
-.hero-media img.fit-facade{object-position:center 68%}
+.hero-media img.fit-facade{left:25%;width:75%;right:auto;object-position:center 68%;transform:scale(1.08) translateX(75px);transform-origin:center center}
 .hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
@@ -112,9 +116,9 @@ body:has(#meet-team:target) #home{display:none}
 .hero-copy{min-width:0;flex:1}
 .hero-card strong{display:-webkit-box;margin:0 0 4px;overflow:hidden;font-size:18px;font-weight:600;line-height:1.2;-webkit-box-orient:vertical;-webkit-line-clamp:2}
 .hero-card em{color:#555;font-size:13px;font-style:normal;font-weight:400;line-height:1.4}
-.hero-go{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:#111;color:#fff;transition:background .2s ease,color .2s ease,transform .2s ease}
+.hero-go{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:#111;color:#fff;transition:background .2s ease,color .2s ease}
 .hero-go svg{display:block}
-.hero-card:hover .hero-go{background:var(--accent);color:var(--on);transform:translateX(4px)}
+.hero-card:hover .hero-go,.hero-card:focus-visible .hero-go{background:var(--accent);color:var(--on)}
 .mini{flex:0 0 3px;width:3px;align-self:stretch;border-radius:999px;background:var(--accent)}
 .section{padding:120px 0}
 #home>.section{padding:88px 0}
@@ -143,11 +147,12 @@ body:has(#meet-team:target) #home{display:none}
 .vision-side{display:flex;align-items:center;gap:28px}
 .vision-side p{max-width:36em;color:#333}
 .about-link{display:inline-flex;align-items:center;gap:14px;flex:none;color:#000;font-size:16px;font-weight:500;text-decoration:none}
-.about-orb{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:#111;transition:transform .2s ease,background .2s ease,color .2s ease}
-.about-link:hover .about-orb{transform:translateX(6px);background:#111;color:#fff}
-.about-book{padding:6px 6px 6px 22px;border-radius:999px;background:#111;color:#fff}
+.about-orb{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:#111;transition:background .2s ease,color .2s ease}
+.about-link:hover .about-orb,.about-link:focus-visible .about-orb{background:var(--accent);color:var(--on)}
+.about-book{padding:6px 6px 6px 22px;border-radius:999px;background:#111;color:#fff;transition:background .2s ease,color .2s ease}
 .about-book .about-orb{background:#fff;color:#111}
-.about-book:hover .about-orb{transform:none;background:var(--accent);color:var(--on)}
+.about-book:hover,.about-book:focus-visible{background:var(--accent);color:var(--on)}
+.about-book:hover .about-orb,.about-book:focus-visible .about-orb{background:#fff;color:var(--accent)}
 .stat-board{display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:end;min-height:340px;margin-top:54px}
 .rails{display:flex;align-items:flex-end;height:340px}
 .rail{position:relative;display:flex;align-items:center;justify-content:center;width:76px;height:210px;margin:0;padding:28px 0;border:0;background:transparent;color:#000;font:inherit;cursor:pointer}
@@ -156,29 +161,86 @@ body:has(#meet-team:target) #home{display:none}
 .rail:focus-visible{outline:3px solid #000;outline-offset:-3px}
 .rail span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-size:15px;font-weight:500;letter-spacing:.01em}
 .rail-patients{background:#f3ead2}
-.rail-reviews{background:#111;color:#fff}
+.rail-reviews{background:var(--accent);color:var(--on)}
 .rail-years{background:var(--pale)}
 .stat-stage{position:relative;display:grid;min-height:320px;padding:28px 24px 12px 28px;overflow:hidden}
 .geo{position:absolute;right:4%;top:42px;width:168px;height:168px;border-radius:42px;background:#f3ead2;transform:rotate(16deg);transition:transform .35s ease,background .35s ease}
-.stat-board[data-stat="reviews"] .geo{background:#111;transform:rotate(42deg)}
+.stat-board[data-stat="reviews"] .geo{background:var(--accent);transform:rotate(42deg)}
 .stat-board[data-stat="years"] .geo{background:var(--pale);transform:rotate(-14deg)}
 .stat-show{display:block;grid-area:1/1;position:relative;z-index:1;padding-top:18px;visibility:hidden}
+.stat-board:not(.promo-offer-board) .stat-show{display:flex;flex-direction:column;align-items:flex-start;min-height:100%;box-sizing:border-box}
+.stat-board:not(.promo-offer-board) .stat-show .button{margin-top:28px;align-self:flex-start}
 .stat-board[data-stat="patients"] .show-patients,
 .stat-board[data-stat="reviews"] .show-reviews,
-.stat-board[data-stat="years"] .show-years{visibility:visible}
+.stat-board[data-stat="years"] .show-years,
+.stat-board[data-stat="whitening"] .show-whitening,
+.stat-board[data-stat="consult"] .show-consult,
+.stat-board[data-stat="denplan"] .show-denplan{visibility:visible}
 .stat-show .stat-num{max-width:none;font-size:clamp(84px,11vw,132px);font-weight:500;letter-spacing:-.05em;line-height:.86;white-space:nowrap}
 .stat-show p{margin-top:22px;max-width:22em;color:#333}
+.rail-whitening{background:var(--pale)}
+.rail-consult{background:#111;color:#fff}
+.rail-denplan{background:#1f263b;color:#fff}
+.promo-statement{padding:88px 0}
+.promo-intro{max-width:none}
+.promo-intro h2{max-width:none}
+.promo-intro>p:not(.meet-kicker){margin-top:18px;max-width:42em;color:#333;font-size:17px;line-height:1.55}
+.promo-intro .promo-lede-short{display:none}
+.promo-offer-board{display:grid;grid-template-columns:108px minmax(0,1fr);gap:20px 24px;align-items:stretch;min-height:360px;margin-top:54px;padding-bottom:0}
+.promo-offer-board .rails{display:flex;flex-direction:column;gap:10px;height:auto;align-self:stretch}
+.promo-offer-board .rail{flex:1 1 0;width:100%;height:auto;min-height:72px;padding:12px 14px;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid #e6e6e6;border-radius:14px;background:#fff;color:#000;text-align:center;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.promo-offer-board .rail-whitening,.promo-offer-board .rail-consult,.promo-offer-board .rail-denplan{width:100%;min-height:72px;background:#fff;color:#000}
+.promo-offer-board .rail span{writing-mode:horizontal-tb;transform:none;white-space:normal;line-height:1.2}
+.promo-offer-board .rail .rail-label{font-size:12px;font-weight:500;letter-spacing:0;opacity:.72}
+.promo-offer-board .rail .rail-price{font-size:15px;font-weight:700;letter-spacing:-.02em}
+.promo-offer-board .rail[aria-pressed="false"]{opacity:1}
+.promo-offer-board .rail[aria-pressed="true"]{background:#111;border-color:#111;color:#fff;box-shadow:none;transform:none}
+.promo-offer-board .rail[aria-pressed="true"] .rail-label{opacity:.8}
+.promo-offer-board .rail:hover{border-color:#111}
+.promo-offer-board .geo{display:none}
+.promo-offer-board .stat-stage{min-height:360px;padding:0;overflow:visible;align-self:stretch}
+.promo-offer-board .stat-show{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(200px,.8fr);grid-template-areas:"media copy";gap:24px 28px;align-items:start;padding-top:0;min-height:360px}
+.promo-offer-board .stat-show > .offer-copy{grid-area:copy;min-width:0;align-self:start}
+.promo-offer-board .offer-side{grid-area:media;min-width:0;height:100%;min-height:360px}
+.promo-statement>.about-book{display:none}
+.promo-offer-board .stat-show h3{margin:0 0 12px;font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-.03em;line-height:1.15;color:#000}
+.promo-offer-board .stat-show .stat-num{margin:0;color:var(--accent);font-size:clamp(56px,7vw,88px)}
+.promo-offer-board .stat-show .stat-num small{font-size:.38em;letter-spacing:0;margin-left:.12em;font-weight:600}
+.promo-offer-board .stat-show .offer-detail{margin-top:14px;max-width:28em;color:#333;font-size:16px;line-height:1.55}
+.promo-offer-board .stat-show ul{margin:14px 0 0;padding:0;list-style:none;max-width:28em;color:#333;font-size:15px;line-height:1.55}
+.promo-offer-board .stat-show li{position:relative;padding-left:14px;margin:0 0 6px}
+.promo-offer-board .stat-show li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.promo-offer-board .offer-link{display:inline-flex;margin-top:20px;color:#000;font-weight:600;font-size:15px;text-decoration:none}
+.promo-offer-board .offer-link:hover{color:var(--accent)}
+.offer-visual{position:relative;margin:0;height:100%;min-height:360px;border-radius:18px;overflow:hidden;background:#111}
+.offer-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.offer-visual .ba-slider{min-height:360px;height:100%;border-radius:18px}
+.offer-denplan-visual{background:#fff}
+.offer-denplan-visual img{object-fit:contain;object-position:center}
+.ba-slider{--pos:78%;position:relative;width:100%;height:100%;min-height:180px;overflow:hidden;touch-action:none;user-select:none;cursor:ew-resize;background:#0a0a0a}
+.ba-slider > img,.ba-before-clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{z-index:0}
+.ba-before-clip{position:absolute;inset:0 auto 0 0;width:var(--pos);overflow:hidden;z-index:1}
+.ba-before-clip img{width:var(--ba-w,100%);max-width:none}
+.ba-range{position:absolute;inset:0;z-index:4;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;appearance:none}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);z-index:3;width:2px;background:#fff;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.offer-visual .ba-handle img{position:absolute;inset:auto;top:50%;left:50%;right:auto;bottom:auto;width:42px;height:42px;max-width:none;border:2px solid #fff;border-radius:50%;background:#fff;object-fit:contain;display:block;transform:translate(-50%,-50%);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.ba-tag{position:absolute;top:12px;z-index:2;padding:5px 10px;border-radius:999px;background:rgba(17,17,17,.72);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;pointer-events:none}
+.ba-tag-before{left:12px}
+.ba-tag-after{right:12px}
 .band{background:var(--pale)}
 .meet-head{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .meet-kicker{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#000;font-size:14px;font-weight:500}
 .meet-kicker svg{display:block}
 .meet h2{font-size:clamp(32px,3.2vw,42px);font-weight:600;line-height:1.15}
 .meet-nav{display:flex;gap:10px;flex:none}
-.meet-arrow{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid rgba(0,0,0,.16);border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease}
-.meet-arrow:hover{background:var(--pale);border-color:transparent}
+.meet-arrow{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid rgba(0,0,0,.16);border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.meet-arrow:hover,.meet-arrow:focus-visible{background:var(--accent);border-color:transparent;color:var(--on)}
 .meet-arrow:active{transform:scale(.96)}
 .meet-stage{display:grid;margin-top:28px;overflow:hidden}
 .meet-slide{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.28fr) minmax(280px,.72fr);gap:18px;align-items:stretch;opacity:0;visibility:hidden;pointer-events:none}
+.meet-slide .meet-card{order:1}
+.meet-slide .meet-photo{order:2}
 .meet-slide.is-on{opacity:1;visibility:visible;pointer-events:auto;z-index:1}
 .meet.is-animated .meet-slide.play-in-next{animation:meet-in-next .5s ease both}
 .meet.is-animated .meet-slide.play-out-next{visibility:visible;animation:meet-out-next .5s ease both}
@@ -239,15 +301,27 @@ body:has(#meet-team:target) #home{display:none}
 .hours-live-tag{margin-left:auto;color:#666;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 @keyframes hours-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.hours-light{animation:none}}
-.hours-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #eee;color:#000;font-size:14px;font-weight:500}
+.hours-row{display:none}
+.hours-list{list-style:none;margin:0 0 18px;padding:12px 0 0;border-top:1px solid #eee}
+.hours-list li{display:flex;justify-content:space-between;gap:16px;padding:7px 0;color:#000;font-size:14px;font-weight:500;line-height:1.35}
+.hours-list li span{color:#333}
+.hours-list li strong{font-weight:600;white-space:nowrap}
+.hours-note{margin:0 0 12px;color:#333;font-size:14px;line-height:1.45}
+.info-card .hours-list{border-top:0;padding-top:0;margin-bottom:8px}
 .hours-row span:last-child{color:#333;font-weight:500;white-space:nowrap}
 .book-call{width:100%;margin-top:16px;min-height:48px;border-radius:10px}
 .book-setter{position:fixed;right:22px;bottom:22px;z-index:80;width:72px;height:72px}
-.book-setter-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 12px 28px rgba(17,17,17,.16);cursor:pointer}
+.book-setter-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 12px 28px rgba(17,17,17,.16);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.book-setter-ring::before{content:"";position:absolute;inset:-10px;border-radius:50%;background:color-mix(in srgb,var(--accent) 22%,transparent);z-index:-1;pointer-events:none;opacity:.7;transform:scale(1)}
+.book-setter:not(.is-open) .book-setter-ring::before{animation:book-halo-pulse 2.8s ease-in-out infinite}
+.book-setter.is-open .book-setter-ring::before{animation:none;opacity:0;visibility:hidden}
+@keyframes book-halo-pulse{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:.9;transform:scale(1.08)}}
+.book-setter-ring:hover,.book-setter-ring:focus-visible{background:var(--accent);border-color:var(--accent);color:var(--on)}
+.book-setter-ring:hover .book-setter-word,.book-setter-ring:focus-visible .book-setter-word{color:var(--on)}
 .book-setter-ring svg{display:block}
 .book-setter-ring.has-word{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
 .book-setter-ring.has-word svg{width:30px;height:30px;transform:translateY(-4px)}
-.book-setter-word{color:var(--accent);font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;transform:translateY(-2px)}
+.book-setter-word{color:var(--accent);font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;transform:translateY(-2px);transition:color .2s ease}
 .book-setter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .book-setter-panel{position:absolute;right:0;bottom:0;display:flex;flex-direction:column;width:min(320px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 40px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 16px 40px rgba(17,17,17,.16);transform-origin:bottom right;transform:scale(.2);opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
 .book-setter.is-open .book-setter-panel{transform:scale(1);opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 16px 40px rgba(17,17,17,.16)}
@@ -370,6 +444,36 @@ body:has(#meet-team:target) #home{display:none}
 .role{margin:4px 0 8px;color:#000;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 #contact{padding-top:56px}
 #contact .page-intro h1{max-width:none;text-align:left}
+.faq-page{padding-top:40px}
+.faq-page .page-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(220px,.7fr);gap:28px 48px;align-items:end;margin-bottom:36px}
+.faq-page .page-intro .lede{margin:0;max-width:28em}
+.faq-board{display:grid;gap:14px}
+.faq-item{position:relative;border:0;border-radius:22px;background:#fff;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.faq-item:nth-child(odd){background:linear-gradient(135deg,var(--pale) 0%,#fff 58%)}
+.faq-item:nth-child(even){background:linear-gradient(225deg,#fff 40%,color-mix(in srgb,var(--pale) 70%,#fff) 100%)}
+.faq-item summary{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 20px;min-height:84px;padding:22px 26px;cursor:pointer;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::marker{content:""}
+.faq-num{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#111;color:#fff;font-size:18px;font-weight:700;letter-spacing:-.04em;transform:rotate(-8deg)}
+.faq-item:nth-child(3n) .faq-num{background:var(--accent);color:var(--on);transform:rotate(7deg)}
+.faq-item:nth-child(3n+2) .faq-num{transform:rotate(4deg)}
+.faq-item summary strong{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.03em;line-height:1.25}
+.faq-toggle{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#111;color:#fff;font-size:22px;line-height:1;transition:transform .2s ease,background .2s ease,color .2s ease}
+.faq-item summary:hover .faq-toggle{background:var(--accent);color:var(--on)}
+.faq-item[open] .faq-toggle{transform:rotate(45deg);background:var(--accent);color:var(--on)}
+.faq-body{padding:0 26px 26px 98px;max-width:46em;color:#333;font-size:16px;line-height:1.55}
+.faq-body p{margin:0 0 12px}
+.faq-body p:last-child{margin-bottom:0}
+.faq-body .faq-note{display:inline-block;margin-top:6px;padding:6px 12px;border-radius:999px;background:#111;color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.faq-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+@media (max-width:800px){
+  .faq-page .page-intro{grid-template-columns:1fr;gap:16px}
+  .faq-item summary{grid-template-columns:auto 1fr;gap:14px;padding:18px 18px;min-height:0}
+  .faq-toggle{grid-column:2;justify-self:end}
+  .faq-item summary strong{grid-column:1 / -1;grid-row:2}
+  .faq-body{padding:0 18px 20px 18px}
+  .faq-num{width:44px;height:44px;font-size:16px;border-radius:14px}
+}
 #contact .info-card{text-align:center}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
@@ -420,8 +524,8 @@ body:has(#meet-team:target) #home{display:none}
 .service-page{padding:0;background:#efe6d4}
 .service-sheet{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:28px 0 72px}
 .service-back{display:inline-flex;align-items:center;gap:12px;color:#111;font-weight:600;text-decoration:none}
-.service-back-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#111;color:#fff;font-size:18px;line-height:1;transition:transform .2s ease,background .2s ease}
-.service-back:hover .service-back-mark{transform:translateX(-4px);background:var(--accent);color:var(--on)}
+.service-back-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#111;color:#fff;font-size:18px;line-height:1;transition:background .2s ease,color .2s ease}
+.service-back:hover .service-back-mark,.service-back:focus-visible .service-back-mark{background:var(--accent);color:var(--on)}
 .service-poster{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:28px 56px;align-items:center;min-height:calc(100vh - 240px);margin-top:12px}
 .service-stamp{position:relative;min-height:320px}
 .service-num{display:block;color:#111;font-size:clamp(96px,12vw,168px);font-weight:600;letter-spacing:-.07em;line-height:.8}
@@ -450,7 +554,7 @@ body:has(#meet-team:target) #home{display:none}
 .site-footer{background:#111;color:#fff;padding:64px 0 0}
 .footer-brand{display:inline-flex;margin:0 0 36px;color:#000;text-decoration:none}
 .footer-pill{display:inline-flex;align-items:center;max-width:16em;padding:12px 16px;border-radius:12px;background:#fff;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15}
-.footer-logo{display:block;max-width:180px;max-height:42px;object-fit:contain}
+.footer-logo{display:block;width:42px;height:42px;object-fit:contain}
 .foot{display:grid;grid-template-columns:minmax(240px,1.05fr) minmax(320px,1.35fr) minmax(180px,.75fr);gap:48px 40px;align-items:start;padding-bottom:48px}
 .footer-note{max-width:28em;margin:0;color:rgba(255,255,255,.62);font-size:14px;line-height:1.5}
 .footer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:22px}
@@ -546,10 +650,22 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .vision-side{align-items:flex-start;flex-direction:column;gap:18px}
   .stat-board{grid-template-columns:1fr;gap:18px;min-height:0;margin-top:28px}
   .rails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;align-items:stretch;gap:8px}
-  .rail,.rail:hover,.rail-reviews,.rail-reviews:hover,.rail-years,.rail-years:hover{width:auto;height:100%;min-height:80px;padding:12px 8px}
+  .rail,.rail:hover,.rail-reviews,.rail-reviews:hover,.rail-years,.rail-years:hover,.rail-whitening,.rail-consult,.rail-denplan{width:auto;height:100%;min-height:80px;padding:12px 8px}
   .statement>.about-book{margin-top:22px}
   .rail span{writing-mode:horizontal-tb;transform:none;white-space:normal}
   .stat-stage{min-height:0;padding:8px 0 0}
+  .promo-intro .promo-lede-full{display:none}
+  .promo-intro .promo-lede-short{display:inline}
+  .promo-offer-board{grid-template-columns:1fr;gap:16px;margin-top:28px;align-items:stretch;min-height:0}
+  .promo-offer-board .rails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:8px}
+  .promo-offer-board .rail-whitening,.promo-offer-board .rail-consult,.promo-offer-board .rail-denplan{width:100%;min-height:72px}
+  .promo-offer-board .rail{flex:none;padding:10px 8px;align-items:center;text-align:center}
+  .promo-offer-board .rail .rail-label{font-size:11px}
+  .promo-offer-board .rail .rail-price{font-size:14px}
+  .promo-offer-board .stat-stage{padding:0;min-height:0}
+  .promo-offer-board .stat-show{grid-template-columns:1fr;grid-template-areas:"media" "copy";gap:16px;align-items:stretch;min-height:0}
+  .promo-offer-board .offer-side{min-height:240px}
+  .offer-visual,.offer-visual .ba-slider{min-height:240px}
   .geo{width:92px;height:92px;top:0;right:0}
   .accordion-panel{position:relative;padding:0 0 16px}
   .accordion-panel .tile-media{position:relative;inset:auto;min-height:180px;margin-bottom:12px;border-radius:10px}
@@ -557,7 +673,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
-  .hero-media img.fit-facade{transform:translateY(-18%);object-position:center 72%}
+  .hero-media img.fit-facade{left:0;width:100%;right:auto;transform:translateY(-18%);object-position:center 72%}
   .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -572,6 +688,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .meet-book{width:100%}
   .meet-card > p:last-of-type{margin-bottom:24px}
   .meet-slide{grid-template-columns:1fr}
+  .meet-slide .meet-card,.meet-slide .meet-photo{order:initial}
   .meet-photo,.meet-card{min-height:0}
   .meet-photo{min-height:240px}
   .meet-card{padding:24px 20px}
@@ -624,15 +741,15 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   h1{font-size:40px;line-height:1.12}
   .thumb span{font-size:84px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}.title-line{transform:none}.title-nudge path{animation:none;stroke-dashoffset:0}.book-setter-panel{transition:none}.book-setter-progress span{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rail,.geo,.about-orb,.meet-arrow,.review-pick,.review-photo,.review-quote,.social-pause,.nav-chevron,.offer-pick,.offer-shape,.offer-panel,.service-back-mark,.service-links button,.team-fall,.person-card,.hero-go,.faq-toggle,.book-setter-ring{transition:none}.meet.is-animated .meet-slide{animation:none}.social-track{animation:none}.social-marquee{overflow-x:auto}.hero-cards{scroll-behavior:auto}.title-line{transform:none}.title-nudge path{animation:none;stroke-dashoffset:0}.book-setter-panel{transition:none}.book-setter-progress span{transition:none}.book-setter:not(.is-open) .book-setter-ring::before{animation:none}}
 .page:not(.service-page){position:relative}
 .page:not(.service-page)>.guide-line{position:absolute;left:0;top:0;z-index:1;width:100%;height:100%;pointer-events:none}
 .page:not(.service-page)>*:not(.guide-line){position:relative;z-index:2}
-#home>.section.band,#home>.section.book,#home>.section.reviews{z-index:auto;background:transparent}
-#home>.section.band::before,#home>.section.book::before,#home>.section.reviews::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
+#home>.section.band,#home>.section.book,#home>.section.reviews,#home>.section.mist{position:relative;z-index:auto;background:transparent}
+#home>.section.band::before,#home>.section.book::before,#home>.section.reviews::before,#home>.section.mist::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
 #home>.section.band::before,#home>.section.book::before{background:var(--pale)}
-#home>.section.reviews::before{background:#f6f7f8}
-#home>.section.band>*,#home>.section.book>*,#home>.section.reviews>*{position:relative;z-index:2}
+#home>.section.reviews::before,#home>.section.mist::before{background:#f6f7f8}
+#home>.section.band>*,#home>.section.book>*,#home>.section.reviews>*,#home>.section.mist>*{position:relative;z-index:2}
 #contact>.wrap{z-index:auto}
 #contact .info-grid,#contact .split,#contact .info-card,#contact .sheet{position:relative;z-index:auto}
 #contact .info-card,#contact .sheet{background:transparent}
@@ -641,12 +758,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </style>
 </head>
 <body>
-<div class="banner"><p class="banner-note">CONCEPT WEBSITE · Prepared by Parley Systems · Not the business’s official website</p><p class="banner-contact"><span class="banner-address">45 The Green, OX16 9AB</span><span class="banner-gap" aria-hidden="true">|</span><a href="tel:01295261566">01295 261566</a></p></div>
+<div class="banner"><p class="banner-note">Private dental care in Banbury · New patients welcome</p><p class="banner-contact"><span class="banner-address">45 The Green, OX16 9AB</span><span class="banner-gap" aria-hidden="true">|</span><a href="tel:01295261566">01295 261566</a></p></div>
 <a class="skip" href="#home">Skip to content</a>
 <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
 <header class="site-header">
 <div class="nav-left">
-<a class="brand" href="#home"><img class="logo" src="/factory-assets/clients/45-the-green/logo.png" alt="45 The Green Dental Practice"></a>
+<a class="brand" href="#home"><img class="logo" src="/factory-assets/clients/45-the-green/logo.svg" alt="45 The Green Dental Practice" width="42" height="42"></a>
 <span class="wordmark"><span><strong>Dental Practice</strong><small>Banbury</small></span></span>
 </div>
 <nav aria-label="Pages">
@@ -656,12 +773,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li><a href="#about">About</a></li>
 <li><a href="#reviews">Reviews</a></li>
 <li><a href="#prices">Prices</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a class="button" href="#contact">Book Now</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a class="button" href="#contact">Contact</a></li>
 </ul>
 </nav>
 <label class="menu-button" for="nav-toggle"><span class="open">Menu</span><span class="close">Close</span></label>
-<a class="button header-cta" href="#contact">Book Now</a>
+<a class="button header-cta" href="#contact">CONTACT</a>
 </header>
 <main>
 <section id="home" class="page">
@@ -670,7 +787,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="wrap hero-head">
 <h1>Private Dentistry in Banbury<span class="title-stop"></span></h1>
 <div class="hero-aside">
-<p class="lede">Feel Confident About Your Smile.<br>Trusted in this location for over 100 years.<br>Currently taking on new patients.</p>
+<p class="lede">Feel Confident About Your Smile.<br>Trusted in this location for over 100 years.<br><span class="lede-welcome">New patients welcome!</span></p>
 <div class="hero-book">
 <a class="button" href="#contact">Book appointment</a>
 <svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true"><path class="nudge-shaft" d="M68 30C56 32 38 28 18 10"/><path class="nudge-head" d="M18 10 23 21M18 10 30 13"/></svg>
@@ -679,20 +796,82 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <svg class="title-arrow" aria-hidden="true"><path class="title-shaft" fill="none" stroke="#33ae52" stroke-width="1.9" stroke-linecap="round"/><path class="title-head" fill="none" stroke="#33ae52" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div class="wrap hero-stage">
-<figure class="hero-media"><img class="fit-facade" src="/factory-assets/clients/45-the-green/af8267993580a9bb-landing-treatment.png" alt="Illustrative clinic exterior. Not a photograph of this clinic’s staff or premises."></figure>
+<figure class="hero-media"><img class="fit-facade" src="/factory-assets/clients/45-the-green/practice-exterior.jpg" alt="45 The Green Dental Practice on South Bar Street, Banbury."></figure>
 <div class="hero-cards"><a class="hero-card" href="#services"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>Services</strong><em>Open the list.</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="tel:01295261566"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>01295 261566</strong><em>Phone</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="#contact"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>45 The Green, South Bar Street, Banbury, Oxford, OX16 9AB</strong><em>Location</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a></div>
 </div>
 </div>
-<section class="section">
+<section class="wrap statement promo-statement" aria-label="Featured care offers">
+<div class="promo-intro">
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Offers</p>
+<h2>Care that starts clearly</h2>
+<p><span class="promo-lede-full">Whitening, new patient consultations and Denplan membership — clear options, clear pricing, and pictures of the care you can expect.</span><span class="promo-lede-short">Whitening, new patient exams and Denplan — clear options and pricing.</span></p>
+</div>
+<div class="stat-board promo-offer-board" data-stat="whitening">
+<div class="rails" role="tablist" aria-label="Featured offers">
+<button class="rail rail-whitening" type="button" role="tab" data-stat="whitening" aria-pressed="true"><span class="rail-label">Whitening</span><span class="rail-price">£410</span></button>
+<button class="rail rail-consult" type="button" role="tab" data-stat="consult" aria-pressed="false"><span class="rail-label">New patient</span><span class="rail-price">£99</span></button>
+<button class="rail rail-denplan" type="button" role="tab" data-stat="denplan" aria-pressed="false"><span class="rail-label">Denplan</span><span class="rail-price">£15.20</span></button>
+</div>
+<div class="stat-stage">
+<div class="stat-show show-whitening">
+<div class="offer-copy">
+<h3>Whitening</h3>
+<p class="stat-num">£410</p>
+<p class="offer-detail">Professional trays for a brighter, natural-looking smile. Drag the slider to compare before and after.</p>
+<a class="offer-link" href="#contact">Get in touch →</a>
+</div>
+<div class="offer-side">
+<figure class="offer-visual">
+<div class="ba-slider" style="--pos:78%">
+<img class="ba-after" src="/factory-assets/clients/45-the-green/whitening-after.png" alt="Smile after professional whitening.">
+<div class="ba-before-clip"><img class="ba-before" src="/factory-assets/clients/45-the-green/whitening-before.png" alt="Smile before whitening."></div>
+<span class="ba-tag ba-tag-before">Before</span>
+<span class="ba-tag ba-tag-after">After</span>
+<div class="ba-handle" aria-hidden="true"><img src="/factory-assets/clients/45-the-green/logo.svg" alt="" width="42" height="42"></div>
+<input class="ba-range" type="range" min="0" max="100" value="78" aria-label="Slide to compare before and after whitening">
+</div>
+</figure>
+</div>
+</div>
+<div class="stat-show show-consult">
+<div class="offer-copy">
+<h3>New patient consultation</h3>
+<p class="stat-num">£99</p>
+<ul>
+<li>Full dental examination of teeth &amp; gums</li>
+<li>Oral health check &amp; cancer screening</li>
+<li>Initial X-rays &amp; personalised plan</li>
+</ul>
+<a class="offer-link" href="#contact">Get in touch →</a>
+</div>
+<div class="offer-side">
+<figure class="offer-visual"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Dental care at 45 The Green Dental Practice."></figure>
+</div>
+</div>
+<div class="stat-show show-denplan">
+<div class="offer-copy">
+<h3>Denplan</h3>
+<p class="stat-num">£15.20<small>/mo</small></p>
+<p class="offer-detail">Spread the cost of routine care with Denplan Care or Essentials. Join from £15.20 per month at an accredited Denplan Excel practice.</p>
+<a class="offer-link" href="#contact">Get in touch →</a>
+</div>
+<div class="offer-side">
+<figure class="offer-visual offer-denplan-visual"><img src="/factory-assets/clients/45-the-green/denplan-promo.png" alt="Join Denplan — budget for your dental care with affordable monthly payments."></figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section mist">
 <div class="wrap service-split" data-active="0">
 <div class="service-side">
 <p class="kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
-<h2>What is listed.</h2>
-<p class="lede">Names taken from the official website. No extra treatments, prices or results have been added.</p>
+<h2>Care for every smile.</h2>
+<p class="lede">Fully private dentistry for adults, children and nervous patients — from prevention and emergencies to implants, cosmetics and Denplan.</p>
 <nav class="service-links" aria-label="Services"><button type="button">General and Preventive Dentistry</button><button type="button">Restorative and Advanced Dentistry</button><button type="button">Cosmetic Dentistry</button><button type="button">Family Dentistry</button><button type="button">Dental emergencies</button><button type="button">Dental implants</button><button type="button">Denplan</button></nav>
-<div class="service-accordion"><details name="listed-services"><summary>General and Preventive Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>General and Preventive Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Restorative and Advanced Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Restorative and Advanced Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Cosmetic Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Cosmetic Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Family Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Family Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Dental emergencies</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Dental emergencies</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Dental implants</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Dental implants</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><details name="listed-services"><summary>Denplan</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Denplan</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></details><a class="button accordion-book" href="#contact">Book appointment</a></div>
+<div class="service-accordion"><details name="listed-services"><summary>General and Preventive Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/treatment-room.jpg" alt="Treatment room at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>General and Preventive Dentistry</strong><em>Routine check-ups, gum care, scale and polish, digital X-rays, fillings, root canal treatment and everyday restorative care.</em></span><a class="button" href="#service-general-and-preventive-dentistry">More Information</a></p></div></details><details name="listed-services"><summary>Restorative and Advanced Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Dental treatment at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Restorative and Advanced Dentistry</strong><em>Implants, bone grafting, crowns, bridges, dentures, full-mouth rehabilitation and oral surgery including wisdom tooth removal.</em></span><a class="button" href="#service-restorative-and-advanced-dentistry">More Information</a></p></div></details><details name="listed-services"><summary>Cosmetic Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/waiting-room.jpg" alt="Waiting room at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Cosmetic Dentistry</strong><em>Whitening, composite bonding, veneers, smile makeovers, clear aligners and subtle reshaping for a natural-looking result.</em></span><a class="button" href="#service-cosmetic-dentistry">More Information</a></p></div></details><details name="listed-services"><summary>Family Dentistry</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/staff-reception.jpg" alt="Reception team at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Family Dentistry</strong><em>Gentle care for children, teens and students, plus sealants, fluoride and practical advice for the whole household.</em></span><a class="button" href="#service-family-dentistry">More Information</a></p></div></details><details name="listed-services"><summary>Dental emergencies</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/treatment-room.jpg" alt="Dental surgery ready for emergency care."></figure><p class="shot-copy"><span><strong>Dental emergencies</strong><em>Call as soon as you can — we aim to see registered and new patients the same day, with out-of-hours cover for practice patients.</em></span><a class="button" href="#service-dental-emergencies">More Information</a></p></div></details><details name="listed-services"><summary>Dental implants</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Implant and restorative dentistry at 45 The Green."></figure><p class="shot-copy"><span><strong>Dental implants</strong><em>Implant treatment led by Dr Fady Michel Tadros — from single teeth to more complex grafting and full-smile restoration.</em></span><a class="button" href="#service-dental-implants">More Information</a></p></div></details><details name="listed-services"><summary>Denplan</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/waiting-room.jpg" alt="Calm waiting area at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Denplan</strong><em>Denplan Care and Essentials from £15.20 a month — spread the cost of routine care with 10% off treatments as a member.</em></span><a class="button" href="#service-denplan">More Information</a></p></div></details><a class="button accordion-book" href="#contact">Book appointment</a></div>
 </div>
-<div class="shots"><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>General and Preventive Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Restorative and Advanced Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Cosmetic Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Family Dentistry</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Dental emergencies</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Dental implants</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Treatment photograph supplied for 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Denplan</strong><em>Listed for 45 The Green Dental Practice.</em></span><a class="button" href="#contact">Booking</a></p></div></div>
+<div class="shots"><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/treatment-room.jpg" alt="Treatment room at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>General and Preventive Dentistry</strong><em>Routine check-ups, gum care, scale and polish, digital X-rays, fillings, root canal treatment and everyday restorative care.</em></span><a class="button" href="#service-general-and-preventive-dentistry">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Dental treatment at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Restorative and Advanced Dentistry</strong><em>Implants, bone grafting, crowns, bridges, dentures, full-mouth rehabilitation and oral surgery including wisdom tooth removal.</em></span><a class="button" href="#service-restorative-and-advanced-dentistry">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/waiting-room.jpg" alt="Waiting room at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Cosmetic Dentistry</strong><em>Whitening, composite bonding, veneers, smile makeovers, clear aligners and subtle reshaping for a natural-looking result.</em></span><a class="button" href="#service-cosmetic-dentistry">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/staff-reception.jpg" alt="Reception team at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Family Dentistry</strong><em>Gentle care for children, teens and students, plus sealants, fluoride and practical advice for the whole household.</em></span><a class="button" href="#service-family-dentistry">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/treatment-room.jpg" alt="Dental surgery ready for emergency care."></figure><p class="shot-copy"><span><strong>Dental emergencies</strong><em>Call as soon as you can — we aim to see registered and new patients the same day, with out-of-hours cover for practice patients.</em></span><a class="button" href="#service-dental-emergencies">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/service-treatment.png" alt="Implant and restorative dentistry at 45 The Green."></figure><p class="shot-copy"><span><strong>Dental implants</strong><em>Implant treatment led by Dr Fady Michel Tadros — from single teeth to more complex grafting and full-smile restoration.</em></span><a class="button" href="#service-dental-implants">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/45-the-green/waiting-room.jpg" alt="Calm waiting area at 45 The Green Dental Practice."></figure><p class="shot-copy"><span><strong>Denplan</strong><em>Denplan Care and Essentials from £15.20 a month — spread the cost of routine care with 10% off treatments as a member.</em></span><a class="button" href="#service-denplan">More Information</a></p></div></div>
 </div>
 </section>
 <section class="section band meet">
@@ -704,7 +883,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 <div class="meet-nav"><button class="meet-arrow meet-prev" type="button" aria-label="Previous specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow meet-next" type="button" aria-label="Next specialist"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 </div>
-<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><h3>Tim Sunderland</h3><p class="meet-role">Principal dentist</p><p>The site names Tim Sunderland as principal dentist, with a BDS from the University of Birmingham and GDC number 59433. It says he has over 30 years in restorative and general dentistry and leads the clinical team.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><h3>Nazanin Ziaeefard</h3><p class="meet-role">Associate dentist</p><p>The site names Nazanin Ziaeefard as associate dentist. It lists a B Dent Sc from Trinity College Dublin, an MSc in Biomaterials and Tissue Engineering from UCL, and GDC number 269293.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><h3>Dr Fady Michel Tadros</h3><p class="meet-role">Dentist</p><p>The site lists BDS, MFDS RCSEd, MSc in Oral and Maxillofacial Surgery and MSc in Oral Implantology, GDC 304544. It says he qualified in 2012, gained MFDS in 2016, and completed those master’s degrees in 2021 and 2022. The implants section says he leads implant treatment.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="meet-card"><h3>Nader Al Homsi Mofti</h3><p class="meet-role">Dentist</p><p>The site names Dr Nader Al Homsi Mofti, with a BDS from the European University of Madrid, an MSc in Implantology from Cardiff University, and GDC number 268045. It says he joins the practice in December 2025.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
+<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/tim-sunderland.jpg" alt="Tim Sunderland, principal dentist at 45 The Green Dental Practice."></figure><div class="meet-card"><h3>Tim Sunderland</h3><p class="meet-role">Principal dentist</p><p>BDS (University of Birmingham), GDC 59433. Tim has over 30 years of experience in restorative and general dentistry. He leads the clinical team and is known for a calm, practical approach that families across Oxfordshire trust.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/nazanin-ziaeefard.jpg" alt="Nazanin Ziaeefard, associate dentist at 45 The Green Dental Practice."></figure><div class="meet-card"><h3>Nazanin Ziaeefard</h3><p class="meet-role">Associate dentist</p><p>B Dent Sc (Trinity College Dublin), MSc Biomaterials and Tissue Engineering (UCL), GDC 269293. Naz provides modern, minimally invasive dentistry with a focus on long-term oral health and aesthetics. Her kind, meticulous manner is especially popular with patients seeking gentle care.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/fady-tadros.jpg" alt="Dr Fady Michel Tadros, dentist at 45 The Green Dental Practice."></figure><div class="meet-card"><h3>Dr Fady Michel Tadros</h3><p class="meet-role">Dentist · Implants</p><p>BDS, MFDS RCSEd, MSc (Oral & Maxillofacial Surgery), MSc (Oral Implantology), GDC 304544. Fady leads implant treatment at the practice and combines surgical experience with restorative and aesthetic dentistry, explaining every stage clearly so patients feel informed and at ease.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article><article class="meet-slide" aria-hidden="true"><figure class="meet-photo"><img src="/factory-assets/clients/45-the-green/nader-mofti.jpg" alt="Nader Al Homsi Mofti, dentist at 45 The Green Dental Practice."></figure><div class="meet-card"><h3>Nader Al Homsi Mofti</h3><p class="meet-role">Dentist</p><p>BDS (European University of Madrid), MSc Implantology (Cardiff University), GDC 268045. Nader brings experience across private practices in the UK and Europe, with particular interest in surgical and aesthetic dentistry, implants, aligners and smile design.</p><a class="button meet-book" href="#contact"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
 </div>
 </section>
 <section class="section reviews">
@@ -712,7 +891,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
 <h2>Patient reviews</h2>
 <a class="button review-leave-link" href="#reviews">Leave a Google review</a>
-<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Google reviews"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>bec hinchliffe</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>katie sunderland</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Garry Williams</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Alexander</strong><span class="stars" aria-label="5 stars">★★★★★</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/45-the-green/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" role="img" aria-label="Portrait area for katie sunderland" aria-hidden="true"><span aria-hidden="true">K</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Garry Williams" aria-hidden="true"><span aria-hidden="true">G</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Alexander" aria-hidden="true"><span aria-hidden="true">A</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Google review · 2 March 2026</p><h3>bec hinchliffe</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Dan my son saw a lady Dentist Naz, he had knocked and broken his front tooth. Naz saw Dan on the same day, she was attentive, gentle and did a lovely job repairing his tooth with a composite filling. Thank you Naz and the lovely team at 45 The Green.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 12 February 2026</p><h3>katie sunderland</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Once again i was seen within 24 hours - Naz was incredible. Same friendly team and most importantly, exceptional work on not the best teeth!</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 17 February 2023</p><h3>Garry Williams</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>I attended the surgery this morning for part two of a crown fitting. As usual I was greeted by name and with a smile by the receptionist which in its self sets them apart. Then called into the treatment room by my dentist Tim Sunderland. This “legend” has been my dentist for many years and I would NOT go anywhere else. After our usual chat putting the world to rights he did what he had to do to finish the crown and as normal I did not feel a thing. I would like to say a huge thank you to Tim, and his nurse Pauline plus the whole team. Thank you and kind regards Garry Williams.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 27 January 2022</p><h3>Alexander</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>5 star for good reason lovely team and professional. Came to my support when let down by other practices absolute incompetence. Thank you The Green Team restored my faith in dentistry. Alexander.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Google reviews"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>bec hinchliffe</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>katie sunderland</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Garry Williams</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Alexander</strong><span class="stars" aria-label="5 stars">★★★★★</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/45-the-green/staff-reception.jpg" alt="Friendly team at 45 The Green Dental Practice."></figure><figure class="review-photo" role="img" aria-label="Portrait area for katie sunderland" aria-hidden="true"><span aria-hidden="true">K</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Garry Williams" aria-hidden="true"><span aria-hidden="true">G</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Alexander" aria-hidden="true"><span aria-hidden="true">A</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Google review · 2 March 2026</p><h3>bec hinchliffe</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Dan my son saw a lady Dentist Naz, he had knocked and broken his front tooth. Naz saw Dan on the same day, she was attentive, gentle and did a lovely job repairing his tooth with a composite filling. Thank you Naz and the lovely team at 45 The Green.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 12 February 2026</p><h3>katie sunderland</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Once again i was seen within 24 hours - Naz was incredible. Same friendly team and most importantly, exceptional work on not the best teeth!</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 17 February 2023</p><h3>Garry Williams</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>I attended the surgery this morning for part two of a crown fitting. As usual I was greeted by name and with a smile by the receptionist which in its self sets them apart. Then called into the treatment room by my dentist Tim Sunderland. This “legend” has been my dentist for many years and I would NOT go anywhere else.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 27 January 2022</p><h3>Alexander</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>5 star for good reason lovely team and professional. Came to my support when let down by other practices absolute incompetence. Thank you The Green Team restored my faith in dentistry.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 </div>
 </section>
 <section class="section book">
@@ -720,7 +899,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <form class="book-form" action="#contact" method="post" onsubmit="return false">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Schedule</p>
 <h2>Book your appointment</h2>
-<p class="book-note">This preview does not send what you type or take a booking.</p>
+<p class="book-note">Tell us when you would like to visit and we will confirm. A £40 booking deposit is taken when we secure your appointment and is fully credited afterwards.</p>
 <div class="book-fields">
 <label>First name*<input name="given-name" autocomplete="given-name" placeholder="Enter first name" required></label>
 <label>Last name*<input name="family-name" autocomplete="family-name" placeholder="Enter last name" required></label>
@@ -737,10 +916,17 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="book-stage">
 <figure class="book-portrait"><img src="/factory-assets/clients/45-the-green/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
 <aside class="book-hours">
-<h3>Opening &amp; closing times</h3>
-<p>Saturdays are by appointment.</p>
+<h3>Opening times</h3>
+<p class="hours-note">One Saturday a month by appointment. Out-of-hours emergency cover for registered patients.</p>
 <p class="hours-live" data-hours="Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
-<div class="hours-row"><span>Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday</span><span>8:30–17:00</span></div>
+<ul class="hours-list">
+<li><span>Monday</span><strong>8:30 – 18:15</strong></li>
+<li><span>Tuesday</span><strong>8:30 – 18:15</strong></li>
+<li><span>Wednesday</span><strong>8:30 – 19:00</strong></li>
+<li><span>Thursday</span><strong>8:30 – 17:30</strong></li>
+<li><span>Friday</span><strong>8:30 – 17:00</strong></li>
+<li><span>Saturday</span><strong>By appointment</strong></li>
+</ul>
 <a class="button book-call" href="tel:01295261566">Call 01295 261566</a>
 </aside>
 </div>
@@ -751,50 +937,55 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="4.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="11.5" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 7.2 9.4 5.4M7.1 8.8l2.2 1.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Social</p>
 <h2>Recent posts</h2>
-<p class="social-lede">A looping row of sample posts. Nothing here is from a live account.</p>
+<p class="social-lede">Follow @45thegreendental on Instagram for practice updates and smile stories.</p>
 </div>
 <button class="social-pause" type="button" aria-pressed="false">Pause</button>
 </div>
 <div class="social-marquee">
 <div class="social-track">
-<div class="social-set"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>General and Preventive Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Restorative and Advanced Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Cosmetic Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Family Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental emergencies</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental implants</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
-<div class="social-set" aria-hidden="true"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>General and Preventive Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Restorative and Advanced Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Cosmetic Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Family Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental emergencies</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental implants</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
+<div class="social-set"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>New patients welcome</h3><p>New patient consultation £99 — full exam, X-rays and oral cancer screening.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Same-day emergencies</h3><p>Call early and we will do our best to see you the same day.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Whitening from £410</h3><p>Professional whitening trays for a brighter, natural-looking smile.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Denplan from £15.20</h3><p>Spread the cost of routine care with Denplan Care or Essentials.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Implants with Fady</h3><p>Implant treatment led by Dr Fady Michel Tadros.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Free parking</h3><p>Park at the rear via Crouch Street, with disabled parking at the front.</p></div></article></div>
+<div class="social-set" aria-hidden="true"><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>New patients welcome</h3><p>New patient consultation £99 — full exam, X-rays and oral cancer screening.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Same-day emergencies</h3><p>Call early and we will do our best to see you the same day.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Whitening from £410</h3><p>Professional whitening trays for a brighter, natural-looking smile.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Denplan from £15.20</h3><p>Spread the cost of routine care with Denplan Care or Essentials.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Implants with Fady</h3><p>Implant treatment led by Dr Fady Michel Tadros.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">45 The Green</p><h3>Free parking</h3><p>Park at the rear via Crouch Street, with disabled parking at the front.</p></div></article></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>General and Preventive Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Restorative and Advanced Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Cosmetic Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Family Dentistry</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental emergencies</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article><article class="post"><div class="post-art" aria-hidden="true"><span class="post-geo"></span><span class="post-geo post-geo-b"></span></div><div class="post-body"><p class="flag">Illustrative layout — not a live post</p><h3>Dental implants</h3><p>A sample tile for this feed. It was not posted by a real practice.</p></div></article></div>
 </div>
 </div>
 </section>
 <section class="wrap statement">
 <div class="vision">
-<h2>Why 45 The Green Dental Practice?</h2>
+<div>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Why Us?</p>
+<h2>Trusted care in Banbury.</h2>
+</div>
 <div class="vision-side">
-<p>Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00. Saturdays are by appointment.</p>
+<p>A fully private practice trusted in this location for over 100 years. We welcome adults, children and nervous patients, with clear treatment plans and no hidden costs.</p>
 </div>
 </div>
 <div class="stat-board" data-stat="patients">
 <div class="rails">
-<button class="rail rail-patients" type="button" data-stat="patients"><span>2000+ happy patients</span></button>
-<button class="rail rail-reviews" type="button" data-stat="reviews"><span>480 five-star reviews</span></button>
-<button class="rail rail-years" type="button" data-stat="years"><span>15+ years of experience</span></button>
+<button class="rail rail-patients" type="button" data-stat="patients"><span>New patients welcome</span></button>
+<button class="rail rail-reviews" type="button" data-stat="reviews"><span>Same-day emergencies</span></button>
+<button class="rail rail-years" type="button" data-stat="years"><span>100+ years here</span></button>
 </div>
 <div class="stat-stage">
 <span class="geo" aria-hidden="true"></span>
 <div class="stat-show show-patients">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">2000+</p>
-<p>Happy patients, shown so this layout can be reviewed.</p>
+<p class="flag">Private dentistry</p>
+<p class="stat-num">£99</p>
+<p>New patient examination with gum health review, oral cancer screening and initial X-rays.</p>
+<a class="button" href="#contact">Book appointment</a>
 </div>
 <div class="stat-show show-reviews">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">480</p>
-<p>Five-star reviews, shown so this layout can be reviewed.</p>
+<p class="flag">When you need us</p>
+<p class="stat-num">Same day</p>
+<p>We always do our best to see emergency patients the same day — registered or new.</p>
+<a class="button" href="#contact">Book appointment</a>
 </div>
 <div class="stat-show show-years">
-<p class="flag">Illustrative figure — not a verified result</p>
-<p class="stat-num">15+</p>
-<p>Years of experience, shown so this layout can be reviewed.</p>
+<p class="flag">Local care</p>
+<p class="stat-num">100+</p>
+<p>Years of dentistry at this Banbury address, looking after generations of families.</p>
+<a class="button" href="#contact">Book appointment</a>
 </div>
 </div>
 </div>
-<a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
 </section>
 </section>
 <section id="services" class="page services-page">
@@ -802,13 +993,13 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="wrap services-intro">
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 4.2h10M3 8h10M3 11.8h6.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Services</p>
-<h1>What is listed.</h1>
+<h1>Our services.</h1>
 </div>
-<p class="lede">Names taken from the official website. No extra treatments, prices or results have been added.</p>
+<p class="lede">Explore preventive, restorative, cosmetic and family dentistry, plus emergencies, implants and Denplan membership.</p>
 </div>
-<div class="wrap offer-board"><div class="offer-list"><div class="offer-item"><details class="offer-fold" name="listed-offers" open><summary class="offer-pick"><span>01</span>General and Preventive Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>General and Preventive Dentistry</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-general-and-preventive-dentistry"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>02</span>Restorative and Advanced Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Restorative and Advanced Dentistry</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-restorative-and-advanced-dentistry"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>03</span>Cosmetic Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Cosmetic Dentistry</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-cosmetic-dentistry"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>04</span>Family Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Family Dentistry</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-family-dentistry"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>05</span>Dental emergencies</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Dental emergencies</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-dental-emergencies"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>06</span>Dental implants</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Dental implants</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-dental-implants"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>07</span>Denplan</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>Denplan</h2><p>Listed for 45 The Green Dental Practice. This panel does not add a price, a method or a result.</p><a class="about-link" href="#service-denplan"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div></div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>
+<div class="wrap offer-board"><div class="offer-list"><div class="offer-item"><details class="offer-fold" name="listed-offers" open><summary class="offer-pick"><span>01</span>General and Preventive Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>General and Preventive Dentistry</h2><p>Routine check-ups, gum care, scale and polish, digital X-rays, fillings, root canal treatment and everyday restorative care.</p><a class="about-link" href="#service-general-and-preventive-dentistry"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>02</span>Restorative and Advanced Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Restorative and Advanced Dentistry</h2><p>Implants, bone grafting, crowns, bridges, dentures, full-mouth rehabilitation and oral surgery including wisdom tooth removal.</p><a class="about-link" href="#service-restorative-and-advanced-dentistry"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>03</span>Cosmetic Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Cosmetic Dentistry</h2><p>Whitening, composite bonding, veneers, smile makeovers, clear aligners and subtle reshaping for a natural-looking result.</p><a class="about-link" href="#service-cosmetic-dentistry"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>04</span>Family Dentistry</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Family Dentistry</h2><p>Gentle care for children, teens and students, plus sealants, fluoride and practical advice for the whole household.</p><a class="about-link" href="#service-family-dentistry"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>05</span>Dental emergencies</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Dental emergencies</h2><p>Call as soon as you can — we aim to see registered and new patients the same day, with out-of-hours cover for practice patients.</p><a class="about-link" href="#service-dental-emergencies"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>06</span>Dental implants</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Dental implants</h2><p>Implant treatment led by Dr Fady Michel Tadros — from single teeth to more complex grafting and full-smile restoration.</p><a class="about-link" href="#service-dental-implants"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>07</span>Denplan</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Denplan</h2><p>Denplan Care and Essentials from £15.20 a month — spread the cost of routine care with 10% off treatments as a member.</p><a class="about-link" href="#service-denplan"><span class="about-orb" aria-hidden="true">→</span> More Information</a></article></details></div></div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>
 </section>
-<section id="service-general-and-preventive-dentistry" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>General and Preventive Dentistry</h1><p class="service-lead">The procedures list names routine dental health checks, gum care and maintenance, scale and polish appointments, digital X-rays and 3D scans, fillings and restorations, root canal treatment, and emergency appointments.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-restorative-and-advanced-dentistry" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Restorative and Advanced Dentistry</h1><p class="service-lead">The procedures list names dental implants to replace missing teeth, bone grafting and sinus lift procedures, crowns, bridges and dentures, full mouth rehabilitation and bite correction, and wisdom tooth removal and oral surgery.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-cosmetic-dentistry" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Cosmetic Dentistry</h1><p class="service-lead">The procedures list names professional teeth whitening, composite bonding, veneers and smile makeovers, Invisalign and short-term orthodontics, and tooth reshaping and contouring.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-family-dentistry" class="page service-page" data-shape="3"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Family Dentistry</h1><p class="service-lead">The procedures list names gentle care for children, teen and student check-ups, preventive sealants and fluoride treatments, and practical advice on brushing and diet.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-dental-emergencies" class="page service-page" data-shape="4"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Dental emergencies</h1><p class="service-lead">The site says to call as soon as possible. It says the practice does its best to see registered or new patients on the same day, and lists an out of hours service for patients of the practice.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-dental-implants" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">06</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Dental implants</h1><p class="service-lead">The site says implant treatments are led by Dr Fady Michel Tadros. It lists a BDS, MFDS RCSEd, a master’s in Oral and Maxillofacial Surgery and a master’s in Oral Implantology.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-denplan" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">07</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">From the published website</p><h1>Denplan</h1><p class="service-lead">Denplan Care and Denplan Essentials are listed. The site says these plans help budget monthly, and that the practice is an accredited Denplan Excel practice.</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>
+<section id="service-general-and-preventive-dentistry" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>General and Preventive Dentistry</h1><p class="service-lead">Keep your smile healthy with thorough examinations, gum health reviews, hygiene appointments, digital imaging and restorative treatment when needed. We take time to explain findings clearly and plan care around your goals.</p><p class="service-lead">Routine dental health checks · Gum care and maintenance · Scale and polish · Digital X-rays and 3D scans · Fillings and restorations · Root canal treatment · Same-day emergency appointments where possible</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-restorative-and-advanced-dentistry" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Restorative and Advanced Dentistry</h1><p class="service-lead">When teeth need rebuilding or replacing, we plan restorative care carefully — from single crowns and bridges to implants, dentures and more complex rehabilitation — so comfort and function come first.</p><p class="service-lead">Dental implants · Bone grafting and sinus lift · Crowns, bridges and dentures · Full mouth rehabilitation and bite correction · Wisdom tooth removal and oral surgery</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-cosmetic-dentistry" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Cosmetic Dentistry</h1><p class="service-lead">Enhance your smile with whitening, bonding, veneers, clear aligners and contouring. Every cosmetic plan is tailored to look natural, feel comfortable and stand the test of time.</p><p class="service-lead">Professional teeth whitening from £410 · Composite bonding · Porcelain and composite veneers · Smile makeovers · Invisalign and short-term orthodontics · Tooth reshaping and contouring</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-family-dentistry" class="page service-page" data-shape="3"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Family Dentistry</h1><p class="service-lead">We welcome families of all ages. First visits stay calm and positive, with preventive sealants, fluoride where helpful, and clear advice on brushing and diet so healthy habits last.</p><p class="service-lead">Gentle care for children · Teen and student check-ups · Preventive sealants and fluoride · Brushing and diet advice · Family appointments together where suitable</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-dental-emergencies" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Dental emergencies</h1><p class="service-lead">Toothache, broken teeth, lost crowns, swelling or trauma — call 01295 261566 as soon as possible. We always do our best to see you the same day, whether you are registered or new. Registered patients also have access to our out-of-hours emergency service.</p><p class="service-lead">Same-day emergency appointments where possible · Care for toothache, trauma and broken restorations · Out-of-hours cover for registered patients · Clear triage by phone</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-dental-implants" class="page service-page" data-shape="1"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">06</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Dental implants</h1><p class="service-lead">Dental implants are a strong, long-lasting way to replace missing teeth. Implant care is led by Dr Fady Michel Tadros (BDS, MFDS RCSEd, MSc Oral & Maxillofacial Surgery, MSc Oral Implantology, GDC 304544), who has placed hundreds of implants including complex grafting and sinus lift cases.</p><p class="service-lead">Implant consultation · CBCT scanning · Single implant with crown from £3,000 · Bone graft and sinus lift where needed · Calm, step-by-step explanations throughout</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section><section id="service-denplan" class="page service-page" data-shape="2"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">07</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Private care at 45 The Green</p><h1>Denplan</h1><p class="service-lead">Choose Denplan Care or Denplan Essentials to budget monthly and keep oral health on track. Join from £15.20 per month. We are proud to be among the largest Denplan Care providers in Oxfordshire and an accredited Denplan Excel practice. Members also receive 10% off treatments.</p><p class="service-lead">Denplan Care and Denplan Essentials · Monthly budgeting for routine care · From £15.20 per month · 10% treatment discount for members · Denplan Excel accredited practice</p><a class="button solid service-cta" href="#contact">Book appointment</a></div></div></div></section>
 <section id="about" class="page team-page">
 <svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap about-summary">
@@ -816,29 +1007,34 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2.8 13.4V6.4L8 3.2l5.2 3.2v7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.4 13.4V9h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> About</p>
 <h1>45 The Green Dental Practice</h1>
 <div class="about-pair">
-<div class="about-lead"><p class="lede">Feel Confident About Your Smile.
-Trusted in this location for over 100 years.
-Currently taking on new patients.</p></div>
+<div class="about-lead"><p class="lede">Fully private dental care with a personal touch. Trusted in this location for over 100 years, we welcome new patients and take time to listen at every visit.</p></div>
 
 </div>
 <a class="about-next" href="#meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 6.1 8 10.6l4.8-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get to know the specialists</span></a>
 </div>
 <p class="meet-kicker about-team" id="meet-team"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="5.4" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="10.6" cy="5.1" r="1.55" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.4 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6M7.6 12.4c.35-1.7 1.5-2.6 3-2.6s2.65.9 3 2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Meet the Team</p>
 </div>
-<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="person-card"><h2>Tim Sunderland</h2><p class="role">Principal dentist</p><p>The site names Tim Sunderland as principal dentist, with a BDS from the University of Birmingham and GDC number 59433. It says he has over 30 years in restorative and general dentistry and leads the clinical team.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="person-card"><h2>Nazanin Ziaeefard</h2><p class="role">Associate dentist</p><p>The site names Nazanin Ziaeefard as associate dentist. It lists a B Dent Sc from Trinity College Dublin, an MSc in Biomaterials and Tissue Engineering from UCL, and GDC number 269293.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="person-card"><h2>Dr Fady Michel Tadros</h2><p class="role">Dentist</p><p>The site lists BDS, MFDS RCSEd, MSc in Oral and Maxillofacial Surgery and MSc in Oral Implantology, GDC 304544. It says he qualified in 2012, gained MFDS in 2016, and completed those master’s degrees in 2021 and 2022. The implants section says he leads implant treatment.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/a2b3e84540ec913a-portrait-placeholder.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure><div class="person-card"><h2>Nader Al Homsi Mofti</h2><p class="role">Dentist</p><p>The site names Dr Nader Al Homsi Mofti, with a BDS from the European University of Madrid, an MSc in Implantology from Cardiff University, and GDC number 268045. It says he joins the practice in December 2025.</p></div></article></div></div>
+<div class="wrap team-board" data-person="0"><div class="team-rail" aria-hidden="true"><span class="team-fall"></span></div><div class="people"><article class="person is-current"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/tim-sunderland.jpg" alt="Tim Sunderland, principal dentist at 45 The Green Dental Practice."></figure><div class="person-card"><h2>Tim Sunderland</h2><p class="role">Principal dentist</p><p>BDS (University of Birmingham), GDC 59433. Tim has over 30 years of experience in restorative and general dentistry. He leads the clinical team and is known for a calm, practical approach that families across Oxfordshire trust.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/nazanin-ziaeefard.jpg" alt="Nazanin Ziaeefard, associate dentist at 45 The Green Dental Practice."></figure><div class="person-card"><h2>Nazanin Ziaeefard</h2><p class="role">Associate dentist</p><p>B Dent Sc (Trinity College Dublin), MSc Biomaterials and Tissue Engineering (UCL), GDC 269293. Naz provides modern, minimally invasive dentistry with a focus on long-term oral health and aesthetics. Her kind, meticulous manner is especially popular with patients seeking gentle care.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/fady-tadros.jpg" alt="Dr Fady Michel Tadros, dentist at 45 The Green Dental Practice."></figure><div class="person-card"><h2>Dr Fady Michel Tadros</h2><p class="role">Dentist · Implants</p><p>BDS, MFDS RCSEd, MSc (Oral & Maxillofacial Surgery), MSc (Oral Implantology), GDC 304544. Fady leads implant treatment at the practice and combines surgical experience with restorative and aesthetic dentistry, explaining every stage clearly so patients feel informed and at ease.</p></div></article><article class="person"><figure class="thumb"><img src="/factory-assets/clients/45-the-green/nader-mofti.jpg" alt="Nader Al Homsi Mofti, dentist at 45 The Green Dental Practice."></figure><div class="person-card"><h2>Nader Al Homsi Mofti</h2><p class="role">Dentist</p><p>BDS (European University of Madrid), MSc Implantology (Cardiff University), GDC 268045. Nader brings experience across private practices in the UK and Europe, with particular interest in surgical and aesthetic dentistry, implants, aligners and smile design.</p></div></article></div></div>
 </section>
 <section id="contact" class="page">
 <svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap page-intro">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.4 2.6h2l.9 2.2-1.2.9a7.4 7.4 0 0 0 3.2 3.2l.9-1.2 2.2.9v2a1.1 1.1 0 0 1-1.2 1.1A8.8 8.8 0 0 1 3.3 3.8a1.1 1.1 0 0 1 1.1-1.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Contact</p>
 <h1>45 The Green Dental Practice.</h1>
-<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01295261566">01295 261566</a></p></article><article class="info-card"><h2>Address</h2><p>45 The Green, South Bar Street, Banbury, Oxford, OX16 9AB</p></article><article class="info-card"><h2>Hours</h2><p>Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00. Saturdays are by appointment.</p></article><article class="info-card"><h2>Parking</h2><p>Free parking at the rear via Crouch Street, and disabled parking at the front.</p></article><article class="info-card"><h2>Website</h2><p><a href="https://www.45thegreen.com/" rel="noopener noreferrer">Official website</a></p></article></div>
+<div class="info-grid"><article class="info-card"><h2>Phone</h2><p><a href="tel:01295261566">01295 261566</a></p></article><article class="info-card"><h2>Address</h2><p>45 The Green, South Bar Street, Banbury, Oxford, OX16 9AB</p></article><article class="info-card"><h2>Hours</h2><ul class="hours-list">
+<li><span>Monday</span><strong>8:30 – 18:15</strong></li>
+<li><span>Tuesday</span><strong>8:30 – 18:15</strong></li>
+<li><span>Wednesday</span><strong>8:30 – 19:00</strong></li>
+<li><span>Thursday</span><strong>8:30 – 17:30</strong></li>
+<li><span>Friday</span><strong>8:30 – 17:00</strong></li>
+<li><span>Saturday</span><strong>By appointment</strong></li>
+</ul><p style="margin-top:8px;font-size:14px;color:#333">Out-of-hours emergency cover for registered patients via 01295 261566.</p></article><article class="info-card"><h2>Parking</h2><p>Free parking at the rear via Crouch Street, and disabled parking at the front.</p></article><article class="info-card"><h2>Website</h2><p><a href="https://www.45thegreen.com/" rel="noopener noreferrer">Official website</a></p></article></div>
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
 <h2>Get in touch</h2>
 <p>Call <a class="contact-call" href="tel:01295261566">01295 261566</a>, or submit a message here. Reception will get back to you as soon as possible.</p>
 <p class="hours-live" data-hours="Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00" data-open="Reception is open" data-closed="Reception is closed"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
-<p class="map-note">This preview does not send the message.</p>
+<p class="map-note">Prefer a call? Ring 01295 261566 or email bec@45thegreen.com.</p>
 <label>Name<input name="name" autocomplete="name"></label>
 <label>Phone<input name="tel" type="tel" autocomplete="tel"></label>
 <label>Message<textarea name="message"></textarea></label>
@@ -847,7 +1043,7 @@ Currently taking on new patients.</p></div>
 <figure class="side-media"><img src="/factory-assets/clients/45-the-green/9a4bd25078f1a5ea-book-portrait.png" alt="Illustrative portrait. Not a photograph of this clinic’s staff."></figure>
 </div>
 <div class="map-frame"><iframe class="map" title="Map of the published address" width="600" height="420" src="https://maps.google.com/maps?q=45%20The%20Green%2C%20South%20Bar%20Street%2C%20Banbury%2C%20Oxford%2C%20OX16%209AB&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-<p class="map-note">Map of the published address.</p>
+<p class="map-note">45 The Green, South Bar Street, Banbury, OX16 9AB · Free parking via Crouch Street.</p>
 </div>
 </section>
 <section id="reviews" class="page">
@@ -855,14 +1051,14 @@ Currently taking on new patients.</p></div>
 <div class="wrap page-intro">
 <div>
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Reviews</p>
-<h1>Leave a Google review. Please...</h1>
+<h1>What patients say.</h1>
 </div>
 <a class="button solid" href="https://www.google.com/maps/search/?api=1&amp;query=45%20The%20Green%20Dental%20Practice%2045%20The%20Green%2C%20South%20Bar%20Street%2C%20Banbury%2C%20Oxford%2C%20OX16%209AB" target="_blank" rel="noopener noreferrer">Leave a review</a>
 </div>
 <section class="section reviews">
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.4v1.7M8 12.9v1.7M1.4 8h1.7M12.9 8h1.7M3.3 3.3l1.2 1.2M11.5 11.5l1.2 1.2M12.7 3.3l-1.2 1.2M4.5 11.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Testimonials</p>
-<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Google reviews"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>bec hinchliffe</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>katie sunderland</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Garry Williams</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Alexander</strong><span class="stars" aria-label="5 stars">★★★★★</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/45-the-green/e3232f8afe224d56-review-photo.png" alt="Illustrative clinic treatment. Not a photograph of a reviewer or of this clinic’s staff."></figure><figure class="review-photo" role="img" aria-label="Portrait area for katie sunderland" aria-hidden="true"><span aria-hidden="true">K</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Garry Williams" aria-hidden="true"><span aria-hidden="true">G</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Alexander" aria-hidden="true"><span aria-hidden="true">A</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Google review · 2 March 2026</p><h3>bec hinchliffe</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Dan my son saw a lady Dentist Naz, he had knocked and broken his front tooth. Naz saw Dan on the same day, she was attentive, gentle and did a lovely job repairing his tooth with a composite filling. Thank you Naz and the lovely team at 45 The Green.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 12 February 2026</p><h3>katie sunderland</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Once again i was seen within 24 hours - Naz was incredible. Same friendly team and most importantly, exceptional work on not the best teeth!</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 17 February 2023</p><h3>Garry Williams</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>I attended the surgery this morning for part two of a crown fitting. As usual I was greeted by name and with a smile by the receptionist which in its self sets them apart. Then called into the treatment room by my dentist Tim Sunderland. This “legend” has been my dentist for many years and I would NOT go anywhere else. After our usual chat putting the world to rights he did what he had to do to finish the crown and as normal I did not feel a thing. I would like to say a huge thank you to Tim, and his nurse Pauline plus the whole team. Thank you and kind regards Garry Williams.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 27 January 2022</p><h3>Alexander</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>5 star for good reason lovely team and professional. Came to my support when let down by other practices absolute incompetence. Thank you The Green Team restored my faith in dentistry. Alexander.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+<div class="review-board" data-active="0"><div class="review-list" role="tablist" aria-label="Google reviews"><button class="review-pick" type="button" role="tab" aria-selected="true"><strong>bec hinchliffe</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>katie sunderland</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Garry Williams</strong><span class="stars" aria-label="5 stars">★★★★★</span></button><button class="review-pick" type="button" role="tab" aria-selected="false"><strong>Alexander</strong><span class="stars" aria-label="5 stars">★★★★★</span></button></div><div class="review-photos"><figure class="review-photo"><img src="/factory-assets/clients/45-the-green/staff-reception.jpg" alt="Friendly team at 45 The Green Dental Practice."></figure><figure class="review-photo" role="img" aria-label="Portrait area for katie sunderland" aria-hidden="true"><span aria-hidden="true">K</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Garry Williams" aria-hidden="true"><span aria-hidden="true">G</span></figure><figure class="review-photo" role="img" aria-label="Portrait area for Alexander" aria-hidden="true"><span aria-hidden="true">A</span></figure></div><div class="review-quotes"><article class="review-quote"><p class="flag">Google review · 2 March 2026</p><h3>bec hinchliffe</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Dan my son saw a lady Dentist Naz, he had knocked and broken his front tooth. Naz saw Dan on the same day, she was attentive, gentle and did a lovely job repairing his tooth with a composite filling. Thank you Naz and the lovely team at 45 The Green.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 12 February 2026</p><h3>katie sunderland</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>Once again i was seen within 24 hours - Naz was incredible. Same friendly team and most importantly, exceptional work on not the best teeth!</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 17 February 2023</p><h3>Garry Williams</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>I attended the surgery this morning for part two of a crown fitting. As usual I was greeted by name and with a smile by the receptionist which in its self sets them apart. Then called into the treatment room by my dentist Tim Sunderland. This “legend” has been my dentist for many years and I would NOT go anywhere else.</p></article><article class="review-quote" aria-hidden="true"><p class="flag">Google review · 27 January 2022</p><h3>Alexander</h3><p class="review-stars"><span class="stars" aria-label="5 stars">★★★★★</span></p><p>5 star for good reason lovely team and professional. Came to my support when let down by other practices absolute incompetence. Thank you The Green Team restored my faith in dentistry.</p></article></div><div class="review-nav"><button class="meet-arrow review-prev" type="button" aria-label="Previous review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3.2 5.2 8 10 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="meet-arrow review-next" type="button" aria-label="Next review"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3.2 10.8 8 6 12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
 </div>
 </section>
 </section>
@@ -870,17 +1066,92 @@ Currently taking on new patients.</p></div>
 <svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.4 2.4h4.4v4.4L7.4 12.2 3.2 8 8.4 2.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10.8" cy="4.8" r=".7" fill="currentColor"/></svg> Prices</p>
-<h1>What a visit includes.</h1>
-<p class="flag">From the published website</p>
-<p class="lede">Fees taken from the published website for 45 The Green Dental Practice. No amounts have been added.</p>
-<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£99</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>New patient examination</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Examination</li><li>Gum health and oral cancer screening</li><li>Initial X-rays</li></ul><a class="button solid fee-book" href="#contact">Book Now</a></article><article class="fee-card"><span class="fee-gem"><strong>£52</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Examination</h2><a class="button solid fee-book" href="#contact">Book Now</a></article></div>
-<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion"><details class="fee-fold" name="listed-fees"><summary><span>Children’s examination (under 18)</span><strong>£28</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Young adult examination (18–20)</span><strong>£36</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Scale and polish with dentist</span><strong>£70</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Hygienist (30 minutes)</span><strong>£80</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Small X-ray</span><strong>£30+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>OPG X-ray (adult)</span><strong>£60</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>OPG X-ray (child)</span><strong>£35</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Composite filling</span><strong>£145+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Root canal treatment</span><strong>£575–£600</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Extraction</span><strong>£175+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Surgical extraction</span><strong>£225</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening trays</span><strong>£410</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening top-up</span><strong>£130 x 4</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening top-up</span><strong>£35</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Waterlase treatment</span><strong>£250+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Crown, bridge or veneer (per unit)</span><strong>£650+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Acrylic denture</span><strong>£1,200+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Chrome denture</span><strong>£1,800+</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Soft reline</span><strong>£195</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Orthodontic consultation</span><strong>£150</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Retainers</span><strong>£150</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Gum shield</span><strong>£95</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Denplan lab fee (per unit)</span><strong>£410</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Night guard</span><strong>£175</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Booking deposit</span><strong>£40</strong></summary><p>Taken at the time of booking and fully credited after the appointment.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Sedation</span><strong>from £500</strong></summary><p>Intravenous sedation per session, including clinical facilities, nursing support, monitoring and recovery, plus treatment costs. Additional charges may apply for longer appointments.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Out of hours emergency call out</span><strong>£250</strong></summary><p>Telephone advice and triage are free. The call out fee applies when the practice is opened outside normal working hours. Treatment is charged separately.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Denplan</span><strong>from £15.20 per month</strong></summary><p>Denplan Care and Essentials are listed. The site says this is the starting amount.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Implant consultation</span><strong>£70</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>CBCT scan</span><strong>£100</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Single dental implant with crown</span><strong>£3,000</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Bone graft</span><strong>£750</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Sinus lift</span><strong>£800</strong></summary></details></div></div>
+<h1>Transparent private fees.</h1>
+<p class="flag">Updated from the practice fee guide</p>
+<p class="lede">High-quality private care with clear treatment plans and no hidden costs. All plans are discussed in advance and tailored to your needs.</p>
+<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£99</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>New patient examination</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Examination</li><li>Gum health and oral cancer screening</li><li>Initial X-rays</li></ul><a class="button solid fee-book" href="#contact">Book Now</a></article><article class="fee-card"><span class="fee-gem"><strong>£52</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Examination</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Dental health check</li><li>Gum health review</li><li>Personalised advice</li></ul><a class="button solid fee-book" href="#contact">Book Now</a></article></div>
+<div class="fee-board"><h2>Service fees</h2><div class="fee-accordion"><details class="fee-fold" name="listed-fees"><summary><span>Children’s examination (under 18)</span><strong>£28</strong></summary><p>A gentle check for patients under 18, covering oral health, growth and early signs of decay, with advice tailored to age.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Young adult examination (18–20)</span><strong>£36</strong></summary><p>A full examination for young adults, including gum health review and personalised prevention advice as adult care begins.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Scale and polish with dentist</span><strong>£70</strong></summary><p>Professional cleaning with your dentist to remove plaque and stain, leaving teeth fresher and easier to keep clean at home.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Hygienist (30 minutes)</span><strong>£80</strong></summary><p>A dedicated hygiene visit focused on gum health, plaque removal and tailored home-care guidance.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Small X-ray</span><strong>£30+</strong></summary><p>Digital intraoral X-rays used when needed to check between teeth, under restorations or around roots.</p></details><details class="fee-fold" name="listed-fees"><summary><span>OPG X-ray (adult)</span><strong>£60</strong></summary><p>A panoramic scan giving a wide view of the jaws, teeth and supporting bone to support diagnosis and planning.</p></details><details class="fee-fold" name="listed-fees"><summary><span>OPG X-ray (child)</span><strong>£35</strong></summary><p>A panoramic scan adapted for younger patients when a broader view of developing teeth and jaws is helpful.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Composite filling</span><strong>£145+</strong></summary><p>Tooth-coloured restoration to repair decay or damage while matching the natural shade of your tooth. Price from £145 depending on size.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Root canal treatment</span><strong>£575–£600</strong></summary><p>Treatment to remove infection from inside a tooth, relieve pain and help keep the natural tooth where possible.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Extraction</span><strong>£175+</strong></summary><p>Straightforward removal of a tooth that cannot be restored, carried out carefully with aftercare advice.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Surgical extraction</span><strong>£225</strong></summary><p>Removal of a tooth that needs a small surgical approach, such as a broken or partly erupted tooth.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening trays</span><strong>£410</strong></summary><p>Custom trays and professional whitening gel to brighten your smile safely at home, from £410.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening top-up</span><strong>£130 x 4</strong></summary><p>Additional whitening gel to top up your existing trays when you want to refresh results.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Whitening top-up</span><strong>£35</strong></summary></details><details class="fee-fold" name="listed-fees"><summary><span>Waterlase treatment</span><strong>£250+</strong></summary><p>Laser-assisted care used where suitable to support gentle, precise soft-tissue or related dental treatment.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Crown, bridge or veneer (per unit)</span><strong>£650+</strong></summary><p>Custom laboratory restorations to strengthen, replace or enhance teeth — priced per unit from £650.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Acrylic denture</span><strong>£1,200+</strong></summary><p>A removable acrylic prosthesis to replace missing teeth and restore comfort when eating and smiling.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Chrome denture</span><strong>£1,800+</strong></summary><p>A stronger metal-framed denture offering a slim, secure fit for replacing several missing teeth.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Soft reline</span><strong>£195</strong></summary><p>A soft lining added to a denture to improve comfort against the gums.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Orthodontic consultation</span><strong>£150</strong></summary><p>A dedicated appointment to assess alignment options such as clear aligners and discuss a personalised plan.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Retainers</span><strong>£150</strong></summary><p>Custom retainers to help keep teeth in their new position after orthodontic treatment.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Gum shield</span><strong>£95</strong></summary><p>A custom sports mouthguard to help protect teeth during contact sport.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Denplan lab fee (per unit)</span><strong>£410</strong></summary><p>Laboratory fee for Denplan-related restorative work, charged per unit where applicable.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Night guard</span><strong>£175</strong></summary><p>A custom guard to help protect teeth from grinding or clenching overnight.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Booking deposit</span><strong>£40</strong></summary><p>Taken at the time of booking and fully credited after the appointment.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Sedation</span><strong>from £500</strong></summary><p>Intravenous sedation per session, including clinical facilities, nursing support, monitoring and recovery, plus treatment costs. Additional charges may apply for longer appointments.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Out of hours emergency call out</span><strong>£250</strong></summary><p>Telephone advice and triage are free. The call out fee applies when the practice is opened outside normal working hours. Treatment is charged separately.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Denplan</span><strong>from £15.20 per month</strong></summary><p>Denplan Care and Essentials help you budget monthly for routine care. Join from £15.20 per month, with 10% off treatments for members. We are a Denplan Excel accredited practice.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Implant consultation</span><strong>£70</strong></summary><p>A focused appointment to assess suitability for implants, discuss options and outline next steps.</p></details><details class="fee-fold" name="listed-fees"><summary><span>CBCT scan</span><strong>£100</strong></summary><p>3D cone-beam imaging used to plan implants and related surgery with greater accuracy.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Single dental implant with crown</span><strong>£3,000</strong></summary><p>A complete implant solution to replace one missing tooth, including the crown, from £3,000.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Bone graft</span><strong>£750</strong></summary><p>Grafting to rebuild bone volume where needed before or during implant placement.</p></details><details class="fee-fold" name="listed-fees"><summary><span>Sinus lift</span><strong>£800</strong></summary><p>A surgical procedure to create space and bone height in the upper jaw for implant placement where required.</p></details></div></div>
+</div>
+</section>
+<section id="faq" class="page faq-page">
+<svg class="guide-line" aria-hidden="true"></svg>
+<div class="wrap">
+<div class="page-intro">
+<div>
+<p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6.2 6.4c.35-1.1 1.2-1.7 2.2-1.7 1.15 0 2 .7 2 1.8 0 .85-.45 1.35-1.35 1.85-.7.4-.95.7-.95 1.35M8.05 11.7h.02" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> FAQ</p>
+<h1>Questions, answered.</h1>
+</div>
+<p class="lede">Straight answers from the practice — new patients, emergencies, Denplan, parking and family care.</p>
+</div>
+<div class="faq-board">
+<details class="faq-item" open>
+<summary><span class="faq-num" aria-hidden="true">01</span><strong>Are you accepting new patients?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Yes — our door is always open. Whether you are new to the area, returning to dental care after a break, or simply looking for a practice that feels like home, call us or pop in and we will help you find a care plan that suits you.</p>
+<p>A small booking deposit of £40 is taken when we secure your appointment and is fully credited afterwards.</p>
+<p><span class="faq-note">Chaperones available on request</span></p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">02</span><strong>Do you offer same-day emergency appointments?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Yes. We always do our best to see emergency patients the same day — whether you are already registered or completely new. Toothache, swelling, broken teeth or sudden pain: call 01295 261566 as early as you can.</p>
+<p>Registered patients also have access to our out-of-hours emergency service. Please see the fee guide for out-of-hours charges.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">03</span><strong>Can I spread the cost of my treatment?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Absolutely. With Denplan Essentials you can spread the cost of routine care and enjoy an exclusive 10% discount on treatments. For example, whitening can often be split into instalments once membership discount is applied.</p>
+<p>Email <a href="mailto:bec@45thegreen.com">bec@45thegreen.com</a> or call 01295 261566 and we will help you choose the right plan.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">04</span><strong>Do you provide private dental care only?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Yes. 45 The Green is a fully private practice for adults and children. You can pay as you go, or join Denplan Care or Denplan Essentials — whichever level of cover suits you best.</p>
+<p>Our focus is quality, time and personalised attention for long-term oral health and confidence.</p>
+<p><span class="faq-note">Registered with the Care Quality Commission</span></p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">05</span><strong>Is parking available?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Yes — including disabled parking. There is free parking at the rear via Crouch Street, with easy access straight to reception. Designated disabled parking is at the front on Oxford Road, with full wheelchair access through to reception and treatment rooms.</p>
+<p>If you need help on arrival, call ahead and the team will be ready to assist.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">06</span><strong>Do you treat children and families?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Yes. We have cared for generations of families across Oxfordshire. Children of all ages are welcome — first check-ups stay calm and positive, with brushing advice, teenage care and family appointments together where it helps.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">07</span><strong>What are your opening times?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Monday–Tuesday 8:30–18:15 · Wednesday 8:30–19:00 · Thursday 8:30–17:30 · Friday 8:30–17:00. Saturdays are by appointment (usually one Saturday a month).</p>
+<p>For registered patients outside normal hours, call 01295 261566 and your call will be diverted to the team member on duty. Out-of-hours fees may apply — see Prices for details. Denplan patients with Dental Emergency and Injury Cover may be able to reclaim some costs, subject to their policy.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num" aria-hidden="true">08</span><strong>How does Denplan work here?</strong><span class="faq-toggle" aria-hidden="true">+</span></summary>
+<div class="faq-body">
+<p>Denplan Care and Denplan Essentials help you budget monthly so nothing gets in the way of looking after your teeth. Join from £15.20 per month. We are proud to be among the largest Denplan Care providers in Oxfordshire and an accredited Denplan Excel practice.</p>
+<p>Members also receive 10% off treatments — a simple way to keep routine care predictable.</p>
+</div>
+</details>
+</div>
+<div class="faq-cta">
+<a class="button solid" href="#contact">Contact the practice</a>
+<a class="button" href="#prices">View prices</a>
+</div>
 </div>
 </section>
 </main>
 <footer class="site-footer">
 <div class="wrap">
-<a class="footer-brand" href="#home"><span class="footer-pill"><img class="footer-logo" src="/factory-assets/clients/45-the-green/logo.png" alt="45 The Green Dental Practice"></span></a>
+<a class="footer-brand" href="#home"><span class="footer-pill"><img class="footer-logo" src="/factory-assets/clients/45-the-green/logo.svg" alt="45 The Green Dental Practice" width="42" height="42"></span></a>
 <div class="foot">
 <div class="footer-intro">
 <p class="footer-note">Feel Confident About Your Smile.
@@ -902,12 +1173,13 @@ Currently taking on new patients.</p>
 <a href="#services"><span>02</span> Services</a>
 <a href="#about"><span>03</span> About</a>
 <a href="#reviews"><span>04</span> Reviews</a>
-<a href="#contact"><span>05</span> Contact</a>
-<a href="#prices"><span>06</span> Prices</a>
+<a href="#prices"><span>05</span> Prices</a>
+<a href="#faq"><span>06</span> FAQ</a>
+<a href="#contact"><span>07</span> Contact</a>
 </nav>
 <div class="footer-visit">
 <p>45 The Green, South Bar Street, Banbury, Oxford, OX16 9AB</p>
-<p>Monday to Tuesday, 8:30–18:15, Wednesday, 8:30–19:00, Thursday, 8:30–17:30, Friday, 8:30–17:00. Saturdays are by appointment.</p>
+<p>Monday 8:30–18:15 · Tuesday 8:30–18:15 · Wednesday 8:30–19:00 · Thursday 8:30–17:30 · Friday 8:30–17:00 · Saturday by appointment</p>
 <a class="footer-phone" href="tel:01295261566">01295 261566</a>
 <a class="button" href="#contact">Contact us</a>
 </div>
@@ -955,7 +1227,7 @@ Currently taking on new patients.</p>
 <label>Email*<input data-field="email" type="email" autocomplete="email" placeholder="name@example.com"></label>
 <label>Phone<input data-field="tel" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
 <p class="book-setter-note">We will aim to confirm appointment time within 1 working day.</p>
-<p class="book-setter-done" hidden>This preview does not send a request.</p>
+<p class="book-setter-done" hidden>Thanks — we will be in touch to confirm your request.</p>
 </section>
 </div>
 <p class="book-setter-error" hidden></p>
@@ -966,6 +1238,42 @@ Currently taking on new patients.</p>
 </div>
 </aside>
 <script>
+(function () {
+  function syncBaWidth(slider) {
+    slider.style.setProperty('--ba-w', slider.clientWidth + 'px');
+  }
+  function setPos(slider, range, value) {
+    const v = Math.max(0, Math.min(100, Number(value)));
+    slider.style.setProperty('--pos', v + '%');
+    if (range) range.value = String(v);
+  }
+  document.querySelectorAll('.ba-slider').forEach((slider) => {
+    const range = slider.querySelector('.ba-range');
+    syncBaWidth(slider);
+    setPos(slider, range, range ? range.value : 78);
+    if (range) {
+      range.addEventListener('input', () => setPos(slider, range, range.value));
+    }
+    const onPointer = (clientX) => {
+      const rect = slider.getBoundingClientRect();
+      const pct = ((clientX - rect.left) / rect.width) * 100;
+      setPos(slider, range, pct);
+    };
+    let dragging = false;
+    slider.addEventListener('pointerdown', (e) => {
+      if (e.target === range) return;
+      dragging = true;
+      slider.setPointerCapture(e.pointerId);
+      onPointer(e.clientX);
+    });
+    slider.addEventListener('pointermove', (e) => { if (dragging) onPointer(e.clientX); });
+    slider.addEventListener('pointerup', () => { dragging = false; });
+    slider.addEventListener('pointercancel', () => { dragging = false; });
+    window.addEventListener('resize', () => syncBaWidth(slider));
+  });
+})();
+</script>
+<script>
 document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => { const box = document.getElementById('nav-toggle'); if (box) box.checked = false; }));
 document.querySelectorAll('.service-split').forEach(split => {
   split.querySelectorAll('.service-links button').forEach((button, index) => {
@@ -975,9 +1283,13 @@ document.querySelectorAll('.service-split').forEach(split => {
 document.querySelectorAll('.stat-board').forEach(board => {
   const rails = [...board.querySelectorAll('.rail')];
   const order = rails.map(rail => rail.dataset.stat);
+  const manualOnly = board.classList.contains('promo-offer-board');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let timer = 0;
-  const show = (stat) => { board.dataset.stat = stat; };
+  const show = (stat) => {
+    board.dataset.stat = stat;
+    rails.forEach(rail => rail.setAttribute('aria-pressed', rail.dataset.stat === stat ? 'true' : 'false'));
+  };
   const tick = () => {
     if (motion.matches) return;
     const page = board.closest('.page');
@@ -987,12 +1299,18 @@ document.querySelectorAll('.stat-board').forEach(board => {
   };
   const start = () => {
     window.clearInterval(timer);
-    if (motion.matches || order.length < 2) return;
+    if (manualOnly || motion.matches || order.length < 2) return;
     timer = window.setInterval(tick, 5000);
   };
-  rails.forEach(rail => rail.addEventListener('click', () => { show(rail.dataset.stat); start(); }));
-  motion.addEventListener('change', start);
-  start();
+  rails.forEach(rail => rail.addEventListener('click', () => {
+    show(rail.dataset.stat);
+    if (!manualOnly) start();
+  }));
+  show(board.dataset.stat || order[0]);
+  if (!manualOnly) {
+    motion.addEventListener('change', start);
+    start();
+  }
 });
 document.querySelectorAll('.meet').forEach(meet => {
   const slides = [...meet.querySelectorAll('.meet-slide')];
@@ -1322,6 +1640,9 @@ document.querySelectorAll('.hours-live').forEach(line => {
   var narrowQuery = window.matchMedia('(max-width: 800px)');
   var intro = null;
   var bars = [];
+  var segStep = 400;
+  var segDuration = 520;
+  var segStart = 2150;
   function hide() {
     shaft.setAttribute('d', '');
     arrowHead.setAttribute('d', '');
@@ -1343,27 +1664,85 @@ document.querySelectorAll('.hours-live').forEach(line => {
     var lines = [];
     Array.from(range.getClientRects()).forEach(function (rect) {
       if (rect.width < 2) return;
-      var last = lines[lines.length - 1];
-      if (last && Math.abs(last.top - rect.top) < 3) {
-        last.left = Math.min(last.left, rect.left);
-        last.right = Math.max(last.right, rect.right);
-        last.bottom = Math.max(last.bottom, rect.bottom);
-        last.top = Math.min(last.top, rect.top);
+      var match = null;
+      for (var i = 0; i < lines.length; i++) {
+        if (Math.abs(lines[i].top - rect.top) < 12) { match = lines[i]; break; }
+      }
+      if (match) {
+        match.left = Math.min(match.left, rect.left);
+        match.right = Math.max(match.right, rect.right);
+        match.bottom = Math.max(match.bottom, rect.bottom);
+        match.top = Math.min(match.top, rect.top);
       } else {
         lines.push({ left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
       }
     });
+    lines.sort(function (a, b) { return a.top - b.top; });
     return lines;
+  }
+  function inkSegments(line) {
+    var h1 = head.querySelector('h1');
+    var stop = head.querySelector('.title-stop');
+    var fallback = [{ left: line.left, right: line.right, top: line.top, bottom: line.bottom }];
+    if (!h1) return fallback;
+    var walker = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT, null);
+    var glyphs = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      if (stop && stop.contains(node)) continue;
+      if (node.parentElement && node.parentElement.closest('.title-skip')) continue;
+      var text = node.textContent || '';
+      for (var i = 0; i < text.length; i++) {
+        var range = document.createRange();
+        range.setStart(node, i);
+        range.setEnd(node, i + 1);
+        var rect = range.getBoundingClientRect();
+        if (rect.width < 0.4) continue;
+        var mid = (rect.top + rect.bottom) / 2;
+        if (Math.abs(mid - (line.top + line.bottom) / 2) > (line.bottom - line.top) * 0.55) continue;
+        glyphs.push({ left: rect.left, right: rect.right, hang: /[gjpqy]/.test(text.charAt(i)) });
+      }
+    }
+    if (!glyphs.length) return fallback;
+    var em = (line.bottom - line.top) / 1.2;
+    var pad = Math.max(2, em * 0.08);
+    var runs = [];
+    var afterHang = false;
+    glyphs.forEach(function (glyph) {
+      if (glyph.hang) {
+        var open = runs[runs.length - 1];
+        if (open) open.right = Math.min(open.right, glyph.left - pad);
+        afterHang = true;
+        return;
+      }
+      var left = glyph.left + (afterHang ? pad : 0);
+      afterHang = false;
+      var prev = runs[runs.length - 1];
+      if (prev && left - prev.right < em * 0.55) prev.right = Math.max(prev.right, glyph.right);
+      else runs.push({ left: left, right: glyph.right, top: line.top, bottom: line.bottom });
+    });
+    runs = runs.filter(function (run) { return run.right - run.left > 2; });
+    // Drop short post-descender chips (e.g. underline under "in" after "Dentistry").
+    var minInk = Math.max(28, em * 1.35);
+    runs = runs.filter(function (run) { return run.right - run.left >= minInk; });
+    return runs.length ? runs : fallback;
   }
   function placeLines(hr) {
     var lines = lineBoxes();
-    if (bars.length !== lines.length) {
+    var segments = [];
+    lines.forEach(function (line, lineIndex) {
+      inkSegments(line).forEach(function (segment) {
+        segment.lineIndex = lineIndex;
+        segments.push(segment);
+      });
+    });
+    if (bars.length !== segments.length) {
       bars.forEach(function (bar) { bar.remove(); });
       if (intro) intro.cancel();
       shaft.getAnimations().forEach(function (item) { item.cancel(); });
       arrowHead.getAnimations().forEach(function (item) { item.cancel(); });
       intro = null;
-      bars = lines.map(function () {
+      bars = segments.map(function () {
         var bar = document.createElement('span');
         bar.className = 'title-line';
         bar.setAttribute('aria-hidden', 'true');
@@ -1371,13 +1750,27 @@ document.querySelectorAll('.hours-live').forEach(line => {
         return bar;
       });
     }
-    lines.forEach(function (line, index) {
+    segments.forEach(function (segment, index) {
       var bar = bars[index];
-      bar.style.left = (line.left - hr.left) + 'px';
-      bar.style.width = (line.right - line.left) + 'px';
-      bar.style.top = (line.bottom - hr.top - (line.bottom - line.top) * 0.22 + 10) + 'px';
+      bar.dataset.line = String(segment.lineIndex);
+      bar.dataset.seg = String(index);
+      bar.style.left = (segment.left - hr.left) + 'px';
+      bar.style.width = (segment.right - segment.left) + 'px';
+      bar.style.top = (segment.bottom - hr.top - (segment.bottom - segment.top) * 0.22 + 4) + 'px';
     });
     return lines;
+  }
+  function runBars() {
+    bars.forEach(function (bar, index) {
+      if (!bar.getAnimations().length) {
+        bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], {
+          duration: segDuration,
+          delay: segStart + index * segStep,
+          easing: 'ease',
+          fill: 'forwards'
+        });
+      }
+    });
   }
   function paint() {
     if (getComputedStyle(document.getElementById('home')).display === 'none') return;
@@ -1390,18 +1783,16 @@ document.querySelectorAll('.hours-live').forEach(line => {
     if (narrowQuery.matches) {
       hide();
       if (reduce) showFull();
-      else if (!bars[0].getAnimations().length) {
-        bars.forEach(function (bar, index) {
-          bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
-        });
-      }
+      else if (bars[0] && !bars[0].getAnimations().length) runBars();
       return;
     }
-    var x1 = last.right - hr.left + 10;
-    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 10;
-    var x2 = br.left - hr.left - 16;
+    var ink = inkSegments(last);
+    var inkRight = ink.reduce(function (max, segment) { return Math.max(max, segment.right); }, last.left);
+    var x1 = inkRight - hr.left + 18;
+    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 4;
+    var x2 = br.left - hr.left - 22;
     var y2 = br.top - hr.top + br.height / 2;
-    var reach = 0.56;
+    var reach = 0.34;
     var pad = (1 - reach) / 2;
     var spanX = x2 - x1;
     var spanY = y2 - y1;
@@ -1442,10 +1833,8 @@ document.querySelectorAll('.hours-live').forEach(line => {
     shaft.style.strokeDashoffset = String(len);
     arrowHead.style.strokeDasharray = String(headLen);
     arrowHead.style.strokeDashoffset = String(headLen);
-    var arrowDelay = 2150 + Math.max(0, lines.length - 1) * 900 + 950;
-    bars.forEach(function (bar, index) {
-      if (!bar.getAnimations().length) bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 760, delay: 2150 + index * 900, easing: 'ease', fill: 'forwards' });
-    });
+    var arrowDelay = segStart + Math.max(0, bars.length - 1) * segStep + segDuration + 200;
+    runBars();
     intro = shaft.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 650, delay: arrowDelay, easing: 'ease', fill: 'forwards' });
     arrowHead.animate([{ strokeDashoffset: headLen }, { strokeDashoffset: 0 }], { duration: 220, delay: arrowDelay + 580, easing: 'ease', fill: 'forwards' });
   }

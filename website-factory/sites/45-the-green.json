@@ -3,7 +3,7 @@
   "sector": "dental",
   "status": "concept",
   "demo": false,
-  "approvedInstructionsVersion": "d8468894adcdb7fe",
+  "approvedInstructionsVersion": "ae687e71ca74ed5e",
   "template": {"id": "care-modern", "version": "1.0.0"},
   "brand": {"accent": "#33ae52"},
   "sources": [
@@ -33,7 +33,7 @@
   "copy": {
     "headline": "Private Dentistry in Banbury",
     "headerTitle": "Dental Practice",
-    "headerPlace": "Banbury",
+    "headerTown": "Banbury",
     "introduction": "Feel Confident About Your Smile.\nTrusted in this location for over 100 years.\nCurrently taking on new patients."
   },
   "contentReviewed": true,
@@ -151,10 +151,10 @@
   ],
   "assets": {
     "logo": {
-      "path": "/factory-assets/clients/45-the-green/logo.png",
+      "path": "/factory-assets/clients/45-the-green/logo.svg",
       "alt": "45 The Green Dental Practice",
       "sourceUrl": "https://static.wixstatic.com/shapes/30b138_b2f260cf3be5442091e1a34130552b45.svg",
-      "rights": "official-logo-concept"
+      "rights": "official-logo"
     },
     "images": [
       {
@@ -163,6 +163,14 @@
         "sourceUrl": "supplied-for-concept:45-the-green-service",
         "rights": "client-permission",
         "placement": "service"
+      },
+      {
+        "path": "/factory-assets/clients/45-the-green/contact-entrance.png",
+        "alt": "Entrance of 45 The Green Dental Practice.",
+        "sourceUrl": "supplied-for-concept:45-the-green-entrance",
+        "rights": "client-permission",
+        "libraryId": "care-about-exterior",
+        "placement": "about"
       }
     ],
     "librarySelections": []
