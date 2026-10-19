@@ -10,7 +10,8 @@
   },
   "brand": {
     "accent": "#2A7A72",
-    "logo": "/factory-assets/clients/halesowen-foot-clinic/logo.png"
+    "logo": "/factory-assets/clients/halesowen-foot-clinic/mark.png",
+    "logoFull": "/factory-assets/clients/halesowen-foot-clinic/logo.png"
   },
   "sources": [
     {

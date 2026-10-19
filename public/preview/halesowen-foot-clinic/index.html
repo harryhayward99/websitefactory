@@ -36,8 +36,11 @@ img{max-width:100%;display:block}
 .header-cta{justify-self:end}
 .nav-left{display:flex;align-items:center;gap:18px;min-width:0}
 .brand{display:flex;align-items:center;min-height:44px;color:#000;text-decoration:none}
-.logo{display:block;max-width:220px;max-height:48px;width:auto;height:auto;object-fit:contain}
-.footer-logo{display:block;max-width:200px;max-height:44px;width:auto;height:auto;object-fit:contain}
+.logo{display:block;width:42px;height:42px;object-fit:contain}
+.footer-logo{display:block;width:40px;height:40px;object-fit:contain}
+.brand .wordmark{margin-left:10px}
+.footer-pill .wordmark{margin-left:10px}
+.footer-pill:has(.wordmark){max-width:none}
 .wordmark{display:flex;align-items:center;gap:10px}
 .wordmark strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em}
 .wordmark small{display:block;color:#333;font-size:12px;font-weight:500}
@@ -554,7 +557,6 @@ body:has(#meet-team:target) #home{display:none}
 .site-footer{background:#111;color:#fff;padding:64px 0 0}
 .footer-brand{display:inline-flex;margin:0 0 36px;color:#000;text-decoration:none}
 .footer-pill{display:inline-flex;align-items:center;max-width:18em;padding:10px 14px;border-radius:12px;background:#fff;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15}
-.footer-logo{display:block;width:42px;height:42px;object-fit:contain}
 .foot{display:grid;grid-template-columns:minmax(240px,1.05fr) minmax(320px,1.35fr) minmax(180px,.75fr);gap:48px 40px;align-items:start;padding-bottom:48px}
 .footer-note{max-width:28em;margin:0;color:rgba(255,255,255,.62);font-size:14px;line-height:1.5}
 .footer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:22px}
@@ -763,7 +765,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
 <header class="site-header">
 <div class="nav-left">
-<a class="brand" href="#home"><img class="logo" src="/factory-assets/clients/halesowen-foot-clinic/logo.png" alt="Halesowen Foot Clinic" width="220" height="48"></a>
+<a class="brand" href="#home" aria-label="Halesowen Foot Clinic"><img class="logo" src="/factory-assets/clients/halesowen-foot-clinic/mark.png" alt="" width="42" height="42"><span class="wordmark"><span><strong>Foot Clinic</strong><small>Halesowen</small></span></span></a>
 </div>
 <nav aria-label="Pages">
 <ul>
@@ -1124,7 +1126,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </main>
 <footer class="site-footer">
 <div class="wrap">
-<a class="footer-brand" href="#home"><span class="footer-pill"><img class="footer-logo" src="/factory-assets/clients/halesowen-foot-clinic/logo.png" alt="Halesowen Foot Clinic" width="200" height="44"></span></a>
+<a class="footer-brand" href="#home"><span class="footer-pill"><img class="footer-logo" src="/factory-assets/clients/halesowen-foot-clinic/mark.png" alt="" width="40" height="40"><span class="wordmark"><span><strong>Foot Clinic</strong><small>Halesowen</small></span></span></span></a>
 <div class="foot">
 <div class="footer-intro">
 <p class="footer-note">Warm, personal foot health care in Halesowen.
