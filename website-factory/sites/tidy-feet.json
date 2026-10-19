@@ -1,0 +1,109 @@
+{
+  "slug": "tidy-feet",
+  "sector": "podiatry",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#113B66",
+    "logo": "/preview/tidy-feet/assets/logo.png"
+  },
+  "sources": [
+    {
+      "id": "website",
+      "url": "https://www.tidyfeet.co.uk/",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "services",
+      "url": "https://www.tidyfeet.co.uk/services",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "about",
+      "url": "https://www.tidyfeet.co.uk/about",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "who-we-are",
+      "url": "https://www.tidyfeet.co.uk/who-we-are",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "contact",
+      "url": "https://www.tidyfeet.co.uk/contact",
+      "checkedAt": "2026-10-19"
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Tidy Feet Podiatry",
+      "sourceId": "website"
+    },
+    "location": {
+      "value": "Southam and Stratford-upon-Avon",
+      "sourceId": "website"
+    },
+    "phone": {
+      "value": "01926 945 007",
+      "sourceId": "contact"
+    },
+    "address": {
+      "value": "74B Coventry Street, Southam, CV47 0EA; Trinity House, Aintree Road, Stratford-upon-Avon, CV37 9FL",
+      "sourceId": "website"
+    },
+    "website": {
+      "value": "https://www.tidyfeet.co.uk/",
+      "sourceId": "website"
+    },
+    "hours": {
+      "value": "Southam Tue–Wed 8:00–12:30 and 13:30–18:00, Fri special appointment; Stratford Thu 8:30–17:00, Mon special appointment.",
+      "sourceId": "website"
+    },
+    "services": [
+      {
+        "value": "Nail Surgery",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Insoles",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Gait Analysis",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Verruca Treatment",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      },
+      {
+        "value": "General Footcare & Referrals",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      },
+      {
+        "value": "Laser Treatment",
+        "detail": "Listed on tidyfeet.co.uk/services.",
+        "sourceId": "services"
+      }
+    ],
+    "people": [
+      {
+        "value": "Deborah Coleman",
+        "role": "Podiatrist · BSc (Hons) MChS · HCPC CH8559",
+        "detail": "Former RGN; Royal College of Podiatrists member; qualified since 2007; opened Southam September 2007; Stratford since 2010.",
+        "sourceId": "who-we-are"
+      }
+    ]
+  },
+  "notes": "Manual adaptation from public/preview/45-the-green/. Do not regenerate this slug from the dental factory job or the layout will be replaced."
+}

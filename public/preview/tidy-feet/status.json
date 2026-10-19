@@ -1,0 +1,15 @@
+{
+  "slug": "tidy-feet",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/tidy-feet/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "92a52197d435e2e6debb0ed463cbc54104152938f59962e0e3da5020c8531eb4",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-19T18:42:54.525Z"
+}
