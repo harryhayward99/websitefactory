@@ -693,7 +693,7 @@ html = html.replace(
 // Logo on dark bg looks better with a soft radius; keep contain
 html = html.replace(
   /\.logo\{display:block;width:42px;height:42px;object-fit:contain\}/,
-  `.logo{display:block;width:42px;height:42px;object-fit:contain;border-radius:8px;background:#000}.logo.logo-wide{width:auto;max-width:120px;height:42px}`
+  `.logo{display:block;width:42px;height:42px;object-fit:contain}.logo.logo-wide{width:auto;max-width:120px;height:42px}`
 );
 
 // Remove leftover Halesowen / Emma / dental wording checks
