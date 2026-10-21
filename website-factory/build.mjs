@@ -17,7 +17,8 @@ for (const file of await fs.readdir(path.join(root, 'sites'))) {
     if (!result.ok) throw new Error(`${slug}: ${result.code}. Generate and inspect its result before deployment.`);
     console.log(result.code + ' ' + slug);
   } else if (status.status === 'PREVIEW_READY') {
-    const html = await fs.readFile(path.join(dir, 'index.html'), 'utf8');
+    // Normalize CRLF so Windows working trees match Linux/Vercel checkouts.
+    const html = (await fs.readFile(path.join(dir, 'index.html'), 'utf8')).replace(/\r\n/g, '\n');
     const hash = crypto.createHash('sha256').update(html).digest('hex');
     if (status.slug !== slug || status.previewPath !== `/preview/${slug}/index.html` || status.contentHash !== hash) throw new Error(`${slug}: snapshot/status mismatch; explicitly regenerate this prospect.`);
     console.log('VERIFIED ' + slug);
