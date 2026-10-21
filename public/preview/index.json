@@ -10,10 +10,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "ae687e71ca74ed5e",
-      "contentHash": "6ec8a9e04840bf0d91de59a8af34ff8223cb3b3befdf73d78f98f0357f1e75ba",
+      "contentHash": "948066a02afc7cb975696397f98816e6ae681027603f6721e4f3370eef33ed3c",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.850Z"
+      "updatedAt": "2026-10-21T14:50:35.928Z"
     },
     {
       "slug": "back-and-neck-clinic",
@@ -25,10 +25,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "0cda48697fc54650",
-      "contentHash": "9143fb38919a2954ef84a60ca686fecb3377e2422969be0996f40ccf83bc66b3",
+      "contentHash": "17e591fed8f5cdff3c112db56d7c3da28b3ea6bf613a0f42a46f870840291e24",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.854Z"
+      "updatedAt": "2026-10-21T14:50:35.934Z"
     },
     {
       "slug": "broad-oaks-health-clinic",
@@ -40,10 +40,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "b7afd3bbda380b91",
-      "contentHash": "0c25e15395159e602f58f4701b10c44aa9d4711de7239d2a9331cfd18b839ce0",
+      "contentHash": "0e1ae58406bfe6a937368d12f6fb33b893ffee7164d48d270ae2c15123493806",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.855Z"
+      "updatedAt": "2026-10-21T14:50:35.936Z"
     },
     {
       "slug": "concept-96921d2d9126",
@@ -55,10 +55,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "93aa95661ffc71cc",
-      "contentHash": "3211072f1f9a669d14774b50f352fd9d0b613e81247f8214926d51208316f60e",
+      "contentHash": "3a453db24adf97ce3146440734df2f247240b70ddd126cc157ee4ed1344f38db",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-02T22:13:00.042Z"
+      "updatedAt": "2026-10-21T14:50:35.938Z"
     },
     {
       "slug": "eurospex-opticians",
@@ -70,10 +70,25 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "b813e236e2724f557e6ffff40a80150d91cb372431b94c48e75ca0e56cd6677a",
+      "contentHash": "c1d1fb8f0a3887bf9d5e8c28f206d660f23a4da8c2e77d9cf7bac8169506981d",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.857Z"
+      "updatedAt": "2026-10-21T14:50:35.940Z"
+    },
+    {
+      "slug": "eye-openers",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/eye-openers/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "46206951259f16146d54dc44a04d715bb6f9f4d03de0295c0007aa21cf85de36",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-21T14:50:36.170Z"
     },
     {
       "slug": "eyespec",
@@ -85,10 +100,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "9eb90410b16ea7c7b3f25f87a3de841edc15a80fdde4e8b178de9798dc9b9f91",
+      "contentHash": "5193284c50907d16cf56ae38cd43f2418cf3feff93422e0854c7e14b03e815c2",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.859Z"
+      "updatedAt": "2026-10-21T14:50:35.946Z"
     },
     {
       "slug": "fictional-clinic",
@@ -100,10 +115,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "93aa95661ffc71cc",
-      "contentHash": "1ee2becc485551dfb1e266ee41052c45deca3c0bad4677947a48c9663677d13d",
+      "contentHash": "198f2f50f8fd013368b0b0cf0ce048026b6ca13bb56b53bdfa9e23b4ffd6fe37",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-02T20:28:02.378Z"
+      "updatedAt": "2026-10-21T14:50:35.949Z"
     },
     {
       "slug": "fictional-dental",
@@ -115,10 +130,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "523ed8d7221d4d29",
-      "contentHash": "a85a5b0cc3c402a70025ce86d4af116e7525caebb5500588e644f8a984c336f7",
+      "contentHash": "eecb454a998ed8bd4019d51e771a21c831201d65b6cf6325dc5b22539967ab7a",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.862Z"
+      "updatedAt": "2026-10-21T14:50:35.950Z"
     },
     {
       "slug": "fictional-well",
@@ -130,10 +145,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "dd560ac84b4ae693",
-      "contentHash": "46a5e175b9c6a35b085ebc0f83ad727430bb31bd3f1807e5a980b65e29a60553",
+      "contentHash": "6b606fed978b4a314f92ccb0601f0a6eeaecf1e86b423c5fe4b065b683e04877",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.864Z"
+      "updatedAt": "2026-10-21T14:50:35.954Z"
     },
     {
       "slug": "halesowen-foot-clinic",
@@ -145,10 +160,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "manual-adaptation",
-      "contentHash": "b0940c54c974d34a1c506e44a9f710a5da036ac25f0e88723a67399f3d86439c",
+      "contentHash": "461a74997e119865e9d6dcd12901a9e1582714ab53b3eef0afc035584012745e",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:14:50.193Z"
+      "updatedAt": "2026-10-21T14:50:35.956Z"
     },
     {
       "slug": "maginnis-opticians",
@@ -190,10 +205,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "dd560ac84b4ae693",
-      "contentHash": "7f01fbc09d89d3cd8790b6cd08b04a7c07d9adc5dc199fa815f5d1558fd89dba",
+      "contentHash": "be3f2c3316444a617156f572246972e92d94ce91d598d63c69815cacd8577efb",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.872Z"
+      "updatedAt": "2026-10-21T14:50:35.960Z"
     },
     {
       "slug": "tidy-feet",
@@ -220,10 +235,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "manual-adaptation",
-      "contentHash": "5ec66f611b4259a746a84971601bf0c83678f5d0a0277eb4447dfa7fcc59d225",
+      "contentHash": "958341d99c83592c7bd47a59ad625096a36a262fd59bc61e51a978397ef49fac",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.873Z"
+      "updatedAt": "2026-10-21T14:50:35.964Z"
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "slug": "eye-openers",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/eye-openers/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "46206951259f16146d54dc44a04d715bb6f9f4d03de0295c0007aa21cf85de36",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-21T14:50:36.170Z"
+}

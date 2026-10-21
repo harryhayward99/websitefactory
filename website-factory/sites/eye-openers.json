@@ -1,0 +1,127 @@
+{
+  "slug": "eye-openers",
+  "sector": "optician",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {"id": "care-modern", "version": "1.0.0"},
+  "brand": {"accent": "#C62828"},
+  "sources": [
+    {"id": "google-listing", "url": "https://www.google.com/maps/place/Eye+Openers/@52.616018,-2.004089,10z", "checkedAt": "2026-10-21"},
+    {"id": "nhs", "url": "https://www.nhs.uk/services/service-directory/eyeopeners/N11004711", "checkedAt": "2026-10-21"},
+    {"id": "directory", "url": "https://directory.birminghammail.co.uk/company/437744856879104", "checkedAt": "2026-10-21"}
+  ],
+  "business": {
+    "name": {"value": "Eye Openers", "sourceId": "google-listing"},
+    "location": {"value": "Bloxwich", "sourceId": "google-listing"},
+    "phone": {"value": "01922 726040", "sourceId": "google-listing"},
+    "address": {"value": "198c High Street, Bloxwich, Walsall, WS3 3LA", "sourceId": "google-listing"},
+    "hours": {"value": "Monday to Saturday, 9:00–17:00, Sunday closed", "sourceId": "google-listing"},
+    "services": [
+      {"value": "NHS sight tests", "detail": "NHS sight tests are available at Eye Openers, 198c High Street, Bloxwich. Call 01922 726040 and you are welcome to arrange a visit.", "sourceId": "nhs"},
+      {"value": "Eye tests", "detail": "Eye tests are available at this practice on High Street. Call 01922 726040 if you would like to arrange one.", "sourceId": "google-listing"},
+      {"value": "Glasses", "detail": "Glasses are available at this practice. Patients thank the team for helpful service when choosing frames.", "sourceId": "google-listing"},
+      {"value": "Contact lenses", "detail": "Contact lenses are available at this practice. A patient describes thorough fitting with trial pairs.", "sourceId": "google-listing"},
+      {"value": "Frames", "detail": "Frames are available here. Patients mention a personal service when choosing glasses.", "sourceId": "google-listing"},
+      {"value": "Repairs", "detail": "Patients mention help with broken frames at this practice. Call 01922 726040 if you would like to ask about a repair.", "sourceId": "google-listing"}
+    ]
+  },
+  "copy": {
+    "headline": "Optical Care on High Street",
+    "introduction": "Welcome to Eye Openers on High Street in Bloxwich. NHS sight tests are available, and you are very welcome to come in for glasses, frames or contact lenses. We would be glad to see you."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "Sam W",
+      "date": "September 2025",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "displayNameStandIn": true,
+      "quote": "Eye Openers Bloxwich is fantastic. 3rd time I have used them in the past 4 years for myself, my wife and our Grandson. The optician is brilliant, really friendly and calm. And the 2 girls who have helped the 3 of us Friday and the Friday prior with our glasses, their customer service and friendliness is exceptional. Really honest and helpful we're so pleased with our glasses. Thank you Wiki and Harriet we will not use anywhere else. 5 stars all day long!"
+    },
+    {
+      "name": "Jordan P",
+      "date": "November 2023",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "displayNameStandIn": true,
+      "quote": "Ordered new glasses on the 16th November.they notified me on the 20th they were ready. I collected them today and they are of excellent quality. The service is very efficient.and the staff are most helpful and pleasant.It is very much a personal service.you don't feel rushed and are dealt with by the optometrist and one other person assisting with your glasses. Excellent service."
+    },
+    {
+      "name": "Casey L",
+      "date": "April 2022",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "displayNameStandIn": true,
+      "quote": "I first started visiting here six months ago, having been with another national High Street optician for more than 20 years. When I visited Eye Openers, they did a thorough examination and history. Ordered some trial pairs of contact lenses for several different companies and allowed me the time to try all of them at home so I could choose which one felt most comfortable for me. I am now able to wear my contact lenses again, without dryness or discomfort."
+    },
+    {
+      "name": "Morgan T",
+      "date": "September 2019",
+      "rating": 5,
+      "sourceId": "google-listing",
+      "displayNameStandIn": true,
+      "quote": "Myself and my husband have been to Eye Openers in Bloxwich today for the first time. The whole experience was first class. They were so helpful and very professional. They took time to explain everything to us. We will definitely be going back again and have no problem in recommending them."
+    }
+  ],
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Wiki",
+      "role": "Practice team",
+      "detail": "Wiki is part of the team at Eye Openers, and you are very welcome to see her. A recent patient thanks Wiki and Harriet for friendly, honest help with glasses.",
+      "sourceId": "google-listing",
+      "imageId": "eye-openers-specialist"
+    },
+    {
+      "name": "Harriet",
+      "role": "Practice team",
+      "detail": "Harriet is part of the team here, and you are very welcome to come in. Patients thank her for helpful, friendly service when choosing glasses.",
+      "sourceId": "google-listing"
+    }
+  ],
+  "examplePeople": [
+    {
+      "name": "Riley Cole",
+      "role": "Practice team",
+      "detail": "Riley Cole is a stand-in name for this demo, so the team has a third profile. Riley Cole does not work at Eye Openers and should be replaced before launch."
+    }
+  ],
+  "assets": {
+    "logo": {
+      "path": "inline-svg:eye-openers-mark",
+      "alt": "Eye Openers",
+      "sourceUrl": "generated-for-concept:eye-openers-svg",
+      "rights": "concept-mark"
+    },
+    "images": [
+      {
+        "path": "/factory-assets/clients/eye-openers/landing.png",
+        "alt": "An optician holding glasses beside a display of frames. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-landing",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "landing"
+      },
+      {
+        "path": "/factory-assets/clients/eye-openers/service.png",
+        "alt": "An eye examination with a trial frame. Not a photograph of this practice’s staff or premises.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-service",
+        "rights": "client-permission",
+        "illustrative": true,
+        "placement": "service"
+      },
+      {
+        "path": "/factory-assets/clients/eye-openers/specialist.png",
+        "alt": "A man wearing glasses in front of a frame display. Not a photograph of Wiki or of this practice’s staff.",
+        "sourceUrl": "supplied-for-concept:eurospex-opticians-specialist",
+        "rights": "client-permission",
+        "illustrative": true,
+        "libraryId": "eye-openers-specialist",
+        "placement": "person"
+      }
+    ],
+    "librarySelections": ["care-service-tile-2"]
+  }
+}
