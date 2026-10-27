@@ -10,10 +10,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "ae687e71ca74ed5e",
-      "contentHash": "6ec8a9e04840bf0d91de59a8af34ff8223cb3b3befdf73d78f98f0357f1e75ba",
+      "contentHash": "7e3c27bfaab8cafd377a8b62d19e29d3f43ad8e80cc338b384e6f33ea58e9284",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.850Z"
+      "updatedAt": "2026-10-27T13:25:10.931Z"
     },
     {
       "slug": "back-and-neck-clinic",
@@ -28,7 +28,7 @@
       "contentHash": "9143fb38919a2954ef84a60ca686fecb3377e2422969be0996f40ccf83bc66b3",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.854Z"
+      "updatedAt": "2026-10-21T15:02:18.790Z"
     },
     {
       "slug": "broad-oaks-health-clinic",
@@ -43,7 +43,7 @@
       "contentHash": "0c25e15395159e602f58f4701b10c44aa9d4711de7239d2a9331cfd18b839ce0",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.855Z"
+      "updatedAt": "2026-10-21T15:02:18.898Z"
     },
     {
       "slug": "concept-96921d2d9126",
@@ -58,7 +58,7 @@
       "contentHash": "3211072f1f9a669d14774b50f352fd9d0b613e81247f8214926d51208316f60e",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-02T22:13:00.042Z"
+      "updatedAt": "2026-10-21T15:02:18.999Z"
     },
     {
       "slug": "eurospex-opticians",
@@ -73,7 +73,22 @@
       "contentHash": "b813e236e2724f557e6ffff40a80150d91cb372431b94c48e75ca0e56cd6677a",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.857Z"
+      "updatedAt": "2026-10-21T15:02:19.096Z"
+    },
+    {
+      "slug": "eye-openers",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/eye-openers/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "7643fb886e21b4445dbc772a0087857e799f0346c7bf76e3a6ae7466b040796d",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-10-21T15:02:19.195Z"
     },
     {
       "slug": "eyespec",
@@ -88,7 +103,7 @@
       "contentHash": "9eb90410b16ea7c7b3f25f87a3de841edc15a80fdde4e8b178de9798dc9b9f91",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.859Z"
+      "updatedAt": "2026-10-21T15:02:19.298Z"
     },
     {
       "slug": "fictional-clinic",
@@ -103,7 +118,7 @@
       "contentHash": "1ee2becc485551dfb1e266ee41052c45deca3c0bad4677947a48c9663677d13d",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-02T20:28:02.378Z"
+      "updatedAt": "2026-10-21T15:02:19.401Z"
     },
     {
       "slug": "fictional-dental",
@@ -118,7 +133,7 @@
       "contentHash": "a85a5b0cc3c402a70025ce86d4af116e7525caebb5500588e644f8a984c336f7",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.862Z"
+      "updatedAt": "2026-10-21T15:02:19.508Z"
     },
     {
       "slug": "fictional-well",
@@ -133,7 +148,7 @@
       "contentHash": "46a5e175b9c6a35b085ebc0f83ad727430bb31bd3f1807e5a980b65e29a60553",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.864Z"
+      "updatedAt": "2026-10-21T15:02:19.615Z"
     },
     {
       "slug": "halesowen-foot-clinic",
@@ -148,7 +163,7 @@
       "contentHash": "b0940c54c974d34a1c506e44a9f710a5da036ac25f0e88723a67399f3d86439c",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:14:50.193Z"
+      "updatedAt": "2026-10-21T15:02:19.723Z"
     },
     {
       "slug": "maginnis-opticians",
@@ -193,7 +208,7 @@
       "contentHash": "7f01fbc09d89d3cd8790b6cd08b04a7c07d9adc5dc199fa815f5d1558fd89dba",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.872Z"
+      "updatedAt": "2026-10-21T15:02:19.828Z"
     },
     {
       "slug": "tidy-feet",
@@ -205,10 +220,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "manual-adaptation",
-      "contentHash": "c6b70ada8569e1dc327e3424c8837b2ca47e53f8909ddeb5c7f305e43c263766",
+      "contentHash": "d171b0af24273df35e9dee774afe4f69f25417bf50ffa1c7c6408a900557b6f3",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T19:51:29.572Z"
+      "updatedAt": "2026-10-21T15:02:19.928Z"
     },
     {
       "slug": "whyte-physio",
@@ -223,7 +238,7 @@
       "contentHash": "5ec66f611b4259a746a84971601bf0c83678f5d0a0277eb4447dfa7fcc59d225",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-10-19T18:03:14.873Z"
+      "updatedAt": "2026-10-21T15:02:20.033Z"
     }
   ]
 }
