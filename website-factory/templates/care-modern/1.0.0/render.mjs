@@ -124,7 +124,7 @@ export function render(s, e) {
   const offerItems = listed.map((service, index) => {
     const open = index === 0 ? ' open' : '';
     const num = String(index + 1).padStart(2, '0');
-    return `<div class="offer-item"><details class="offer-fold" name="listed-offers"${open}><summary class="offer-pick"><span>${num}</span>${e(service.value)}</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>${e(service.value)}</h2><p>Listed for ${name}. This panel does not add a price, a method or a result.</p><a class="about-link" href="#${service.id}"><span class="about-orb" aria-hidden="true">→</span> Open page</a></article></details></div>`;
+    return `<div class="offer-item"><details class="offer-fold" name="listed-offers"${open}><summary class="offer-pick"><span>${num}</span>${e(service.value)}</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><p class="flag">Illustrative layout — not a treatment description</p><h2>${e(service.value)}</h2><p>Listed for ${name}. This panel does not add a price, a method or a result.</p><a class="button solid" href="#${service.id}">More Information</a></article></details></div>`;
   }).join('');
   const offerSelect = listed.map((_, index) => {
     const n = index + 1;
@@ -501,7 +501,7 @@ ${reviewBoard}
 <title>${name} — concept by Parley</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;--accent:${accent};--on:${onAccent};--pale:${pale}}
 *{box-sizing:border-box}
@@ -509,8 +509,9 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:#fff;color:#333;font:16px/1.5 Manrope,"Segoe UI",sans-serif}
 h1,h2,h3,p{margin:0;overflow-wrap:break-word}
 h1,h2,h3{color:#000;font-weight:500;letter-spacing:-.03em}
+h1,h2{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;letter-spacing:-.04em}
 h1{font-size:clamp(40px,5vw,68px);line-height:1.05;max-width:11em}
-h2{font-size:clamp(32px,4vw,44px);font-weight:400;line-height:1.3}
+h2{font-size:clamp(32px,4vw,44px);font-weight:600;line-height:1.15}
 h3{font-size:20px;line-height:1.2}
 a{color:inherit}
 img{max-width:100%;display:block}
@@ -633,11 +634,11 @@ body:has(#meet-team:target) #home{display:none}
 .shot-copy em{color:#333;font-size:14px;font-style:normal;font-weight:400;line-height:1.5}
 ${serviceHover}
 .statement{padding:88px 0}
-.statement h2{max-width:12em;font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.02}
+.statement h2{max-width:12em;font-size:clamp(32px,3.4vw,44px);font-weight:600;line-height:1.15}
 .statement>.about-book{margin-top:36px}
-.vision{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:40px 64px;align-items:center}
-.vision-side{display:flex;align-items:center;gap:28px}
-.vision-side p{max-width:36em;color:#333}
+.vision{display:flex;flex-direction:column;gap:14px;max-width:42em}
+.vision>.meet-kicker{margin-bottom:0}
+.vision>p:not(.meet-kicker){margin:0;max-width:36em;color:#333;font-size:17px;line-height:1.55}
 .about-link{display:inline-flex;align-items:center;gap:14px;flex:none;color:#000;font-size:16px;font-weight:500;text-decoration:none}
 .about-orb{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:#111;transition:transform .2s ease,background .2s ease,color .2s ease}
 .about-link:hover .about-orb{transform:translateX(6px);background:#111;color:#fff}
@@ -797,10 +798,11 @@ ${serviceHover}
 .review-photo:nth-child(4){background:#d9e3dc}
 .review-photo span{color:rgba(17,24,39,.28);font-size:120px;font-weight:500;letter-spacing:-.04em;line-height:1}
 .review-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.review-quote{padding:36px 32px;border-radius:16px;background:#fff}
-.review-quote h3{margin:0 0 22px;font-size:22px;font-weight:500}
+.review-quote{display:flex;flex-direction:column;padding:36px 32px;border-radius:16px;background:#fff;overflow:hidden}
+.review-quote h3{flex:none;margin:0 0 22px;font-size:22px;font-weight:500}
 .review-quote p{color:#333;font-size:16px;line-height:1.55}
-.review-quote .flag{margin-bottom:16px}
+.review-quote .flag{flex:none;margin-bottom:16px}
+.review-quote>p:not(.flag){flex:1 1 auto;min-height:0;overflow:hidden}
 .review-stars,.review-nav{display:none}
 ${reviewSelect}
 .social h2{font-size:clamp(32px,3.4vw,44px);font-weight:600;line-height:1.15}
@@ -867,6 +869,7 @@ ${reviewSelect}
 #contact{padding-top:56px}
 #contact .page-intro h1{max-width:none;text-align:left}
 #contact .info-card{text-align:center}
+#contact .info-card h2{margin:0 0 14px}
 .service-block{margin-top:28px}
 .service-close{margin-top:36px}
 .services-page{padding-top:56px}
@@ -905,14 +908,14 @@ ${reviewSelect}
 .offer-fold[open]>.offer-pick{background:var(--pale)}
 .offer-stage{position:relative;z-index:0;min-height:460px;overflow:hidden;border-radius:28px;background:var(--pale)}
 .offer-shape{position:absolute;right:8%;top:16%;width:190px;height:190px;border-radius:52px;background:#111;transform:rotate(-14deg);transition:transform .35s ease,background .35s ease}
-.offer-shape-b{right:auto;left:8%;top:auto;bottom:14%;width:92px;height:92px;border-radius:28px;background:#fff}
+.offer-shape-b{right:auto;left:8%;top:12%;bottom:auto;width:92px;height:92px;border-radius:28px;background:#fff;transform:rotate(14deg)}
 .offer-local{display:none}
 .offer-panel{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:36px}
 .offer-fold[open]>.offer-panel{position:absolute;z-index:1;top:0;right:0;bottom:0;width:calc((100% - 22px) * 1.22 / 2)}
 .offer-panel h2{max-width:8em;font-size:clamp(36px,4vw,56px);font-weight:600;line-height:1.05}
 .offer-panel p{max-width:28em;margin-top:12px}
-.offer-panel .flag,.offer-panel h2,.offer-panel p,.offer-panel .about-link{position:relative;z-index:1}
-.offer-panel .about-link{margin-top:24px}
+.offer-panel .flag,.offer-panel h2,.offer-panel p,.offer-panel .button{position:relative;z-index:1}
+.offer-panel .button{margin-top:24px}
 .service-page{padding:0;background:#efe6d4}
 .service-sheet{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:28px 0 72px}
 .service-back{display:inline-flex;align-items:center;gap:12px;color:#111;font-weight:600;text-decoration:none}
@@ -1039,8 +1042,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .service-accordion summary:after{content:"+";font-weight:400}
   .service-accordion details[open] summary:after{content:"–"}
   .service-accordion .accordion-book{margin-top:18px}
-  .vision{grid-template-columns:1fr;gap:22px}
-  .vision-side{align-items:flex-start;flex-direction:column;gap:18px}
+  .vision{gap:14px}
   .stat-board{grid-template-columns:1fr;gap:18px;min-height:0;margin-top:28px}
   .rails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;align-items:stretch;gap:8px}
   .rail,.rail:hover,.rail-reviews,.rail-reviews:hover,.rail-years,.rail-years:hover{width:auto;height:100%;min-height:80px;padding:12px 8px}
@@ -1244,9 +1246,7 @@ ${socialBand}
 <section class="wrap statement">
 <div class="vision">
 <h2>Why ${name}?</h2>
-<div class="vision-side">
 <p>${s.demo ? e(s.copy.introduction) : e(b.hours?.value || 'Hours awaiting confirmation.')}</p>
-</div>
 </div>
 ${demoStats}
 <a class="about-link about-book" href="#contact">Book appointment<span class="about-orb" aria-hidden="true">→</span></a>
