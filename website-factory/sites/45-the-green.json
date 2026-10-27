@@ -5,7 +5,7 @@
   "demo": false,
   "approvedInstructionsVersion": "ae687e71ca74ed5e",
   "template": {"id": "care-modern", "version": "1.0.0"},
-  "brand": {"accent": "#33ae52"},
+  "brand": {"accent": "#156b5c"},
   "sources": [
     {"id": "homepage", "url": "https://45thegreen.com/", "checkedAt": "2026-10-12"},
     {"id": "cqc", "url": "https://www.cqc.org.uk/location/1-14142908877", "checkedAt": "2026-10-12"},
