@@ -1,0 +1,41 @@
+{
+  "slug": "southam-chiropractic",
+  "sector": "chiropractic",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#1c8494",
+    "logo": "/factory-assets/clients/southam-chiropractic/logo.png"
+  },
+  "sources": [
+    {
+      "id": "website",
+      "url": "https://southam-chiropractic.co.uk/",
+      "checkedAt": "2026-10-27"
+    },
+    {
+      "id": "expect",
+      "url": "https://southam-chiropractic.co.uk/what-to-expect/",
+      "checkedAt": "2026-10-27"
+    },
+    {
+      "id": "contact",
+      "url": "https://www.southam-chiropractic.co.uk/contact/",
+      "checkedAt": "2026-10-27"
+    }
+  ],
+  "business": {
+    "name": { "value": "Southam Chiropractic", "sourceId": "website" },
+    "location": { "value": "Southam", "sourceId": "contact" },
+    "phone": { "value": "01926 298 102", "sourceId": "contact" },
+    "address": { "value": "Arundel House, 50 Coventry Street, Southam, CV47 0EP", "sourceId": "contact" },
+    "website": { "value": "https://southam-chiropractic.co.uk/", "sourceId": "website" },
+    "hours": { "value": "Monday, Tuesday and Thursday 10:00–20:00, Friday 10:00–16:00, Wednesday, Saturday and Sunday closed.", "sourceId": "contact" }
+  },
+  "notes": "Manual adaptation of public/preview/45-the-green/. Do not regenerate this slug or the dental factory render will replace it. Five service names are typical chiropractic areas requested for the preview and overlap the clinic’s published condition list. Initial £45, continued treatment £40 and massage £40 were supplied for this preview. The clinic website only says treatments start from £30."
+}

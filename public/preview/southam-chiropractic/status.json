@@ -1,0 +1,15 @@
+{
+  "slug": "southam-chiropractic",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/southam-chiropractic/index.html",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "4ef62d50762fff0c423a0677a1db7e36e38ce91e810c28f92923c3bb023e67ce",
+  "demo": false,
+  "message": "",
+  "updatedAt": "2026-10-27T14:20:00.000Z"
+}
