@@ -1,0 +1,54 @@
+{
+  "slug": "healing-muscles-northampton",
+  "sector": "massage",
+  "status": "concept",
+  "demo": false,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#6B3D55",
+    "logo": "/factory-assets/clients/healing-muscles-northampton/logo.png"
+  },
+  "sources": [
+    {
+      "id": "fresha",
+      "url": "https://www.fresha.com/en-GB/a/healing-muscles-northampton-upton-187-west-street-fqajbbpb",
+      "checkedAt": "2026-11-02"
+    },
+    {
+      "id": "directory",
+      "url": "https://northampton.cylex-uk.co.uk/company/healing-muscles-28354300.html",
+      "checkedAt": "2026-11-02"
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Healing Muscles Northampton",
+      "sourceId": "fresha"
+    },
+    "location": {
+      "value": "Upton, Northampton",
+      "sourceId": "fresha"
+    },
+    "phone": {
+      "value": "07856 268245",
+      "sourceId": "directory"
+    },
+    "address": {
+      "value": "187 West Street, Upton, Northampton",
+      "sourceId": "fresha"
+    },
+    "website": {
+      "value": "https://www.fresha.com/en-GB/a/healing-muscles-northampton-upton-187-west-street-fqajbbpb",
+      "sourceId": "fresha"
+    },
+    "hours": {
+      "value": "Monday to Friday 10:00–20:00, Saturday 10:00–16:00, Sunday closed.",
+      "sourceId": "fresha"
+    }
+  },
+  "notes": "Manual adaptation of public/preview/muncila-chiropractic/. Do not regenerate this slug. Logo, hero collage and Kylie NL Awards portrait supplied by user. Accent #6B3D55 maroon-purple; pale/theme #ebe6e2 from logo brown. Hero figure background #e8e8e8 with theme pale gradient retained. BOOK CTAs use Parley LeadConnector demo https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/healing-muscles-northampton-demo. Phone 07856 268245 from directory listings (not shown on Fresha page scraped). New client fee £80 / 1 hour from Fresha. Team is Kylie only."
+}

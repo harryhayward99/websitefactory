@@ -166,6 +166,21 @@
       "updatedAt": "2026-10-21T15:02:19.723Z"
     },
     {
+      "slug": "healing-muscles-northampton",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/healing-muscles-northampton/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "7334c62e02f4b83b34543062e0505733913179286c237734023f9182a1334cd0",
+      "demo": false,
+      "message": "",
+      "updatedAt": "2026-11-02T15:23:54.919Z"
+    },
+    {
       "slug": "maginnis-opticians",
       "status": "PREVIEW_READY",
       "sheetStatus": "Preview ready",
