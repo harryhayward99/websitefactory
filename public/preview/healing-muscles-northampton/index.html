@@ -111,7 +111,7 @@ body:has(#meet-team:target) #home{display:none}
 .tile-media{min-height:220px;border-radius:10px 10px 0 0}
 .hero-media img,.wide-media img,.side-media img,.tile-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-media img{object-position:center 62%;transform:none}
-.hero-media img.fit-facade{left:auto;width:78%;right:2%;top:6%;bottom:auto;height:88%;object-fit:contain;object-position:right center;transform:none}
+.hero-media img.fit-facade{left:auto;width:78%;right:0;top:0;bottom:0;height:100%;object-fit:cover;object-position:center 18%;transform:none}
 .hero-media img.anchor-top-right{object-fit:cover;object-position:right bottom;top:auto;right:0;left:auto;bottom:0;width:800px;height:calc(800px * 2 / 3)}
 .hero-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
 .hero-cards{position:absolute;left:24px;right:auto;top:0;bottom:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:space-evenly;gap:0;width:calc((100% - 48px - 28px) / 3)}
@@ -711,7 +711,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
-  .hero-media img.fit-facade{left:50%;width:86%;right:auto;top:10%;bottom:auto;height:108%;transform:translateX(-50%);object-fit:contain;object-position:center top}
+  .hero-media img.fit-facade{left:0;width:100%;right:auto;top:0;bottom:auto;height:calc(100% - 75px);transform:none;object-fit:cover;object-position:center top}
   .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -837,7 +837,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <svg class="title-arrow" aria-hidden="true"><path class="title-shaft" fill="none" stroke="#6B3D55" stroke-width="1.9" stroke-linecap="round"/><path class="title-head" fill="none" stroke="#6B3D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div class="wrap hero-stage">
-<figure class="hero-media"><img class="fit-facade" src="/factory-assets/clients/healing-muscles-northampton/hero-collage.png" alt="Massage treatment collage for Healing Muscles Northampton."></figure>
+<figure class="hero-media"><img class="fit-facade" src="/factory-assets/clients/healing-muscles-northampton/portrait-kylie.jpg" alt="Kylie Mellors, founder and senior therapist at Healing Muscles Northampton, holding the NL Awards Best Wellness or Spa trophy and certificate."></figure>
 <div class="hero-cards"><a class="hero-card" href="#new-patient"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>New client treatment</strong><em>From £80 · 1 hour</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="tel:07856268245"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>07856 268245</strong><em>Phone</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><a class="hero-card" href="#contact"><span class="hero-face"><span class="mini" aria-hidden="true"></span><span class="hero-copy"><strong>187 West Street, Upton, Northampton</strong><em>Location</em></span><span class="hero-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a></div>
 </div>
 </div>
