@@ -1,259 +1,274 @@
-{
-  "previews": [
-    {
-      "slug": "45-the-green",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/45-the-green/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "ae687e71ca74ed5e",
-      "contentHash": "7e3c27bfaab8cafd377a8b62d19e29d3f43ad8e80cc338b384e6f33ea58e9284",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-27T13:25:10.931Z"
-    },
-    {
-      "slug": "back-and-neck-clinic",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/back-and-neck-clinic/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "0cda48697fc54650",
-      "contentHash": "9143fb38919a2954ef84a60ca686fecb3377e2422969be0996f40ccf83bc66b3",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:18.790Z"
-    },
-    {
-      "slug": "broad-oaks-health-clinic",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/broad-oaks-health-clinic/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "b7afd3bbda380b91",
-      "contentHash": "0c25e15395159e602f58f4701b10c44aa9d4711de7239d2a9331cfd18b839ce0",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:18.898Z"
-    },
-    {
-      "slug": "concept-96921d2d9126",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/concept-96921d2d9126/index.html",
-      "template": {
-        "id": "clinic-clean",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "93aa95661ffc71cc",
-      "contentHash": "3211072f1f9a669d14774b50f352fd9d0b613e81247f8214926d51208316f60e",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:18.999Z"
-    },
-    {
-      "slug": "eurospex-opticians",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/eurospex-opticians/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "b813e236e2724f557e6ffff40a80150d91cb372431b94c48e75ca0e56cd6677a",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.096Z"
-    },
-    {
-      "slug": "eye-openers",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/eye-openers/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "manual-adaptation",
-      "contentHash": "7643fb886e21b4445dbc772a0087857e799f0346c7bf76e3a6ae7466b040796d",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.195Z"
-    },
-    {
-      "slug": "eyespec",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/eyespec/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "9eb90410b16ea7c7b3f25f87a3de841edc15a80fdde4e8b178de9798dc9b9f91",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.298Z"
-    },
-    {
-      "slug": "fictional-clinic",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/fictional-clinic/index.html",
-      "template": {
-        "id": "clinic-clean",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "93aa95661ffc71cc",
-      "contentHash": "1ee2becc485551dfb1e266ee41052c45deca3c0bad4677947a48c9663677d13d",
-      "demo": true,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.401Z"
-    },
-    {
-      "slug": "fictional-dental",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/fictional-dental/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "523ed8d7221d4d29",
-      "contentHash": "a85a5b0cc3c402a70025ce86d4af116e7525caebb5500588e644f8a984c336f7",
-      "demo": true,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.508Z"
-    },
-    {
-      "slug": "fictional-well",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/fictional-well/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "dd560ac84b4ae693",
-      "contentHash": "46a5e175b9c6a35b085ebc0f83ad727430bb31bd3f1807e5a980b65e29a60553",
-      "demo": true,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.615Z"
-    },
-    {
-      "slug": "halesowen-foot-clinic",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/halesowen-foot-clinic/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "manual-adaptation",
-      "contentHash": "b0940c54c974d34a1c506e44a9f710a5da036ac25f0e88723a67399f3d86439c",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.723Z"
-    },
-    {
-      "slug": "healing-muscles-northampton",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/healing-muscles-northampton/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "manual-adaptation",
-      "contentHash": "dd64d9a34f12c025ce6c71f681708b62499c912dcbbc12ba1087de22be92e319",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-11-03T13:41:55.518Z"
-    },
-    {
-      "slug": "maginnis-opticians",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/maginnis-opticians/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "92e4bd0ad5e63bb01907df643f210b69f1682e46c0e4033fc27d02a54ac48327",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-19T18:03:14.868Z"
-    },
-    {
-      "slug": "onkar-eye-centre",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/onkar-eye-centre/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "6160033eaea7b8d7",
-      "contentHash": "1032bfdc1f6f1492b76216a923da8dc3484cbe7bddc823b4c59ebb8cceb0b268",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-19T18:03:14.870Z"
-    },
-    {
-      "slug": "southam-physio",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/southam-physio/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "dd560ac84b4ae693",
-      "contentHash": "7f01fbc09d89d3cd8790b6cd08b04a7c07d9adc5dc199fa815f5d1558fd89dba",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.828Z"
-    },
-    {
-      "slug": "tidy-feet",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/tidy-feet/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "manual-adaptation",
-      "contentHash": "d171b0af24273df35e9dee774afe4f69f25417bf50ffa1c7c6408a900557b6f3",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:19.928Z"
-    },
-    {
-      "slug": "whyte-physio",
-      "status": "PREVIEW_READY",
-      "sheetStatus": "Preview ready",
-      "previewPath": "/preview/whyte-physio/index.html",
-      "template": {
-        "id": "care-modern",
-        "version": "1.0.0"
-      },
-      "instructionsVersion": "manual-adaptation",
-      "contentHash": "5ec66f611b4259a746a84971601bf0c83678f5d0a0277eb4447dfa7fcc59d225",
-      "demo": false,
-      "message": "",
-      "updatedAt": "2026-10-21T15:02:20.033Z"
-    }
-  ]
+﻿{
+    "previews":  [
+                     {
+                         "slug":  "45-the-green",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/45-the-green/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "ae687e71ca74ed5e",
+                         "contentHash":  "7e3c27bfaab8cafd377a8b62d19e29d3f43ad8e80cc338b384e6f33ea58e9284",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-27T13:25:10.931Z"
+                     },
+                     {
+                         "slug":  "back-and-neck-clinic",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/back-and-neck-clinic/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "0cda48697fc54650",
+                         "contentHash":  "9143fb38919a2954ef84a60ca686fecb3377e2422969be0996f40ccf83bc66b3",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:18.790Z"
+                     },
+                     {
+                         "slug":  "broad-oaks-health-clinic",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/broad-oaks-health-clinic/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "b7afd3bbda380b91",
+                         "contentHash":  "0c25e15395159e602f58f4701b10c44aa9d4711de7239d2a9331cfd18b839ce0",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:18.898Z"
+                     },
+                     {
+                         "slug":  "concept-96921d2d9126",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/concept-96921d2d9126/index.html",
+                         "template":  {
+                                          "id":  "clinic-clean",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "93aa95661ffc71cc",
+                         "contentHash":  "3211072f1f9a669d14774b50f352fd9d0b613e81247f8214926d51208316f60e",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:18.999Z"
+                     },
+                     {
+                         "slug":  "eurospex-opticians",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/eurospex-opticians/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "6160033eaea7b8d7",
+                         "contentHash":  "b813e236e2724f557e6ffff40a80150d91cb372431b94c48e75ca0e56cd6677a",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.096Z"
+                     },
+                     {
+                         "slug":  "eye-openers",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/eye-openers/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "7643fb886e21b4445dbc772a0087857e799f0346c7bf76e3a6ae7466b040796d",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.195Z"
+                     },
+                     {
+                         "slug":  "eyespec",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/eyespec/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "6160033eaea7b8d7",
+                         "contentHash":  "9eb90410b16ea7c7b3f25f87a3de841edc15a80fdde4e8b178de9798dc9b9f91",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.298Z"
+                     },
+                     {
+                         "slug":  "fictional-clinic",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/fictional-clinic/index.html",
+                         "template":  {
+                                          "id":  "clinic-clean",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "93aa95661ffc71cc",
+                         "contentHash":  "1ee2becc485551dfb1e266ee41052c45deca3c0bad4677947a48c9663677d13d",
+                         "demo":  true,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.401Z"
+                     },
+                     {
+                         "slug":  "fictional-dental",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/fictional-dental/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "523ed8d7221d4d29",
+                         "contentHash":  "a85a5b0cc3c402a70025ce86d4af116e7525caebb5500588e644f8a984c336f7",
+                         "demo":  true,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.508Z"
+                     },
+                     {
+                         "slug":  "fictional-well",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/fictional-well/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "dd560ac84b4ae693",
+                         "contentHash":  "46a5e175b9c6a35b085ebc0f83ad727430bb31bd3f1807e5a980b65e29a60553",
+                         "demo":  true,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.615Z"
+                     },
+                     {
+                         "slug":  "halesowen-foot-clinic",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/halesowen-foot-clinic/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "b0940c54c974d34a1c506e44a9f710a5da036ac25f0e88723a67399f3d86439c",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.723Z"
+                     },
+                     {
+                         "slug":  "healing-muscles-northampton",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/healing-muscles-northampton/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "dd64d9a34f12c025ce6c71f681708b62499c912dcbbc12ba1087de22be92e319",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-11-03T13:41:55.518Z"
+                     },
+                     {
+                         "slug":  "lexify-tuition",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/lexify-tuition/index.html",
+                         "template":  {
+                                          "id":  "lexify-custom",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "90b320ad214b2c1b51fc65489aab9d2556765b62b8e96833fc6e303cb70928a0",
+                         "demo":  true,
+                         "message":  "",
+                         "updatedAt":  "2026-11-10T18:19:35.596Z"
+                     },
+                     {
+                         "slug":  "maginnis-opticians",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/maginnis-opticians/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "6160033eaea7b8d7",
+                         "contentHash":  "92e4bd0ad5e63bb01907df643f210b69f1682e46c0e4033fc27d02a54ac48327",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-19T18:03:14.868Z"
+                     },
+                     {
+                         "slug":  "onkar-eye-centre",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/onkar-eye-centre/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "6160033eaea7b8d7",
+                         "contentHash":  "1032bfdc1f6f1492b76216a923da8dc3484cbe7bddc823b4c59ebb8cceb0b268",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-19T18:03:14.870Z"
+                     },
+                     {
+                         "slug":  "southam-physio",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/southam-physio/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "dd560ac84b4ae693",
+                         "contentHash":  "7f01fbc09d89d3cd8790b6cd08b04a7c07d9adc5dc199fa815f5d1558fd89dba",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.828Z"
+                     },
+                     {
+                         "slug":  "tidy-feet",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/tidy-feet/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "d171b0af24273df35e9dee774afe4f69f25417bf50ffa1c7c6408a900557b6f3",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:19.928Z"
+                     },
+                     {
+                         "slug":  "whyte-physio",
+                         "status":  "PREVIEW_READY",
+                         "sheetStatus":  "Preview ready",
+                         "previewPath":  "/preview/whyte-physio/index.html",
+                         "template":  {
+                                          "id":  "care-modern",
+                                          "version":  "1.0.0"
+                                      },
+                         "instructionsVersion":  "manual-adaptation",
+                         "contentHash":  "5ec66f611b4259a746a84971601bf0c83678f5d0a0277eb4447dfa7fcc59d225",
+                         "demo":  false,
+                         "message":  "",
+                         "updatedAt":  "2026-10-21T15:02:20.033Z"
+                     }
+                 ]
 }

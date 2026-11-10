@@ -1,0 +1,92 @@
+{
+  "slug": "lexify-tuition",
+  "sector": "tuition",
+  "status": "concept",
+  "demo": true,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": { "id": "lexify-custom", "version": "1.0.0" },
+  "brand": { "accent": "#F7D046" },
+  "sources": [
+    {
+      "id": "lexify-site",
+      "url": "https://lexifytuition.com/",
+      "checkedAt": "2026-11-10"
+    },
+    {
+      "id": "google-reviews",
+      "url": "https://www.google.com/maps/search/?api=1&query=Lexify%20Tuition&query_place_id=ChIJfRenNDhBd0gR3MjAYy-3Rg4",
+      "checkedAt": "2026-11-10"
+    }
+  ],
+  "business": {
+    "name": { "value": "Lexify Tuition", "sourceId": "lexify-site" },
+    "location": { "value": "Crick, Northamptonshire", "sourceId": "lexify-site" },
+    "phone": { "value": "07886 935838", "sourceId": "lexify-site" },
+    "email": { "value": "info@lexifytuition.com", "sourceId": "lexify-site" },
+    "address": { "value": "Crick, Northamptonshire, NN6", "sourceId": "lexify-site" },
+    "services": [
+      {
+        "value": "In school tuition",
+        "detail": "Specialist support in schools near Crick, Northamptonshire.",
+        "sourceId": "lexify-site"
+      },
+      {
+        "value": "1-to-1 and 1-to-2 tuition",
+        "detail": "In person and online tutoring for focused, personal support.",
+        "sourceId": "lexify-site"
+      },
+      {
+        "value": "Specialist dyslexia teaching",
+        "detail": "Level 5 Dyslexia (BDA ATS) support for learners up to 18.",
+        "sourceId": "lexify-site"
+      }
+    ]
+  },
+  "copy": {
+    "headline": "Specialist teaching support",
+    "introduction": "Providing expert teaching support tailored for dyslexia, along with personalised tutoring in English and maths to help primary children build confidence and succeed."
+  },
+  "contentReviewed": true,
+  "reviews": [
+    {
+      "name": "Jasveer Kooner",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Julie has been the most professional and reliable tutor we have worked with. Our 11 year old son looks forward to learning with her."
+    },
+    {
+      "name": "Amy Nickols",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Julie has been a great addition to our child’s learning. He has gained so much confidence from going to Julie!"
+    },
+    {
+      "name": "Megan North",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Julie has been an amazing support in building our daughter’s confidence in her work and in herself."
+    },
+    {
+      "name": "Eleanor Clark",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Julie has been fantastic with my AuDHD daughter. In one term she has a much better grounding in French — and more confidence too."
+    },
+    {
+      "name": "Dorothy Martin",
+      "rating": 5,
+      "sourceId": "google-reviews",
+      "quote": "Julie has taught our KS2 child for over a year — experienced, patient, and understands the challenges dyslexic pupils face."
+    }
+  ],
+  "exampleSections": [],
+  "people": [
+    {
+      "name": "Julie",
+      "role": "Specialist dyslexia tutor",
+      "detail": "BA Hons (University of Ulster), PGCE Primary Education (University of Warwick), Level 5 Dyslexia (BDA ATS), Enhanced DBS and safeguarding certificate.",
+      "sourceId": "lexify-site"
+    }
+  ],
+  "notes": "Custom Lexify Tuition multi-page concept demo for Parley Systems (not care-modern). Sticky card-stack homepage with Who We Are, Services, Fully Qualified and Reviews. Separate Services, Why Us, Dyslexia Symptoms, Reviews and Contact pages. Do not regenerate this slug through the care-modern factory. Assets live under public/preview/lexify-tuition/assets/."
+}

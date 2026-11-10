@@ -1,0 +1,15 @@
+{
+  "slug": "lexify-tuition",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/lexify-tuition/index.html",
+  "template": {
+    "id": "lexify-custom",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "90b320ad214b2c1b51fc65489aab9d2556765b62b8e96833fc6e303cb70928a0",
+  "demo": true,
+  "message": "",
+  "updatedAt": "2026-11-10T18:19:35.596Z"
+}
