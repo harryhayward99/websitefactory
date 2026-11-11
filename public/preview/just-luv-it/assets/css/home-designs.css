@@ -127,8 +127,8 @@
 }
 
 .home-hero .btn-primary {
-  background: var(--accent);
-  color: #f7f2e8;
+  background: #f7f2ea;
+  color: var(--accent-deep, #15291f);
   border: none;
   border-radius: 999px;
   font-weight: 700;
@@ -136,8 +136,8 @@
 }
 
 .home-hero .btn-primary:hover {
-  background: var(--accent-deep);
-  color: #fff;
+  background: #fff;
+  color: var(--accent-deep, #15291f);
 }
 
 .hero-shop-arrow {
@@ -409,6 +409,14 @@
       rgba(21, 41, 31, 0.3) 82%,
       rgba(21, 41, 31, 0.3) 100%
     );
+  }
+
+  .hero-copy {
+    gap: 0.95rem;
+  }
+
+  .hero-actions {
+    margin-top: 0.35rem;
   }
 
   .hero-brand {
