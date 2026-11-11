@@ -1,0 +1,14 @@
+{
+  "slug": "just-luv-it",
+  "demo": true,
+  "businessName": "Just Luv It",
+  "website": "https://justluvit.co.uk/",
+  "category": "retail-gifts",
+  "template": "custom",
+  "previewPath": "public/preview/just-luv-it/index.html",
+  "contact": {
+    "email": "sales@justluvit.co.uk",
+    "phone": "07359019922"
+  },
+  "notes": "Custom multi-page shop concept (home, shop, product, about). Local product data and simulated basket. Real assets under public/preview/just-luv-it/assets and public/factory-assets/clients/just-luv-it/. Do not regenerate through care-modern."
+}

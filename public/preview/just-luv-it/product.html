@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Product – Just Luv It preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="assets/images/logo.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Just Luv It home">
+          <img src="assets/images/logo.png" alt="Just Luv It logo" />
+          <span class="brand-text">
+            <span class="brand-name">Just Luv It</span>
+            <span class="brand-tag">handmade · ethical · sustainable</span>
+          </span>
+        </a>
+        <nav class="nav-main" aria-label="Primary">
+          <a href="index.html" data-nav="index.html">Home</a>
+          <a href="shop.html" data-nav="shop.html">Shop</a>
+          <a href="shop.html?category=garden">Garden</a>
+          <a href="shop.html?category=home">Home</a>
+          <a href="shop.html?category=decorations">Decorations</a>
+          <a href="events.html" data-nav="events.html">Events</a>
+          <a href="about.html" data-nav="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-open="search" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" type="button" data-open="basket" aria-label="Open basket">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 8h12l-1 11H7L6 8Z"></path>
+              <path d="M9 8V7a3 3 0 0 1 6 0v1"></path>
+            </svg>
+            <span class="basket-count" data-basket-count hidden>0</span>
+          </button>
+          <button class="icon-btn menu-toggle" type="button" data-open="nav" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="product-root"></div>
+      <section class="related wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">You may also like</p>
+            <h2 class="section-title">More from this collection</h2>
+          </div>
+        </div>
+        <div class="product-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <section class="site-reviews" aria-label="Customer reviews">
+      <div class="wrap" data-reviews-root></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img src="assets/images/logo.png" alt="" />
+              <strong>Just Luv It</strong>
+            </div>
+            <p>Handmade, ethically sourced gifts, homeware and garden decorations.</p>
+          </div>
+          <div>
+            <h3>Visit</h3>
+            <ul>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="shop.html?category=seasonal">Seasonal gifts</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:sales@justluvit.co.uk">sales@justluvit.co.uk</a></li>
+              <li><a href="tel:07359019922">07359 019922</a></li>
+              <li>Live site: justluvit.co.uk</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">
+          <span>Preview concept for client presentation. Basket is simulated.</span>
+          <span>© Just Luv It</span>
+        </div>
+      </div>
+    </footer>
+
+    <div id="search-panel" class="search-panel" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="search-sheet" role="dialog" aria-label="Search products">
+        <div class="panel-head">
+          <h2>Search</h2>
+          <button class="close-btn" type="button" data-close aria-label="Close">×</button>
+        </div>
+        <input id="global-search" type="search" placeholder="Search this curated selection…" />
+        <div id="search-results" class="search-results">
+          <p class="basket-empty">Type to search this curated selection.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="basket-panel" class="basket-panel" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="basket-sheet" role="dialog" aria-label="Basket">
+        <div class="panel-head">
+          <h2>Basket</h2>
+          <button class="close-btn" type="button" data-close aria-label="Close">×</button>
+        </div>
+        <div id="basket-items" class="basket-items"></div>
+        <div class="basket-foot">
+          <div class="basket-total"><span>Total</span><span id="basket-total">£0.00</span></div>
+          <p class="demo-note">Demo basket only — no payment or order is placed.</p>
+          <button class="btn btn-primary btn-block" type="button" id="demo-checkout">Checkout (demo)</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="nav-panel" class="nav-drawer" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="drawer-sheet" role="dialog" aria-label="Menu">
+        <div class="drawer-top">
+          <div class="drawer-brand">
+            <p class="eyebrow">Just Luv It</p>
+            <strong>Menu</strong>
+          </div>
+          <div class="drawer-top-actions">
+            <button class="icon-btn" type="button" data-open="basket" aria-label="Open basket">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 8h12l-1 11H7L6 8Z"></path>
+                <path d="M9 8V7a3 3 0 0 1 6 0v1"></path>
+              </svg>
+              <span class="basket-count" data-basket-count hidden>0</span>
+            </button>
+            <button class="close-btn" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </div>
+        </div>
+        <nav class="drawer-nav">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="shop.html?category=garden">Garden</a>
+          <a href="shop.html?category=home">Homeware</a>
+          <a href="shop.html?category=decorations">Decorations</a>
+          <a href="events.html">Events</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="drawer-foot">
+          <p>Handmade gifts with a story.</p>
+          <a href="mailto:sales@justluvit.co.uk">sales@justluvit.co.uk</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/reviews.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

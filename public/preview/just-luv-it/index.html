@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Just Luv It – Handmade gifts, homeware & garden</title>
+    <meta
+      name="description"
+      content="Design preview for Just Luv It: handmade, ethically sourced gifts, homeware and garden decorations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="assets/images/logo.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/home-designs.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Just Luv It home">
+          <img src="assets/images/logo.png" alt="Just Luv It logo" />
+          <span class="brand-text">
+            <span class="brand-name">Just Luv It</span>
+            <span class="brand-tag">handmade · ethical · sustainable</span>
+          </span>
+        </a>
+        <nav class="nav-main" aria-label="Primary">
+          <a href="index.html" data-nav="index.html">Home</a>
+          <a href="shop.html" data-nav="shop.html">Shop</a>
+          <a href="shop.html?category=garden">Garden</a>
+          <a href="shop.html?category=home">Home</a>
+          <a href="shop.html?category=decorations">Decorations</a>
+          <a href="events.html" data-nav="events.html">Events</a>
+          <a href="about.html" data-nav="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-open="search" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" type="button" data-open="basket" aria-label="Open basket">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 8h12l-1 11H7L6 8Z"></path>
+              <path d="M9 8V7a3 3 0 0 1 6 0v1"></path>
+            </svg>
+            <span class="basket-count" data-basket-count hidden>0</span>
+          </button>
+          <button class="icon-btn menu-toggle" type="button" data-open="nav" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="home-hero" id="home-hero">
+        <div class="hero-media">
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcset="assets/images/hero-market.jpg"
+            />
+            <source
+              type="image/png"
+              srcset="assets/images/hero-thumbs.png"
+            />
+            <img
+              src="assets/images/hero-thumbs.jpg"
+              alt="Andrea and Howard of Just Luv It at their market stall"
+              width="1024"
+              height="1024"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+          <div class="hero-u-wash" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-bottom" id="hero-bottom">
+          <div class="hero-copy">
+            <p class="hero-kicker">Andrea &amp; Howard</p>
+            <h1 class="hero-brand">Just Luv It</h1>
+            <p class="hero-lead">
+              Handmade gifts and colourful homeware from an independent stall with a story behind every piece.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="shop.html">Browse the shop</a>
+              <svg
+                class="hero-shop-arrow"
+                viewBox="0 0 280 120"
+                width="280"
+                height="120"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <!-- Large swoop in from the right, toward the button -->
+                <path
+                  class="hero-shop-arrow-body"
+                  pathLength="1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M268 28
+                     C232 8 210 78 168 48
+                     C140 28 128 88 96 62
+                     C76 48 64 58 48 64"
+                ></path>
+                <!-- Head drawn last -->
+                <path
+                  class="hero-shop-arrow-head"
+                  pathLength="1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M68 42 L36 66 L72 86"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <aside
+            class="hero-types"
+            id="hero-types"
+            aria-label="Shop by product type"
+          >
+            <div class="hero-types-head">
+              <p class="hero-types-label">Shop by category</p>
+              <div class="hero-types-nav" aria-label="Browse product types">
+                <button type="button" class="hero-types-arrow" id="hero-types-prev" aria-label="Previous product types">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M15 6 9 12l6 6"></path>
+                  </svg>
+                </button>
+                <button type="button" class="hero-types-arrow" id="hero-types-next" aria-label="Next product types">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="m9 6 6 6-6 6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="hero-types-viewport">
+              <div class="hero-types-pair" id="hero-types-pair"></div>
+            </div>
+          </aside>
+        </div>
+
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Explore</p>
+              <h2 class="section-title">Find something with character</h2>
+            </div>
+            <p class="section-copy">
+              A clearer path through garden ornaments, felt decorations and colourful homeware.
+            </p>
+          </div>
+          <div class="category-grid">
+            <a class="category-card" href="shop.html?category=garden">
+              <img src="assets/images/products/colin-cockerel.jpg" alt="" />
+              <span>Garden</span>
+            </a>
+            <a class="category-card" href="shop.html?category=home">
+              <img src="assets/images/products/aqua-poppy-bowl.jpg" alt="" />
+              <span>Home</span>
+            </a>
+            <a class="category-card" href="shop.html?category=decorations">
+              <img src="assets/images/products/ziggy-sheep.jpg" alt="" />
+              <span>Decorations</span>
+            </a>
+            <a class="category-card" href="shop.html?category=seasonal">
+              <img src="assets/images/products/harvey-hamster.jpg" alt="" />
+              <span>Seasonal</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Curated for this preview</p>
+              <h2 class="section-title">Pieces people love to give</h2>
+            </div>
+            <a class="btn btn-ghost" href="shop.html">See all</a>
+          </div>
+          <div class="product-grid" id="featured-grid"></div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap seasonal">
+          <div class="seasonal-copy">
+            <p class="eyebrow">Seasonal gifting</p>
+            <h2>Christmas finds with warmth, not clutter</h2>
+            <p>
+              Felt characters and handcrafted glass for trees, tables and thoughtful parcels —
+              selected from the live range for this walkthrough.
+            </p>
+            <div>
+              <a class="btn btn-clay" href="shop.html?category=seasonal">Shop seasonal</a>
+            </div>
+            <div class="seasonal-visual">
+              <a class="seasonal-tile" href="shop.html?category=seasonal&amp;q=tree">
+                <img src="assets/images/products/glass-xmas-tree.webp" alt="Handcrafted glass Christmas tree" />
+                <span class="seasonal-tile-label">
+                  For the tree
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"></path>
+                  </svg>
+                </span>
+              </a>
+              <a class="seasonal-tile" href="shop.html?category=seasonal&amp;q=xmas">
+                <img src="assets/images/products/harvey-hamster.jpg" alt="Harvey the Christmas Hamster" />
+                <span class="seasonal-tile-label">
+                  Xmas bits
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"></path>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap about-band">
+          <div class="about-photo">
+            <img src="assets/images/andrea.jpg" alt="Andrea of Just Luv It" />
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow">Who we are</p>
+            <h2>I’m Andrea — and I just luv beautiful gifts with a story</h2>
+            <p>
+              Just Luv It began after lockdown changed perspective: a place for affordable,
+              sustainable gifts that are handmade, with origins that can be traced to the
+              craftsperson who made them.
+            </p>
+            <p>
+              Howard is alongside at every market and pop-up. Together we look for pieces that
+              are fair to makers, kinder to the planet, and lovely enough to give.
+            </p>
+            <div class="values">
+              <div class="value">
+                <h3>Fairness</h3>
+                <p>Never mass produced — each piece can be traced back to the person who made it.</p>
+              </div>
+              <div class="value">
+                <h3>Sustainability</h3>
+                <p>Products chosen to do no harm, with reusing and recycling wherever possible.</p>
+              </div>
+              <div class="value">
+                <h3>Quality</h3>
+                <p>Pieces we would love to receive ourselves as a luxury gift.</p>
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem">
+              <a class="btn btn-primary" href="about.html">Read our story</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="site-reviews" aria-label="Customer reviews">
+      <div class="wrap" data-reviews-root></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img src="assets/images/logo.png" alt="" />
+              <strong>Just Luv It</strong>
+            </div>
+            <p>
+              Handmade, ethically sourced gifts, homeware and garden decorations.
+            </p>
+          </div>
+          <div>
+            <h3>Visit</h3>
+            <ul>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="shop.html?category=seasonal">Seasonal gifts</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:sales@justluvit.co.uk">sales@justluvit.co.uk</a></li>
+              <li><a href="tel:07359019922">07359 019922</a></li>
+              <li>Live site: justluvit.co.uk</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">
+          <span>Preview concept for client presentation. Basket is simulated.</span>
+          <span>© Just Luv It</span>
+        </div>
+      </div>
+    </footer>
+
+    <div id="search-panel" class="search-panel" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="search-sheet" role="dialog" aria-label="Search products">
+        <div class="panel-head">
+          <h2>Search</h2>
+          <button class="close-btn" type="button" data-close aria-label="Close">×</button>
+        </div>
+        <input id="global-search" type="search" placeholder="Search this curated selection…" />
+        <div id="search-results" class="search-results">
+          <p class="basket-empty">Type to search this curated selection.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="basket-panel" class="basket-panel" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="basket-sheet" role="dialog" aria-label="Basket">
+        <div class="panel-head">
+          <h2>Basket</h2>
+          <button class="close-btn" type="button" data-close aria-label="Close">×</button>
+        </div>
+        <div id="basket-items" class="basket-items"></div>
+        <div class="basket-foot">
+          <div class="basket-total"><span>Total</span><span id="basket-total">£0.00</span></div>
+          <p class="demo-note">Demo basket only — no payment or order is placed.</p>
+          <button class="btn btn-primary btn-block" type="button" id="demo-checkout">Checkout (demo)</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="nav-panel" class="nav-drawer" aria-hidden="true">
+      <div class="overlay" data-close></div>
+      <div class="drawer-sheet" role="dialog" aria-label="Menu">
+        <div class="drawer-top">
+          <div class="drawer-brand">
+            <p class="eyebrow">Just Luv It</p>
+            <strong>Menu</strong>
+          </div>
+          <div class="drawer-top-actions">
+            <button class="icon-btn" type="button" data-open="basket" aria-label="Open basket">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 8h12l-1 11H7L6 8Z"></path>
+                <path d="M9 8V7a3 3 0 0 1 6 0v1"></path>
+              </svg>
+              <span class="basket-count" data-basket-count hidden>0</span>
+            </button>
+            <button class="close-btn" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </div>
+        </div>
+        <nav class="drawer-nav">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="shop.html?category=garden">Garden</a>
+          <a href="shop.html?category=home">Homeware</a>
+          <a href="shop.html?category=decorations">Decorations</a>
+          <a href="events.html">Events</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="drawer-foot">
+          <p>Handmade gifts with a story.</p>
+          <a href="mailto:sales@justluvit.co.uk">sales@justluvit.co.uk</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/reviews.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
