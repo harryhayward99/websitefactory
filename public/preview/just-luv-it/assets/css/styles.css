@@ -695,23 +695,22 @@ input {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 2.5rem;
   align-items: start;
-  padding: 2rem 0 4rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .product-gallery {
   border-radius: calc(var(--radius) + 8px);
   background:
     linear-gradient(160deg, #efe9dc, #e2ebdd);
-  padding: 1.5rem;
-  min-height: 520px;
-  display: grid;
-  place-items: center;
+  padding: 0.85rem;
 }
 
 .product-gallery img {
-  width: min(100%, 520px);
-  max-height: 560px;
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 2px);
 }
 
 .product-info h1 {
@@ -1642,10 +1641,6 @@ input {
   .sort-field select {
     min-width: 0;
     width: 100%;
-  }
-
-  .product-gallery {
-    min-height: 340px;
   }
 
   .about-photo {
