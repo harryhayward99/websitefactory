@@ -1,0 +1,37 @@
+{
+  "slug": "sophies-sports-massage",
+  "sector": "massage",
+  "status": "concept",
+  "demo": true,
+  "approvedInstructionsVersion": "manual-adaptation",
+  "template": {
+    "id": "care-modern",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "accent": "#440621",
+    "logo": "/factory-assets/clients/sophies-sports-massage/logo.jpg"
+  },
+  "sources": [
+    {
+      "id": "design-inspiration",
+      "url": "https://reformchirokenilworth.com/",
+      "checkedAt": "2026-11-13"
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Sophie's Sports Massage & Rehabilitation",
+      "sourceId": "design-inspiration"
+    },
+    "location": {
+      "value": "By appointment",
+      "sourceId": "design-inspiration"
+    },
+    "hours": {
+      "value": "By appointment. Exact hours confirmed when booking.",
+      "sourceId": "design-inspiration"
+    }
+  },
+  "notes": "Manual adaptation of public/preview/southam-chiropractic/. Do not regenerate this slug. Design inspiration from Reform Kenilworth (Fraunces + Inter, accent #440621, pale #EBE6E8, page #F5F4F4). Supplied Sophie portrait, treatment photo and logo. Services: initial consultation, continued treatment, sports massage, cupping, introductory offer. BOOK CTAs currently point to #contact until a live booking URL is supplied. Address/phone not verified — marked by appointment. Demo: true for Parley Systems showcase."
+}

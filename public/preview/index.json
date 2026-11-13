@@ -241,6 +241,21 @@
       "updatedAt": "2026-10-19T18:03:14.870Z"
     },
     {
+      "slug": "sophies-sports-massage",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/sophies-sports-massage/index.html",
+      "template": {
+        "id": "care-modern",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "c21a4bc7e3d699bed80f3436a2f6fa155ca6413566232b21fddf295405c3ca4e",
+      "demo": true,
+      "message": "",
+      "updatedAt": "2026-11-13T17:23:41.662Z"
+    },
+    {
       "slug": "southam-physio",
       "status": "PREVIEW_READY",
       "sheetStatus": "Preview ready",
