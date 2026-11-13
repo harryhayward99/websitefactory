@@ -25,13 +25,17 @@
       "sourceId": "design-inspiration"
     },
     "location": {
-      "value": "By appointment",
+      "value": "14 Abbey End, Kenilworth, CV8 1QJ",
       "sourceId": "design-inspiration"
     },
     "hours": {
-      "value": "By appointment. Exact hours confirmed when booking.",
+      "value": "Mon–Thu 09:00–18:00, Fri 09:00–17:00, Sat 09:00–13:00, Sun closed",
+      "sourceId": "design-inspiration"
+    },
+    "phone": {
+      "value": "01926 854 210",
       "sourceId": "design-inspiration"
     }
   },
-  "notes": "Manual adaptation of public/preview/southam-chiropractic/. Do not regenerate this slug. Design inspiration from Reform Kenilworth (Fraunces + Inter, accent #440621, pale #EBE6E8, page #F5F4F4). Supplied Sophie portrait, treatment photo and logo. Services: initial consultation, continued treatment, sports massage, cupping, introductory offer. BOOK CTAs currently point to #contact until a live booking URL is supplied. Address/phone not verified — marked by appointment. Demo: true for Parley Systems showcase."
+  "notes": "Manual adaptation of public/preview/southam-chiropractic/. Do not regenerate this slug. Design inspiration from Reform Kenilworth. Filler Kenilworth address/phone/hours/prices/reviews used for showcase — replace with verified details when available. Demo: true."
 }
