@@ -9,15 +9,15 @@
 <title>Southam Chiropractic | Chiropractor in Southam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;--accent:#1c8494;--on:#ffffff;--pale:#d6eef2}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:122px}
-body{margin:0;background:#fff;color:#333;font:16px/1.5 Manrope,"Segoe UI",sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:122px;overflow-x:clip}
+body{margin:0;overflow-x:clip;background:#fff;color:#333;font:16px/1.5 Manrope,"Segoe UI",sans-serif}
 h1,h2,h3,p{margin:0;overflow-wrap:break-word}
-h1,h2,h3{color:#000;font-weight:500;letter-spacing:-.03em}
-h1,h2{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;letter-spacing:-.04em}
+h1,h2,h3{color:#000;font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;font-weight:500;letter-spacing:-.04em}
+strong{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;letter-spacing:-.02em}
 h1{font-size:clamp(40px,5vw,68px);line-height:1.05;max-width:11em}
 h2{font-size:clamp(32px,3.4vw,44px);font-weight:600;line-height:1.15}
 h3{font-size:20px;line-height:1.2}
@@ -25,15 +25,15 @@ a{color:inherit}
 img{max-width:100%;display:block}
 .skip{position:absolute;left:12px;top:-48px;background:#fff;padding:8px 12px;z-index:9}
 .skip:focus{top:12px}
-.site-chrome{position:sticky;top:0;z-index:8;background:#fff}
-.banner{display:flex;align-items:stretch;min-height:34px;margin:0;background:#fff;color:#111}
+.site-chrome{--banner-h:34px;position:sticky;top:0;z-index:8;background:#fff}
+.banner{display:flex;align-items:stretch;min-height:var(--banner-h);margin:0;background:#fff;color:#111}
 .banner-note{flex:1;min-width:0;margin:0;padding:0;overflow:hidden}
 .banner-contact{display:flex;align-items:center;gap:12px;flex:none;max-width:min(68%,760px);margin:0;padding:7px 22px 7px 44px;background:var(--pale);color:#111;font-size:13px;font-weight:500;line-height:1.2;clip-path:polygon(0 0,100% 0,100% 100%,22px 100%)}
 .banner-contact .banner-address,.banner-contact a{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .banner-contact a{color:inherit;text-decoration:none}
 .banner-gap{flex:none;opacity:.72}
 .nav-toggle{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.site-header{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;min-height:88px;padding:0 28px;border-bottom:1px solid #e6e6e6;background:#fff}
+.site-header{position:static;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;min-height:88px;padding:0 28px;border-bottom:1px solid #e6e6e6;background:#fff}
 .site-header nav{justify-self:center}
 .header-cta{justify-self:end}
 .nav-left{display:block;min-width:210px;width:210px;height:0;overflow:visible;pointer-events:none}
@@ -71,6 +71,10 @@ body:has(#service-back-pain:target) .menu-panel a[href="#service-back-pain"]{bac
 .button.solid,.header-cta{background:#111;color:#fff}
 .button:hover,.header-cta:hover{background:var(--accent);color:var(--on)}
 .site-header nav .button{display:none}
+.header-actions{display:none;align-items:center;gap:8px;justify-self:end}
+.header-phone{display:none;box-sizing:border-box;width:44px;height:44px;place-items:center;border:1px solid #e6e6e6;border-radius:50%;background:#fff;color:var(--accent);text-decoration:none}
+.header-phone svg{display:block}
+.header-phone:hover{border-color:var(--accent);background:var(--accent);color:var(--on)}
 .menu-button{display:none;align-items:center;min-height:44px;padding:0 14px;border:1px solid #e6e6e6;border-radius:25px;background:#fff;cursor:pointer}
 .menu-button .close{display:none}
 .nav-toggle:checked ~ .site-header .menu-button .open{display:none}
@@ -82,24 +86,36 @@ body:not(:has(.page:target)) #home{display:block}
 body:has(#meet-team:target) #about{display:block}
 body:has(#meet-team:target) #home{display:none}
 #home{padding-top:0;padding-bottom:0}
-.landing{position:relative;display:block;padding-bottom:88px}
+.landing{position:relative;display:block;padding-bottom:52px}
 .landing::before{content:"";position:absolute;inset:0 auto 0 0;width:min(52vw,720px);height:100%;z-index:0;pointer-events:none;background:linear-gradient(135deg,color-mix(in srgb,var(--pale) 88%,#fff) 0%,color-mix(in srgb,var(--pale) 35%,transparent) 55%,transparent 100%);clip-path:polygon(0 0,100% 0,72% 100%,0 100%)}
 .landing>.hero-head,.landing>.hero-stage{position:relative;z-index:1}
 .landing>.hero-head{margin-top:0;margin-bottom:0}
 .landing>.hero-stage{margin-top:56px;margin-bottom:0}
 .hero-book .button{background:var(--accent);color:var(--on)}
 .hero-head{position:relative;display:grid;grid-template-columns:minmax(0,680px) minmax(260px,380px);justify-content:space-between;align-items:center;column-gap:56px;row-gap:20px;padding-top:48px}
-.hero-head h1{grid-column:1;grid-row:1;width:auto;max-width:none;font-weight:600;line-height:1.08;font-size:clamp(44px,5.4vw,76px)}
-.hero-head h1 .title-amp{font-family:Newsreader,Georgia,"Times New Roman",serif;font-optical-sizing:auto;font-weight:600;font-style:normal;letter-spacing:-.02em;padding:0 .04em}
-.hero-aside{grid-column:2;grid-row:1;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0}
+.hero-title{grid-column:1;grid-row:1;min-width:0}
+.hero-sub,.meet-kicker,.kicker{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;font-size:16px;font-weight:300;font-style:italic;line-height:1;letter-spacing:.02em;color:#1a3a40;font-variation-settings:"SOFT" 70,"WONK" 0}
+.hero-sub{display:block;margin:0 0 12px}
+.hero-head h1{width:auto;max-width:none;margin:0;color:#000;font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;font-weight:600;letter-spacing:-.04em;line-height:1.08;font-size:clamp(44px,5.4vw,76px)}
+.hero-head h1 .title-amp{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;font-weight:600;font-style:normal;letter-spacing:-.02em;padding:0 .04em}
+.hero-aside{grid-column:2;grid-row:1;align-self:end;display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0;padding-bottom:6px;overflow:visible}
 .hero-aside .lede{margin:0;font-size:17px;line-height:1.6;max-width:28em}
-.hero-book{display:flex;align-items:center;gap:14px}
+.hero-book{display:flex;align-items:center;gap:24px;overflow:visible}
 .title-stop{display:inline}
 .title-line{position:absolute;z-index:2;height:2px;border-radius:1px;background:var(--accent);transform:scaleX(0);transform-origin:left center;pointer-events:none}
 .title-arrow{position:absolute;left:0;top:0;z-index:2;width:100%;height:100%;overflow:visible;pointer-events:none}
+.title-arrow .title-crayon{fill:none;stroke:var(--accent);stroke-linecap:round;stroke-linejoin:round}
+.title-arrow .title-shaft-soft{stroke-width:3.1;opacity:.2}
+.title-arrow .title-shaft{stroke-width:1.05;opacity:.88}
+.title-arrow .title-shaft-grain{stroke-width:.55;opacity:.48}
+.title-arrow .title-head{stroke-width:1.35;opacity:.92}
 .title-nudge{display:none;width:64px;height:36px;margin-bottom:6px;color:var(--accent);flex:none;overflow:visible;transform:rotate(-35deg);transform-origin:center}
-.title-nudge path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.title-nudge .nudge-shaft{stroke-dasharray:90;stroke-dashoffset:90;animation:nudge-draw .5s ease .9s forwards}
+.title-nudge .title-crayon{fill:none;stroke:var(--accent);stroke-linecap:round;stroke-linejoin:round}
+.title-nudge .nudge-shaft-soft{stroke-width:3.1;opacity:.2}
+.title-nudge .nudge-shaft{stroke-width:1.05;opacity:.88}
+.title-nudge .nudge-shaft-grain{stroke-width:.55;opacity:.48}
+.title-nudge .nudge-head{stroke-width:1.35;opacity:.92}
+.title-nudge .nudge-shaft-soft,.title-nudge .nudge-shaft,.title-nudge .nudge-shaft-grain{stroke-dasharray:90;stroke-dashoffset:90;animation:nudge-draw .5s ease .9s forwards}
 .title-nudge .nudge-head{stroke-dasharray:28;stroke-dashoffset:28;animation:nudge-draw .22s ease 1.35s forwards}
 @keyframes nudge-draw{to{stroke-dashoffset:0}}
 .lede{margin:0 0 28px;color:#333;font-size:16px;line-height:1.55}
@@ -119,7 +135,7 @@ body:has(#meet-team:target) #home{display:none}
 .hero-card{display:flex;color:#000;text-decoration:none}
 .hero-face{display:flex;gap:14px;align-items:center;width:100%;height:96px;padding:12px 18px;border-radius:16px;background:rgba(255,255,255,.68);box-shadow:0 16px 40px rgba(17,17,17,.1);backdrop-filter:blur(10px)}
 .hero-copy{min-width:0;flex:1}
-.hero-card strong{display:-webkit-box;margin:0 0 4px;overflow:hidden;font-size:18px;font-weight:600;line-height:1.2;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.hero-card strong{display:-webkit-box;margin:0 0 4px;overflow:hidden;font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;font-size:18px;font-weight:600;letter-spacing:-.03em;line-height:1.2;-webkit-box-orient:vertical;-webkit-line-clamp:2}
 .hero-card em{color:#555;font-size:13px;font-style:normal;font-weight:400;line-height:1.4}
 .hero-go{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:#111;color:#fff;transition:background .2s ease,color .2s ease}
 .hero-go svg{display:block}
@@ -237,8 +253,8 @@ body:has(#meet-team:target) #home{display:none}
 .ba-tag-after{right:12px}
 .band{background:var(--pale)}
 .meet-head{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.meet-kicker{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#000;font-size:14px;font-weight:500}
-.meet-kicker svg{display:block}
+.meet-kicker{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.meet-kicker svg{display:none}
 .meet h2{font-size:clamp(32px,3.4vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.15}
 .meet-nav{display:flex;gap:10px;flex:none}
 .meet-arrow{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid rgba(0,0,0,.16);border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
@@ -281,8 +297,8 @@ body:has(#meet-team:target) #home{display:none}
 .example small,.flag{display:block;margin-bottom:8px;color:#333;font-size:12px;font-weight:600}
 .example{margin-bottom:22px}
 .example h2{font-size:28px;margin-bottom:8px}
-.kicker{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#000;font-size:14px;font-weight:500}
-.kicker svg{display:block;flex:none}
+.kicker{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.kicker svg{display:none}
 .home-team{display:grid;gap:8px;margin:28px 0}
 .book{background:var(--pale)}
 .book-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.92fr);gap:28px 36px;align-items:stretch}
@@ -341,16 +357,13 @@ body:has(#meet-team:target) #home{display:none}
 .contact-book .button.solid{background:var(--accent);color:var(--on)}
 .contact-book .button.solid:hover{background:#111;color:#fff}
 .book-setter{position:fixed;right:22px;bottom:22px;z-index:80;width:72px;height:72px}
-.book-setter-ring{position:relative;display:grid;place-items:center;box-sizing:border-box;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);text-decoration:none;box-shadow:0 12px 28px rgba(17,17,17,.16);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.book-setter-ring{position:relative;display:grid;place-items:center;box-sizing:border-box;width:72px;height:72px;padding:0;border:3px solid var(--accent);border-radius:50%;background:#fff;color:var(--accent);text-decoration:none;box-shadow:0 12px 28px rgba(17,17,17,.16);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
 .book-setter-ring::before{content:"";position:absolute;inset:-10px;border-radius:50%;background:color-mix(in srgb,var(--accent) 22%,transparent);z-index:-1;pointer-events:none;opacity:.7;transform:scale(1);animation:book-halo-pulse 2.8s ease-in-out infinite}
 @keyframes book-halo-pulse{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:.9;transform:scale(1.08)}}
-.book-setter-ring:hover,.book-setter-ring:focus-visible{background:var(--accent);border-color:var(--accent);color:var(--on)}
-.book-setter-ring:hover .book-setter-word,.book-setter-ring:focus-visible .book-setter-word{color:var(--on)}
-.book-setter-ring svg{display:block}
-.book-setter-ring.has-word{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
-.book-setter-ring.has-word svg{width:30px;height:30px;transform:translateY(-4px)}
-.book-setter-word{color:var(--accent);font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1;transform:translateY(-2px);transition:color .2s ease}
-.book-setter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.book-setter-ring:hover,.book-setter-ring:focus-visible{background:var(--accent);border-color:var(--accent);color:var(--on);transform:translateY(-1px)}
+.book-setter-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;line-height:0}
+.book-setter-mark{display:block;width:22px;height:22px;flex:none}
+.book-setter-word{display:block;margin:0;color:inherit;font:500 13px/1 Manrope,"Segoe UI",sans-serif;letter-spacing:.01em}
 .book-setter-panel{position:absolute;right:0;bottom:0;display:flex;flex-direction:column;width:min(320px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 40px));overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 16px 40px rgba(17,17,17,.16);transform-origin:bottom right;transform:scale(.2);opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
 .book-setter.is-open .book-setter-panel{transform:scale(1);opacity:1;visibility:visible;pointer-events:auto;box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent),0 16px 40px rgba(17,17,17,.16)}
 .book-setter-cover{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;flex:none;padding:14px 10px 14px 14px;background:var(--accent);color:var(--on)}
@@ -583,7 +596,7 @@ body:has(#meet-team:target) #home{display:none}
 .pending{color:#333}
 .site-footer{background:#111;color:#fff;padding:64px 0 0}
 .footer-brand{display:inline-flex;margin:0 0 36px;color:#000;text-decoration:none}
-.footer-pill{display:inline-flex;align-items:center;max-width:none;padding:0;border-radius:10px;background:transparent;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15;overflow:hidden}
+.footer-pill{display:inline-flex;align-items:center;max-width:none;padding:10px 14px;border-radius:10px;background:#fff;color:#000;font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.15;overflow:hidden}
 .footer-logo{display:block;width:210px;height:70px;object-fit:contain}
 .foot{display:grid;grid-template-columns:minmax(240px,1.05fr) minmax(320px,1.35fr) minmax(180px,.75fr);gap:48px 40px;align-items:start;padding-bottom:48px}
 .footer-note{max-width:28em;margin:0;color:rgba(255,255,255,.62);font-size:14px;line-height:1.5}
@@ -603,16 +616,39 @@ body:has(#meet-team:target) #home{display:none}
 .site-footer a{color:#fff;text-decoration:none}
 .site-footer p{color:rgba(255,255,255,.72)}
 .site-footer .legal{display:block;margin:0;color:rgba(255,255,255,.5);font-size:13px}
-a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:focus-visible,.book-submit:focus-visible,.book-setter-ring:focus-visible,.book-setter-close:focus-visible,.book-setter-back:focus-visible,.review-pick:focus-visible,.offer-pick:focus-visible,.service-back:focus-visible,.social-pause:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #000;outline-offset:3px}
+a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.header-phone:focus-visible,.meet-arrow:focus-visible,.book-submit:focus-visible,.book-setter-ring:focus-visible,.book-setter-close:focus-visible,.book-setter-back:focus-visible,.review-pick:focus-visible,.offer-pick:focus-visible,.service-back:focus-visible,.social-pause:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #000;outline-offset:3px}
+.site-chrome.is-nav-compact{--banner-h:0px}
+.site-chrome.is-nav-compact .banner{display:none}
+.site-chrome.is-nav-compact .site-header{position:relative;grid-template-columns:1fr auto;min-height:72px;padding:0 16px}
+.site-chrome.is-nav-compact .nav-left{min-width:150px;width:150px}
+.site-chrome.is-nav-compact .brand{left:16px;top:50%;transform:translateY(-50%)}
+.site-chrome.is-nav-compact .logo{width:150px;height:50px}
+.site-chrome.is-nav-compact .header-actions{display:inline-flex;align-self:center}
+.site-chrome.is-nav-compact .header-phone{display:grid}
+.site-chrome.is-nav-compact .header-cta{display:none}
+.site-chrome.is-nav-compact .site-header nav{position:absolute;left:auto;right:16px;top:72px;width:max-content;max-width:calc(100% - 32px)}
+.site-chrome.is-nav-compact .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 154px);max-height:calc(100svh - 154px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.site-chrome.is-nav-compact .nav-toggle:checked ~ .site-header nav ul{display:flex}
+.site-chrome.is-nav-compact .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
+.site-chrome.is-nav-compact .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
+.site-chrome.is-nav-compact .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:center;min-height:40px;margin-top:10px;padding:10px 4px}
+.site-chrome.is-nav-compact .menu-button{display:inline-flex}
+.site-chrome.is-nav-compact .has-menu{display:flex;flex-direction:column;align-items:stretch}
+.site-chrome.is-nav-compact .nav-chevron{display:none}
+.site-chrome.is-nav-compact .menu-panel,.site-chrome.is-nav-compact .has-menu:hover .menu-panel,.site-chrome.is-nav-compact .has-menu:focus-within .menu-panel{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;padding:0 0 2px 8px;border-radius:0;background:transparent;box-shadow:none}
+.site-chrome.is-nav-compact .menu-panel::before{display:none}
 @media (max-width:800px){
-  html{scroll-padding-top:106px}
-  .site-header{grid-template-columns:1fr auto;min-height:72px;padding:0 16px}
+  html{scroll-padding-top:80px}
+  .site-chrome{--banner-h:0px}
+  .banner{display:none}
+  .site-header{position:relative;grid-template-columns:1fr auto;min-height:72px;padding:0 16px}
   .nav-left{min-width:150px;width:150px}
-  .brand{left:16px}
+  /* Header is relative for the menu; center logo vertically in the header bar */
+  .brand{left:16px;top:50%;transform:translateY(-50%)}
   .logo{width:150px;height:50px}
-  .menu-button{justify-self:end;align-self:center}
+  .header-actions{display:inline-flex;align-self:center}
+  .header-phone{display:grid}
   .header-cta{display:none}
-  .banner-contact{max-width:none;padding-left:28px}
   .site-header nav{position:absolute;left:auto;right:16px;top:72px;width:max-content;max-width:calc(100% - 32px)}
   .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 154px);max-height:calc(100svh - 154px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
   .nav-toggle:checked ~ .site-header nav ul{display:flex}
@@ -654,8 +690,8 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .service-stamp{min-height:180px}
   .service-blob{left:auto;right:8px;bottom:0;width:120px}
   .service-page[data-shape="3"] .service-blob{box-shadow:22px -18px 0 var(--pale)}
-  .landing{display:block;min-height:0;padding-bottom:64px}
-  .landing>.hero-stage{margin-top:48px}
+  .landing{display:block;min-height:0;padding-bottom:36px}
+  .landing>.hero-stage{margin-top:28px}
   .hero-head h1{font-size:clamp(40px,11vw,56px)}
   .landing::before{width:78vw}
   .hero-head,.service-split,.split,.appoint,.book-layout,.foot,.info-grid,.shots{display:grid;grid-template-columns:1fr;width:auto}
@@ -668,10 +704,11 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .contact-book{grid-template-columns:1fr;padding:24px 20px;gap:18px}
   .contact-book-actions{justify-content:stretch}
   .contact-book-actions .button{flex:1;justify-content:center}
-  .hero-head{grid-template-columns:1fr;padding-top:36px;row-gap:18px;align-items:start}
-  .hero-head h1,.hero-aside{grid-column:1;width:auto;max-width:none}
-  .hero-head h1{grid-row:1}
+  .hero-head{grid-template-columns:1fr;padding-top:28px;row-gap:18px;align-items:start}
+  .hero-title,.hero-aside{grid-column:1;width:auto;max-width:none}
+  .hero-title{grid-row:1}
   .hero-aside{grid-row:2;align-self:start}
+  .hero-sub{margin-bottom:10px}
   .title-arrow{display:none}
   .title-nudge{display:block}
   .hero-stage{display:block;flex:none;min-height:0;margin-top:28px}
@@ -711,7 +748,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
   .hero-stage{overflow:hidden}
   .hero-media{height:auto;min-height:320px;border-radius:18px}
   .hero-media img{transform:translateY(-20%)}
-  .hero-media img.fit-facade{left:0;width:100%;right:auto;top:auto;bottom:25%;height:100%;transform:none;object-fit:cover;object-position:center center}
+  .hero-media img.fit-facade{left:0;width:100%;right:auto;top:auto;bottom:25%;height:100%;transform:translateY(-20px);object-fit:cover;object-position:center center}
   .hero-media img.anchor-top-right{object-fit:cover;top:-18%;right:0;left:0;width:100%;height:130%;transform:none}
   .hero-media::after{background:linear-gradient(to top,var(--pale) 0%,var(--pale) 32%,color-mix(in srgb,var(--pale) 82%,transparent) 38%,color-mix(in srgb,var(--pale) 38%,transparent) 44%,color-mix(in srgb,var(--pale) 0%,transparent) 50%)}
   .hero-cards{position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;display:flex;grid-template-columns:none;align-content:stretch;gap:0;margin:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -794,6 +831,9 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 #contact .info-card,#contact .sheet{background:transparent}
 #contact .info-card::before,#contact .sheet::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;background:#fff;pointer-events:none}
 #contact>.wrap>.meet-kicker,#contact>.wrap>h1,#contact .contact-book>*,#contact .info-card>*,#contact .sheet>*,#contact .side-media,#contact .map-frame,#contact .map-note{position:relative;z-index:2}
+#home,.page,.landing,.site-chrome{overflow-x:clip}
+.hero-head{max-width:100%}
+.landing::before{max-width:100%}
 </style>
 </head>
 <body>
@@ -814,11 +854,14 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li><a href="#prices">Prices</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#contact">Contact</a></li>
-<li><a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">BOOK</a></li>
+<li><a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">BOOK</a></li>
 </ul>
 </nav>
+<div class="header-actions">
+<a class="header-phone" href="tel:01926298102" aria-label="Call Southam Chiropractic on 01926 298 102"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 <label class="menu-button" for="nav-toggle"><span class="open">Menu</span><span class="close">Close</span></label>
-<a class="button header-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">BOOK</a>
+</div>
+<a class="button header-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">BOOK</a>
 </header>
 </div>
 <main>
@@ -826,15 +869,48 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <svg class="guide-line" aria-hidden="true"></svg>
 <div class="landing">
 <div class="wrap hero-head">
+<div class="hero-title">
+<p class="hero-sub">Southam · Warwickshire</p>
 <h1>Sorting aches <span class="title-amp">&amp;</span> pains<span class="title-skip"> in </span>Southam<span class="title-stop"></span></h1>
+</div>
 <div class="hero-aside">
 <p class="lede">Getting you comfortable.<br>A specialist interest in neck and back pain.</p>
 <div class="hero-book">
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a>
-<svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true"><path class="nudge-shaft" d="M68 30C56 32 38 28 18 10"/><path class="nudge-head" d="M18 10 23 21M18 10 30 13"/></svg>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a>
+<svg class="title-nudge" viewBox="0 0 72 40" aria-hidden="true">
+<defs>
+<filter id="crayon-nudge" x="-35%" y="-55%" width="170%" height="210%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="1.9 1.25" numOctaves="3" seed="7" result="grain"/>
+<feDisplacementMap in="SourceGraphic" in2="grain" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="wobbled"/>
+<feTurbulence type="fractalNoise" baseFrequency="3.2" numOctaves="1" seed="11" result="dust"/>
+<feDisplacementMap in="wobbled" in2="dust" scale="0.9" xChannelSelector="G" yChannelSelector="B"/>
+</filter>
+</defs>
+<g class="title-crayon" filter="url(#crayon-nudge)">
+<path class="nudge-shaft nudge-shaft-soft" d="M66 31C54 34 42 30 30 22C24 18 20 14 16 9"/>
+<path class="nudge-shaft" d="M66 31C54 34 42 30 30 22C24 18 20 14 16 9"/>
+<path class="nudge-shaft nudge-shaft-grain" d="M65.4 31.5C53.4 34.4 41.5 30.3 29.6 22.2C23.7 18.1 19.7 14 15.8 9.2"/>
+<path class="nudge-head" d="M16 9C18 16 19 20 17 24M16 9C22 11 26 12 30 11"/>
+</g>
+</svg>
 </div>
 </div>
-<svg class="title-arrow" aria-hidden="true"><path class="title-shaft" fill="none" stroke="#1c8494" stroke-width="1.9" stroke-linecap="round"/><path class="title-head" fill="none" stroke="#1c8494" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg class="title-arrow" aria-hidden="true">
+<defs>
+<filter id="crayon-ink" x="-35%" y="-55%" width="170%" height="210%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="1.9 1.25" numOctaves="3" seed="7" result="grain"/>
+<feDisplacementMap in="SourceGraphic" in2="grain" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="wobbled"/>
+<feTurbulence type="fractalNoise" baseFrequency="3.2" numOctaves="1" seed="11" result="dust"/>
+<feDisplacementMap in="wobbled" in2="dust" scale="0.9" xChannelSelector="G" yChannelSelector="B"/>
+</filter>
+</defs>
+<g class="title-crayon" filter="url(#crayon-ink)">
+<path class="title-shaft title-shaft-soft"/>
+<path class="title-shaft"/>
+<path class="title-shaft title-shaft-grain"/>
+<path class="title-head"/>
+</g>
+</svg>
 </div>
 <div class="wrap hero-stage">
 <figure class="hero-media"><img class="fit-facade" src="/factory-assets/clients/southam-chiropractic/chiro-landing.jpg" alt="Treatment room at Southam Chiropractic, Coventry Street, Southam."></figure>
@@ -863,7 +939,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li>Follows the report of findings</li>
 <li>A plan discussed for your own needs</li>
 </ul>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a>
 </div>
 <div class="offer-side">
 <figure class="offer-visual"><img src="/factory-assets/clients/southam-chiropractic/physio-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure>
@@ -878,10 +954,10 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li>Examination of spine, joints, nerves and muscles</li>
 <li>30–40 minutes</li>
 </ul>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a>
 </div>
 <div class="offer-side">
-<figure class="offer-visual"><img src="/factory-assets/clients/southam-chiropractic/chiro-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure>
+<figure class="offer-visual"><img src="/factory-assets/clients/southam-chiropractic/review-arm.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure>
 </div>
 </div>
 <div class="stat-show show-denplan">
@@ -893,7 +969,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li>Ask what is included when you book</li>
 <li>Book a time that suits you</li>
 </ul>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a>
 </div>
 <div class="offer-side">
 <figure class="offer-visual"><img src="/factory-assets/clients/southam-chiropractic/review-arm.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure>
@@ -909,7 +985,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <h2>What we can help with.</h2>
 <p class="lede">Common conditions we encounter include joint pain, headaches and migraines, muscle pain and spasm, sciatica, back pain, neck pain, shoulder pain and pelvic pain.</p>
 <nav class="service-links" aria-label="Services"><button type="button">Back pain</button><button type="button">Neck pain</button><button type="button">Headaches and migraines</button><button type="button">Sciatica</button><button type="button">Joint and muscle pain</button></nav>
-<div class="service-accordion"><details name="listed-services"><summary>Back pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/chiro-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Back pain</strong><em>A common reason people see a chiropractor. Southam Chiropractic has a specialist interest in back pain.</em></span><a class="button" href="#service-back-pain">More Information</a></p></div></details><details name="listed-services"><summary>Neck pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/physio-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Neck pain</strong><em>Neck pain is a common chiropractic concern, and this practice names it as a specialist interest.</em></span><a class="button" href="#service-neck-pain">More Information</a></p></div></details><details name="listed-services"><summary>Headaches and migraines</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Headaches and migraines</strong><em>Headaches and migraines are among the conditions chiropractors are often asked about, and this clinic lists them.</em></span><a class="button" href="#service-headaches">More Information</a></p></div></details><details name="listed-services"><summary>Sciatica</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/review-shoulder.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Sciatica</strong><em>Sciatica is a common reason to see a chiropractor, and it is on this clinic’s condition list.</em></span><a class="button" href="#service-sciatica">More Information</a></p></div></details><details name="listed-services"><summary>Joint and muscle pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile-2.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Joint and muscle pain</strong><em>Joint pain, muscle pain and spasm are common chiropractic concerns, and this clinic lists all three.</em></span><a class="button" href="#service-joint-pain">More Information</a></p></div></details><a class="button accordion-book" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div>
+<div class="service-accordion"><details name="listed-services"><summary>Back pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/chiro-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Back pain</strong><em>A common reason people see a chiropractor. Southam Chiropractic has a specialist interest in back pain.</em></span><a class="button" href="#service-back-pain">More Information</a></p></div></details><details name="listed-services"><summary>Neck pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/physio-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Neck pain</strong><em>Neck pain is a common chiropractic concern, and this practice names it as a specialist interest.</em></span><a class="button" href="#service-neck-pain">More Information</a></p></div></details><details name="listed-services"><summary>Headaches and migraines</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Headaches and migraines</strong><em>Headaches and migraines are among the conditions chiropractors are often asked about, and this clinic lists them.</em></span><a class="button" href="#service-headaches">More Information</a></p></div></details><details name="listed-services"><summary>Sciatica</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/review-shoulder.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Sciatica</strong><em>Sciatica is a common reason to see a chiropractor, and it is on this clinic’s condition list.</em></span><a class="button" href="#service-sciatica">More Information</a></p></div></details><details name="listed-services"><summary>Joint and muscle pain</summary><div class="accordion-panel"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile-2.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Joint and muscle pain</strong><em>Joint pain, muscle pain and spasm are common chiropractic concerns, and this clinic lists all three.</em></span><a class="button" href="#service-joint-pain">More Information</a></p></div></details><a class="button accordion-book" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div>
 </div>
 <div class="shots"><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/chiro-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Back pain</strong><em>A common reason people see a chiropractor. Southam Chiropractic has a specialist interest in back pain.</em></span><a class="button" href="#service-back-pain">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/physio-landing.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Neck pain</strong><em>Neck pain is a common chiropractic concern, and this practice names it as a specialist interest.</em></span><a class="button" href="#service-neck-pain">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Headaches and migraines</strong><em>Headaches and migraines are among the conditions chiropractors are often asked about, and this clinic lists them.</em></span><a class="button" href="#service-headaches">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/review-shoulder.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Sciatica</strong><em>Sciatica is a common reason to see a chiropractor, and it is on this clinic’s condition list.</em></span><a class="button" href="#service-sciatica">More Information</a></p></div><div class="shot"><figure class="tile-media"><img src="/factory-assets/clients/southam-chiropractic/service-tile-2.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><p class="shot-copy"><span><strong>Joint and muscle pain</strong><em>Joint pain, muscle pain and spasm are common chiropractic concerns, and this clinic lists all three.</em></span><a class="button" href="#service-joint-pain">More Information</a></p></div></div>
 </div>
@@ -922,7 +998,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <h2>Meet the specialists</h2>
 </div>
 </div>
-<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img src="/factory-assets/clients/southam-chiropractic/portrait-b.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><div class="meet-card"><h3>Adam Timson</h3><p class="meet-role">Chiropractor</p><p>Adam Timson is a chiropractor at Southam Chiropractic, with a specialist interest in neck and back pain.</p><a class="button meet-book" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
+<div class="meet-stage"><article class="meet-slide is-on"><figure class="meet-photo"><img src="/factory-assets/clients/southam-chiropractic/portrait-b.png" alt="Illustrative treatment photograph. Not a photograph of Southam Chiropractic staff or premises."></figure><div class="meet-card"><h3>Adam Timson</h3><p class="meet-role">Chiropractor</p><p>Adam Timson is a chiropractor at Southam Chiropractic, with a specialist interest in neck and back pain.</p><a class="button meet-book" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.4h11.6M5.2 2v2.6M10.8 2v2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Make an appointment</a></div></article></div>
 </div>
 </section>
 <section class="section reviews">
@@ -938,12 +1014,12 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <form class="book-form" action="#enquiry" method="post" onsubmit="return false">
 <p class="meet-kicker"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.2 3.4h9.6v7.2H8.4L5.2 13v-2.4H3.2z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg> Enquiry</p>
 <h2>Have a question?</h2>
-<p class="book-note">For a visit, the quickest route is to <a href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">book online</a> or call <a href="tel:01926298102">01926 298 102</a>. Use the form for a general enquiry. This preview does not send what you type.</p>
+<p class="book-note">For a visit, the quickest route is to <a href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">book online</a> or call <a href="tel:01926298102">01926 298 102</a>. Use the form for a general enquiry. This preview does not send what you type.</p>
 <div class="book-paths" aria-label="Ways to get in touch">
 <div class="book-path is-primary">
 <strong>Book online</strong>
 <p>Pick a time on the booking page.</p>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Open booking</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Open booking</a>
 </div>
 <div class="book-path">
 <strong>Prefer to call?</strong>
@@ -975,7 +1051,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <li><span>Saturday</span><strong>Closed</strong></li>
 <li><span>Sunday</span><strong>Closed</strong></li>
 </ul>
-<a class="button book-call" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book online</a>
+<a class="button book-call" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book online</a>
 </aside>
 </div>
 </div>
@@ -1006,7 +1082,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </div>
 <div class="wrap offer-board"><div class="offer-list"><div class="offer-item"><details class="offer-fold" name="listed-offers" open><summary class="offer-pick"><span>01</span>Back pain</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Back pain</h2><p>A common reason people see a chiropractor. Southam Chiropractic has a specialist interest in back pain.</p><a class="button solid" href="#service-back-pain">More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>02</span>Neck pain</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Neck pain</h2><p>Neck pain is a common chiropractic concern, and this practice names it as a specialist interest.</p><a class="button solid" href="#service-neck-pain">More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>03</span>Headaches and migraines</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Headaches and migraines</h2><p>Headaches and migraines are among the conditions chiropractors are often asked about, and this clinic lists them.</p><a class="button solid" href="#service-headaches">More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>04</span>Sciatica</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Sciatica</h2><p>Sciatica is a common reason to see a chiropractor, and it is on this clinic’s condition list.</p><a class="button solid" href="#service-sciatica">More Information</a></article></details></div><div class="offer-item"><details class="offer-fold" name="listed-offers"><summary class="offer-pick"><span>05</span>Joint and muscle pain</summary><article class="offer-panel"><span class="offer-shape offer-local" aria-hidden="true"></span><span class="offer-shape offer-shape-b offer-local" aria-hidden="true"></span><h2>Joint and muscle pain</h2><p>Joint pain, muscle pain and spasm are common chiropractic concerns, and this clinic lists all three.</p><a class="button solid" href="#service-joint-pain">More Information</a></article></details></div></div><div class="offer-stage" aria-hidden="true"><span class="offer-shape"></span><span class="offer-shape offer-shape-b"></span></div></div>
 </section>
-<section id="service-back-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Back pain</h1><p class="service-lead">Back pain is one of the conditions this practice says it regularly sees. Chiropractic, as the clinic describes it, is concerned with mechanical disorders of the bones, joints and muscles, including the back.</p><p class="service-lead">Listed by the clinic · Specialist interest in back pain · Part of a wider look at physical wellbeing</p><a class="button solid service-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-neck-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Neck pain</h1><p class="service-lead">The clinic says it has a specialist interest in neck pain as well as back pain, and lists neck pain among the conditions it regularly sees.</p><p class="service-lead">Listed by the clinic · Specialist interest in neck pain · Discussed at the initial consultation</p><a class="button solid service-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-headaches" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Headaches and migraines</h1><p class="service-lead">Headaches and migraines appear on the clinic’s own list of conditions that have a significant effect on people’s lives. What is suitable is discussed after the initial consultation.</p><p class="service-lead">Listed by the clinic · Raised at the first visit · No extra claims added here</p><a class="button solid service-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-sciatica" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Sciatica</h1><p class="service-lead">Sciatica is listed by Southam Chiropractic among the conditions regularly seen in practice. The first visit includes a case history and an examination of the spine, joints, nerves and muscles.</p><p class="service-lead">Listed by the clinic · Examination of spine, joints, nerves and muscles · Report of findings on a later day</p><a class="button solid service-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-joint-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Joint and muscle pain</h1><p class="service-lead">The clinic lists joint pain, muscle pain and spasm, shoulder pain and pelvic pain. These cards group the joint and muscle concerns chiropractors commonly help people with.</p><p class="service-lead">Joint pain · Muscle pain and spasm · Shoulder pain and pelvic pain are also listed</p><a class="button solid service-cta" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section>
+<section id="service-back-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">01</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Back pain</h1><p class="service-lead">Back pain is one of the conditions this practice says it regularly sees. Chiropractic, as the clinic describes it, is concerned with mechanical disorders of the bones, joints and muscles, including the back.</p><p class="service-lead">Listed by the clinic · Specialist interest in back pain · Part of a wider look at physical wellbeing</p><a class="button solid service-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-neck-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">02</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Neck pain</h1><p class="service-lead">The clinic says it has a specialist interest in neck pain as well as back pain, and lists neck pain among the conditions it regularly sees.</p><p class="service-lead">Listed by the clinic · Specialist interest in neck pain · Discussed at the initial consultation</p><a class="button solid service-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-headaches" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">03</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Headaches and migraines</h1><p class="service-lead">Headaches and migraines appear on the clinic’s own list of conditions that have a significant effect on people’s lives. What is suitable is discussed after the initial consultation.</p><p class="service-lead">Listed by the clinic · Raised at the first visit · No extra claims added here</p><a class="button solid service-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-sciatica" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">04</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Sciatica</h1><p class="service-lead">Sciatica is listed by Southam Chiropractic among the conditions regularly seen in practice. The first visit includes a case history and an examination of the spine, joints, nerves and muscles.</p><p class="service-lead">Listed by the clinic · Examination of spine, joints, nerves and muscles · Report of findings on a later day</p><a class="button solid service-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section><section id="service-joint-pain" class="page service-page" data-shape="0"><div class="service-sheet"><a class="service-back" href="#services"><span class="service-back-mark" aria-hidden="true">←</span> Services</a><div class="service-poster"><div class="service-stamp" aria-hidden="true"><span class="service-num">05</span><span class="service-blob"></span></div><div class="service-copy"><p class="flag">Southam Chiropractic</p><h1>Joint and muscle pain</h1><p class="service-lead">The clinic lists joint pain, muscle pain and spasm, shoulder pain and pelvic pain. These cards group the joint and muscle concerns chiropractors commonly help people with.</p><p class="service-lead">Joint pain · Muscle pain and spasm · Shoulder pain and pelvic pain are also listed</p><a class="button solid service-cta" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a></div></div></div></section>
 <section id="about" class="page team-page">
 <svg class="guide-line" aria-hidden="true"></svg>
 <div class="wrap about-summary">
@@ -1034,7 +1110,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <p>Choose a time on the booking page — the quickest way to arrange a visit. Prefer to speak to someone? Call the clinic instead.</p>
 </div>
 <div class="contact-book-actions">
-<a class="button solid" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book online</a>
+<a class="button solid" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book online</a>
 <a class="button" href="tel:01926298102">Call 01926 298 102</a>
 </div>
 </div>
@@ -1050,7 +1126,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <div class="split">
 <form class="sheet" action="#contact" method="post" onsubmit="return false">
 <h2>Send an enquiry</h2>
-<p>For appointments, please <a href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">book online</a> or call <a class="contact-call" href="tel:01926298102">01926 298 102</a>. Use this form for a general question. This preview does not send the message.</p>
+<p>For appointments, please <a href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">book online</a> or call <a class="contact-call" href="tel:01926298102">01926 298 102</a>. Use this form for a general question. This preview does not send the message.</p>
 <p class="hours-live" data-hours="Monday, 10:00–20:00, Tuesday, 10:00–20:00, Thursday, 10:00–20:00, Friday, 10:00–16:00" data-open="The clinic is open" data-closed="The clinic is closed"><span class="hours-light" aria-hidden="true"></span><span class="hours-live-label"></span><span class="hours-live-tag">Live</span></p>
 <p class="map-note">Email <a href="mailto:info@southam-chiropractic.co.uk">info@southam-chiropractic.co.uk</a>.</p>
 <label>Name<input name="name" autocomplete="name"></label>
@@ -1087,7 +1163,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 <h1>Visit prices.</h1>
 <p class="flag">The clinic website says treatments start from £30</p>
 <p class="lede">These three amounts are shown for this preview. They are not an itemised list on southam-chiropractic.co.uk.</p>
-<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£45</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Initial Appointment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Case history</li><li>Examination of spine, joints, nerves and muscles</li><li>30–40 minutes</li></ul><a class="button solid fee-book" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a></article><article class="fee-card"><span class="fee-gem"><strong>£40</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Continued Treatment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Visits after the first consultation</li><li>Follows the report of findings</li></ul><a class="button solid fee-book" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a></article><article class="fee-card"><span class="fee-gem"><strong>£40</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Massage</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Massage appointment</li><li>Ask what is included when you book</li></ul><a class="button solid fee-book" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book</a></article></div>
+<div class="fee-pair"><article class="fee-card"><span class="fee-gem"><strong>£45</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Initial Appointment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Case history</li><li>Examination of spine, joints, nerves and muscles</li><li>30–40 minutes</li></ul><a class="button solid fee-book" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a></article><article class="fee-card"><span class="fee-gem"><strong>£40</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Continued Treatment</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Visits after the first consultation</li><li>Follows the report of findings</li></ul><a class="button solid fee-book" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a></article><article class="fee-card"><span class="fee-gem"><strong>£40</strong></span><span class="fee-gem fee-gem-sm" aria-hidden="true"></span><h2>Massage</h2><p class="fee-k">Includes</p><ul class="fee-includes"><li>Massage appointment</li><li>Ask what is included when you book</li></ul><a class="button solid fee-book" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book</a></article></div>
 </div>
 </section>
 <section id="faq" class="page faq-page">
@@ -1139,7 +1215,7 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.meet-arrow:foc
 </details>
 </div>
 <div class="faq-cta">
-<a class="button solid" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book online</a>
+<a class="button solid" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book online</a>
 <a class="button" href="#contact">Contact</a>
 </div>
 </div>
@@ -1155,7 +1231,7 @@ Chiropractic care on Coventry Street.
 Specialist interest in neck and back pain.</p>
 <div class="footer-actions">
 <a class="button" href="#services">Services</a>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book appointment</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book appointment</a>
 </div>
 <div class="footer-marks" aria-hidden="true">
 <span><svg viewBox="0 0 16 16" width="15" height="15"><path fill="currentColor" d="M9.2 7.1 13.4 2h-1.5L8.6 6.3 5.7 2H2.2l4.4 6.4L2.2 14h1.5l3.6-4.2 2.9 4.2h3.5L9.2 7.1Zm-1.3 1.5-.4-.6L4.1 3h1.2l2.4 3.4.4.6 3.5 5h-1.2l-2.5-3.4Z"/></svg></span>
@@ -1178,16 +1254,68 @@ Specialist interest in neck and back pain.</p>
 <p>Monday to Tuesday 10:00–20:00 · Wednesday closed · Thursday 10:00–20:00 · Friday 10:00–16:00 · Saturday and Sunday closed</p>
 <a class="footer-phone" href="tel:01926298102">01926 298 102</a>
 <a class="button" href="#contact">Contact us</a>
-<a class="button" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer">Book online</a>
+<a class="button" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer">Book online</a>
 </div>
 </div>
 </div>
 <div class="wrap footer-base"><small class="legal">Template care-modern 1.0.0. Colour follows this business’s brand accent. This page does not sell products. Category photography is illustrative.</small></div>
 </footer>
 <aside class="book-setter" aria-label="Book an appointment">
-<a class="book-setter-ring has-word" href="https://api.leadconnectorhq.com/booking/parley-demo-clinic/bp/southam-chiropractic-demo" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true"><rect x="9" y="12" width="30" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 20h30M17 8v8M31 8v8M24 26v8M20 30h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="book-setter-label">Book an appointment online</span><span class="book-setter-word" aria-hidden="true">BOOK</span></a>
+<a class="book-setter-ring" href="https://sites.leadconnectorhq.com/preview/WHkgQHLkvRmVwW4JhJPz?notrack=true" target="_blank" rel="noopener noreferrer" aria-label="Book an appointment online"><span class="book-setter-stack" aria-hidden="true"><svg class="book-setter-mark" viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="5" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><span class="book-setter-word">Book</span></span></a>
 </aside>
 <script>
+(function () {
+  var chrome = document.querySelector('.site-chrome');
+  var header = document.querySelector('.site-header');
+  var brand = header && header.querySelector('.brand');
+  var cta = header && header.querySelector('.header-cta');
+  var nav = header && header.querySelector('nav');
+  var ul = nav && nav.querySelector('ul');
+  var toggle = document.getElementById('nav-toggle');
+  var mqMobile = window.matchMedia('(max-width: 800px)');
+  function navNeedsCompact() {
+    if (!chrome || !brand || !cta || !ul) return false;
+    if (mqMobile.matches) return true;
+    chrome.classList.remove('is-nav-compact');
+    var headerRect = header.getBoundingClientRect();
+    var brandRect = brand.getBoundingClientRect();
+    var leftReserve = Math.max(0, brandRect.right - headerRect.left);
+    var ctaW = Math.max(cta.offsetWidth || 0, cta.getBoundingClientRect().width || 0);
+    var rightReserve = 28 + ctaW;
+    var available = header.clientWidth - leftReserve - rightReserve - 32;
+    if (available <= 0) return true;
+    var probe = ul.cloneNode(true);
+    probe.querySelectorAll('.menu-panel').forEach(function (panel) { panel.remove(); });
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:absolute;left:0;top:0;display:flex;flex-direction:row;align-items:center;gap:8px;margin:0;padding:0;list-style:none;width:max-content;visibility:hidden;pointer-events:none;z-index:-1';
+    header.appendChild(probe);
+    var need = probe.getBoundingClientRect().width;
+    probe.remove();
+    return need > available;
+  }
+  function syncNavChrome() {
+    if (!chrome) return;
+    var compact = navNeedsCompact();
+    chrome.classList.toggle('is-nav-compact', compact);
+    if (!compact && toggle) toggle.checked = false;
+  }
+  var navResizeTimer = 0;
+  function scheduleNavChrome() {
+    window.clearTimeout(navResizeTimer);
+    navResizeTimer = window.setTimeout(syncNavChrome, 60);
+  }
+  window.addEventListener('resize', scheduleNavChrome);
+  if (mqMobile.addEventListener) mqMobile.addEventListener('change', syncNavChrome);
+  else if (mqMobile.addListener) mqMobile.addListener(syncNavChrome);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncNavChrome);
+  var logo = brand && brand.querySelector('img');
+  if (logo) {
+    if (logo.complete) syncNavChrome();
+    else logo.addEventListener('load', syncNavChrome);
+  } else {
+    syncNavChrome();
+  }
+})();
 (function () {
   function syncBaWidth(slider) {
     slider.style.setProperty('--ba-w', slider.clientWidth + 'px');
@@ -1571,9 +1699,9 @@ document.querySelectorAll('.hours-live').forEach(line => {
     node('feGaussianBlur', { stdDeviation: '3.2' }, blur);
     var group = node('g', { mask: 'url(#guide-mask-' + stamp + ')' });
     [
-      { dx: 0, stroke: '#c6e8cf', width: '12', opacity: '0.28', filter: 'url(#guide-soft-' + stamp + ')' },
-      { dx: 14, stroke: '#95d5a5', width: '1.5', opacity: '0.16' },
-      { dx: -12, stroke: '#74c889', width: '1.05', opacity: '0.14' },
+      { dx: 0, stroke: '#c5e8f2', width: '12', opacity: '0.28', filter: 'url(#guide-soft-' + stamp + ')' },
+      { dx: 14, stroke: '#8ecddd', width: '1.5', opacity: '0.16' },
+      { dx: -12, stroke: '#5eb3c7', width: '1.05', opacity: '0.14' },
       { dx: 8, stroke: '#1c8494', width: '0.9', opacity: '0.16' },
       { dx: 0, stroke: '#1c8494', width: '1.05', opacity: '0.28' }
     ].forEach(function (layer) {
@@ -1594,8 +1722,10 @@ document.querySelectorAll('.hours-live').forEach(line => {
   var head = document.querySelector('#home .hero-head');
   if (!head) return;
   var svg = head.querySelector('.title-arrow');
-  var shaft = svg.querySelector('.title-shaft');
+  var shafts = Array.from(svg.querySelectorAll('.title-shaft'));
+  var shaft = shafts.find(function (p) { return !p.classList.contains('title-shaft-soft') && !p.classList.contains('title-shaft-grain'); }) || shafts[0];
   var arrowHead = svg.querySelector('.title-head');
+  var drawables = shafts.concat(arrowHead ? [arrowHead] : []);
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var narrowQuery = window.matchMedia('(max-width: 800px)');
   var intro = null;
@@ -1604,14 +1734,13 @@ document.querySelectorAll('.hours-live').forEach(line => {
   var segDuration = 420;
   var segStart = 120;
   function hide() {
-    shaft.setAttribute('d', '');
-    arrowHead.setAttribute('d', '');
+    drawables.forEach(function (p) { p.setAttribute('d', ''); });
   }
   function showFull() {
-    shaft.style.strokeDasharray = 'none';
-    shaft.style.strokeDashoffset = '0';
-    arrowHead.style.strokeDasharray = 'none';
-    arrowHead.style.strokeDashoffset = '0';
+    drawables.forEach(function (p) {
+      p.style.strokeDasharray = 'none';
+      p.style.strokeDashoffset = '0';
+    });
     bars.forEach(function (bar) { bar.style.transform = 'scaleX(1)'; });
   }
   function lineBoxes() {
@@ -1650,7 +1779,7 @@ document.querySelectorAll('.hours-live').forEach(line => {
     var node;
     while ((node = walker.nextNode())) {
       if (stop && stop.contains(node)) continue;
-      if (node.parentElement && node.parentElement.closest('.title-skip')) continue;
+      if (node.parentElement && node.parentElement.closest('.title-skip, .title-amp')) continue;
       var text = node.textContent || '';
       for (var i = 0; i < text.length; i++) {
         var range = document.createRange();
@@ -1699,8 +1828,7 @@ document.querySelectorAll('.hours-live').forEach(line => {
     if (bars.length !== segments.length) {
       bars.forEach(function (bar) { bar.remove(); });
       if (intro) intro.cancel();
-      shaft.getAnimations().forEach(function (item) { item.cancel(); });
-      arrowHead.getAnimations().forEach(function (item) { item.cancel(); });
+      drawables.forEach(function (p) { p.getAnimations().forEach(function (item) { item.cancel(); }); });
       intro = null;
       bars = segments.map(function () {
         var bar = document.createElement('span');
@@ -1739,66 +1867,80 @@ document.querySelectorAll('.hours-live').forEach(line => {
     var br = button.getBoundingClientRect();
     var lines = placeLines(hr);
     if (!lines.length || br.width < 1) return;
-    var last = lines[lines.length - 1];
     if (narrowQuery.matches) {
       hide();
       if (reduce) showFull();
       else if (bars[0] && !bars[0].getAnimations().length) runBars();
       return;
     }
-    var ink = inkSegments(last);
-    var inkRight = ink.reduce(function (max, segment) { return Math.max(max, segment.right); }, last.left);
-    var x1 = inkRight - hr.left + 18;
-    var y1 = last.bottom - hr.top - (last.bottom - last.top) * 0.22 + 4;
-    var x2 = br.left - hr.left - 22;
-    var y2 = br.top - hr.top + br.height / 2;
-    var reach = 0.34;
-    var pad = (1 - reach) / 2;
-    var spanX = x2 - x1;
-    var spanY = y2 - y1;
-    x1 += spanX * pad;
-    y1 += spanY * pad;
-    x2 -= spanX * pad;
-    y2 -= spanY * pad;
-    if (x2 < x1 + 36) {
-      hide();
-      if (reduce) showFull();
-      else if (bars[0] && !bars[0].getAnimations().length) runBars();
-      return;
-    }
-    var dx = x2 - x1;
-    var dy = y2 - y1;
-    var drop = Math.max(26, Math.min(42, dx * 0.15));
+    // Flipped crayon arrow ~24px to the right of Book appointment
+    var gap = 24;
+    var len = 84;
+    var tipX = br.right - hr.left + gap;
+    var tipY = br.top - hr.top + br.height * 0.42;
+    var x1 = tipX + len;
+    var y1 = tipY + 16;
+    var tipX2 = tipX;
+    var tipY2 = tipY;
+    var dx = tipX2 - x1;
+    var dy = tipY2 - y1;
     var cx = x1 + dx * 0.5;
-    var cy = y1 + dy * 0.5 + drop;
-    var tx = x2 - cx;
-    var ty = y2 - cy;
+    var cy = Math.max(y1, tipY2) + 18;
+    var tx = tipX2 - cx;
+    var ty = tipY2 - cy;
     var mag = Math.hypot(tx, ty) || 1;
     tx /= mag;
     ty /= mag;
     var px = -ty;
     var py = tx;
-    var shaftEndX = x2 - tx * 1.2;
-    var shaftEndY = y2 - ty * 1.2;
-    shaft.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' Q ' + cx + ' ' + cy + ' ' + shaftEndX + ' ' + shaftEndY);
-    var hx = x2 - tx * 10.5;
-    var hy = y2 - ty * 10.5;
-    arrowHead.setAttribute('d', 'M ' + (hx + px * 5.2) + ' ' + (hy + py * 5.2) + ' L ' + x2 + ' ' + y2 + ' L ' + (hx - px * 5.2) + ' ' + (hy - py * 5.2));
+    var shaftEndX = tipX2 - tx * 2.2;
+    var shaftEndY = tipY2 - ty * 2.2;
+    var shaftD =
+      'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+      ' Q ' + cx.toFixed(1) + ' ' + cy.toFixed(1) +
+      ' ' + shaftEndX.toFixed(1) + ' ' + shaftEndY.toFixed(1);
+    shafts.forEach(function (p, i) {
+      var nudge = (i - 1) * 0.55;
+      if (!nudge) {
+        p.setAttribute('d', shaftD);
+        return;
+      }
+      p.setAttribute('d',
+        'M ' + (x1 + px * nudge).toFixed(1) + ' ' + (y1 + py * nudge).toFixed(1) +
+        ' Q ' + (cx + px * nudge * 0.7).toFixed(1) + ' ' + (cy + py * nudge * 0.7 + (i === 0 ? 1.2 : -0.8)).toFixed(1) +
+        ' ' + (shaftEndX + px * nudge * 0.4).toFixed(1) + ' ' + (shaftEndY + py * nudge * 0.4).toFixed(1)
+      );
+    });
+    var hx = tipX2 - tx * 15;
+    var hy = tipY2 - ty * 15;
+    arrowHead.setAttribute('d',
+      'M ' + (hx + px * 7.4).toFixed(1) + ' ' + (hy + py * 7.4).toFixed(1) +
+      ' L ' + tipX2.toFixed(1) + ' ' + tipY2.toFixed(1) +
+      ' L ' + (hx - px * 6.6).toFixed(1) + ' ' + (hy - py * 6.6).toFixed(1)
+    );
     if (reduce || (intro && intro.playState === 'finished')) {
       showFull();
       return;
     }
     if (intro) return;
-    var len = shaft.getTotalLength();
-    var headLen = arrowHead.getTotalLength();
-    shaft.style.strokeDasharray = String(len);
-    shaft.style.strokeDashoffset = String(len);
-    arrowHead.style.strokeDasharray = String(headLen);
-    arrowHead.style.strokeDashoffset = String(headLen);
+    var lens = drawables.map(function (p) {
+      var pathLen = p.getTotalLength();
+      p.style.strokeDasharray = String(pathLen);
+      p.style.strokeDashoffset = String(pathLen);
+      return pathLen;
+    });
     var arrowDelay = segStart + Math.max(0, bars.length - 1) * segStep + segDuration + 120;
     runBars();
-    intro = shaft.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 650, delay: arrowDelay, easing: 'ease', fill: 'forwards' });
-    arrowHead.animate([{ strokeDashoffset: headLen }, { strokeDashoffset: 0 }], { duration: 220, delay: arrowDelay + 580, easing: 'ease', fill: 'forwards' });
+    intro = shaft.animate([{ strokeDashoffset: lens[shafts.indexOf(shaft)] || lens[0] }, { strokeDashoffset: 0 }], { duration: 680, delay: arrowDelay, easing: 'ease', fill: 'forwards' });
+    drawables.forEach(function (p, i) {
+      if (p === shaft) return;
+      p.animate([{ strokeDashoffset: lens[i] }, { strokeDashoffset: 0 }], {
+        duration: p === arrowHead ? 220 : 680,
+        delay: p === arrowHead ? arrowDelay + 560 : arrowDelay,
+        easing: 'ease',
+        fill: 'forwards'
+      });
+    });
   }
   var kick = function () { requestAnimationFrame(paint); };
   window.addEventListener('resize', kick);
