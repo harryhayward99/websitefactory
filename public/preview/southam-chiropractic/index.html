@@ -623,12 +623,13 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.header-phone:f
 .site-chrome.is-nav-compact .nav-left{min-width:150px;width:150px}
 .site-chrome.is-nav-compact .brand{left:16px;top:50%;transform:translateY(-50%)}
 .site-chrome.is-nav-compact .logo{width:150px;height:50px}
-.site-chrome.is-nav-compact .header-actions{display:inline-flex;align-self:center}
+.site-chrome.is-nav-compact .header-actions{position:relative;z-index:5;display:inline-flex;align-self:center}
 .site-chrome.is-nav-compact .header-phone{display:grid}
 .site-chrome.is-nav-compact .header-cta{display:none}
-.site-chrome.is-nav-compact .site-header nav{position:absolute;left:auto;right:16px;top:72px;width:max-content;max-width:calc(100% - 32px)}
+.site-chrome.is-nav-compact .site-header nav{position:absolute;left:auto;right:16px;top:72px;z-index:40;width:max-content;max-width:calc(100% - 32px)}
 .site-chrome.is-nav-compact .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 154px);max-height:calc(100svh - 154px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
-.site-chrome.is-nav-compact .nav-toggle:checked ~ .site-header nav ul{display:flex}
+.site-chrome.is-nav-compact .nav-toggle:checked ~ .site-header nav ul,
+.site-chrome.is-nav-compact:has(#nav-toggle:checked) .site-header nav ul{display:flex}
 .site-chrome.is-nav-compact .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
 .site-chrome.is-nav-compact .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
 .site-chrome.is-nav-compact .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:center;min-height:40px;margin-top:10px;padding:10px 4px}
@@ -646,12 +647,13 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.header-phone:f
   /* Header is relative for the menu; center logo vertically in the header bar */
   .brand{left:16px;top:50%;transform:translateY(-50%)}
   .logo{width:150px;height:50px}
-  .header-actions{display:inline-flex;align-self:center}
+  .header-actions{position:relative;z-index:5;display:inline-flex;align-self:center}
   .header-phone{display:grid}
   .header-cta{display:none}
-  .site-header nav{position:absolute;left:auto;right:16px;top:72px;width:max-content;max-width:calc(100% - 32px)}
+  .site-header nav{position:absolute;left:auto;right:16px;top:72px;z-index:40;width:max-content;max-width:calc(100% - 32px)}
   .site-header nav ul{display:none;flex-direction:column;align-items:stretch;gap:0;width:max-content;max-width:100%;box-sizing:border-box;max-height:calc(100vh - 154px);max-height:calc(100svh - 154px);padding:16px;overflow:auto;overscroll-behavior:contain;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12)}
-  .nav-toggle:checked ~ .site-header nav ul{display:flex}
+  .nav-toggle:checked ~ .site-header nav ul,
+  .site-chrome:has(#nav-toggle:checked) .site-header nav ul{display:flex}
   .site-header nav a{min-height:36px;padding:0 4px;font-size:15px}
   .site-header .menu-panel a{min-height:32px;padding:2px 4px 2px 16px;font-size:14px}
   .site-header nav .button{display:flex;box-sizing:border-box;width:100%;justify-content:center;min-height:40px;margin-top:10px;padding:10px 4px}
@@ -831,7 +833,8 @@ a:focus-visible,.button:focus-visible,.menu-button:focus-visible,.header-phone:f
 #contact .info-card,#contact .sheet{background:transparent}
 #contact .info-card::before,#contact .sheet::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;background:#fff;pointer-events:none}
 #contact>.wrap>.meet-kicker,#contact>.wrap>h1,#contact .contact-book>*,#contact .info-card>*,#contact .sheet>*,#contact .side-media,#contact .map-frame,#contact .map-note{position:relative;z-index:2}
-#home,.page,.landing,.site-chrome{overflow-x:clip}
+#home,.page,.landing{overflow-x:clip}
+.site-chrome{overflow:visible}
 .hero-head{max-width:100%}
 .landing::before{max-width:100%}
 </style>
@@ -1276,22 +1279,28 @@ Specialist interest in neck and back pain.</p>
   function navNeedsCompact() {
     if (!chrome || !brand || !cta || !ul) return false;
     if (mqMobile.matches) return true;
-    chrome.classList.remove('is-nav-compact');
+    var wasCompact = chrome.classList.contains('is-nav-compact');
+    if (wasCompact) chrome.classList.remove('is-nav-compact');
     var headerRect = header.getBoundingClientRect();
     var brandRect = brand.getBoundingClientRect();
     var leftReserve = Math.max(0, brandRect.right - headerRect.left);
     var ctaW = Math.max(cta.offsetWidth || 0, cta.getBoundingClientRect().width || 0);
     var rightReserve = 28 + ctaW;
     var available = header.clientWidth - leftReserve - rightReserve - 32;
-    if (available <= 0) return true;
-    var probe = ul.cloneNode(true);
-    probe.querySelectorAll('.menu-panel').forEach(function (panel) { panel.remove(); });
-    probe.setAttribute('aria-hidden', 'true');
-    probe.style.cssText = 'position:absolute;left:0;top:0;display:flex;flex-direction:row;align-items:center;gap:8px;margin:0;padding:0;list-style:none;width:max-content;visibility:hidden;pointer-events:none;z-index:-1';
-    header.appendChild(probe);
-    var need = probe.getBoundingClientRect().width;
-    probe.remove();
-    return need > available;
+    var needs = available <= 0;
+    if (!needs) {
+      var probe = ul.cloneNode(true);
+      probe.querySelectorAll('.menu-panel').forEach(function (panel) { panel.remove(); });
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = 'position:absolute;left:0;top:0;display:flex;flex-direction:row;align-items:center;gap:8px;margin:0;padding:0;list-style:none;width:max-content;visibility:hidden;pointer-events:none;z-index:-1';
+      header.appendChild(probe);
+      var need = probe.getBoundingClientRect().width;
+      probe.remove();
+      // Hysteresis so open menus are not flipped by 1px measurement noise.
+      needs = wasCompact ? need > available - 24 : need > available;
+    }
+    if (wasCompact) chrome.classList.add('is-nav-compact');
+    return needs;
   }
   function syncNavChrome() {
     if (!chrome) return;
