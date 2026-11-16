@@ -1,0 +1,28 @@
+{
+  "slug": "tap-clinics",
+  "name": "TAP Clinics",
+  "legalName": "The Therapy and Performance Clinic",
+  "demo": true,
+  "template": { "id": "tap-clinics-custom", "version": "1.0.0" },
+  "checkedAt": "2026-11-16",
+  "sources": [
+    "https://www.tapclinics.co.uk/",
+    "https://www.tapclinics.co.uk/meet-the-team",
+    "https://www.tapclinics.co.uk/faq",
+    "https://www.tapclinics.co.uk/contact",
+    "https://www.tapclinics.co.uk/private-insurance",
+    "https://www.tapclinics.co.uk/clinic-visits",
+    "https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy",
+    "https://www.fresha.com/a/therapy-and-performance-clinic-stratford-stratford-upon-avon-unit-3-avon-house-stratford-upon-avon-mulberry-street-ogk41s05"
+  ],
+  "phone": "07904 839521",
+  "email": "info@therapyandperformanceclinic.co.uk",
+  "booking": "https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919",
+  "reviews": {
+    "freshaWarwick": { "rating": 5, "count": 2442, "checkedAt": "2026-11-16" },
+    "freshaStratford": { "rating": 5, "count": 115, "checkedAt": "2026-11-16" },
+    "note": "Do not present either figure as Google-only or add them together. The clinic's own line is 2,000+ five-star reviews."
+  },
+  "build": "website-factory/build-tap-clinics.mjs",
+  "doNotRegenerate": true
+}

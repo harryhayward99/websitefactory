@@ -1,0 +1,228 @@
+{
+  "checked": "16 November 2026",
+  "note": "Old tapclinics.co.uk paths consolidated onto fewer pages. Condition, clinic and coaching URLs are kept.",
+  "redirects": [
+    {
+      "from": "aboutus",
+      "to": "about"
+    },
+    {
+      "from": "meet-the-team",
+      "to": "about#team"
+    },
+    {
+      "from": "faq",
+      "to": "contact#faqs"
+    },
+    {
+      "from": "private-insurance",
+      "to": "contact#insurance"
+    },
+    {
+      "from": "clinic-visits",
+      "to": "contact#visit"
+    },
+    {
+      "from": "bookonline",
+      "to": "book"
+    },
+    {
+      "from": "treatments-warwickandstratford",
+      "to": "treatments"
+    },
+    {
+      "from": "team-kit",
+      "to": "shop#clubs"
+    },
+    {
+      "from": "warwick-massage",
+      "to": "treatments"
+    },
+    {
+      "from": "stratford-massage",
+      "to": "treatments"
+    },
+    {
+      "from": "massage-leamington-spa",
+      "to": "treatments"
+    },
+    {
+      "from": "physiotherapy-warwick",
+      "to": "physiotherapy"
+    },
+    {
+      "from": "physiotherapy-stratford-upon-avon",
+      "to": "physiotherapy"
+    },
+    {
+      "from": "physiotherapy-leamington-spa",
+      "to": "physiotherapy"
+    },
+    {
+      "from": "sports-massage-warwick",
+      "to": "sports-massage"
+    },
+    {
+      "from": "sports-massage-stratford-upon-avon",
+      "to": "sports-massage"
+    },
+    {
+      "from": "sports-massage-leamington-spa",
+      "to": "sports-massage"
+    },
+    {
+      "from": "warwick-sportstherapy",
+      "to": "sports-therapy"
+    },
+    {
+      "from": "stratford-sports-therapy",
+      "to": "sports-therapy"
+    },
+    {
+      "from": "sports-therapy-leamington-spa",
+      "to": "sports-therapy"
+    },
+    {
+      "from": "warwick-deep-tissue-massage",
+      "to": "deep-tissue-massage"
+    },
+    {
+      "from": "stratford-deep-tissue-massage",
+      "to": "deep-tissue-massage"
+    },
+    {
+      "from": "deep-tissue-massage-leamington-spa",
+      "to": "deep-tissue-massage"
+    },
+    {
+      "from": "warwick-swedishmassage",
+      "to": "swedish-massage"
+    },
+    {
+      "from": "stratford-swedish-massage",
+      "to": "swedish-massage"
+    },
+    {
+      "from": "swedish-massage-leamington-spa",
+      "to": "swedish-massage"
+    },
+    {
+      "from": "warwick-indian-headmassage",
+      "to": "indian-head-massage"
+    },
+    {
+      "from": "stratfordindianheadmassage",
+      "to": "indian-head-massage"
+    },
+    {
+      "from": "indian-head-massage-leamington-spa",
+      "to": "indian-head-massage"
+    },
+    {
+      "from": "warwick-thaiyogamassage",
+      "to": "thai-yoga-massage"
+    },
+    {
+      "from": "stratford-thai-yoga-massage",
+      "to": "thai-yoga-massage"
+    },
+    {
+      "from": "thai-yoga-massage-leamington-spa",
+      "to": "thai-yoga-massage"
+    },
+    {
+      "from": "warwick-stretchtherapy",
+      "to": "stretch-therapy"
+    },
+    {
+      "from": "stratford-stretch-therapy",
+      "to": "stretch-therapy"
+    },
+    {
+      "from": "stretch-therapy-leamington-spa",
+      "to": "stretch-therapy"
+    },
+    {
+      "from": "warwick-drycupping",
+      "to": "dry-cupping"
+    },
+    {
+      "from": "stratford-dry-cupping",
+      "to": "dry-cupping"
+    },
+    {
+      "from": "dry-cupping-leamington-spa",
+      "to": "dry-cupping"
+    },
+    {
+      "from": "warwick-dryneedling",
+      "to": "dry-needling"
+    },
+    {
+      "from": "stratford-dry-needling",
+      "to": "dry-needling"
+    },
+    {
+      "from": "dry-needling-leamington-spa",
+      "to": "dry-needling"
+    },
+    {
+      "from": "lymphatic-drainage-warwick",
+      "to": "lymphatic-drainage"
+    },
+    {
+      "from": "lymphatic-drainage-stratford-upon-avon",
+      "to": "lymphatic-drainage"
+    },
+    {
+      "from": "lymphatic-drainage-leamington-spa",
+      "to": "lymphatic-drainage"
+    },
+    {
+      "from": "warwick-pregnancymassage",
+      "to": "pregnancy-massage"
+    },
+    {
+      "from": "stratford-pregnancy-massage",
+      "to": "pregnancy-massage"
+    },
+    {
+      "from": "pregnancy-massage-leamington-spa",
+      "to": "pregnancy-massage"
+    },
+    {
+      "from": "warwick-mummymot",
+      "to": "mummy-mot"
+    },
+    {
+      "from": "stratford-mummy-mot",
+      "to": "mummy-mot"
+    },
+    {
+      "from": "mummy-mot-leamington-spa",
+      "to": "mummy-mot"
+    }
+  ],
+  "preserved": [
+    "back-pain",
+    "knee-pain",
+    "hip-pain",
+    "sciatica",
+    "neck-pain",
+    "shoulder-pain",
+    "plantar-fasciitis",
+    "warwick-clinic",
+    "stratford-clinic",
+    "leamington-spa",
+    "contact",
+    "blog",
+    "online-coaching",
+    "marathon-coaching",
+    "runningpathway",
+    "fatlosspathway",
+    "pregnancy-pathway",
+    "netballpathway",
+    "tap-teens",
+    "corporate-wellbeing"
+  ]
+}

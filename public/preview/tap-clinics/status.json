@@ -1,0 +1,15 @@
+{
+  "slug": "tap-clinics",
+  "status": "PREVIEW_READY",
+  "sheetStatus": "Preview ready",
+  "previewPath": "/preview/tap-clinics/index.html",
+  "template": {
+    "id": "tap-clinics-custom",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation",
+  "contentHash": "f8bf3880e8e51e1b4259e9c8dbbdab0d452df72f17a0948fd5112b2cc8788da6",
+  "demo": true,
+  "message": "Separate from Healing Muscles Northampton. Do not regenerate.",
+  "updatedAt": "2026-11-16T15:30:00.000Z"
+}
