@@ -5,11 +5,11 @@ const root = "public/preview/tap-clinics";
 const phone = "07904 839521";
 const tel = "tel:+447904839521";
 const email = "info@therapyandperformanceclinic.co.uk";
-const book = "https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919";
+const book = "https://sites.leadconnectorhq.com/preview/s1zQFyVFNX2KrFcstuT0";
 const books = {
-  warwick: "https://www.fresha.com/en-GB/a/therapy-and-performance-clinic-warwick-warwick-4-the-holloway-crok9n2u/all-offer?menu=true&share=true&pId=583919",
-  stratford: "https://www.fresha.com/a/therapy-and-performance-clinic-stratford-stratford-upon-avon-unit-3-avon-house-stratford-upon-avon-mulberry-street-ogk41s05/all-offer?menu=true&share=true&pId=583919",
-  leamington: "https://www.fresha.com/en-GB/a/tap-clinic-leamington-spa-royal-leamington-spa-regen-1-augusta-place-nk2d2t8i/all-offer?menu=true&share=true&pId=583919"
+  warwick: book,
+  stratford: book,
+  leamington: book
 };
 const freshaReviews = "https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy";
 const freshaStratford = "https://www.fresha.com/a/therapy-and-performance-clinic-stratford-stratford-upon-avon-unit-3-avon-house-stratford-upon-avon-mulberry-street-ogk41s05";
@@ -141,7 +141,7 @@ function shell({ title, description, active, body }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=15">
+<link rel="stylesheet" href="assets/css/site.css?v=16">
 </head>
 <body>
 <div class="fronds" aria-hidden="true">
@@ -239,7 +239,7 @@ pages.push({ file: "index.html", html: shell({
       <div class="hero-actions"><a class="button" href="${book}" target="_blank" rel="noopener">Book an appointment</a><a class="button ghost" href="${tel}">${phone}</a></div>
     </div>
     <figure class="hero-media" aria-label="A therapist treating a client's back, shown as rounded photo tiles with space between them."><div class="hero-collage" aria-hidden="true"><span class="hero-tile" style="--i:1;--x:415;--y:233;--w:212;--h:253"></span><span class="hero-tile from-left" style="--i:2;--x:146;--y:233;--w:264;--h:254"></span><span class="hero-tile from-up" style="--i:3;--x:146;--y:16;--w:264;--h:213"></span><span class="hero-tile from-right" style="--i:4;--x:631;--y:233;--w:148;--h:184"></span><span class="hero-tile from-down" style="--i:5;--x:146;--y:491;--w:481;--h:111"></span><span class="hero-tile from-up" style="--i:10;--x:58;--y:166;--w:83;--h:103"></span><span class="hero-tile from-up" style="--i:11;--x:415;--y:16;--w:283;--h:73"></span><span class="hero-tile from-right" style="--i:8;--x:631;--y:422;--w:160;--h:118"></span><span class="hero-tile from-down" style="--i:9;--x:34;--y:422;--w:107;--h:145"></span><span class="hero-tile from-left" style="--i:6;--x:25;--y:274;--w:117;--h:143"></span><span class="hero-tile from-right" style="--i:7;--x:415;--y:93;--w:364;--h:136"></span></div>
-      <p class="rating-note"><span class="stars rating-stars" aria-hidden="true">★★★★★</span> <a href="${freshaReviews}" target="_blank" rel="noopener">5.0 · 2,400+ five-star reviews on Fresha</a></p>
+      <p class="rating-note"><span class="stars rating-stars" aria-hidden="true">★★★★★</span> <a href="${freshaReviews}" target="_blank" rel="noopener">5.0 · 2,400+ five-star reviews</a></p>
     </figure>
   </section>
   <section class="band paper">
