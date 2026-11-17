@@ -19,7 +19,6 @@
   <div class="frond right c"><img src="assets/images/leaves/leaf-4.png" alt=""></div>
 </div>
 <a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><p class="topbar-places">Warwick <span>·</span> Stratford-upon-Avon <span>·</span> Leamington Spa</p><p><a href="https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy" target="_blank" rel="noopener">2,000 5-STAR REVIEWS</a></p></div>
 <header class="site-header">
   <a class="brand" href="index.html"><img src="assets/images/logo.png?v=6" alt="TAP. Physiotherapy and massages."></a>
   <nav class="nav" id="site-nav" aria-label="Primary">
@@ -48,6 +47,7 @@
     <a class="button" href="https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919" target="_blank" rel="noopener">Book an appointment</a>
   </div>
 </header>
+<div class="topbar"><p class="topbar-places">Warwick <span>·</span> Stratford-upon-Avon <span>·</span> Leamington Spa</p><p class="topbar-reviews"><a href="https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy" target="_blank" rel="noopener">2,000 5-STAR REVIEWS</a></p><p class="topbar-mobile">Warwick <span>·</span> Leamington <span>·</span> Stratford</p></div>
 <main id="main">
   <section class="wrap hero">
     <div class="frond wind" aria-hidden="true"><img src="assets/images/leaves/leaf-3.png" alt=""></div>
@@ -59,7 +59,7 @@
       <div class="hero-actions"><a class="button" href="https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919" target="_blank" rel="noopener">Book an appointment</a><a class="button ghost" href="tel:+447904839521">07904 839521</a></div>
     </div>
     <figure class="hero-media" aria-label="A therapist treating a client's back, shown as rounded photo tiles with space between them."><div class="hero-collage" aria-hidden="true"><span class="hero-tile" style="--i:1;--x:415;--y:233;--w:212;--h:253"></span><span class="hero-tile from-left" style="--i:2;--x:146;--y:233;--w:264;--h:254"></span><span class="hero-tile from-up" style="--i:3;--x:146;--y:16;--w:264;--h:213"></span><span class="hero-tile from-right" style="--i:4;--x:631;--y:233;--w:148;--h:184"></span><span class="hero-tile from-down" style="--i:5;--x:146;--y:491;--w:481;--h:111"></span><span class="hero-tile from-up" style="--i:10;--x:58;--y:166;--w:83;--h:103"></span><span class="hero-tile from-up" style="--i:11;--x:415;--y:16;--w:283;--h:73"></span><span class="hero-tile from-right" style="--i:8;--x:631;--y:422;--w:160;--h:118"></span><span class="hero-tile from-down" style="--i:9;--x:34;--y:422;--w:107;--h:145"></span><span class="hero-tile from-left" style="--i:6;--x:25;--y:274;--w:117;--h:143"></span><span class="hero-tile from-right" style="--i:7;--x:415;--y:93;--w:364;--h:136"></span></div>
-      <p class="rating-note">Rated <a href="https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy" target="_blank" rel="noopener">5.0 from 2,442 reviews on Fresha</a> for the Warwick clinic, checked 16 November 2026. Stratford-upon-Avon is <a href="https://www.fresha.com/a/therapy-and-performance-clinic-stratford-stratford-upon-avon-unit-3-avon-house-stratford-upon-avon-mulberry-street-ogk41s05" target="_blank" rel="noopener">5.0 from 115</a>.</p>
+      <p class="rating-note">Rated <a href="https://www.fresha.com/a/tap-clinic-warwick-warwick-4-the-holloway-diufr5wy" target="_blank" rel="noopener">5.0 from 2,442 reviews on Fresha</a></p>
     </figure>
   </section>
   <section class="band paper">
@@ -81,15 +81,42 @@
       <div class="section-head"><div><p class="kicker">Treatments</p><h2>What you can book.</h2></div><a class="button ghost" href="treatments.html">All treatments</a></div>
       <div class="treat-layout">
         <div class="treat-nav" role="group" aria-label="Treatment groups">
-          <button type="button" data-treat="physio" aria-pressed="true">Physiotherapy</button>
-          <button type="button" data-treat="therapy" aria-pressed="false">Sports therapy</button>
-          <button type="button" data-treat="massage" aria-pressed="false">Sports massage</button>
-          <button type="button" data-treat="deep" aria-pressed="false">Deep tissue massage</button>
-          <button type="button" data-treat="needling" aria-pressed="false">Dry needling</button>
-          <button type="button" data-treat="cupping" aria-pressed="false">Dry cupping</button>
-          <button type="button" data-treat="pregnancy" aria-pressed="false">Pregnancy massage</button>
-          <button type="button" data-treat="mums" aria-pressed="false">Mummy MOT</button>
-          <button type="button" data-treat="lymph" aria-pressed="false">Lymphatic drainage</button>
+          <div class="treat-item">
+            <button type="button" data-treat="physio" aria-pressed="true" aria-expanded="true">Physiotherapy</button>
+            <div class="treat-panel" data-panel="physio"><p>Find the cause in the first hour, and leave with a plan.</p><a class="button" href="physiotherapy.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="therapy" aria-pressed="false" aria-expanded="false">Sports therapy</button>
+            <div class="treat-panel" data-panel="therapy" hidden><p>Get back to training rebuilt, not just rested until the pain fades.</p><a class="button" href="sports-therapy.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="massage" aria-pressed="false" aria-expanded="false">Sports massage</button>
+            <div class="treat-panel" data-panel="massage" hidden><p>Tightness, recovery, and the knots that desk weeks leave behind.</p><a class="button" href="sports-massage.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="deep" aria-pressed="false" aria-expanded="false">Deep tissue massage</button>
+            <div class="treat-panel" data-panel="deep" hidden><p>Slower, firmer work for stubborn knots and long-held tension.</p><a class="button" href="deep-tissue-massage.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="needling" aria-pressed="false" aria-expanded="false">Dry needling</button>
+            <div class="treat-panel" data-panel="needling" hidden><p>Targeted release for stubborn spots that hands cannot quite settle.</p><a class="button" href="dry-needling.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="cupping" aria-pressed="false" aria-expanded="false">Dry cupping</button>
+            <div class="treat-panel" data-panel="cupping" hidden><p>Cups used with hands-on work for deep tension.</p><a class="button" href="dry-cupping.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="pregnancy" aria-pressed="false" aria-expanded="false">Pregnancy massage</button>
+            <div class="treat-panel" data-panel="pregnancy" hidden><p>Gentle relief for the back, hip and leg aches of pregnancy.</p><a class="button" href="pregnancy-massage.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="mums" aria-pressed="false" aria-expanded="false">Mummy MOT</button>
+            <div class="treat-panel" data-panel="mums" hidden><p>Postnatal core, pelvic floor and posture with midwife Sarah Lane.</p><a class="button" href="mummy-mot.html">Read more</a></div>
+          </div>
+          <div class="treat-item">
+            <button type="button" data-treat="lymph" aria-pressed="false" aria-expanded="false">Lymphatic drainage</button>
+            <div class="treat-panel" data-panel="lymph" hidden><p>Gentle work aimed at swelling and fluid, including after surgery.</p><a class="button" href="lymphatic-drainage.html">Read more</a></div>
+          </div>
         </div>
         <div class="treat-stage">
           <img class="is-on" data-treat="physio" src="assets/images/treatments/physio.jpg" alt="Hands-on treatment across the shoulder and neck.">
@@ -207,7 +234,7 @@
   </div>
   <div class="wrap footer-base"><p>© 2026 Therapy and Performance Clinic</p><p>Prices and review counts checked 16 November 2026.</p></div>
 </footer>
-<div class="mobile-book"><a class="button" href="https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919" target="_blank" rel="noopener">Book</a><a class="button ghost" href="tel:+447904839521">Call</a></div>
+<div class="mobile-book"><a class="button" href="https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919" target="_blank" rel="noopener">Book</a><a class="button ghost" href="https://wa.me/447904839521" target="_blank" rel="noopener">WhatsApp</a></div>
 <a class="book-fab" href="https://www.fresha.com/book-now/mc-sports-therapy-b0qsdi07/all-offer?share=true&pId=583919" target="_blank" rel="noopener">BOOK</a>
 <script src="assets/js/site.js?v=5"></script>
 </body></html>

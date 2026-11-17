@@ -11,14 +11,17 @@ if (toggle && header) {
 document.querySelectorAll(".treat-nav button").forEach((button) => {
   button.addEventListener("click", () => {
     const id = button.dataset.treat;
+    const closing = button.getAttribute("aria-expanded") === "true" && window.matchMedia("(max-width: 980px)").matches;
     document.querySelectorAll(".treat-nav button").forEach((item) => {
-      item.setAttribute("aria-pressed", item === button ? "true" : "false");
+      const on = !closing && item === button;
+      item.setAttribute("aria-pressed", on ? "true" : "false");
+      item.setAttribute("aria-expanded", on ? "true" : "false");
     });
     document.querySelectorAll("[data-panel]").forEach((panel) => {
-      panel.hidden = panel.dataset.panel !== id;
+      panel.hidden = closing || panel.dataset.panel !== id;
     });
     document.querySelectorAll(".treat-stage img").forEach((img) => {
-      img.classList.toggle("is-on", img.dataset.treat === id);
+      img.classList.toggle("is-on", !closing && img.dataset.treat === id);
     });
   });
 });

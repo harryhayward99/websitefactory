@@ -139,7 +139,7 @@
       "slug": "healing-muscles-northampton",
       "status": "PREVIEW_READY",
       "previewPath": "/preview/healing-muscles-northampton/index.html",
-      "contentHash": "dd64d9a34f12c025ce6c71f681708b62499c912dcbbc12ba1087de22be92e319",
+      "contentHash": "1381e85cae112adbe28a37847443ba5b401a96f20de7e05c7637ffcf5411a249",
       "demo": false,
       "instructionsVersion": "manual-adaptation",
       "updatedAt": "2026-11-03"
@@ -154,10 +154,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "manual-adaptation",
-      "contentHash": "4a95ba90541a0021117e6eca0a7bd911d18e3ea8aeffda9f86bf8b955b309328",
+      "contentHash": "17bcce54022cdd487a20ac6517960f1213112ca3e494159283a924cd4793d25a",
       "demo": true,
       "message": "",
-      "updatedAt": "2026-11-12T15:13:40.998Z"
+      "updatedAt": "2026-11-16T12:23:00.000Z"
     },
     {
       "slug": "lexify-tuition",
@@ -220,7 +220,7 @@
       "contentHash": "b9ff87cdd25b40fe9d22063f3946868762d4cc94d3a73b9680328fe031f31186",
       "demo": true,
       "instructionsVersion": "manual-adaptation",
-      "updatedAt": "2026-11-14T17:12:48.019Z"
+      "updatedAt": "2026-11-14"
     },
     {
       "slug": "southam-chiropractic",
@@ -232,10 +232,10 @@
         "version": "1.0.0"
       },
       "instructionsVersion": "manual-adaptation",
-      "contentHash": "3c97c270355c6d7da61961181209a95a3957e90cbcdd2140b259e34d0a820b56",
+      "contentHash": "be4649a39f7e15df164c7d1ade8499f45b6086edde08c863fb07f78fc6668bbe",
       "demo": false,
       "message": "",
-      "updatedAt": "2026-11-14T19:04:20.088Z"
+      "updatedAt": "2026-11-14"
     },
     {
       "slug": "southam-physio",
@@ -251,6 +251,21 @@
       "demo": false,
       "message": "",
       "updatedAt": "2026-10-19T18:03:14.872Z"
+    },
+    {
+      "slug": "tap-clinics",
+      "status": "PREVIEW_READY",
+      "sheetStatus": "Preview ready",
+      "previewPath": "/preview/tap-clinics/index.html",
+      "template": {
+        "id": "tap-clinics-custom",
+        "version": "1.0.0"
+      },
+      "instructionsVersion": "manual-adaptation",
+      "contentHash": "91061d442f4c8c41b91fb99513dae82963d4909127296d18d50ad53066e1aaf8",
+      "demo": true,
+      "message": "Separate from Healing Muscles Northampton. Do not regenerate.",
+      "updatedAt": "2026-11-16T15:30:00.000Z"
     },
     {
       "slug": "tidy-feet",
