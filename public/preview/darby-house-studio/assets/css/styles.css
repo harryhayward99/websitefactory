@@ -380,6 +380,10 @@ body[data-page="index"] .site-header:not(.is-scrolled):not(.is-open) .header-cta
   color: var(--accent);
 }
 
+.mobile-nav a[href="contact.html"] {
+  color: var(--accent);
+}
+
 body.menu-open {
   overflow: hidden;
 }
