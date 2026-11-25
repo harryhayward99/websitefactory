@@ -222,7 +222,7 @@ body[data-page="index"] .site-header:not(.is-scrolled):not(.is-open) .menu-toggl
 .brand-text {
   display: inline-block;
   font-family: var(--font-title);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1.1;
@@ -2063,7 +2063,7 @@ body[data-page="testimonials"] .section {
   }
 
   .brand-text {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     letter-spacing: 0.04em;
   }
 
