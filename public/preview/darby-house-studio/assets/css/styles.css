@@ -421,23 +421,23 @@ body.menu-open {
 }
 
 .mobile-cta-bar__enquiry {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.mobile-cta-bar__enquiry:hover {
+  background: var(--accent-deep);
+}
+
+.mobile-cta-bar__call {
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--ink) !important;
 }
 
-.mobile-cta-bar__enquiry:hover {
+.mobile-cta-bar__call:hover {
   background: var(--ink);
   color: var(--white);
-}
-
-.mobile-cta-bar__call {
-  background: var(--accent);
-  color: var(--white);
-}
-
-.mobile-cta-bar__call:hover {
-  background: var(--accent-deep);
 }
 
 body.menu-open .mobile-cta-bar {

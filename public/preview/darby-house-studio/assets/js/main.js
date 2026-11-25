@@ -8,8 +8,8 @@
     bar.className = "mobile-cta-bar";
     bar.setAttribute("aria-label", "Quick contact");
     bar.innerHTML =
-      '<a class="mobile-cta-bar__call" href="tel:01246922922">Call</a>' +
-      '<a class="mobile-cta-bar__enquiry" href="contact.html">Send enquiry</a>';
+      '<a class="mobile-cta-bar__enquiry" href="contact.html">Send enquiry</a>' +
+      '<a class="mobile-cta-bar__call" href="tel:01246922922">Call</a>';
     document.body.appendChild(bar);
   }
 
