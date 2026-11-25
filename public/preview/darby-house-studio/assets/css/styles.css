@@ -1986,7 +1986,8 @@ body[data-page="testimonials"] .section {
   }
 
   .header-cta {
-    display: none;
+    display: inline-flex;
+    font-size: 0.7rem;
   }
 
   .service-grid,
