@@ -2064,6 +2064,10 @@ body[data-page="testimonials"] .section {
 }
 
 @media (max-width: 640px) {
+  .header-cta {
+    display: none;
+  }
+
   .wrap,
   .hero-inner {
     width: min(100% - 1.5rem, var(--max));
