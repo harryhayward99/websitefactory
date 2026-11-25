@@ -1037,9 +1037,13 @@ h2,
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-bottom: 0.35rem;
+  padding-bottom: 0;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+}
+
+.review-track::-webkit-scrollbar {
+  display: none;
 }
 
 .review-track:focus-visible {
