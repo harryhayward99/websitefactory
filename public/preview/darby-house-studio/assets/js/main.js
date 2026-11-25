@@ -3,14 +3,14 @@
   const toggle = document.querySelector("[data-menu-toggle]");
   const mobileNav = document.querySelector("[data-mobile-nav]");
 
-  if (!document.querySelector(".mobile-cta-bar")) {
-    const bar = document.createElement("nav");
-    bar.className = "mobile-cta-bar";
-    bar.setAttribute("aria-label", "Quick contact");
-    bar.innerHTML =
-      '<a class="mobile-cta-bar__enquiry" href="contact.html">Send enquiry</a>' +
-      '<a class="mobile-cta-bar__call" href="tel:01246922922">Call</a>';
-    document.body.appendChild(bar);
+  if (!document.querySelector(".call-fab")) {
+    const call = document.createElement("a");
+    call.className = "call-fab";
+    call.href = "tel:01246922922";
+    call.setAttribute("aria-label", "Call Darby House Interiors on 01246 922922");
+    call.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>';
+    document.body.appendChild(call);
   }
 
   const syncHeaderScroll = () => {
