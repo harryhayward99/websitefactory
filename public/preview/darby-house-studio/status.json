@@ -1,0 +1,15 @@
+{
+  "status": "PREVIEW_READY",
+  "updatedAt": "2026-11-25T16:15:31.867Z",
+  "contentHash": "d7b36cc508860bc13976ba73770838f6314d918e67a6be979b6e9a3d7a88d0bd",
+  "source": "manual",
+  "notes": "Custom Farnham-inspired studio alternate for client demo. Do not regenerate.",
+  "slug": "darby-house-studio",
+  "previewPath": "/preview/darby-house-studio/index.html",
+  "demo": true,
+  "template": {
+    "id": "darby-house-studio-custom",
+    "version": "1.0.0"
+  },
+  "instructionsVersion": "manual-adaptation"
+}

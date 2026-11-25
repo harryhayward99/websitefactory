@@ -1,0 +1,15 @@
+{
+  "slug": "darby-house-studio",
+  "demo": true,
+  "businessName": "Darby House Interiors",
+  "website": "https://www.darbyhouseinteriors.com/",
+  "category": "interiors-fitted-furniture",
+  "template": "custom",
+  "previewPath": "public/preview/darby-house-studio/index.html",
+  "contact": {
+    "email": "info@darbyhouseinteriors.co.uk",
+    "phone": "01246922922",
+    "phoneAlt": "01709645645"
+  },
+  "notes": "Alternate studio concept inspired by farnhamfurnishers.co.uk. Content sourced from darbyhouseinteriors.com (services, process, finance Ideal4Finance, about, contact, brochure PDFs). Pages: index, projects, brochure, process, finance, testimonials, about, contact. Nav omits Home; Contact only as CTA. Images copied under public/preview/darby-house-studio/assets/images. Live demo: https://demos.parleysystems.com/preview/darby-house-studio/index.html. Do not regenerate through care-modern."
+}
