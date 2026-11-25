@@ -1926,9 +1926,10 @@ h2,
 
   .section-head {
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 0.85rem;
+    text-align: center;
   }
 
   .section-head > div {
@@ -1936,11 +1937,83 @@ h2,
   }
 
   .section-head .btn {
-    align-self: flex-start;
+    align-self: center;
   }
 
-  .section-head .section-lead {
+  .section-head .section-lead,
+  .section-lead {
     max-width: none;
+    margin-inline: auto;
+  }
+
+  body[data-page="index"] .section .wrap {
+    text-align: center;
+  }
+
+  body[data-page="index"] .service-item {
+    text-align: center;
+  }
+
+  body[data-page="index"] .independent {
+    align-items: center;
+    text-align: center;
+  }
+
+  body[data-page="index"] .independent-copy .btn {
+    align-self: center;
+  }
+
+  body[data-page="index"] .independent-media {
+    width: 100%;
+  }
+
+  body[data-page="index"] .stat-row {
+    justify-content: center;
+  }
+
+  body[data-page="index"] .process-step {
+    text-align: center;
+  }
+
+  body[data-page="index"] .process-actions {
+    justify-content: center;
+  }
+
+  body[data-page="index"] .review-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  body[data-page="index"] .review-score {
+    justify-content: center;
+  }
+
+  body[data-page="index"] .review-actions {
+    justify-content: center;
+  }
+
+  body[data-page="index"] .review-nav {
+    justify-content: center;
+  }
+
+  body[data-page="index"] .review-source {
+    text-align: center;
+  }
+
+  body[data-page="index"] .cta-inner {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  body[data-page="index"] .cta-band .section-title,
+  body[data-page="index"] .cta-band p {
+    margin-inline: auto;
+  }
+
+  body[data-page="index"] .cta-actions {
+    justify-content: center;
   }
 
   .service-grid,
