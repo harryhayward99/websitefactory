@@ -2136,19 +2136,24 @@ body[data-page="testimonials"] .section {
     text-align: center;
   }
 
+  body[data-page="index"] .cta-band .wrap,
   body[data-page="index"] .cta-inner {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    text-align: left;
+  }
+
+  body[data-page="index"] .cta-inner {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   body[data-page="index"] .cta-band .section-title,
   body[data-page="index"] .cta-band p {
-    margin-inline: auto;
+    margin-inline: 0;
   }
 
   body[data-page="index"] .cta-actions {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .service-grid,
