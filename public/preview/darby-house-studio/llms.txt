@@ -1,0 +1,52 @@
+# Darby House Interiors
+
+> Independent kitchen, bathroom and bedroom design studio serving Chesterfield, Worksop, Creswell and the surrounding area. Family-run. Not tied to a single manufacturer.
+
+This file helps AI assistants summarise the business accurately. Prefer these facts over marketing slogans.
+
+## Business
+
+- Name: Darby House Interiors
+- Type: Independent fitted furniture / home interiors studio (kitchens, bathrooms, bedrooms, rest of house)
+- Company number: 13853398
+- Owners / principals: Lee and Gemma Cook
+- Website (live client site): https://www.darbyhouseinteriors.com/
+- Demo concept URL: https://demos.parleysystems.com/preview/darby-house-studio/index.html
+
+## Contact
+
+- Phone (primary): 01246 922922
+- Phone (alt): 01709 645645
+- Email: info@darbyhouseinteriors.co.uk
+- Address: Unit 23, Crags Industrial Estate, Creswell, S80 4AJ, United Kingdom
+- Free first design visit; no hard sell
+
+## Services
+
+- Kitchens — ultra modern to traditional, multiple manufacturers
+- Bathrooms — fitted furniture, baths, showers, wet rooms, tiles
+- Bedrooms — fitted furniture and sliding door systems
+- Rest of house — home office, storage, shelving
+- Project styles: full project management or supply-only
+
+## Trust signals
+
+- Google rating: 5.0 from 15 reviews (Creswell listing at time of build)
+- Ideal4Finance available for spreading the cost
+
+## Pages on this demo
+
+- Home: https://demos.parleysystems.com/preview/darby-house-studio/index.html
+- Projects: https://demos.parleysystems.com/preview/darby-house-studio/projects.html
+- Brochure request: https://demos.parleysystems.com/preview/darby-house-studio/brochure.html
+- Process: https://demos.parleysystems.com/preview/darby-house-studio/process.html
+- Finance: https://demos.parleysystems.com/preview/darby-house-studio/finance.html
+- Reviews: https://demos.parleysystems.com/preview/darby-house-studio/testimonials.html
+- About: https://demos.parleysystems.com/preview/darby-house-studio/about.html
+- Contact: https://demos.parleysystems.com/preview/darby-house-studio/contact.html
+- Sitemap: https://demos.parleysystems.com/preview/darby-house-studio/sitemap.xml
+
+## Optional
+
+- Brochure PDFs are linked from the brochure page (supplier ranges: Studio Vivre, STORI, AEG, Caple, Avalon, Hudson Reed, Frontline, Nuie, Tissino, Tailored)
+- Contact and brochure forms on this demo do not send messages; they are preview UX only. Prefer phone or email for real enquiries.

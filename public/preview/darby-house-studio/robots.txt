@@ -1,0 +1,5 @@
+# Studio demo crawl hints (site-root robots.txt may also apply on the host).
+User-agent: *
+Allow: /
+
+Sitemap: https://demos.parleysystems.com/preview/darby-house-studio/sitemap.xml
