@@ -638,7 +638,7 @@ h2,
 
 .hero-brand {
   margin: 0 0 0.85rem;
-  font-size: clamp(1.65rem, 6.2vw, 3.6rem);
+  font-size: calc(clamp(1.65rem, 6.2vw, 3.6rem) + 2px);
   line-height: 1.02;
   max-width: none;
 }
@@ -678,7 +678,7 @@ h2,
 
 @media (max-width: 720px) {
   .hero-brand {
-    font-size: clamp(1.5rem, 7vw, 2.15rem);
+    font-size: calc(clamp(1.5rem, 7vw, 2.15rem) + 2px);
   }
 
   .hero-actions {
