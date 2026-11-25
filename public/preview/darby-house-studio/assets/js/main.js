@@ -11,11 +11,26 @@
   window.addEventListener("scroll", syncHeaderScroll, { passive: true });
 
   if (toggle && mobileNav) {
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") !== "true";
+    const setMenuOpen = (open) => {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       mobileNav.classList.toggle("is-open", open);
+      document.body.classList.toggle("menu-open", open);
       if (header) header.classList.toggle("is-open", open);
+    };
+
+    toggle.addEventListener("click", () => {
+      setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+      }
     });
   }
 
