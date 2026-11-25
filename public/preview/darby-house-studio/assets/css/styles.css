@@ -1832,7 +1832,7 @@ h2,
   }
 
   .header-cta {
-    font-size: 0.7rem;
+    display: none;
   }
 
   .service-grid,
