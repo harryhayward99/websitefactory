@@ -121,11 +121,23 @@ body[data-page="index"] .site-header:not(.is-scrolled):not(.is-open)::before {
   opacity: 1;
 }
 
-.site-header.is-scrolled,
-.site-header.is-open {
+.site-header.is-scrolled {
   background: rgba(246, 243, 238, 0.94);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
+}
+
+.site-header.is-open {
+  /* Solid bar only — no backdrop-filter. Filter/blur creates a containing
+     block that traps position:fixed .mobile-nav inside the short header. */
+  background: var(--paper);
+  border-bottom-color: var(--line);
+  z-index: 100;
+}
+
+.site-header.is-scrolled.is-open {
+  backdrop-filter: none;
+  background: var(--paper);
 }
 
 .site-header.is-scrolled::before,
@@ -319,30 +331,34 @@ body[data-page="index"] .site-header:not(.is-scrolled):not(.is-open) .header-cta
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 45;
+  z-index: 40;
   box-sizing: border-box;
-  padding: calc(var(--header-h) + 1.25rem) clamp(1.5rem, 6vw, 3rem) 2.5rem;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  padding: calc(var(--header-h) + 1.5rem) clamp(1.5rem, 6vw, 3rem) 2.5rem;
   background: var(--paper);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .mobile-nav.is-open {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.15rem;
+  justify-content: flex-start;
+  gap: 0.1rem;
 }
 
 .mobile-nav a {
   display: block;
-  padding: 0.65rem 0;
+  padding: 0.55rem 0;
   border: 0;
   font-family: var(--font-title);
-  font-size: clamp(1.85rem, 8vw, 2.75rem);
+  font-size: clamp(1.65rem, 7.5vw, 2.5rem);
   font-weight: 500;
   letter-spacing: 0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--ink);
   text-transform: none;
 }
