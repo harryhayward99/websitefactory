@@ -2,8 +2,7 @@
   "slug": "sophies-sports-massage",
   "status": "PREVIEW_READY",
   "previewPath": "/preview/sophies-sports-massage/index.html",
-  "contentHash": "138dce7c07cbe5fcbd72304f63e8798f4d9b955fd5324ce84ec354b0c9763331",
   "demo": true,
-  "instructionsVersion": "manual-adaptation",
-  "updatedAt": "2026-11-14"
+  "instructionsVersion": "manual-adaptation-tap",
+  "updatedAt": "2026-11-26"
 }

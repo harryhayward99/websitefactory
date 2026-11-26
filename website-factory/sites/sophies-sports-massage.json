@@ -5,14 +5,20 @@
   "demo": true,
   "approvedInstructionsVersion": "manual-adaptation",
   "template": {
-    "id": "care-modern",
+    "id": "tap-clinics-manual",
     "version": "1.0.0"
   },
   "brand": {
-    "accent": "#440621",
-    "logo": "/factory-assets/clients/sophies-sports-massage/logo.jpg"
+    "accent": "#314a3d",
+    "highlight": "#c08a3a",
+    "logo": "/factory-assets/clients/sophies-sports-massage/logo.png"
   },
   "sources": [
+    {
+      "id": "layout-source",
+      "url": "local:public/preview/tap-clinics/",
+      "checkedAt": "2026-11-26"
+    },
     {
       "id": "design-inspiration",
       "url": "https://reformchirokenilworth.com/",
@@ -37,5 +43,5 @@
       "sourceId": "design-inspiration"
     }
   },
-  "notes": "Manual adaptation of public/preview/southam-chiropractic/. Do not regenerate this slug. Design inspiration from Reform Kenilworth. Filler Kenilworth address/phone/hours/prices/reviews used for showcase — replace with verified details when available. Demo: true."
+  "notes": "Manual TAP Clinics multi-page layout adaptation (build-sophies-tap.mjs). Do not regenerate this slug through care-modern. Theme deep #314a3d (muted forest) with gold highlight #c08a3a on Book CTAs, ‘by Sophie’, rating stars and palm tint. Header logo masked to theme green. Hero uses TAP tiled collage + palm fronds. Visits section second. Reviews + enquiry book sections retained. BOOK CTAs use TAP demo LeadConnector URL. Filler Kenilworth address/phone/hours/prices/reviews for showcase — replace when verified. Demo: true."
 }
