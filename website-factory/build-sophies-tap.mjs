@@ -1,5 +1,6 @@
-import { mkdirSync, writeFileSync, copyFileSync, readdirSync } from "node:fs";
+import { mkdirSync, writeFileSync, copyFileSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { createHash } from "node:crypto";
 
 const root = "public/preview/sophies-sports-massage";
 const assetsSrc = "public/factory-assets/clients/sophies-sports-massage";
@@ -619,12 +620,15 @@ for (const [name, html] of Object.entries(pages)) {
   writeFileSync(join(root, name), html);
 }
 
+const indexHtml = readFileSync(join(root, "index.html"));
+const contentHash = createHash("sha256").update(indexHtml).digest("hex");
 writeFileSync(join(root, "status.json"), `${JSON.stringify({
   slug: "sophies-sports-massage",
   status: "PREVIEW_READY",
   previewPath: "/preview/sophies-sports-massage/index.html",
   demo: true,
   instructionsVersion: "manual-adaptation-tap",
+  contentHash,
   updatedAt: "2026-11-26"
 }, null, 2)}\n`);
 
