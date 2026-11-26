@@ -95,7 +95,7 @@ function shell({ title, description, active, body, canonical }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=12">
+<link rel="stylesheet" href="assets/css/site.css?v=15">
 </head>
 <body>
 <div class="fronds" aria-hidden="true">
@@ -266,36 +266,16 @@ function reviewsSection(id = "reviews") {
   </section>`;
 }
 
-function enquirySection() {
-  return `<section class="band" id="book">
-    <div class="wrap enquiry">
-      <form class="enquiry-form" data-contact-form action="#book" method="post">
-        <p class="kicker">Book</p>
-        <h2>Book your appointment</h2>
-        <p class="enquiry-note">Book online, call <a href="${tel}">${phone}</a>, or send a short enquiry and Sophie will confirm a time that suits you.</p>
-        <div class="enquiry-paths" aria-label="Ways to get in touch">
-          <div class="enquiry-path is-primary">
-            <strong>Book online</strong>
-            <p>Choose a time that works for you and Sophie will confirm your appointment.</p>
-            <a class="button" href="${book}" target="_blank" rel="noopener">Book appointment</a>
-          </div>
-          <div class="enquiry-path">
-            <strong>Prefer to call?</strong>
-            <p>Speak to Sophie on the clinic landline.</p>
-            <a class="button ghost" href="${tel}">${phone}</a>
-          </div>
-        </div>
-        <div class="enquiry-fields">
-          <label>First name<input name="first" autocomplete="given-name" placeholder="Enter first name"></label>
-          <label>Last name<input name="last" autocomplete="family-name" placeholder="Enter last name"></label>
-          <label>Email<input name="email" type="email" autocomplete="email" placeholder="name@example.com"></label>
-          <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
-          <label class="span">Message<textarea name="message" placeholder="Type message here..."></textarea></label>
-        </div>
-        <div class="enquiry-actions"><button class="enquiry-submit" type="submit">Send enquiry</button></div>
-        <p class="form-note">This preview form does not submit.</p>
-      </form>
-      <div class="enquiry-stage">
+function enquirySection({ compact = false } = {}) {
+  const title = compact ? "Send an enquiry" : "Book your appointment";
+  const note = compact
+    ? `Prefer a message? Leave your details and Sophie will get back to you.`
+    : `Book online, call <a href="${tel}">${phone}</a>, or send a short enquiry and Sophie will confirm a time that suits you.`;
+  const stage = compact
+    ? `<div class="enquiry-stage">
+        <figure class="enquiry-portrait"><img src="${img("book-portrait.png")}" alt="Sports massage treatment at Sophie's Sports Massage &amp; Rehabilitation."></figure>
+      </div>`
+    : `<div class="enquiry-stage">
         <figure class="enquiry-portrait"><img src="${img("book-portrait.png")}" alt="Sports massage treatment at Sophie's Sports Massage &amp; Rehabilitation."></figure>
         <aside class="enquiry-hours">
           <h3>Opening times</h3>
@@ -311,7 +291,36 @@ function enquirySection() {
           </ul>
           <a class="button" href="${book}" target="_blank" rel="noopener">Book appointment</a>
         </aside>
-      </div>
+      </div>`;
+  return `<section class="band${compact ? " contact-book" : ""}" id="book">
+    <div class="wrap enquiry${compact ? " is-compact" : ""}">
+      <form class="enquiry-form" data-contact-form action="#book" method="post">
+        <p class="kicker">Book</p>
+        <h2>${title}</h2>
+        <p class="enquiry-note">${note}</p>
+        ${compact ? "" : `<div class="enquiry-paths" aria-label="Ways to get in touch">
+          <div class="enquiry-path is-primary">
+            <strong>Book online</strong>
+            <p>Choose a time that works for you and Sophie will confirm your appointment.</p>
+            <a class="button" href="${book}" target="_blank" rel="noopener">Book appointment</a>
+          </div>
+          <div class="enquiry-path">
+            <strong>Prefer to call?</strong>
+            <p>Speak to Sophie on the clinic landline.</p>
+            <a class="button ghost" href="${tel}">${phone}</a>
+          </div>
+        </div>`}
+        <div class="enquiry-fields">
+          <label>First name<input name="first" autocomplete="given-name" placeholder="Enter first name"></label>
+          <label>Last name<input name="last" autocomplete="family-name" placeholder="Enter last name"></label>
+          <label>Email<input name="email" type="email" autocomplete="email" placeholder="name@example.com"></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="Enter a phone number"></label>
+          <label class="span">Message<textarea name="message" placeholder="Type message here..."></textarea></label>
+        </div>
+        <div class="enquiry-actions"><button class="enquiry-submit" type="submit">Send enquiry</button></div>
+        <p class="form-note">This preview form does not submit.</p>
+      </form>
+      ${stage}
     </div>
   </section>`;
 }
@@ -567,30 +576,41 @@ function contactPage() {
     description: `Contact Sophie at ${address}. Phone ${phone}.`,
     active: "contact",
     body: `
-  <section class="wrap page-hero">
+  <header class="wrap page-hero contact-hero">
     <p class="kicker">Contact</p>
-    <h1>Sophie's Sports Massage &amp; Rehabilitation.</h1>
-  </section>
-  <section class="band">
-    <div class="wrap split-page">
-      <div class="prose">
-        <h2>Book with Sophie</h2>
-        <p>Book online, call ${phone}, or send an enquiry and Sophie will confirm your appointment.</p>
-        <p><a class="button" href="${book}" target="_blank" rel="noopener">Book an appointment</a> <a class="button ghost" href="${tel}">${phone}</a></p>
-        <h2>Location</h2>
-        <p>${esc(address)}</p>
-        <h2>Hours</h2>
-        <ul class="hours">
-          <li><strong>Monday–Thursday</strong> 09:00 – 18:00</li>
-          <li><strong>Friday</strong> 09:00 – 17:00</li>
-          <li><strong>Saturday</strong> 09:00 – 13:00</li>
-          <li><strong>Sunday</strong> Closed</li>
+    <h1>Talk to Sophie.</h1>
+    <p class="lede">Book online for the fastest route, or send a note and Sophie will confirm a time that suits you.</p>
+  </header>
+  <div class="wrap contact-layout">
+    <form class="contact-form" data-contact-form action="#book" method="post" id="book">
+      <label>First name<input name="first" autocomplete="given-name" required></label>
+      <label>Last name<input name="last" autocomplete="family-name" required></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+      <label class="span">Message<textarea name="message" required placeholder="How can Sophie help?"></textarea></label>
+      <button class="button" type="submit">Send enquiry</button>
+      <p class="form-note">This preview form does not submit. Or call <a href="${tel}">${phone}</a>.</p>
+    </form>
+    <aside class="contact-side">
+      <div class="contact-card">
+        <p class="contact-phone"><a href="${tel}">${phone}</a></p>
+        <p class="contact-address">${esc(address)}</p>
+        <a class="button" href="${book}" target="_blank" rel="noopener">Book an appointment</a>
+      </div>
+      <div class="contact-hours">
+        <h2>Opening hours</h2>
+        <ul class="hours-list">
+          <li><span>Monday–Thursday</span><strong>09:00 – 18:00</strong></li>
+          <li><span>Friday</span><strong>09:00 – 17:00</strong></li>
+          <li><span>Saturday</span><strong>09:00 – 13:00</strong></li>
+          <li><span>Sunday</span><strong>Closed</strong></li>
         </ul>
       </div>
-      <figure class="frame"><img src="${img("about-exterior.png")}" alt="Illustrative clinic exterior. Not a photograph of Sophie's premises."></figure>
-    </div>
-  </section>
-  ${enquirySection()}`
+      <figure class="contact-photo">
+        <img src="${img("about-exterior.png")}" alt="Illustrative clinic exterior. Not a photograph of Sophie's premises.">
+      </figure>
+    </aside>
+  </div>`
   });
 }
 
